@@ -20,8 +20,9 @@
 		9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD8C1F1DD1C6003204AB /* Resource.bundle */; };
 		9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD901F1DD502003204AB /* NamingViewController.swift */; };
 		9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD921F1DEDDA003204AB /* RealmManager.swift */; };
-		9D52DD961F1DFA4F003204AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */; };
 		9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD981F1E00E9003204AB /* TextViewEntity.swift */; };
+		9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */; };
+		9D52DD9D1F1E0FF8003204AB /* battera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD9C1F1E0FF8003204AB /* battera.png */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,8 +60,9 @@
 		9D52DD8C1F1DD1C6003204AB /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = SOURCE_ROOT; };
 		9D52DD901F1DD502003204AB /* NamingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingViewController.swift; sourceTree = "<group>"; };
 		9D52DD921F1DEDDA003204AB /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		9D52DD981F1E00E9003204AB /* TextViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewEntity.swift; sourceTree = "<group>"; };
+		9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageEntity.swift; sourceTree = "<group>"; };
+		9D52DD9C1F1E0FF8003204AB /* battera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battera.png; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -181,7 +183,7 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */,
+				9D52DD9C1F1E0FF8003204AB /* battera.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				9D52DD981F1E00E9003204AB /* TextViewEntity.swift */,
+				9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -293,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
-				9D52DD961F1DFA4F003204AB /* iTunesArtwork@2x.png in Resources */,
+				9D52DD9D1F1E0FF8003204AB /* battera.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
@@ -413,6 +416,7 @@
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
+				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 			);

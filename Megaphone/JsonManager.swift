@@ -12,7 +12,7 @@ class JsonManager: NSObject {
     
     static let shared = JsonManager()
     /// ステージ配列
-    var stages: Array<String>?
+    var stages: Array<StageEntity>?
     
     override init() {
         super.init()
@@ -22,16 +22,23 @@ class JsonManager: NSObject {
     /// jsonを読み込んでステージ配列を返す
     ///
     /// - Returns: ステージ配列
-    func stageList() -> Array<String>? {
+    func stageList() -> [StageEntity]? {
         let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: "stage")!,
                                                      options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
         
-        guard let stages = json.value(forKey: "stage") as! Array<String>? else {
+        guard let stages = json.value(forKey: "stage") as! Array<Dictionary<String, String>>? else {
             return nil
         }
         
-        // ステージ配列を返す
-        return stages
+        var items: [StageEntity] = []
+        for item in stages {
+            let entity = StageEntity()
+            entity.stageName = item["stage"]
+            entity.imageName = item["image"]
+            items.append(entity)
+        }
+        
+        return items
     }
     
     /// jsonデータをData型で返す

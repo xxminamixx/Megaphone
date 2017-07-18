@@ -35,10 +35,13 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier)
+        let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         // TODO: ここに遷移先に施したい処理を書く
-        viewController?.navigationItem.title = JsonManager.shared.stages?[indexPath.row]
-        self.navigationController?.pushViewController(viewController!, animated: true)
+        let stageEntity = JsonManager.shared.stages?[indexPath.row]
+        viewController.navigationItem.title = stageEntity?.stageName
+//        viewController.imageView?.image = UIImage(named: (stageEntity?.imageName)!)
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -56,7 +59,7 @@ extension HomeViewController: UITableViewDataSource {
             return cell
         }
         
-        cell.stageName.text = stageList[indexPath.row]
+        cell.stageName.text = stageList[indexPath.row].stageName
         return cell
     }
     

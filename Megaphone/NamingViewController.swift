@@ -11,7 +11,7 @@ import UIKit
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
-//    var image = UIImage()
+//    var imageView: UIImageView?
     var actionTextView: UITextView?
     
     override func viewDidLoad() {
@@ -19,7 +19,6 @@ class NamingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        image = UIImage(named: "iTunesArtwork.png")!
     }
 
     override func didReceiveMemoryWarning() {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lq4-hv-NDc">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.86155615482233505" green="0.86155615482233505" blue="0.86155615482233505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="S1m-Iz-Po3"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-Ck-K0Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lq4-hv-NDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3ws-In-TlL"/>
+                            <constraint firstAttribute="trailing" secondItem="lq4-hv-NDc" secondAttribute="trailing" id="4KE-S8-5e2"/>
+                            <constraint firstAttribute="trailing" secondItem="Ser-Ck-K0Z" secondAttribute="trailing" id="DIc-AI-cTz"/>
+                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DiE-Lo-Uj9"/>
+                            <constraint firstItem="lq4-hv-NDc" firstAttribute="top" secondItem="Ser-Ck-K0Z" secondAttribute="bottom" id="M22-Zn-Yyt"/>
+                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mTT-nc-bVg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lq4-hv-NDc" secondAttribute="bottom" id="pbs-1c-Xjg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bannerView" destination="lq4-hv-NDc" id="pRE-sw-JIQ"/>
+                        <outlet property="stageTableView" destination="Ser-Ck-K0Z" id="70y-Ir-a6J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
+		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
+		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
+		9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */; };
+		9D52DD6E1F1DAD04003204AB /* MegaphoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD6D1F1DAD04003204AB /* MegaphoneTests.swift */; };
+		9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD821F1DB573003204AB /* StageTableViewCell.swift */; };
+		9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD831F1DB573003204AB /* StageTableViewCell.xib */; };
+		9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD861F1DB97C003204AB /* JsonManager.swift */; };
+		9D52DD891F1DC015003204AB /* JsonManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD881F1DC015003204AB /* JsonManagerTest.swift */; };
+		9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9D52DD6A1F1DAD04003204AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D52DD4D1F1DAD03003204AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D52DD541F1DAD03003204AB;
+			remoteInfo = Megaphone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9D52DD5F1F1DAD03003204AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D52DD621F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9D52DD641F1DAD03003204AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D52DD691F1DAD04003204AB /* MegaphoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaphoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D52DD6D1F1DAD04003204AB /* MegaphoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaphoneTests.swift; sourceTree = "<group>"; };
+		9D52DD6F1F1DAD04003204AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D52DD821F1DB573003204AB /* StageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageTableViewCell.swift; sourceTree = "<group>"; };
+		9D52DD831F1DB573003204AB /* StageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StageTableViewCell.xib; sourceTree = "<group>"; };
+		9D52DD861F1DB97C003204AB /* JsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
+		9D52DD881F1DC015003204AB /* JsonManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManagerTest.swift; sourceTree = "<group>"; };
+		9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D52DD521F1DAD03003204AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D52DD661F1DAD04003204AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9D52DD4C1F1DAD03003204AB = {
+			isa = PBXGroup;
+			children = (
+				9D52DD571F1DAD03003204AB /* Megaphone */,
+				9D52DD6C1F1DAD04003204AB /* MegaphoneTests */,
+				9D52DD561F1DAD03003204AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9D52DD561F1DAD03003204AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD551F1DAD03003204AB /* Megaphone.app */,
+				9D52DD691F1DAD04003204AB /* MegaphoneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D52DD571F1DAD03003204AB /* Megaphone */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD791F1DAE3C003204AB /* Manager */,
+				9D52DD781F1DAE30003204AB /* Controller */,
+				9D52DD581F1DAD03003204AB /* AppDelegate.swift */,
+				9D52DD5C1F1DAD03003204AB /* Main.storyboard */,
+				9D52DD5F1F1DAD03003204AB /* Assets.xcassets */,
+				9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */,
+				9D52DD641F1DAD03003204AB /* Info.plist */,
+			);
+			path = Megaphone;
+			sourceTree = "<group>";
+		};
+		9D52DD6C1F1DAD04003204AB /* MegaphoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD6D1F1DAD04003204AB /* MegaphoneTests.swift */,
+				9D52DD6F1F1DAD04003204AB /* Info.plist */,
+				9D52DD881F1DC015003204AB /* JsonManagerTest.swift */,
+			);
+			path = MegaphoneTests;
+			sourceTree = "<group>";
+		};
+		9D52DD781F1DAE30003204AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */,
+				9D52DD821F1DB573003204AB /* StageTableViewCell.swift */,
+				9D52DD831F1DB573003204AB /* StageTableViewCell.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9D52DD791F1DAE3C003204AB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9D52DD541F1DAD03003204AB /* Megaphone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D52DD721F1DAD04003204AB /* Build configuration list for PBXNativeTarget "Megaphone" */;
+			buildPhases = (
+				9D52DD511F1DAD03003204AB /* Sources */,
+				9D52DD521F1DAD03003204AB /* Frameworks */,
+				9D52DD531F1DAD03003204AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Megaphone;
+			productName = Megaphone;
+			productReference = 9D52DD551F1DAD03003204AB /* Megaphone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9D52DD681F1DAD04003204AB /* MegaphoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D52DD751F1DAD04003204AB /* Build configuration list for PBXNativeTarget "MegaphoneTests" */;
+			buildPhases = (
+				9D52DD651F1DAD04003204AB /* Sources */,
+				9D52DD661F1DAD04003204AB /* Frameworks */,
+				9D52DD671F1DAD04003204AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D52DD6B1F1DAD04003204AB /* PBXTargetDependency */,
+			);
+			name = MegaphoneTests;
+			productName = MegaphoneTests;
+			productReference = 9D52DD691F1DAD04003204AB /* MegaphoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D52DD4D1F1DAD03003204AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "南　京兵";
+				TargetAttributes = {
+					9D52DD541F1DAD03003204AB = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					9D52DD681F1DAD04003204AB = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9D52DD541F1DAD03003204AB;
+					};
+				};
+			};
+			buildConfigurationList = 9D52DD501F1DAD03003204AB /* Build configuration list for PBXProject "Megaphone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9D52DD4C1F1DAD03003204AB;
+			productRefGroup = 9D52DD561F1DAD03003204AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D52DD541F1DAD03003204AB /* Megaphone */,
+				9D52DD681F1DAD04003204AB /* MegaphoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D52DD531F1DAD03003204AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
+				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
+				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
+				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D52DD671F1DAD04003204AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9D52DD511F1DAD03003204AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
+				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
+				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
+				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D52DD651F1DAD04003204AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D52DD6E1F1DAD04003204AB /* MegaphoneTests.swift in Sources */,
+				9D52DD891F1DC015003204AB /* JsonManagerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9D52DD6B1F1DAD04003204AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D52DD541F1DAD03003204AB /* Megaphone */;
+			targetProxy = 9D52DD6A1F1DAD04003204AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9D52DD5C1F1DAD03003204AB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D52DD5D1F1DAD03003204AB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D52DD621F1DAD03003204AB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9D52DD701F1DAD04003204AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9D52DD711F1DAD04003204AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9D52DD731F1DAD04003204AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Megaphone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.Megaphone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9D52DD741F1DAD04003204AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Megaphone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.Megaphone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		9D52DD761F1DAD04003204AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MegaphoneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.MegaphoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megaphone.app/Megaphone";
+			};
+			name = Debug;
+		};
+		9D52DD771F1DAD04003204AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MegaphoneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.MegaphoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megaphone.app/Megaphone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9D52DD501F1DAD03003204AB /* Build configuration list for PBXProject "Megaphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D52DD701F1DAD04003204AB /* Debug */,
+				9D52DD711F1DAD04003204AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D52DD721F1DAD04003204AB /* Build configuration list for PBXNativeTarget "Megaphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D52DD731F1DAD04003204AB /* Debug */,
+				9D52DD741F1DAD04003204AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9D52DD751F1DAD04003204AB /* Build configuration list for PBXNativeTarget "MegaphoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D52DD761F1DAD04003204AB /* Debug */,
+				9D52DD771F1DAD04003204AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D52DD4D1F1DAD03003204AB /* Project object */;
+}

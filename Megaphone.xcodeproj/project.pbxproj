@@ -17,6 +17,13 @@
 		9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD861F1DB97C003204AB /* JsonManager.swift */; };
 		9D52DD891F1DC015003204AB /* JsonManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD881F1DC015003204AB /* JsonManagerTest.swift */; };
 		9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */; };
+		9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD8C1F1DD1C6003204AB /* Resource.bundle */; };
+		9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD901F1DD502003204AB /* NamingViewController.swift */; };
+		9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD921F1DEDDA003204AB /* RealmManager.swift */; };
+		9D52DD961F1DFA4F003204AB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */; };
+		9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD981F1E00E9003204AB /* TextViewEntity.swift */; };
+		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
+		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.release.xcconfig"; sourceTree = "<group>"; };
+		64260B4968DD748DCF0580EA /* Pods-MegaphoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.release.xcconfig"; sourceTree = "<group>"; };
+		71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Megaphone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.debug.xcconfig"; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,6 +56,12 @@
 		9D52DD861F1DB97C003204AB /* JsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		9D52DD881F1DC015003204AB /* JsonManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonManagerTest.swift; sourceTree = "<group>"; };
 		9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9D52DD8C1F1DD1C6003204AB /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = SOURCE_ROOT; };
+		9D52DD901F1DD502003204AB /* NamingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingViewController.swift; sourceTree = "<group>"; };
+		9D52DD921F1DEDDA003204AB /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		9D52DD981F1E00E9003204AB /* TextViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewEntity.swift; sourceTree = "<group>"; };
+		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,18 +77,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02298A9C19C665247B337AA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */,
+				02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */,
+				64260B4968DD748DCF0580EA /* Pods-MegaphoneTests.debug.xcconfig */,
+				717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9D52DD4C1F1DAD03003204AB = {
 			isa = PBXGroup;
 			children = (
 				9D52DD571F1DAD03003204AB /* Megaphone */,
 				9D52DD6C1F1DAD04003204AB /* MegaphoneTests */,
 				9D52DD561F1DAD03003204AB /* Products */,
+				02298A9C19C665247B337AA8 /* Pods */,
+				F1047E1900BFD33DCD3FA7EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +118,7 @@
 		9D52DD571F1DAD03003204AB /* Megaphone */ = {
 			isa = PBXGroup;
 			children = (
+				9D52DD941F1DFA45003204AB /* Resources */,
 				9D52DD791F1DAE3C003204AB /* Manager */,
 				9D52DD781F1DAE30003204AB /* Controller */,
 				9D52DD581F1DAD03003204AB /* AppDelegate.swift */,
@@ -92,6 +126,7 @@
 				9D52DD5F1F1DAD03003204AB /* Assets.xcassets */,
 				9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */,
 				9D52DD641F1DAD03003204AB /* Info.plist */,
+				9D52DD8C1F1DD1C6003204AB /* Resource.bundle */,
 			);
 			path = Megaphone;
 			sourceTree = "<group>";
@@ -109,9 +144,8 @@
 		9D52DD781F1DAE30003204AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */,
-				9D52DD821F1DB573003204AB /* StageTableViewCell.swift */,
-				9D52DD831F1DB573003204AB /* StageTableViewCell.xib */,
+				9D52DD8E1F1DD427003204AB /* Home */,
+				9D52DD8F1F1DD437003204AB /* Naming */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -119,9 +153,54 @@
 		9D52DD791F1DAE3C003204AB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				9D52DD971F1E00D8003204AB /* Entity */,
 				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
+				9D52DD921F1DEDDA003204AB /* RealmManager.swift */,
 			);
 			name = Manager;
+			sourceTree = "<group>";
+		};
+		9D52DD8E1F1DD427003204AB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */,
+				9D52DD821F1DB573003204AB /* StageTableViewCell.swift */,
+				9D52DD831F1DB573003204AB /* StageTableViewCell.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		9D52DD8F1F1DD437003204AB /* Naming */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD901F1DD502003204AB /* NamingViewController.swift */,
+			);
+			name = Naming;
+			sourceTree = "<group>";
+		};
+		9D52DD941F1DFA45003204AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD951F1DFA4F003204AB /* iTunesArtwork@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9D52DD971F1E00D8003204AB /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD981F1E00E9003204AB /* TextViewEntity.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		F1047E1900BFD33DCD3FA7EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */,
+				E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D52DD721F1DAD04003204AB /* Build configuration list for PBXNativeTarget "Megaphone" */;
 			buildPhases = (
+				73B896F56B4E85D5CBF91B71 /* [CP] Check Pods Manifest.lock */,
 				9D52DD511F1DAD03003204AB /* Sources */,
 				9D52DD521F1DAD03003204AB /* Frameworks */,
 				9D52DD531F1DAD03003204AB /* Resources */,
+				14E306AFA83570C0D916BC39 /* [CP] Embed Pods Frameworks */,
+				31F4024050E0CF6273E6ED93 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D52DD751F1DAD04003204AB /* Build configuration list for PBXNativeTarget "MegaphoneTests" */;
 			buildPhases = (
+				C9AEEA1A5D272E0A0DE93353 /* [CP] Check Pods Manifest.lock */,
 				9D52DD651F1DAD04003204AB /* Sources */,
 				9D52DD661F1DAD04003204AB /* Frameworks */,
 				9D52DD671F1DAD04003204AB /* Resources */,
+				546846A74928FC90B32CB22B /* [CP] Embed Pods Frameworks */,
+				1A15AD729506D98317AA7010 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,9 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
+				9D52DD961F1DFA4F003204AB /* iTunesArtwork@2x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
+				9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +310,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14E306AFA83570C0D916BC39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A15AD729506D98317AA7010 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31F4024050E0CF6273E6ED93 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		546846A74928FC90B32CB22B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73B896F56B4E85D5CBF91B71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9AEEA1A5D272E0A0DE93353 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9D52DD511F1DAD03003204AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -232,6 +412,9 @@
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
+				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
+				9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */,
+				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +552,7 @@
 		};
 		9D52DD731F1DAD04003204AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Megaphone/Info.plist;
@@ -381,6 +565,7 @@
 		};
 		9D52DD741F1DAD04003204AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Megaphone/Info.plist;
@@ -393,6 +578,7 @@
 		};
 		9D52DD761F1DAD04003204AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64260B4968DD748DCF0580EA /* Pods-MegaphoneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -407,6 +593,7 @@
 		};
 		9D52DD771F1DAD04003204AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -438,6 +625,7 @@
 				9D52DD741F1DAD04003204AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D52DD751F1DAD04003204AB /* Build configuration list for PBXNativeTarget "MegaphoneTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +634,7 @@
 				9D52DD771F1DAD04003204AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

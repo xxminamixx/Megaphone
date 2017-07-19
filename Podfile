@@ -7,6 +7,7 @@ target 'Megaphone' do
 
   pod 'RealmSwift’
   pod 'GoogleMobileAds'
+  pod ‘Toucan’
 
   # Pods for Megaphone
 

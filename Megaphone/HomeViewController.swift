@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import Toucan
 
 class HomeViewController: UIViewController {
 
@@ -56,10 +57,37 @@ extension HomeViewController: UITableViewDelegate {
         let stageEntity = JsonManager.shared.stages?[indexPath.row]
         viewController.navigationItem.title = stageEntity?.stageName
         
-        
-        let imageView = UIImageView.init(image: UIImage(named: (stageEntity?.imageName)!))
-        viewController.view.addSubview(imageView)
-//        viewController.imageView?.image = UIImage(named: (stageEntity?.imageName)!)
+        // TODO: 画面サイズに合うように画像をリサイズしたい
+        let size = viewController.view.bounds
+
+        if let imageName = stageEntity?.imageName {
+            // 画像を生成
+            if let image = UIImage(named: imageName) {
+                // 画像を画面横に合わせて縮小
+                let ratio = image.size.width / size.width
+                
+                // イメージビューの位置
+                let imageViewRect = CGRect(x: 0, y: 0, width: image.size.width / ratio, height: image.size.height / ratio)
+                // スクロールビューの位置
+                let scrollViewRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: image.size.width / ratio, height: image.size.height / ratio)
+                
+                // イメージビュー生成
+                let imageView = UIImageView(frame: imageViewRect)
+                imageView.image = image
+                
+                // スクロールビュー生成
+                let scrollView = UIScrollView(frame: scrollViewRect)
+                scrollView.contentSize = imageView.bounds.size
+                scrollView.delegate = viewController
+                scrollView.minimumZoomScale = 0.5
+                scrollView.maximumZoomScale = 3.0
+                scrollView.addSubview(imageView)
+                viewController.scrollView = scrollView
+                
+                viewController.view.addSubview(viewController.scrollView!)
+
+            }
+        }
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }

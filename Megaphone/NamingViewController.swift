@@ -11,14 +11,15 @@ import UIKit
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
-    var imageView: UIImageView?
+//    var imageView: UIImageView?
     var actionTextView: UITextView?
+    var scrollView: UIScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let image = imageView {
-            self.view.addSubview(image)
-        }
+//        if let image = imageView {
+//            self.view.addSubview(image)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +32,7 @@ class NamingViewController: UIViewController {
     /// タッチした座標を取得
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        let point = touch!.location(in: self.view)
+        let point = touch!.location(in: self.scrollView)
         let textView = UITextView(frame: CGRect.init(x: point.x, y: point.y, width: 150, height: 20))
         
         //ビューを作成する。
@@ -78,4 +79,8 @@ extension NamingViewController: UITextViewDelegate {
         actionTextView?.textColor = UIColor.black
         return true
     }
+}
+
+extension NamingViewController: UIScrollViewDelegate {
+    
 }

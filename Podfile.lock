@@ -5,16 +5,19 @@ PODS:
   - Realm/Headers (2.8.2)
   - RealmSwift (2.8.2):
     - Realm (= 2.8.2)
+  - Toucan (0.6.0)
 
 DEPENDENCIES:
   - GoogleMobileAds
   - RealmSwift
+  - Toucan
 
 SPEC CHECKSUMS:
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
   Realm: 0e262abf087c7054013e00579274f7e070486d4a
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
+  Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
 
-PODFILE CHECKSUM: d4e4ef7d95d7c1ea51bc614a8dd2862d62c6b8c4
+PODFILE CHECKSUM: a3b5f23397d9f5e24629a6848f671a1275e13b50
 
 COCOAPODS: 1.1.1

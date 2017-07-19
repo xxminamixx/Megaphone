@@ -11,11 +11,14 @@ import UIKit
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
-//    var imageView: UIImageView?
+    var imageView: UIImageView?
     var actionTextView: UITextView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let image = imageView {
+            self.view.addSubview(image)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

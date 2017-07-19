@@ -23,6 +23,18 @@
 		9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD981F1E00E9003204AB /* TextViewEntity.swift */; };
 		9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */; };
 		9D52DD9D1F1E0FF8003204AB /* battera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD9C1F1E0FF8003204AB /* battera.png */; };
+		9D52DDA11F1EF963003204AB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DDA01F1EF963003204AB /* UIImageExtension.swift */; };
+		9D52DDA31F1F13D3003204AB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDA21F1F13D3003204AB /* AdSupport.framework */; };
+		9D52DDA51F1F13E6003204AB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDA41F1F13E6003204AB /* AudioToolbox.framework */; };
+		9D52DDA71F1F13F0003204AB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDA61F1F13F0003204AB /* AVFoundation.framework */; };
+		9D52DDA91F1F13FF003204AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDA81F1F13FF003204AB /* CoreGraphics.framework */; };
+		9D52DDAB1F1F1411003204AB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDAA1F1F1411003204AB /* CoreMedia.framework */; };
+		9D52DDAD1F1F141F003204AB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDAC1F1F141F003204AB /* CoreTelephony.framework */; };
+		9D52DDAF1F1F142E003204AB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDAE1F1F142E003204AB /* EventKit.framework */; };
+		9D52DDB11F1F143F003204AB /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB01F1F143E003204AB /* EventKitUI.framework */; };
+		9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB21F1F144D003204AB /* MessageUI.framework */; };
+		9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB41F1F1457003204AB /* StoreKit.framework */; };
+		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +75,19 @@
 		9D52DD981F1E00E9003204AB /* TextViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewEntity.swift; sourceTree = "<group>"; };
 		9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageEntity.swift; sourceTree = "<group>"; };
 		9D52DD9C1F1E0FF8003204AB /* battera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battera.png; sourceTree = "<group>"; };
+		9D52DDA01F1EF963003204AB /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		9D52DDA21F1F13D3003204AB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		9D52DDA41F1F13E6003204AB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9D52DDA61F1F13F0003204AB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9D52DDA81F1F13FF003204AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9D52DDAA1F1F1411003204AB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9D52DDAC1F1F141F003204AB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9D52DDAE1F1F142E003204AB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		9D52DDB01F1F143E003204AB /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		9D52DDB21F1F144D003204AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9D52DDB41F1F1457003204AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +96,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */,
+				9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */,
+				9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */,
+				9D52DDB11F1F143F003204AB /* EventKitUI.framework in Frameworks */,
+				9D52DDAF1F1F142E003204AB /* EventKit.framework in Frameworks */,
+				9D52DDAD1F1F141F003204AB /* CoreTelephony.framework in Frameworks */,
+				9D52DDAB1F1F1411003204AB /* CoreMedia.framework in Frameworks */,
+				9D52DDA91F1F13FF003204AB /* CoreGraphics.framework in Frameworks */,
+				9D52DDA71F1F13F0003204AB /* AVFoundation.framework in Frameworks */,
+				9D52DDA51F1F13E6003204AB /* AudioToolbox.framework in Frameworks */,
+				9D52DDA31F1F13D3003204AB /* AdSupport.framework in Frameworks */,
 				C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +156,7 @@
 		9D52DD571F1DAD03003204AB /* Megaphone */ = {
 			isa = PBXGroup;
 			children = (
+				9D52DD9E1F1EF93F003204AB /* Utility */,
 				9D52DD941F1DFA45003204AB /* Resources */,
 				9D52DD791F1DAE3C003204AB /* Manager */,
 				9D52DD781F1DAE30003204AB /* Controller */,
@@ -197,9 +234,37 @@
 			name = Entity;
 			sourceTree = "<group>";
 		};
+		9D52DD9E1F1EF93F003204AB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD9F1F1EF948003204AB /* Extension */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		9D52DD9F1F1EF948003204AB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DDA01F1EF963003204AB /* UIImageExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		F1047E1900BFD33DCD3FA7EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */,
+				9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */,
+				9D52DDB41F1F1457003204AB /* StoreKit.framework */,
+				9D52DDB21F1F144D003204AB /* MessageUI.framework */,
+				9D52DDB01F1F143E003204AB /* EventKitUI.framework */,
+				9D52DDAE1F1F142E003204AB /* EventKit.framework */,
+				9D52DDAC1F1F141F003204AB /* CoreTelephony.framework */,
+				9D52DDAA1F1F1411003204AB /* CoreMedia.framework */,
+				9D52DDA81F1F13FF003204AB /* CoreGraphics.framework */,
+				9D52DDA61F1F13F0003204AB /* AVFoundation.framework */,
+				9D52DDA41F1F13E6003204AB /* AudioToolbox.framework */,
+				9D52DDA21F1F13D3003204AB /* AdSupport.framework */,
 				71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */,
 				E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */,
 			);
@@ -416,6 +481,7 @@
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
+				9D52DDA11F1EF963003204AB /* UIImageExtension.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,

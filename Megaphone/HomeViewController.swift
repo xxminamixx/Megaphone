@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class HomeViewController: UIViewController {
 
@@ -15,6 +16,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 広告の設定
+        let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        // AdMobで発行された広告ユニットIDを設定
+        banner.adUnitID = "ここに広告ID埋め込む"
+        banner.delegate = self
+        banner.rootViewController = self
+        let gadRequest:GADRequest = GADRequest()
+        
+        // テスト用の広告を表示する時のみ使用（申請時に削除）
+        gadRequest.testDevices = [kGADSimulatorID]
+        
+        banner.load(gadRequest)
+        self.bannerView.addSubview(banner)
+        
         // テーブルビューの初期設定
         stageTableView.delegate = self
         stageTableView.dataSource = self
@@ -39,6 +55,10 @@ extension HomeViewController: UITableViewDelegate {
         // TODO: ここに遷移先に施したい処理を書く
         let stageEntity = JsonManager.shared.stages?[indexPath.row]
         viewController.navigationItem.title = stageEntity?.stageName
+        
+        
+        let imageView = UIImageView.init(image: UIImage(named: (stageEntity?.imageName)!))
+        viewController.view.addSubview(imageView)
 //        viewController.imageView?.image = UIImage(named: (stageEntity?.imageName)!)
         
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -62,5 +82,9 @@ extension HomeViewController: UITableViewDataSource {
         cell.stageName.text = stageList[indexPath.row].stageName
         return cell
     }
+    
+}
+
+extension HomeViewController: GADBannerViewDelegate {
     
 }

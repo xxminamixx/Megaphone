@@ -73,6 +73,7 @@ extension HomeViewController: UITableViewDelegate {
                 
                 // イメージビュー生成
                 let imageView = UIImageView(frame: imageViewRect)
+                imageView.contentMode = .scaleAspectFit
                 imageView.image = image
                 
                 // スクロールビュー生成

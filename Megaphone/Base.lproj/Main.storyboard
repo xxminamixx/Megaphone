@@ -65,12 +65,26 @@
                     <view key="view" contentMode="scaleToFill" id="9mC-PW-YpH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqP-M4-Obz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x1e-2T-efQ" firstAttribute="top" secondItem="mqP-M4-Obz" secondAttribute="bottom" id="pn0-0b-FMN"/>
+                            <constraint firstItem="mqP-M4-Obz" firstAttribute="leading" secondItem="9mC-PW-YpH" secondAttribute="leading" id="sHD-Zq-0qx"/>
+                            <constraint firstAttribute="trailing" secondItem="mqP-M4-Obz" secondAttribute="trailing" id="swr-Bw-Sob"/>
+                            <constraint firstItem="mqP-M4-Obz" firstAttribute="top" secondItem="9mC-PW-YpH" secondAttribute="top" id="vuc-s7-kq1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="mqP-M4-Obz" id="DOQ-4b-3j3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6M-ff-9py" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="37"/>
+            <point key="canvasLocation" x="1845.5999999999999" y="36.431784107946029"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mXG-st-fjd">

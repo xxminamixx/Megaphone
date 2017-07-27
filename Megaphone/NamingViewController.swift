@@ -11,18 +11,25 @@ import UIKit
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
-//    var imageView: UIImageView?
+    var imageView: UIImageView?
     var actionTextView: UITextView?
     var scrollView: UIScrollView?
     
+    @IBOutlet weak var imageScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if let image = imageView {
-//            self.view.addSubview(image)
-//        }
+        imageScrollView.delegate = self
+        imageScrollView.minimumZoomScale = 0.5
+        imageScrollView.maximumZoomScale = 4.0
+        imageScrollView.contentMode = .scaleAspectFit
+        
+        self.imageView?.isUserInteractionEnabled = true
+        self.imageScrollView.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        imageScrollView.addSubview(imageView!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,5 +89,9 @@ extension NamingViewController: UITextViewDelegate {
 }
 
 extension NamingViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
     
 }

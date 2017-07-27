@@ -71,21 +71,27 @@ extension HomeViewController: UITableViewDelegate {
                 // スクロールビューの位置
                 let scrollViewRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: image.size.width / ratio, height: image.size.height / ratio)
                 
+                // 画面いっぱい
+                let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
                 // イメージビュー生成
-                let imageView = UIImageView(frame: imageViewRect)
+                let imageView = UIImageView(frame: fullScreen)
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = image
+                viewController.imageView = imageView
                 
-                // スクロールビュー生成
-                let scrollView = UIScrollView(frame: scrollViewRect)
-                scrollView.contentSize = imageView.bounds.size
-                scrollView.delegate = viewController
-                scrollView.minimumZoomScale = 0.5
-                scrollView.maximumZoomScale = 3.0
-                scrollView.addSubview(imageView)
-                viewController.scrollView = scrollView
-                
-                viewController.view.addSubview(viewController.scrollView!)
+//                // スクロールビュー生成
+//                let scrollView = UIScrollView(frame: scrollViewRect)
+//                scrollView.contentSize = imageView.bounds.size
+//                scrollView.addSubview(viewController.imageView!)
+//                viewController.scrollView = scrollView
+//                
+//                //
+//                viewController.scrollView?.delegate = viewController
+//                viewController.scrollView?.minimumZoomScale = 0.5
+//                viewController.scrollView?.maximumZoomScale = 3.0
+//                
+//                viewController.view.addSubview(viewController.scrollView!)
 
             }
         }

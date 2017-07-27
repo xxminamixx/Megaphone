@@ -78,6 +78,7 @@ extension HomeViewController: UITableViewDelegate {
                 let imageView = UIImageView(frame: fullScreen)
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = image
+                imageView.isUserInteractionEnabled = true
                 viewController.imageView = imageView
                 
 //                // スクロールビュー生成

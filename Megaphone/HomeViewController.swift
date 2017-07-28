@@ -58,18 +58,18 @@ extension HomeViewController: UITableViewDelegate {
         viewController.navigationItem.title = stageEntity?.stageName
         
         // TODO: 画面サイズに合うように画像をリサイズしたい
-        let size = viewController.view.bounds
+//        let size = viewController.view.bounds
 
         if let imageName = stageEntity?.imageName {
             // 画像を生成
             if let image = UIImage(named: imageName) {
-                // 画像を画面横に合わせて縮小
-                let ratio = image.size.width / size.width
+//              //   画像を画面横に合わせて縮小
+//                let ratio = image.size.width / size.width
                 
-                // イメージビューの位置
-                let imageViewRect = CGRect(x: 0, y: 0, width: image.size.width / ratio, height: image.size.height / ratio)
-                // スクロールビューの位置
-                let scrollViewRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: image.size.width / ratio, height: image.size.height / ratio)
+//                // イメージビューの位置
+//                let imageViewRect = CGRect(x: 0, y: 0, width: image.size.width / ratio, height: image.size.height / ratio)
+//                // スクロールビューの位置
+//                let scrollViewRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: image.size.width / ratio, height: image.size.height / ratio)
                 
                 // 画面いっぱい
                 let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

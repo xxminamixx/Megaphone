@@ -37,6 +37,8 @@
 		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
 		9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */; };
 		9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */; };
+		9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */; };
+		9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingLabelView.swift; sourceTree = "<group>"; };
 		9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NamingLabelView.xib; sourceTree = "<group>"; };
+		9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewNavigationController.swift; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +264,8 @@
 			children = (
 				9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */,
 				9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */,
+				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
+				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -491,10 +497,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
+				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9D52DDA11F1EF963003204AB /* UIImageExtension.swift in Sources */,

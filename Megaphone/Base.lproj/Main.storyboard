@@ -86,6 +86,43 @@
             </objects>
             <point key="canvasLocation" x="1845.5999999999999" y="36.431784107946029"/>
         </scene>
+        <!--Text View Controller-->
+        <scene sceneID="dnM-88-saa">
+            <objects>
+                <viewController storyboardIdentifier="TextViewController" id="bOG-of-RPj" customClass="TextViewController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vb5-qO-sHE"/>
+                        <viewControllerLayoutGuide type="bottom" id="fYF-sJ-wdx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLt-Nv-mhv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-cK-Ogh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wWs-cK-Ogh" firstAttribute="leading" secondItem="jLt-Nv-mhv" secondAttribute="leading" id="5LC-3W-J6G"/>
+                            <constraint firstItem="wWs-cK-Ogh" firstAttribute="top" secondItem="Vb5-qO-sHE" secondAttribute="bottom" id="6Cv-4A-sP9"/>
+                            <constraint firstItem="fYF-sJ-wdx" firstAttribute="top" secondItem="wWs-cK-Ogh" secondAttribute="bottom" id="sRg-5M-DcF"/>
+                            <constraint firstAttribute="trailing" secondItem="wWs-cK-Ogh" secondAttribute="trailing" id="sih-hs-mgZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wIG-bi-Gqw"/>
+                    <connections>
+                        <outlet property="buttomConstraint" destination="sRg-5M-DcF" id="C09-l0-pKE"/>
+                        <outlet property="textView" destination="wWs-cK-Ogh" id="RiX-NZ-Ft5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CER-LC-GwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2784.8000000000002" y="805.54722638680664"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="mXG-st-fjd">
             <objects>
@@ -103,6 +140,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAS-tl-9PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+        </scene>
+        <!--Text View Navigation Controller-->
+        <scene sceneID="bwA-sj-40o">
+            <objects>
+                <navigationController storyboardIdentifier="TextViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2Mv-iU-RYH" customClass="TextViewNavigationController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mqU-oh-jgY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AsO-be-Pm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845.5999999999999" y="805.54722638680664"/>
         </scene>
     </scenes>
 </document>

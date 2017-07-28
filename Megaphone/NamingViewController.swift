@@ -49,66 +49,34 @@ class NamingViewController: UIViewController {
             let pointY = point.y
             print(pointX)
             print(pointY)
+            
+            let textView = UITextView(frame: CGRect.init(x: point.x, y: point.y, width: 150, height: 20))
+            
+            //ビューを作成する。
+            let testView = UIView()
+            testView.frame.size.height = 50
+            testView.backgroundColor = UIColor.gray
+            
+            //「閉じるボタン」を作成する。
+            let closeButton = UIButton.init(frame: CGRect.init(x: UIScreen.main.bounds.size.width - 70, y: 0, width: 70, height: 50))
+            closeButton.setTitle("閉じる", for:UIControlState.normal)
+            closeButton.addTarget(self,action: #selector(onClickCloseButton), for: .touchUpInside)
+            
+            //ビューに「閉じるボタン」を追加する。
+            testView.addSubview(closeButton)
+            
+            //キーボードのアクセサリにビューを設定する。
+            textView.inputAccessoryView = testView
+            
+            //テキストビューのデリゲート先にこのインスタンスを設定する。
+            textView.delegate = self
+            
+            textView.text = "名前をつけてください"
+            textView.textColor = UIColor.lightGray
+            
+            self.view.addSubview(textView)
         }
-//        let touch = touches.first
-//        let point = touch!.location(in: self.scrollView)
-//        let textView = UITextView(frame: CGRect.init(x: point.x, y: point.y, width: 150, height: 20))
-//
-//        //ビューを作成する。
-//        let testView = UIView()
-//        testView.frame.size.height = 50
-//        testView.backgroundColor = UIColor.gray
-//
-//        //「閉じるボタン」を作成する。
-//        let closeButton = UIButton.init(frame: CGRect.init(x: UIScreen.main.bounds.size.width - 70, y: 0, width: 70, height: 50))
-//        closeButton.setTitle("閉じる", for:UIControlState.normal)
-//        closeButton.addTarget(self,action: #selector(onClickCloseButton), for: .touchUpInside)
-//
-//        //ビューに「閉じるボタン」を追加する。
-//        testView.addSubview(closeButton)
-//
-//        //キーボードのアクセサリにビューを設定する。
-//        textView.inputAccessoryView = testView
-//
-//        //テキストビューのデリゲート先にこのインスタンスを設定する。
-//        textView.delegate = self
-//        
-//        textView.text = "名前をつけてください"
-//        textView.textColor = UIColor.lightGray
-//        
-//        self.view.addSubview(textView)
-    }
-    
-    /// タッチした座標を取得
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("タッチされました")
-//        let touch = touches.first
-//        let point = touch!.location(in: self.scrollView)
-//        let textView = UITextView(frame: CGRect.init(x: point.x, y: point.y, width: 150, height: 20))
-//        
-//        //ビューを作成する。
-//        let testView = UIView()
-//        testView.frame.size.height = 50
-//        testView.backgroundColor = UIColor.gray
-//        
-//        //「閉じるボタン」を作成する。
-//        let closeButton = UIButton.init(frame: CGRect.init(x: UIScreen.main.bounds.size.width - 70, y: 0, width: 70, height: 50))
-//        closeButton.setTitle("閉じる", for:UIControlState.normal)
-//        closeButton.addTarget(self,action: #selector(onClickCloseButton), for: .touchUpInside)
-//        
-//        //ビューに「閉じるボタン」を追加する。
-//        testView.addSubview(closeButton)
-//        
-//        //キーボードのアクセサリにビューを設定する。
-//        textView.inputAccessoryView = testView
-//        
-//        //テキストビューのデリゲート先にこのインスタンスを設定する。
-//        textView.delegate = self
-//        
-//        textView.text = "名前をつけてください"
-//        textView.textColor = UIColor.lightGray
-//        
-//        self.view.addSubview(textView)
+
     }
     
     func onClickCloseButton() {
@@ -137,8 +105,5 @@ extension NamingViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    }
     
 }

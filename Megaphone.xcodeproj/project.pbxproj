@@ -35,6 +35,14 @@
 		9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB21F1F144D003204AB /* MessageUI.framework */; };
 		9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB41F1F1457003204AB /* StoreKit.framework */; };
 		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
+		9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */; };
+		9DDB14261F2F2178007C4C85 /* Capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB14231F2F2178007C4C85 /* Capture.png */; };
+		9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB14241F2F2178007C4C85 /* Capture@2x.png */; };
+		9DDB14281F2F2178007C4C85 /* Capture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB14251F2F2178007C4C85 /* Capture@3x.png */; };
+		9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */; };
+		9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */; };
+		9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */; };
+		9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +96,14 @@
 		9D52DDB41F1F1457003204AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		9DDB14231F2F2178007C4C85 /* Capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Capture.png; sourceTree = "<group>"; };
+		9DDB14241F2F2178007C4C85 /* Capture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Capture@2x.png"; sourceTree = "<group>"; };
+		9DDB14251F2F2178007C4C85 /* Capture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Capture@3x.png"; sourceTree = "<group>"; };
+		9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingLabelView.swift; sourceTree = "<group>"; };
+		9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NamingLabelView.xib; sourceTree = "<group>"; };
+		9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewNavigationController.swift; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -156,6 +172,7 @@
 		9D52DD571F1DAD03003204AB /* Megaphone */ = {
 			isa = PBXGroup;
 			children = (
+				9DF2EA3A1F2AD3F000EC460D /* View */,
 				9D52DD9E1F1EF93F003204AB /* Utility */,
 				9D52DD941F1DFA45003204AB /* Resources */,
 				9D52DD791F1DAE3C003204AB /* Manager */,
@@ -220,6 +237,9 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9DDB14231F2F2178007C4C85 /* Capture.png */,
+				9DDB14241F2F2178007C4C85 /* Capture@2x.png */,
+				9DDB14251F2F2178007C4C85 /* Capture@3x.png */,
 				9D52DD9C1F1E0FF8003204AB /* battera.png */,
 			);
 			name = Resources;
@@ -246,8 +266,20 @@
 			isa = PBXGroup;
 			children = (
 				9D52DDA01F1EF963003204AB /* UIImageExtension.swift */,
+				9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		9DF2EA3A1F2AD3F000EC460D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */,
+				9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */,
+				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
+				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		F1047E1900BFD33DCD3FA7EA /* Frameworks */ = {
@@ -360,11 +392,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DDB14281F2F2178007C4C85 /* Capture@3x.png in Resources */,
 				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
 				9D52DD9D1F1E0FF8003204AB /* battera.png in Resources */,
+				9DDB14261F2F2178007C4C85 /* Capture.png in Resources */,
+				9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
+				9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */,
 				9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,12 +512,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
+				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
+				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9D52DDA11F1EF963003204AB /* UIImageExtension.swift in Sources */,
+				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,

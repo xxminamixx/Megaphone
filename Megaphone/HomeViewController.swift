@@ -18,6 +18,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // キャプチャボタンをNavigationBarの右に追加
+        let rightCaptureButton = UIButton()
+        rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
+        rightCaptureButton.sizeToFit()
+        rightCaptureButton.addTarget(self, action: #selector(pickImageFromCamera), for: UIControlEvents.touchUpInside)
+        let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
+        self.navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
+        
         // 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         // AdMobで発行された広告ユニットIDを設定
@@ -42,6 +50,16 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // 写真を撮ってそれを選択
+    func pickImageFromCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
 
 }
 
@@ -53,24 +71,13 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
-        // TODO: ここに遷移先に施したい処理を書く
+        
         let stageEntity = JsonManager.shared.stages?[indexPath.row]
         viewController.navigationItem.title = stageEntity?.stageName
-        
-        // TODO: 画面サイズに合うように画像をリサイズしたい
-        let size = viewController.view.bounds
 
         if let imageName = stageEntity?.imageName {
             // 画像を生成
             if let image = UIImage(named: imageName) {
-                // 画像を画面横に合わせて縮小
-                let ratio = image.size.width / size.width
-                
-                // イメージビューの位置
-                let imageViewRect = CGRect(x: 0, y: 0, width: image.size.width / ratio, height: image.size.height / ratio)
-                // スクロールビューの位置
-                let scrollViewRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)!, width: image.size.width / ratio, height: image.size.height / ratio)
-                
                 // 画面いっぱい
                 let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 
@@ -80,20 +87,6 @@ extension HomeViewController: UITableViewDelegate {
                 imageView.image = image
                 imageView.isUserInteractionEnabled = true
                 viewController.imageView = imageView
-                
-//                // スクロールビュー生成
-//                let scrollView = UIScrollView(frame: scrollViewRect)
-//                scrollView.contentSize = imageView.bounds.size
-//                scrollView.addSubview(viewController.imageView!)
-//                viewController.scrollView = scrollView
-//                
-//                //
-//                viewController.scrollView?.delegate = viewController
-//                viewController.scrollView?.minimumZoomScale = 0.5
-//                viewController.scrollView?.maximumZoomScale = 3.0
-//                
-//                viewController.view.addSubview(viewController.scrollView!)
-
             }
         }
         
@@ -123,4 +116,27 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: GADBannerViewDelegate {
     
+}
+
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // カメラビューを閉じる
+        dismiss(animated: true, completion: nil)
+        
+        let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
+        let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        // イメージビュー生成
+        let imageView = UIImageView(frame: fullScreen)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        imageView.isUserInteractionEnabled = true
+        viewController.imageView = imageView
+
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

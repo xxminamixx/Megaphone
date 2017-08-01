@@ -25,6 +25,8 @@ class NamingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView?.backgroundColor = UIColor.darkGray
+        
         // キャプチャボタンをNavigationBarの右に追加
         let rightCaptureButton = UIButton()
         rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
@@ -186,8 +188,10 @@ extension NamingViewController: TextViewControllerDelegate {
                 
                 label.namingLabel.text = text
                 label.namingLabel.sizeToFit()
-                label.frame = CGRect(x: pointX!, y: pointY!, width: label.namingLabel.bounds.width, height:
-                    label.namingLabel.bounds.width + label.closeButton.frame.height)
+                let labelWidth = label.namingLabel.bounds.width
+                let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+
+                label.frame = CGRect(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2), width: labelWidth, height: viewHeight)
                 
                 label.beforFrame = CGPoint.init(x: pointX!, y: pointY!)
                 

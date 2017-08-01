@@ -19,7 +19,7 @@ class NamingViewController: UIViewController {
     var pointX: CGFloat?
     var pointY: CGFloat?
     // 編集しているラベル保持用のプロパティ
-    var editLabel: UILabel?
+    var editLabelView: NamingLabelView?
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -175,9 +175,9 @@ extension NamingViewController: NamingLabelViewDelegate {
         view.removeFromSuperview()
     }
     
-    func namingLabelTapped(label: UILabel) {
+    func namingLabelTapped(view: NamingLabelView) {
         // 編集用のラベルを保持
-        self.editLabel = label
+        self.editLabelView = view
         
         if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
             let navigation = TextViewNavigationController()
@@ -197,10 +197,31 @@ extension NamingViewController: TextViewControllerDelegate {
     
     func getTextView(text: String?, completion: () -> Void) {
         
-        if editLabel != nil {
+        if editLabelView != nil {
             // ラベルの編集が行われている場合
-            editLabel?.text = text
-            editLabel = nil
+            
+            // 編集中のラベルの座標
+            let x = editLabelView?.beforFrame.x
+            let y = editLabelView?.beforFrame.y
+            
+            if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
+                
+                // サイズ計算用のダミーのラベル
+                label.namingLabel.text = text
+                label.namingLabel.sizeToFit()
+                let labelWidth = label.namingLabel.bounds.width
+                let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+                // ラベルの初期位置を設定
+                label.frame = CGRect(x: x!, y: y!, width: labelWidth, height: viewHeight)
+                // ラベルの初期位置を保持
+                label.beforFrame = CGPoint(x: x!, y: y!)
+                
+                label.delegate = self
+                imageView?.addSubview(label)
+            }
+            
+            editLabelView?.removeFromSuperview()
+
         } else {
             // NamingLabelViewを生成する
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {

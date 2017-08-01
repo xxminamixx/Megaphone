@@ -10,7 +10,7 @@ import UIKit
 
 protocol NamingLabelViewDelegate {
     func namingViewClose(view: UIView)
-    func namingLabelTapped(label: UILabel)
+    func namingLabelTapped(view: NamingLabelView)
     func namingViewDraged(locate: CGPoint, view: UIView)
 }
 
@@ -50,7 +50,7 @@ class NamingLabelView: UIView {
     
     // ラベルをタップした時に呼ばれる
     func labelTapped() {
-        delegate.namingLabelTapped(label: namingLabel)
+        delegate.namingLabelTapped(view: self)
     }
     
     // ドラッグした時に呼ばれる

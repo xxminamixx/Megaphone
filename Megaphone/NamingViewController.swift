@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class NamingViewController: UIViewController {
     
@@ -32,8 +33,20 @@ class NamingViewController: UIViewController {
         rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
         rightCaptureButton.sizeToFit()
         rightCaptureButton.addTarget(self, action: #selector(capture), for: UIControlEvents.touchUpInside)
+        
+        let rightSpaceButton = UIButton()
+        rightSpaceButton.contentRect(forBounds: CGRect(x: 0, y: 0, width: 20, height: 20))
+        
+        let rightTweetButton = UIButton()
+        rightTweetButton.setImage(UIImage(named: "TwitterIcon.png"), for: .normal)
+        rightTweetButton.sizeToFit()
+        rightTweetButton.addTarget(self, action: #selector(tweetImage), for: UIControlEvents.touchUpInside)
+        
         let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
-        self.navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
+        let rightSpaceButtonItem = UIBarButtonItem(customView: rightSpaceButton)
+        let rightTweetButtonItem = UIBarButtonItem(customView: rightTweetButton)
+        
+          self.navigationItem.setRightBarButtonItems([rightCaptureButtonItem, rightSpaceButtonItem,rightTweetButtonItem], animated: true)
 
         /* スクロールビュー関連 */
         imageScrollView.delegate = self
@@ -59,6 +72,16 @@ class NamingViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func tweetImage() {
+        if let image = imageView?.castImage() {
+            // ツイッター投稿画面を表示
+            let twitterPostView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+            twitterPostView.add(image)
+            twitterPostView.setInitialText("")
+            self.present(twitterPostView, animated: true, completion: nil)
+        }
     }
     
     // キャプチャボタンを押した時に呼ばれる

@@ -126,7 +126,7 @@
         <!--Navigation Controller-->
         <scene sceneID="mXG-st-fjd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Mc-zT-jd5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Mc-zT-jd5" customClass="NavigationController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qiU-SF-Jk6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

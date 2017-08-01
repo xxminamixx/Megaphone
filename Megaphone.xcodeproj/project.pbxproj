@@ -42,6 +42,11 @@
 		9DAEC6F21F3045A3009B03E3 /* konbu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6EA1F3045A3009B03E3 /* konbu.jpg */; };
 		9DAEC6F31F3045A3009B03E3 /* tathiuo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6EB1F3045A3009B03E3 /* tathiuo.jpg */; };
 		9DAEC6F41F3045A3009B03E3 /* tyozame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6EC1F3045A3009B03E3 /* tyozame.jpg */; };
+		9DAEC6F81F304CA7009B03E3 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6F51F304CA7009B03E3 /* TwitterIcon.png */; };
+		9DAEC6F91F304CA7009B03E3 /* TwitterIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6F61F304CA7009B03E3 /* TwitterIcon@2x.png */; };
+		9DAEC6FA1F304CA7009B03E3 /* TwitterIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6F71F304CA7009B03E3 /* TwitterIcon@3x.png */; };
+		9DAEC6FD1F304EF2009B03E3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEC6FC1F304EF2009B03E3 /* NavigationController.swift */; };
+		9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEC6FE1F304F35009B03E3 /* ConstColor.swift */; };
 		9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */; };
 		9DDB14261F2F2178007C4C85 /* Capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB14231F2F2178007C4C85 /* Capture.png */; };
 		9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB14241F2F2178007C4C85 /* Capture@2x.png */; };
@@ -110,6 +115,11 @@
 		9DAEC6EA1F3045A3009B03E3 /* konbu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konbu.jpg; sourceTree = "<group>"; };
 		9DAEC6EB1F3045A3009B03E3 /* tathiuo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tathiuo.jpg; sourceTree = "<group>"; };
 		9DAEC6EC1F3045A3009B03E3 /* tyozame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tyozame.jpg; sourceTree = "<group>"; };
+		9DAEC6F51F304CA7009B03E3 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterIcon.png; sourceTree = "<group>"; };
+		9DAEC6F61F304CA7009B03E3 /* TwitterIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterIcon@2x.png"; sourceTree = "<group>"; };
+		9DAEC6F71F304CA7009B03E3 /* TwitterIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterIcon@3x.png"; sourceTree = "<group>"; };
+		9DAEC6FC1F304EF2009B03E3 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		9DAEC6FE1F304F35009B03E3 /* ConstColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
 		9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9DDB14231F2F2178007C4C85 /* Capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Capture.png; sourceTree = "<group>"; };
 		9DDB14241F2F2178007C4C85 /* Capture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Capture@2x.png"; sourceTree = "<group>"; };
@@ -214,6 +224,7 @@
 		9D52DD781F1DAE30003204AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9DAEC6FC1F304EF2009B03E3 /* NavigationController.swift */,
 				9D52DD8E1F1DD427003204AB /* Home */,
 				9D52DD8F1F1DD437003204AB /* Naming */,
 			);
@@ -251,6 +262,9 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9DAEC6F51F304CA7009B03E3 /* TwitterIcon.png */,
+				9DAEC6F61F304CA7009B03E3 /* TwitterIcon@2x.png */,
+				9DAEC6F71F304CA7009B03E3 /* TwitterIcon@3x.png */,
 				9DDB14231F2F2178007C4C85 /* Capture.png */,
 				9DDB14241F2F2178007C4C85 /* Capture@2x.png */,
 				9DDB14251F2F2178007C4C85 /* Capture@3x.png */,
@@ -278,6 +292,7 @@
 		9D52DD9E1F1EF93F003204AB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9DAEC6FB1F304D80009B03E3 /* Const */,
 				9D52DD9F1F1EF948003204AB /* Extension */,
 			);
 			name = Utility;
@@ -290,6 +305,14 @@
 				9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		9DAEC6FB1F304D80009B03E3 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEC6FE1F304F35009B03E3 /* ConstColor.swift */,
+			);
+			name = Const;
 			sourceTree = "<group>";
 		};
 		9DF2EA3A1F2AD3F000EC460D /* View */ = {
@@ -421,8 +444,11 @@
 				9DDB14261F2F2178007C4C85 /* Capture.png in Resources */,
 				9DAEC6F21F3045A3009B03E3 /* konbu.jpg in Resources */,
 				9DAEC6F11F3045A3009B03E3 /* hokke.jpg in Resources */,
+				9DAEC6FA1F304CA7009B03E3 /* TwitterIcon@3x.png in Resources */,
+				9DAEC6F81F304CA7009B03E3 /* TwitterIcon.png in Resources */,
 				9DAEC6F31F3045A3009B03E3 /* tathiuo.jpg in Resources */,
 				9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */,
+				9DAEC6F91F304CA7009B03E3 /* TwitterIcon@2x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */,
 				9DAEC6F41F3045A3009B03E3 /* tyozame.jpg in Resources */,
@@ -545,6 +571,8 @@
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
+				9DAEC6FD1F304EF2009B03E3 /* NavigationController.swift in Sources */,
+				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,

@@ -15,6 +15,7 @@ class NavigationController: UINavigationController {
         
         navigationBar.barTintColor = ConstColor.iconGreen
         navigationBar.tintColor = UIColor.white
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {

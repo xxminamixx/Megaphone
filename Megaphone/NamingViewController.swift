@@ -216,7 +216,7 @@ extension NamingViewController: TextViewControllerDelegate {
 
                 label.frame = CGRect(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2), width: labelWidth, height: viewHeight)
                 
-                label.beforFrame = CGPoint.init(x: pointX!, y: pointY!)
+                label.beforFrame = CGPoint(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2))
                 
                 label.delegate = self
                 self.imageView?.addSubview(label)

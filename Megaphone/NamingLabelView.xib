@@ -28,7 +28,9 @@
                         <constraint firstAttribute="height" constant="15" id="SGq-3h-wqI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="×"/>
+                    <state key="normal" title="×">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ime-Yz-Bbj"/>
                     </connections>

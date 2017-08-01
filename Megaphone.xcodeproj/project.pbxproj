@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA41F306C830061D03E /* LabelEntity.swift */; };
+		9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */; };
+		9D4D0AAC1F306F3F0061D03E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -19,7 +22,6 @@
 		9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */; };
 		9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD8C1F1DD1C6003204AB /* Resource.bundle */; };
 		9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD901F1DD502003204AB /* NamingViewController.swift */; };
-		9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD921F1DEDDA003204AB /* RealmManager.swift */; };
 		9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD981F1E00E9003204AB /* TextViewEntity.swift */; };
 		9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */; };
 		9D52DDA31F1F13D3003204AB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDA21F1F13D3003204AB /* AdSupport.framework */; };
@@ -74,6 +76,9 @@
 		717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Megaphone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.debug.xcconfig"; sourceTree = "<group>"; };
+		9D4D0AA41F306C830061D03E /* LabelEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEntity.swift; sourceTree = "<group>"; };
+		9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOfStageEntity.swift; sourceTree = "<group>"; };
+		9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,7 +95,6 @@
 		9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D52DD8C1F1DD1C6003204AB /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = SOURCE_ROOT; };
 		9D52DD901F1DD502003204AB /* NamingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingViewController.swift; sourceTree = "<group>"; };
-		9D52DD921F1DEDDA003204AB /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9D52DD981F1E00E9003204AB /* TextViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewEntity.swift; sourceTree = "<group>"; };
 		9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageEntity.swift; sourceTree = "<group>"; };
 		9D52DDA21F1F13D3003204AB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -171,6 +175,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D4D0AA81F306F140061D03E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		9D52DD4C1F1DAD03003204AB = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +209,7 @@
 				9DF2EA3A1F2AD3F000EC460D /* View */,
 				9D52DD9E1F1EF93F003204AB /* Utility */,
 				9D52DD941F1DFA45003204AB /* Resources */,
-				9D52DD791F1DAE3C003204AB /* Manager */,
+				9D52DD791F1DAE3C003204AB /* Model */,
 				9D52DD781F1DAE30003204AB /* Controller */,
 				9D52DD581F1DAD03003204AB /* AppDelegate.swift */,
 				9D52DD5C1F1DAD03003204AB /* Main.storyboard */,
@@ -229,14 +241,14 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		9D52DD791F1DAE3C003204AB /* Manager */ = {
+		9D52DD791F1DAE3C003204AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D4D0AA81F306F140061D03E /* Manager */,
 				9D52DD971F1E00D8003204AB /* Entity */,
 				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
-				9D52DD921F1DEDDA003204AB /* RealmManager.swift */,
 			);
-			name = Manager;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		9D52DD8E1F1DD427003204AB /* Home */ = {
@@ -283,6 +295,8 @@
 			children = (
 				9D52DD981F1E00E9003204AB /* TextViewEntity.swift */,
 				9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */,
+				9D4D0AA41F306C830061D03E /* LabelEntity.swift */,
+				9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -572,10 +586,12 @@
 				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
+				9D4D0AAC1F306F3F0061D03E /* RealmManager.swift in Sources */,
+				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
+				9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
-				9D52DD931F1DEDDA003204AB /* RealmManager.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -182,6 +182,7 @@ extension NamingViewController: NamingLabelViewDelegate {
         if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
             let navigation = TextViewNavigationController()
             navigation.addChildViewController(viewController)
+            
             viewController.delegate = self
             present(navigation, animated: true, completion: nil)
         }
@@ -197,13 +198,7 @@ extension NamingViewController: TextViewControllerDelegate {
     
     func getTextView(text: String?, completion: () -> Void) {
         
-        if editLabelView != nil {
-            // ラベルの編集が行われている場合
-            
-            // 編集中のラベルの座標
-            let x = editLabelView?.beforFrame.x
-            let y = editLabelView?.beforFrame.y
-            
+        func addLabelView(x: CGFloat, y: CGFloat) {
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                 
                 // サイズ計算用のダミーのラベル
@@ -212,14 +207,26 @@ extension NamingViewController: TextViewControllerDelegate {
                 let labelWidth = label.namingLabel.bounds.width
                 let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
                 // ラベルの初期位置を設定
-                label.frame = CGRect(x: x!, y: y!, width: labelWidth, height: viewHeight)
+                label.frame = CGRect(x: x, y: y, width: labelWidth, height: viewHeight)
                 // ラベルの初期位置を保持
-                label.beforFrame = CGPoint(x: x!, y: y!)
+                label.beforFrame = CGPoint(x: x, y: y)
                 
                 label.delegate = self
                 imageView?.addSubview(label)
             }
+
+        }
+        
+        if editLabelView != nil {
+            // ラベルの編集が行われている場合
             
+            // 編集中のラベルの座標
+            let x = editLabelView?.beforFrame.x
+            let y = editLabelView?.beforFrame.y
+            
+            // 新しいラベルビューを追加
+            addLabelView(x: x!, y: y!)
+            // 編集中のラベルを削除
             editLabelView?.removeFromSuperview()
 
         } else {
@@ -240,6 +247,7 @@ extension NamingViewController: TextViewControllerDelegate {
                 imageView?.addSubview(label)
             }
         }
+        // テキストビューコントローラーを消す
         completion()
     }
     

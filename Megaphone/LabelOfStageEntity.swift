@@ -10,5 +10,6 @@ import UIKit
 import RealmSwift
 
 class LabelOfStageEntity: Object {
-    dynamic var labelList: [LabelEntity]?
+    let labelList = List<LabelEntity>()
+    dynamic var key: String?
 }

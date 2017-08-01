@@ -18,6 +18,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 戻るボタンの文字を空にすることで矢印だけにする
+        navigationController!.navigationBar.topItem!.title = " "
+        
         // キャプチャボタンをNavigationBarの右に追加
         let rightCaptureButton = UIButton()
         rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)

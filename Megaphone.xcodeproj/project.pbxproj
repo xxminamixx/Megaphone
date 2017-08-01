@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA41F306C830061D03E /* LabelEntity.swift */; };
 		9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */; };
-		9D4D0AAC1F306F3F0061D03E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */; };
+		9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -78,7 +78,7 @@
 		7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.debug.xcconfig"; sourceTree = "<group>"; };
 		9D4D0AA41F306C830061D03E /* LabelEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEntity.swift; sourceTree = "<group>"; };
 		9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOfStageEntity.swift; sourceTree = "<group>"; };
-		9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStoreManager.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		9D4D0AA81F306F140061D03E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				9D4D0AAB1F306F3F0061D03E /* RealmManager.swift */,
+				9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
-				9D4D0AAC1F306F3F0061D03E /* RealmManager.swift in Sources */,
+				9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,

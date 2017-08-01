@@ -68,6 +68,70 @@ class NamingViewController: UIViewController {
             return
         }
         imageScrollView.addSubview(view)
+        
+        // TODO: もしこのステージに対応する永続化されたEntityがあるならばimageViewにsubViewとして追加
+        if let title = navigationItem.title {
+            
+            if let entity = LabelStoreManager.pic(key: title) {
+            
+//                guard let list = entity.labelList else {
+//                    return
+//                }
+                
+                // このfor文で永続化永続化している複数のラベル座標からラベルを配置する
+                for labelEntity in entity.labelList {
+                    
+                    if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
+                        
+                        // サイズ計算用のダミーのラベル
+                        label.namingLabel.text = labelEntity.text
+                        label.namingLabel.sizeToFit()
+                        let labelWidth = label.namingLabel.bounds.width
+                        let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+                        // ラベルの初期位置を設定
+                        label.frame = CGRect(x: labelEntity.pointX - (labelWidth / 2), y: labelEntity.pointY - (viewHeight * 2), width: labelWidth, height: viewHeight)
+                        // ラベルの初期位置を保持
+                        label.beforFrame = CGPoint(x: labelEntity.pointX - (labelWidth / 2), y: labelEntity.pointY - (viewHeight * 2))
+                        
+                        label.delegate = self
+                        imageView?.addSubview(label)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // TODO: 永続化処理をここでしたい
+        // imageViewのsubviewであるNamingViewを全て取得したい
+        guard let subviews = imageView?.subviews else {
+            return
+        }
+        
+        let labelEntity = LabelOfStageEntity()
+        for subview in subviews {
+            let entity = LabelEntity()
+            let label = subview as! NamingLabelView
+            entity.pointX = label.namingLabel.bounds.origin.x
+            entity.pointY = label.namingLabel.bounds.origin.y
+            entity.text = label.namingLabel.text
+            
+            labelEntity.labelList.append(entity)
+        }
+        // 画面タイトルをキーに設定
+        labelEntity.key = navigationItem.title
+        
+        // タイトルがオプショナルなので安全な取り出し
+        if let title = navigationItem.title {
+            // もし同じ名前のEntityが存在したら削除
+            if LabelStoreManager.pic(key: title) != nil {
+                LabelStoreManager.delete(key: title)
+            }
+        }
+ 
+        // Entityを追加
+        LabelStoreManager.add(object: labelEntity)
     }
 
     override func didReceiveMemoryWarning() {

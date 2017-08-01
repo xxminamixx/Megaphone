@@ -46,7 +46,7 @@ class NamingViewController: UIViewController {
         let rightSpaceButtonItem = UIBarButtonItem(customView: rightSpaceButton)
         let rightTweetButtonItem = UIBarButtonItem(customView: rightTweetButton)
         
-          self.navigationItem.setRightBarButtonItems([rightCaptureButtonItem, rightSpaceButtonItem,rightTweetButtonItem], animated: true)
+        navigationItem.setRightBarButtonItems([rightCaptureButtonItem, rightSpaceButtonItem,rightTweetButtonItem], animated: true)
 
         /* スクロールビュー関連 */
         imageScrollView.delegate = self
@@ -54,7 +54,7 @@ class NamingViewController: UIViewController {
         imageScrollView.maximumZoomScale = 3.0
         imageScrollView.contentMode = .scaleAspectFit
         
-        self.imageView?.isUserInteractionEnabled = true
+        imageView?.isUserInteractionEnabled = true
         
         // スクロールビューにタップジェスチャを登録
         let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
@@ -80,7 +80,7 @@ class NamingViewController: UIViewController {
             let twitterPostView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
             twitterPostView.add(image)
             twitterPostView.setInitialText("")
-            self.present(twitterPostView, animated: true, completion: nil)
+            present(twitterPostView, animated: true, completion: nil)
         }
     }
     
@@ -111,7 +111,7 @@ class NamingViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         // UIAlertController を表示
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     // スクロールビューがタップされたとき呼ばれる
@@ -126,8 +126,8 @@ class NamingViewController: UIViewController {
         
         for i in 0..<gesture.numberOfTouches {
             let point = gesture.location(ofTouch: i, in: self.view)
-            self.pointX = point.x
-            self.pointY = point.y
+            pointX = point.x
+            pointY = point.y
         }
         
         if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
@@ -188,8 +188,6 @@ extension NamingViewController: NamingLabelViewDelegate {
     }
     
     func namingViewDraged(locate: CGPoint, view: UIView) {
-//        view.frame.origin.x = view.frame.origin.x + locate.x
-//        view.frame.origin.y = view.frame.origin.y + locate.y
         view.frame.origin = locate
     }
     
@@ -208,18 +206,17 @@ extension NamingViewController: TextViewControllerDelegate {
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                 
                 // サイズ計算用のダミーのラベル
-                
                 label.namingLabel.text = text
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
                 let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
-
+                // ラベルの初期位置を設定
                 label.frame = CGRect(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2), width: labelWidth, height: viewHeight)
-                
+                // ラベルの初期位置を保持
                 label.beforFrame = CGPoint(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2))
                 
                 label.delegate = self
-                self.imageView?.addSubview(label)
+                imageView?.addSubview(label)
             }
         }
         completion()

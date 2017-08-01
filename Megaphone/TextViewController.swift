@@ -43,8 +43,8 @@ class TextViewController: UIViewController {
         let rightDoneButtonItem = UIBarButtonItem(customView: rightDoneButton)
         let leftCloseButtonItem = UIBarButtonItem(customView: leftCloseButton)
         
-        self.navigationItem.setRightBarButtonItems([rightDoneButtonItem], animated: true)
-        self.navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
+        navigationItem.setRightBarButtonItems([rightDoneButtonItem], animated: true)
+        navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
     }
 
     override func didReceiveMemoryWarning() {

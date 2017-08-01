@@ -28,17 +28,17 @@ class NamingLabelView: UIView {
     
     override func awakeFromNib() {
         
-        self.backgroundColor = UIColor.clear        
+        backgroundColor = UIColor.clear        
         namingLabel.textColor = UIColor.white
         
         // NamingLabelViewにタップ判定付加
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(labelTapped))
-        let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(drag))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(drag))
         
         namingLabel.addGestureRecognizer(tapGesture)
-        self.addGestureRecognizer(panGesture)
+        addGestureRecognizer(panGesture)
         
         super.awakeFromNib()
     }

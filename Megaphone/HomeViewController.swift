@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         rightCaptureButton.sizeToFit()
         rightCaptureButton.addTarget(self, action: #selector(pickImageFromCamera), for: UIControlEvents.touchUpInside)
         let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
-        self.navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
+        navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
         
         // 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
         gadRequest.testDevices = [kGADSimulatorID]
         
         banner.load(gadRequest)
-        self.bannerView.addSubview(banner)
+        bannerView.addSubview(banner)
         
         // テーブルビューの初期設定
         stageTableView.delegate = self
@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
             let controller = UIImagePickerController()
             controller.delegate = self
             controller.sourceType = UIImagePickerControllerSourceType.camera
-            self.present(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
         }
     }
 
@@ -90,7 +90,7 @@ extension HomeViewController: UITableViewDelegate {
             }
         }
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -137,6 +137,6 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
         imageView.isUserInteractionEnabled = true
         viewController.imageView = imageView
 
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

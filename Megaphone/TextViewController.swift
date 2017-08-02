@@ -24,19 +24,30 @@ class TextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // テキストビューの色を変更
+        textView.backgroundColor = UIColor.darkGray
+        // テキストの色を白に変更
+        textView.textColor = UIColor.white
+        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardDidShow, object: nil)
+        
+        // navigationControllrの色変更
+        navigationController?.navigationBar.barTintColor = ConstColor.iconGreen
         
         /* NavigationBarにボタンアイテムを追加 */
         let rightDoneButton = UIButton()
         rightDoneButton.setTitle("完了", for: .normal)
-        rightDoneButton.setTitleColor(UIColor.black, for: .normal)
+        rightDoneButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        rightDoneButton.setTitleColor(UIColor.white, for: .normal)
         rightDoneButton.sizeToFit()
         rightDoneButton.addTarget(self, action: #selector(done), for: UIControlEvents.touchUpInside)
         
         let leftCloseButton = UIButton()
         leftCloseButton.setTitle("×", for: .normal)
-        leftCloseButton.setTitleColor(UIColor.black, for: .normal)
+        leftCloseButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        leftCloseButton.setTitleColor(UIColor.white, for: .normal)
         leftCloseButton.sizeToFit()
         leftCloseButton.addTarget(self, action: #selector(close), for: UIControlEvents.touchUpInside)
         
@@ -45,6 +56,15 @@ class TextViewController: UIViewController {
         
         navigationItem.setRightBarButtonItems([rightDoneButtonItem], animated: true)
         navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        // TextViewの文字入力時カーソル位置がずれる問題を修正
+//        textView.setContentOffset(CGPoint.zero, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +89,9 @@ class TextViewController: UIViewController {
     func done() {
         // テキストをデリゲート実装もとに返し、モーダルを閉じる
         delegate.getTextView(text: textView.text, completion:  {
+            // モーダル画面より先にキーボードを閉じる
+            textView.resignFirstResponder()
+            // モーダル画面を閉じる
             dismiss(animated: true, completion: nil)
         })
     }

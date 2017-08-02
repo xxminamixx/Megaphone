@@ -18,16 +18,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 戻るボタンの文字を空にすることで矢印だけにする
-        navigationController!.navigationBar.topItem!.title = " "
         
         // キャプチャボタンをNavigationBarの右に追加
-        let rightCaptureButton = UIButton()
-        rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
-        rightCaptureButton.sizeToFit()
-        rightCaptureButton.addTarget(self, action: #selector(pickImageFromCamera), for: UIControlEvents.touchUpInside)
-        let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
-        navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
+//        let rightCaptureButton = UIButton()
+//        rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
+//        rightCaptureButton.sizeToFit()
+//        rightCaptureButton.addTarget(self, action: #selector(pickImageFromCamera), for: UIControlEvents.touchUpInside)
+//        let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
+//        navigationItem.setRightBarButtonItems([rightCaptureButtonItem], animated: true)
         
         // 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
@@ -49,20 +47,26 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: StageTableViewCell.nibName, bundle: nil)
         stageTableView.register(nib, forCellReuseIdentifier: StageTableViewCell.nibName)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // タイトルを設定
+        navigationItem.title = "めがほん"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
     // 写真を撮ってそれを選択
-    func pickImageFromCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = UIImagePickerControllerSourceType.camera
-            present(controller, animated: true, completion: nil)
-        }
-    }
+//    func pickImageFromCamera() {
+//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+//            let controller = UIImagePickerController()
+//            controller.delegate = self
+//            controller.sourceType = UIImagePickerControllerSourceType.camera
+//            present(controller, animated: true, completion: nil)
+//        }
+//    }
 
 }
 
@@ -121,25 +125,25 @@ extension HomeViewController: GADBannerViewDelegate {
     
 }
 
-extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        // カメラビューを閉じる
-        dismiss(animated: true, completion: nil)
-        
-        let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
-        let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
-        // イメージビュー生成
-        let imageView = UIImageView(frame: fullScreen)
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = image
-        imageView.isUserInteractionEnabled = true
-        viewController.imageView = imageView
-
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-}
+//extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        
+//        
+//        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        
+//        // カメラビューを閉じる
+//        dismiss(animated: true, completion: nil)
+//        
+//        let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
+//        let fullScreen = CGRect(x: 0, y:0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        
+//        // イメージビュー生成
+//        let imageView = UIImageView(frame: fullScreen)
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.image = image
+//        imageView.isUserInteractionEnabled = true
+//        viewController.imageView = imageView
+//
+//        navigationController?.pushViewController(viewController, animated: true)
+//    }
+//}

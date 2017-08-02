@@ -16,20 +16,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="o4o-NY-y7i">
-                    <rect key="frame" x="0.0" y="15" width="365" height="85"/>
+                    <rect key="frame" x="0.0" y="30" width="365" height="70"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxg-tc-O8N">
-                    <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="15" id="Inh-Qo-zaB"/>
-                        <constraint firstAttribute="height" constant="15" id="SGq-3h-wqI"/>
+                        <constraint firstAttribute="width" constant="30" id="Inh-Qo-zaB"/>
+                        <constraint firstAttribute="height" constant="30" id="SGq-3h-wqI"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="×">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ime-Yz-Bbj"/>

@@ -91,35 +91,8 @@ class NamingViewController: UIViewController {
             }
             
             if existsSelfInViewControllers {
-                // imageViewのsubviewであるNamingViewを全て取得したい
-                guard let subviews = imageView?.subviews else {
-                    return
-                }
-                
-                let labelEntity = LabelOfStageEntity()
-                for subview in subviews {
-                    let entity = LabelEntity()
-                    
-                    entity.pointX = subview.frame.origin.x
-                    entity.pointY = subview.frame.origin.y
-                    let label = subview as! NamingLabelView
-                    entity.text = label.namingLabel.text
-                    
-                    labelEntity.labelList.append(entity)
-                }
-                // 画面タイトルをキーに設定
-                labelEntity.key = navigationItem.title
-                
-                // タイトルがオプショナルなので安全な取り出し
-                if let title = navigationItem.title {
-                    // もし同じ名前のEntityが存在したら削除
-                    if LabelStoreManager.pic(key: title) != nil {
-                        LabelStoreManager.delete(key: title)
-                    }
-                }
-                
-                // Entityを追加
-                LabelStoreManager.add(object: labelEntity)
+                // ラベル情報を保存
+                saveLabels()
             }
         }
         
@@ -217,6 +190,7 @@ class NamingViewController: UIViewController {
                         // サイズ計算用のダミーのラベル
                         label.namingLabel.text = labelEntity.text
                         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+                        // 文字サイズにあったラベルのサイズに自動調整
                         label.namingLabel.sizeToFit()
                         let labelWidth = label.namingLabel.bounds.width
                         let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
@@ -224,15 +198,56 @@ class NamingViewController: UIViewController {
                         label.frame = CGRect(x: labelEntity.pointX, y: labelEntity.pointY, width: labelWidth, height: viewHeight)
                         // ラベルの初期位置を保持
                         label.beforFrame = CGPoint(x: labelEntity.pointX , y: labelEntity.pointY)
-                        
+                        // 拡大率を反映
+                        label.scaleX = labelEntity.scaleX
+                        label.scaleY = labelEntity.scaleY
+                        label.transform = label.transform.scaledBy(x: labelEntity.scaleX, y: labelEntity.scaleY)
                         label.delegate = self
                         imageView?.addSubview(label)
+                        
+                        label.setNeedsLayout()
+                        label.layoutIfNeeded()
+                        label.namingLabel.sizeToFit()
                     }
                 }
             }
         }
     }
     
+    private func saveLabels() {
+        // imageViewのsubviewであるNamingViewを全て取得したい
+        guard let subviews = imageView?.subviews else {
+            return
+        }
+        
+        let labelEntity = LabelOfStageEntity()
+        for subview in subviews {
+            let entity = LabelEntity()
+            
+            entity.pointX = subview.frame.origin.x
+            entity.pointY = subview.frame.origin.y
+            entity.scaleX = subview.transform.a // xの倍率保持
+            entity.scaleY = subview.transform.d // yの倍率保持
+            let label = subview as! NamingLabelView
+            entity.text = label.namingLabel.text
+            
+            labelEntity.labelList.append(entity)
+        }
+        // 画面タイトルをキーに設定
+        labelEntity.key = navigationItem.title
+        
+        // タイトルがオプショナルなので安全な取り出し
+        if let title = navigationItem.title {
+            // もし同じ名前のEntityが存在したら削除
+            if LabelStoreManager.pic(key: title) != nil {
+                LabelStoreManager.delete(key: title)
+            }
+        }
+        
+        // Entityを追加
+        LabelStoreManager.add(object: labelEntity)
+    }
+
 }
 
 extension NamingViewController: UITextViewDelegate {

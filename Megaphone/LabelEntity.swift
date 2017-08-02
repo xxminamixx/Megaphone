@@ -12,5 +12,7 @@ import RealmSwift
 class LabelEntity: Object {
     dynamic var pointX: CGFloat = 0.0
     dynamic var pointY: CGFloat = 0.0
+    dynamic var scaleX: CGFloat = 1.0
+    dynamic var scaleY: CGFloat = 1.0
     dynamic var text: String?
 }

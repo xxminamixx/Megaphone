@@ -7,11 +7,10 @@
 //
 
 import UIKit
+import GestureRecognizerClosures
 
 protocol NamingLabelViewDelegate {
-    func namingViewClose(view: UIView)
     func namingLabelTapped(view: NamingLabelView)
-    func namingViewDraged(locate: CGPoint, view: UIView)
 }
 
 class NamingLabelView: UIView {
@@ -31,36 +30,33 @@ class NamingLabelView: UIView {
         backgroundColor = UIColor.clear        
         namingLabel.textColor = UIColor.white
         
-        // NamingLabelViewにタップ判定付加
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(labelTapped))
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(drag))
+        // Viewをタップしたときの処理
+        self.onTap {_ in
+            self.delegate.namingLabelTapped(view: self)
+        }
         
-        namingLabel.addGestureRecognizer(tapGesture)
-        addGestureRecognizer(panGesture)
+        // ドラックした時の処理
+        self.onPan { pan in
+            let location: CGPoint = pan.translation(in: self)
+            let x = location.x + self.beforFrame.x
+            let y = location.y + self.beforFrame.y
+            self.beforFrame = CGPoint(x: x, y: y)
+            pan.setTranslation(CGPoint.zero, in: self)
+            self.frame.origin = self.beforFrame
+        }
+        
+        // ピンチした時の処理
+        self.onPinch { pinch in
+            self.transform = self.transform.scaledBy(x: pinch.scale, y: pinch.scale)
+            pinch.scale = 1
+        }
         
         super.awakeFromNib()
     }
     
     // 閉じるボタンが押された時呼ばれる
     @IBAction func close(_ sender: Any) {
-        delegate.namingViewClose(view: self)
-    }
-    
-    // ラベルをタップした時に呼ばれる
-    func labelTapped() {
-        delegate.namingLabelTapped(view: self)
-    }
-    
-    // ドラッグした時に呼ばれる
-    func drag(sender: UIPanGestureRecognizer) {
-        let location: CGPoint = sender.translation(in: self)
-        let x = location.x + beforFrame.x
-        let y = location.y + beforFrame.y
-        beforFrame = CGPoint(x: x, y: y)
-        sender.setTranslation(CGPoint.zero, in: self)
-        delegate.namingViewDraged(locate: beforFrame, view: self)
+        removeFromSuperview()
     }
     
 }

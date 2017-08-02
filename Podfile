@@ -7,7 +7,7 @@ target 'Megaphone' do
 
   pod 'RealmSwift’
   pod 'GoogleMobileAds'
-  pod ‘Toucan’
+  pod 'GestureRecognizerClosures', '~> 3'
 
   # Pods for Megaphone
 

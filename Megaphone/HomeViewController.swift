@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMobileAds
-import Toucan
 
 class HomeViewController: UIViewController {
 

@@ -255,11 +255,6 @@ extension NamingViewController: UIScrollViewDelegate {
 
 extension NamingViewController: NamingLabelViewDelegate {
     
-    func namingViewClose(view: UIView) {
-        // 受け取ったViewをsubViewから削除する
-        view.removeFromSuperview()
-    }
-    
     func namingLabelTapped(view: NamingLabelView) {
         // 編集用のラベルを保持
         self.editLabelView = view
@@ -271,10 +266,6 @@ extension NamingViewController: NamingLabelViewDelegate {
             viewController.delegate = self
             present(navigation, animated: true, completion: nil)
         }
-    }
-    
-    func namingViewDraged(locate: CGPoint, view: UIView) {
-        view.frame.origin = locate
     }
     
 }

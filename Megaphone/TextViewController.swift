@@ -28,6 +28,9 @@ class TextViewController: UIViewController {
         textView.backgroundColor = UIColor.darkGray
         // テキストの色を白に変更
         textView.textColor = UIColor.white
+        // キーボードを表示する
+        textView.becomeFirstResponder()
+        
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardDidShow, object: nil)
@@ -57,9 +60,14 @@ class TextViewController: UIViewController {
         navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
     }
     
+//    override func viewDidLayoutSubviews() {
+//        // テキスト開始位置を上寄せ
+//        // TODO: 入力を開始すると元の位置に戻ってしまう
+//        textView.setContentOffset(CGPoint.zero, animated: false)
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // キーボードが出現したときに呼ばれる
@@ -88,6 +96,8 @@ class TextViewController: UIViewController {
     
     // 閉じるボタンが押された時に呼ばれる
     func close() {
+        // キーボードを閉じるてからモーダルを閉じる
+        textView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     

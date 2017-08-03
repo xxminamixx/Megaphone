@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import Cartography
+import GestureRecognizerClosures
 
 class NamingViewController: UIViewController {
     
@@ -35,10 +36,9 @@ class NamingViewController: UIViewController {
         imageView?.isUserInteractionEnabled = true
         
         // スクロールビューにタップジェスチャを登録
-        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(tapped))
-        imageScrollView.addGestureRecognizer(tapGesture)
+        imageScrollView.onTap { tap in
+            self.tapped(gesture: tap)
+        }
         
         // ラベルの配置
         loadLabels()
@@ -122,24 +122,20 @@ class NamingViewController: UIViewController {
     // スクロールビューがタップされたとき呼ばれる
     func tapped(gesture: UITapGestureRecognizer) {
         
-        /* TODO:
-         タップした座標を保持
-         文字入力用のモーダルを表示
-         モーダルの完了ボタンを押したらその文字列を受け取る
-         保持していた座標にUILabelを作成
-        */
-        
         for i in 0..<gesture.numberOfTouches {
             let point = gesture.location(ofTouch: i, in: self.view)
             pointX = point.x
             pointY = point.y
         }
         
-        if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
-            let navigation = TextViewNavigationController()
-            navigation.addChildViewController(viewController)
-            viewController.delegate = self
-            present(navigation, animated: true, completion: nil)
+        // navigationBarの高さ + ステータスバーの高さ + ItemsViewの高さ(60.0)　より下をタップした時
+        if pointY! > (navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.height + 60.0 {
+            if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
+                let navigation = TextViewNavigationController()
+                navigation.addChildViewController(viewController)
+                viewController.delegate = self
+                present(navigation, animated: true, completion: nil)
+            }
         }
 
     }

@@ -1,4 +1,5 @@
 PODS:
+  - Cartography (1.1.0)
   - GestureRecognizerClosures (3.1.0)
   - GoogleMobileAds (7.8.0)
   - Realm (2.8.2):
@@ -8,16 +9,27 @@ PODS:
     - Realm (= 2.8.2)
 
 DEPENDENCIES:
+  - Cartography (from `https://github.com/xxminamixx/Cartography`)
   - GestureRecognizerClosures (~> 3)
   - GoogleMobileAds
   - RealmSwift
 
+EXTERNAL SOURCES:
+  Cartography:
+    :git: https://github.com/xxminamixx/Cartography
+
+CHECKOUT OPTIONS:
+  Cartography:
+    :commit: 1a3c5b9497dcd3f67faa66ddf434c9706aa5973f
+    :git: https://github.com/xxminamixx/Cartography
+
 SPEC CHECKSUMS:
+  Cartography: 8ec6e9dc98f6ee6ea6100f345d09426dd349000b
   GestureRecognizerClosures: 513f6926a586a6276252c1113db5d4f4d8c7c8d8
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
   Realm: 0e262abf087c7054013e00579274f7e070486d4a
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
 
-PODFILE CHECKSUM: 9d2e29c824e92e7ffa1c9aef8c8b7fbbe5f395fd
+PODFILE CHECKSUM: bf96b1df54385b8489c1288babb6ca641a607ad2
 
 COCOAPODS: 1.1.1

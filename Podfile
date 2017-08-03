@@ -8,6 +8,7 @@ target 'Megaphone' do
   pod 'RealmSwift’
   pod 'GoogleMobileAds'
   pod 'GestureRecognizerClosures', '~> 3'
+  pod 'Cartography' , :git => 'https://github.com/xxminamixx/Cartography'
 
   # Pods for Megaphone
 

@@ -15,6 +15,7 @@ class ConstColor {
     
     // MARK: 緑系
     static let iconGreen = UIColor(red: 0.4314, green: 0.7569, blue: 0.3922, alpha: 1.0) /* #6ec164 */
+    static let mossGreen = UIColor(red: 0.0627, green: 0.6588, blue: 0, alpha: 1.0) /* #10a800 */
     
     // MARK: 紫系
     static let purple = UIColor(red: 0.8667, green: 0.2588, blue: 0.5843, alpha: 1.0) /* #dd4295 */

@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Cartography
 
 class NamingViewController: UIViewController {
     
@@ -31,32 +32,6 @@ class NamingViewController: UIViewController {
         
         imageView?.backgroundColor = UIColor.darkGray
         
-        /* NavigationBarのボタン関連 */
-        let rightCaptureButton = UIButton()
-        rightCaptureButton.setImage(UIImage(named: "Capture.png"), for: .normal)
-        rightCaptureButton.sizeToFit()
-        rightCaptureButton.addTarget(self, action: #selector(capture), for: UIControlEvents.touchUpInside)
-        
-        let rightSpaceButton = UIButton()
-        rightSpaceButton.contentRect(forBounds: CGRect(x: 0, y: 0, width: 20, height: 20))
-        
-        let rightTweetButton = UIButton()
-        rightTweetButton.setImage(UIImage(named: "TwitterIcon.png"), for: .normal)
-        rightTweetButton.sizeToFit()
-        rightTweetButton.addTarget(self, action: #selector(tweetImage), for: UIControlEvents.touchUpInside)
-        
-        let rightCaptureButtonItem = UIBarButtonItem(customView: rightCaptureButton)
-        let rightSpaceButtonItem = UIBarButtonItem(customView: rightSpaceButton)
-        let rightTweetButtonItem = UIBarButtonItem(customView: rightTweetButton)
-        
-        navigationItem.setRightBarButtonItems([rightCaptureButtonItem, rightSpaceButtonItem,rightTweetButtonItem], animated: true)
-
-        /* スクロールビュー関連 */
-        imageScrollView.delegate = self
-        imageScrollView.minimumZoomScale = 1.0
-        imageScrollView.maximumZoomScale = 3.0
-        imageScrollView.contentMode = .scaleAspectFit
-        
         imageView?.isUserInteractionEnabled = true
         
         // スクロールビューにタップジェスチャを登録
@@ -70,10 +45,32 @@ class NamingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let view = imageView else {
+        guard let image = imageView else {
             return
         }
-        imageScrollView.addSubview(view)
+        // imageViewをscrollViewのsubViewとして追加
+        imageScrollView.addSubview(image)
+        
+        // imageViewにアイテムViewを追加
+        if let itemsView = UINib(nibName: ItemView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? ItemView {
+            
+            itemsView.delegate = self
+            // ItemViewをimageViewのsubViewとして追加
+            imageScrollView.addSubview(itemsView)
+            
+            // オートレイアウトの制約更新
+            constrain(itemsView, image) { view1, view2 in
+                view1.height == 60.0
+                view1.width == UIScreen.main.bounds.width
+                view1.left == view2.left
+                view1.right == view2.right
+            }
+
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,35 +88,7 @@ class NamingViewController: UIViewController {
             }
             
             if existsSelfInViewControllers {
-                // imageViewのsubviewであるNamingViewを全て取得したい
-                guard let subviews = imageView?.subviews else {
-                    return
-                }
-                
-                let labelEntity = LabelOfStageEntity()
-                for subview in subviews {
-                    let entity = LabelEntity()
-                    
-                    entity.pointX = subview.frame.origin.x
-                    entity.pointY = subview.frame.origin.y
-                    let label = subview as! NamingLabelView
-                    entity.text = label.namingLabel.text
-                    
-                    labelEntity.labelList.append(entity)
-                }
-                // 画面タイトルをキーに設定
-                labelEntity.key = navigationItem.title
-                
-                // タイトルがオプショナルなので安全な取り出し
-                if let title = navigationItem.title {
-                    // もし同じ名前のEntityが存在したら削除
-                    if LabelStoreManager.pic(key: title) != nil {
-                        LabelStoreManager.delete(key: title)
-                    }
-                }
-                
-                // Entityを追加
-                LabelStoreManager.add(object: labelEntity)
+                saveLabels()
             }
         }
         
@@ -127,24 +96,6 @@ class NamingViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func tweetImage() {
-        if let image = imageView?.castImage() {
-            // ツイッター投稿画面を表示
-            let twitterPostView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
-            twitterPostView.add(image)
-            twitterPostView.setInitialText("")
-            present(twitterPostView, animated: true, completion: nil)
-        }
-    }
-    
-    // キャプチャボタンを押した時に呼ばれる
-    func capture() {
-        guard let image = imageView?.castImage() else {
-            return
-        }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImageResult), nil)
     }
 
     
@@ -202,6 +153,39 @@ class NamingViewController: UIViewController {
         }
         actionTextView?.resignFirstResponder()
     }
+        
+    private func saveLabels() {
+        // imageViewのsubviewであるNamingViewを全て取得したい
+        guard let subviews = imageView?.subviews else {
+            return
+        }
+        
+        let labelEntity = LabelOfStageEntity()
+        for subview in subviews {
+            let entity = LabelEntity()
+            
+            entity.pointX = subview.frame.origin.x
+            entity.pointY = subview.frame.origin.y
+            let label = subview as! NamingLabelView
+            entity.fontSize = label.fontSize
+            entity.text = label.namingLabel.text
+            
+            labelEntity.labelList.append(entity)
+        }
+        // 画面タイトルをキーに設定
+        labelEntity.key = navigationItem.title
+        
+        // タイトルがオプショナルなので安全な取り出し
+        if let title = navigationItem.title {
+            // もし同じ名前のEntityが存在したら削除
+            if LabelStoreManager.pic(key: title) != nil {
+                LabelStoreManager.delete(key: title)
+            }
+        }
+        
+        // Entityを追加
+        LabelStoreManager.add(object: labelEntity)
+    }
     
     // Realmに永続化されているラベル情報を読み込み配置する
     private func loadLabels() {
@@ -216,7 +200,8 @@ class NamingViewController: UIViewController {
                         
                         // サイズ計算用のダミーのラベル
                         label.namingLabel.text = labelEntity.text
-                        label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+                        label.fontSize = labelEntity.fontSize
+                        label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: labelEntity.fontSize)
                         label.namingLabel.sizeToFit()
                         let labelWidth = label.namingLabel.bounds.width
                         let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
@@ -243,14 +228,6 @@ extension NamingViewController: UITextViewDelegate {
         actionTextView?.textColor = UIColor.black
         return true
     }
-}
-
-extension NamingViewController: UIScrollViewDelegate {
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
 }
 
 extension NamingViewController: NamingLabelViewDelegate {
@@ -326,6 +303,40 @@ extension NamingViewController: TextViewControllerDelegate {
         }
         // テキストビューコントローラーを消す
         completion()
+    }
+    
+}
+
+extension NamingViewController: ItemViewDelegate {
+    
+    func allDeleteTapped() {
+        // このControllerに対応するRealmのエンティティを削除する
+        
+        // subViewのラベルを全て削除
+        for subView in (imageView?.subviews)! {
+            subView.removeFromSuperview()
+        }
+        
+        if let title = navigationItem.title {
+            LabelStoreManager.delete(key: title)
+        }
+    }
+    
+    func twitterTapped() {
+        if let image = imageView?.castImage() {
+            // ツイッター投稿画面を表示
+            let twitterPostView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+            twitterPostView.add(image)
+            twitterPostView.setInitialText("")
+            present(twitterPostView, animated: true, completion: nil)
+        }
+    }
+    
+    func screenShotTapped() {
+        guard let image = imageView?.castImage() else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImageResult), nil)
     }
     
 }

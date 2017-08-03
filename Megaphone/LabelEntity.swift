@@ -12,5 +12,6 @@ import RealmSwift
 class LabelEntity: Object {
     dynamic var pointX: CGFloat = 0.0
     dynamic var pointY: CGFloat = 0.0
+    dynamic var fontSize: CGFloat = 18.0
     dynamic var text: String?
 }

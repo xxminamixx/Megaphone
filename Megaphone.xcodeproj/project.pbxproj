@@ -10,6 +10,8 @@
 		9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA41F306C830061D03E /* LabelEntity.swift */; };
 		9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */; };
 		9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */; };
+		9D4D0AAE1F32DA7A0061D03E /* ItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */; };
+		9D4D0AB01F32DC160061D03E /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAF1F32DC160061D03E /* ItemView.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		9D4D0AA41F306C830061D03E /* LabelEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEntity.swift; sourceTree = "<group>"; };
 		9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOfStageEntity.swift; sourceTree = "<group>"; };
 		9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStoreManager.swift; sourceTree = "<group>"; };
+		9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsView.xib; sourceTree = "<group>"; };
+		9D4D0AAF1F32DC160061D03E /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 			children = (
 				9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */,
 				9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */,
+				9D4D0AAF1F32DC160061D03E /* ItemView.swift */,
+				9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
 			);
@@ -448,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DAEC6EF1F3045A3009B03E3 /* fujitsubo.jpg in Resources */,
+				9D4D0AAE1F32DA7A0061D03E /* ItemsView.xib in Resources */,
 				9DAEC6F01F3045A3009B03E3 /* gangaze.jpg in Resources */,
 				9DDB14281F2F2178007C4C85 /* Capture@3x.png in Resources */,
 				9DAEC6EE1F3045A3009B03E3 /* battera.jpg in Resources */,
@@ -591,6 +598,7 @@
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
 				9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */,
+				9D4D0AB01F32DC160061D03E /* ItemView.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 			);

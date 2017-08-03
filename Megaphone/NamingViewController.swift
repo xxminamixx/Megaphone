@@ -256,6 +256,11 @@ extension NamingViewController: TextViewControllerDelegate {
                 
                 // サイズ計算用のダミーのラベル
                 label.namingLabel.text = text
+                
+                if let fontSize = self.editLabelView?.fontSize {
+                    label.fontSize = fontSize
+                    label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+                }
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
                 let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
@@ -311,15 +316,17 @@ extension NamingViewController: ItemViewDelegate {
     
     func allDeleteTapped() {
         // このControllerに対応するRealmのエンティティを削除する
-        
-        // subViewのラベルを全て削除
-        for subView in (imageView?.subviews)! {
-            subView.removeFromSuperview()
-        }
-        
-        if let title = navigationItem.title {
-            LabelStoreManager.delete(key: title)
-        }
+        present(AlertControllerManager.customActionAlert(title: nil, message: "テキストを全て削除しますか？",
+                                                         defaultAction: { _ in
+                                                            // subViewのラベルを全て削除
+                                                            for subView in (self.imageView?.subviews)! {
+                                                                subView.removeFromSuperview()
+                                                            }
+                                                            
+                                                            if let title = self.navigationItem.title {
+                                                                LabelStoreManager.delete(key: title)
+                                                            }
+        }), animated: true, completion: nil)
     }
     
     func twitterTapped() {

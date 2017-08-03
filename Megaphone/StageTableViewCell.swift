@@ -15,6 +15,8 @@ class StageTableViewCell: UITableViewCell {
     @IBOutlet weak var stageName: UILabel!
     
     override func awakeFromNib() {
+        backgroundColor = UIColor.darkGray
+        stageName.textColor = UIColor.white
         super.awakeFromNib()
     }
 

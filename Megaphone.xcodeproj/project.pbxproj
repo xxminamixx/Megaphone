@@ -12,6 +12,10 @@
 		9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */; };
 		9D4D0AAE1F32DA7A0061D03E /* ItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */; };
 		9D4D0AB01F32DC160061D03E /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAF1F32DC160061D03E /* ItemView.swift */; };
+		9D4D0AB41F3301D90061D03E /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB11F3301D90061D03E /* delete.png */; };
+		9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB21F3301D90061D03E /* delete@2x.png */; };
+		9D4D0AB61F3301D90061D03E /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB31F3301D90061D03E /* delete@3x.png */; };
+		9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -83,6 +87,10 @@
 		9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStoreManager.swift; sourceTree = "<group>"; };
 		9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsView.xib; sourceTree = "<group>"; };
 		9D4D0AAF1F32DC160061D03E /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		9D4D0AB11F3301D90061D03E /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		9D4D0AB21F3301D90061D03E /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		9D4D0AB31F3301D90061D03E /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
+		9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerManager.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -251,6 +259,7 @@
 				9D4D0AA81F306F140061D03E /* Manager */,
 				9D52DD971F1E00D8003204AB /* Entity */,
 				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
+				9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,6 +285,9 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9D4D0AB11F3301D90061D03E /* delete.png */,
+				9D4D0AB21F3301D90061D03E /* delete@2x.png */,
+				9D4D0AB31F3301D90061D03E /* delete@3x.png */,
 				9DAEC6F51F304CA7009B03E3 /* TwitterIcon.png */,
 				9DAEC6F61F304CA7009B03E3 /* TwitterIcon@2x.png */,
 				9DAEC6F71F304CA7009B03E3 /* TwitterIcon@3x.png */,
@@ -466,13 +478,16 @@
 				9DAEC6F81F304CA7009B03E3 /* TwitterIcon.png in Resources */,
 				9DAEC6F31F3045A3009B03E3 /* tathiuo.jpg in Resources */,
 				9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */,
+				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9DAEC6F91F304CA7009B03E3 /* TwitterIcon@2x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */,
+				9D4D0AB41F3301D90061D03E /* delete.png in Resources */,
 				9DAEC6F41F3045A3009B03E3 /* tyozame.jpg in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
 				9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */,
+				9D4D0AB61F3301D90061D03E /* delete@3x.png in Resources */,
 				9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +609,7 @@
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */,
+				9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,

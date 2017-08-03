@@ -18,7 +18,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JOt-6B-P3s">
                     <rect key="frame" x="10" y="8.5" width="30" height="43.5"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tyozame.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="84E-2N-qsx">
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete.png" translatesAutoresizingMaskIntoConstraints="NO" id="84E-2N-qsx">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="J1K-Lg-obx"/>
@@ -103,6 +103,6 @@
     <resources>
         <image name="Capture.png" width="20" height="20"/>
         <image name="TwitterIcon.png" width="20" height="20"/>
-        <image name="tyozame.jpg" width="824" height="718"/>
+        <image name="delete.png" width="30" height="30"/>
     </resources>
 </document>

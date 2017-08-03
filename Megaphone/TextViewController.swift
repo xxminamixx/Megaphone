@@ -10,7 +10,6 @@ import UIKit
 
 @objc protocol TextViewControllerDelegate {
     func getTextView(text: String?, completion: () -> Void)
-    @objc optional func editTextView(text: String, completion: () -> Void)
 }
 
 class TextViewController: UIViewController {
@@ -58,15 +57,6 @@ class TextViewController: UIViewController {
         navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        // TextViewの文字入力時カーソル位置がずれる問題を修正
-//        textView.setContentOffset(CGPoint.zero, animated: true)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

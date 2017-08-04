@@ -1,10 +1,36 @@
 {
     "stage": [
-        "フジツボスポーツクラブ",
-        "バッテラストリート",
-        "コンブトラック",
-        "ガンガゼ野外音楽堂",
-        "ホッケふ頭",
-        "タチウオパーキング"
-    ]
+              {
+              "stage": "フジツボスポーツクラブ",
+              "image": "fujitsubo.jpg"
+              },
+              {
+              "stage": "バッテラストリート",
+              "image": "battera.jpg"
+              },
+              {
+              "stage": "コンブトラック",
+              "image": "konbu.jpg"
+              },
+              {
+              "stage": "ガンガゼ野外音楽堂",
+              "image": "gangaze.jpg"
+              },
+              {
+              "stage": "海女美術館",
+              "image": "ama.jpg"
+              },
+              {
+              "stage": "ホッケふ頭",
+              "image": "hokke.jpg"
+              },
+              {
+              "stage": "タチウオパーキング",
+              "image": "tathiuo.jpg"
+              },
+              {
+              "stage": "チョウザメ造船",
+              "image": "tyozame.jpg"
+              }
+              ]
 }

@@ -258,6 +258,7 @@ class NamingViewController: UIViewController {
     
 }
 
+// MARK: UITextViewDelegate
 extension NamingViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         actionTextView = textView
@@ -268,9 +269,22 @@ extension NamingViewController: UITextViewDelegate {
     }
 }
 
+// MARK: NamingLabelViewDelegate
 extension NamingViewController: NamingLabelViewDelegate {
     
     func namingLabelTapped(view: NamingLabelView) {
+        
+        // 2回目にタップしたビューが同じビューではなく、前のタップしたラベルが選択状態のままの時
+        if let editingLabel = self.editLabelView {
+            if editingLabel != view && editingLabel.isSubLayer(count: 3) {
+                // 選択状態を解除
+                editingLabel.layer.sublayers?.last?.removeFromSuperlayer()
+                // 閉じるボタンを非活性
+                editingLabel.closeImageView.isHidden = true
+            }
+
+        }
+        
         // 編集用のラベルを保持
         self.editLabelView = view
         
@@ -288,6 +302,7 @@ extension NamingViewController: NamingLabelViewDelegate {
     
 }
 
+// MARK: TextViewControllerDelegate
 extension NamingViewController: TextViewControllerDelegate {
     
     func getTextView(text: String?, completion: () -> Void) {

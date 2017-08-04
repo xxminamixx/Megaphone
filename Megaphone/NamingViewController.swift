@@ -205,7 +205,24 @@ class NamingViewController: UIViewController {
         }
         actionTextView?.resignFirstResponder()
     }
+    
+    // ImageViewにlabelを追加する
+    func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String, fontSize: CGFloat) {
+        label.namingLabel.text = text
+        label.fontSize = fontSize
+        label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+        label.namingLabel.sizeToFit()
+        let labelWidth = label.namingLabel.bounds.width
+        let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
+        // ラベルの初期位置を設定
+        label.frame = CGRect(x: x, y: y, width: labelWidth, height: viewHeight)
+        // ラベルの初期位置を保持
+        label.beforFrame = CGPoint(x: x , y: y)
         
+        label.delegate = self
+        imageView?.addSubview(label)
+    }
+    
     private func saveLabels() {
         // imageViewのsubviewであるNamingViewを全て取得したい
         guard let subviews = imageView?.subviews else {

@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         let gadRequest:GADRequest = GADRequest()
         
         // テスト用の広告を表示する時のみ使用（申請時に削除）
-        gadRequest.testDevices = [kGADSimulatorID]
+//        gadRequest.testDevices = [kGADSimulatorID]
         
         banner.load(gadRequest)
         bannerView.addSubview(banner)

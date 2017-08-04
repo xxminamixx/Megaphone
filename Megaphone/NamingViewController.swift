@@ -177,6 +177,8 @@ class NamingViewController: UIViewController {
                 editingLabel.layer.sublayers?.last?.removeFromSuperlayer()
                 // 閉じるボタンを非活性
                 editingLabel.closeImageView.isHidden = true
+                // 編集中のラベルのポインタを破棄
+                self.editLabelView = nil
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
             }

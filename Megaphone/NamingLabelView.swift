@@ -17,7 +17,7 @@ class NamingLabelView: UIView {
     
     static let nibName = "NamingLabelView"
     
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeImageView: UIImageView!
     @IBOutlet weak var namingLabel: UILabel!
     
     var delegate: NamingLabelViewDelegate!
@@ -33,10 +33,34 @@ class NamingLabelView: UIView {
         
         backgroundColor = UIColor.clear        
         namingLabel.textColor = UIColor.white
+        self.closeImageView.isHidden = true
+        
+        // 閉じるボタンが押された時の処理
+        closeImageView.onTap { _ in
+            if self.isSubLayer(count: 3) {
+                self.removeFromSuperview()
+            }
+        }
         
         // Viewをタップしたときの処理
         self.onTap {_ in
             self.delegate.namingLabelTapped(view: self)
+            // 閉じるボタン・ラベル・選択状態を表す破線で3つのサブレイヤだから3を渡す
+            if self.isSubLayer(count: 3) {
+                // 選択状態のとき
+                
+                // 一番最後のレイヤーを削除
+                self.layer.sublayers?.last?.removeFromSuperlayer()
+                // TODO: 閉じるボタンの非活性
+                self.closeImageView.isHidden = true
+            } else {
+                // 非選択のとき
+                
+                // 破線のレイヤを追加して選択状態とする
+                self.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
+                // TODO: 閉じるボタンの活性化
+                self.closeImageView.isHidden = false
+            }
         }
         
         // ドラックした時の処理
@@ -53,43 +77,7 @@ class NamingLabelView: UIView {
             self.namingLabel.sizeToFit()
         }
         
-        // ピンチした時の処理
-        self.onPinch { pinch in
-            // TODO: ピンチしたときにフォントサイズを変更する
-            
-            // 倍率
-            let changeAmountScele = pinch.scale / self.befroScale
-            
-            // ピンチしたときViewの大きさを変えてフォントサイズが変更されてもテキストが見切れないようにする
-            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width * (changeAmountScele) + 30, height: self.frame.height * (changeAmountScele))
-            // Viewに追随してラベルも大きくする
-            self.namingLabel.frame = CGRect.init(x: self.namingLabel.frame.origin.x, y: self.namingLabel.frame.origin.y, width: self.namingLabel.frame.width * (changeAmountScele) + 30, height: self.namingLabel.frame.height * (changeAmountScele))
-            
-            // フォントサイズ変更
-            self.fontSize = self.fontSize * changeAmountScele
-            print("fontSize: \(self.fontSize)")
-            self.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: self.fontSize)
-            // スケール保持
-            self.befroScale = pinch.scale
-            
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
-            // ラベルの大きさを文字に合わせる
-            self.namingLabel.sizeToFit()
-            // ラベルの横幅に合わせてViewの横幅を調整
-            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.namingLabel.frame.width, height: self.namingLabel.frame.height + self.closeButton.frame.height)
-
-            if pinch.state == .ended {
-                self.namingLabel.sizeToFit()
-            }
-        }
-        
         super.awakeFromNib()
-    }
-    
-    // 閉じるボタンが押された時呼ばれる
-    @IBAction func close(_ sender: Any) {
-        removeFromSuperview()
     }
     
 }

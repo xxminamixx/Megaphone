@@ -40,6 +40,48 @@ class NamingViewController: UIViewController {
             self.tapped(gesture: tap)
         }
         
+        // スクロールビューにピンチジェスチャを登録
+        imageScrollView.onPinch { pinch in
+            // 編集中のラベルがなかったら何もしない
+            guard let editingLabel = self.editLabelView else {
+                return
+            }
+            
+            // 編集中のラベルのレイヤーが2枚以下なら何もしない
+            guard editingLabel.isSubLayer(count: 3) else {
+                return
+            }
+            
+            // 倍率
+            let changeAmountScele = pinch.scale / (self.editLabelView?.befroScale)!
+            
+            // ピンチしたときViewの大きさを変えてフォントサイズが変更されてもテキストが見切れないようにする
+            self.editLabelView?.frame = CGRect(x: (self.editLabelView?.frame.origin.x)!, y: (self.editLabelView?.frame.origin.y)!, width: (self.editLabelView?.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.frame.height)! * (changeAmountScele))
+            // Viewに追随してラベルも大きくする
+            self.editLabelView?.namingLabel.frame = CGRect.init(x: (self.editLabelView?.namingLabel.frame.origin.x)!, y: (self.editLabelView?.namingLabel.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.namingLabel.frame.height)! * (changeAmountScele))
+            
+            // フォントサイズ変更
+            self.editLabelView?.fontSize = (self.editLabelView?.fontSize)! * changeAmountScele
+            self.editLabelView?.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: (self.editLabelView?.fontSize)!)
+            // スケール保持
+            self.editLabelView?.befroScale = pinch.scale
+            
+            self.editLabelView?.setNeedsLayout()
+            self.editLabelView?.layoutIfNeeded()
+            // ラベルの大きさを文字に合わせる
+            self.editLabelView?.namingLabel.sizeToFit()
+            // ラベルの横幅に合わせてViewの横幅を調整
+            self.editLabelView?.frame = CGRect(x: (self.editLabelView?.frame.origin.x)!, y: (self.editLabelView?.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)!, height: (self.editLabelView?.namingLabel.frame.height)! + (self.editLabelView?.closeImageView.frame.height)!)
+            // 破線レイヤーの更新
+            self.editLabelView?.layer.sublayers?.last?.removeFromSuperlayer()
+            self.editLabelView?.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
+            
+            if pinch.state == .ended {
+                self.editLabelView?.namingLabel.sizeToFit()
+            }
+            
+        }
+        
         // ラベルの配置
         loadLabels()
     }
@@ -200,7 +242,7 @@ class NamingViewController: UIViewController {
                         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: labelEntity.fontSize)
                         label.namingLabel.sizeToFit()
                         let labelWidth = label.namingLabel.bounds.width
-                        let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+                        let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
                         // ラベルの初期位置を設定
                         label.frame = CGRect(x: labelEntity.pointX, y: labelEntity.pointY, width: labelWidth, height: viewHeight)
                         // ラベルの初期位置を保持
@@ -232,13 +274,16 @@ extension NamingViewController: NamingLabelViewDelegate {
         // 編集用のラベルを保持
         self.editLabelView = view
         
-        if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
-            let navigation = TextViewNavigationController()
-            navigation.addChildViewController(viewController)
-            
-            viewController.delegate = self
-            present(navigation, animated: true, completion: nil)
+        if view.isSubLayer(count: 3) {
+            if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
+                let navigation = TextViewNavigationController()
+                navigation.addChildViewController(viewController)
+                
+                viewController.delegate = self
+                present(navigation, animated: true, completion: nil)
+            }
         }
+        
     }
     
 }
@@ -259,7 +304,7 @@ extension NamingViewController: TextViewControllerDelegate {
                 }
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
-                let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+                let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
                 // ラベルの初期位置を設定
                 label.frame = CGRect(x: x, y: y, width: labelWidth, height: viewHeight)
                 // ラベルの初期位置を保持
@@ -290,9 +335,11 @@ extension NamingViewController: TextViewControllerDelegate {
                 
                 // サイズ計算用のダミーのラベル
                 label.namingLabel.text = text
+                label.fontSize = 18
+                label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
-                let viewHeight = label.namingLabel.bounds.height + label.closeButton.bounds.height
+                let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
                 // ラベルの初期位置を設定
                 label.frame = CGRect(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2), width: labelWidth, height: viewHeight)
                 // ラベルの初期位置を保持

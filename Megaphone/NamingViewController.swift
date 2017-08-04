@@ -207,7 +207,7 @@ class NamingViewController: UIViewController {
     }
     
     // ImageViewにlabelを追加する
-    func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String, fontSize: CGFloat) {
+    func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String?, fontSize: CGFloat) {
         label.namingLabel.text = text
         label.fontSize = fontSize
         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
@@ -267,20 +267,7 @@ class NamingViewController: UIViewController {
                     
                     if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                         
-                        // サイズ計算用のダミーのラベル
-                        label.namingLabel.text = labelEntity.text
-                        label.fontSize = labelEntity.fontSize
-                        label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: labelEntity.fontSize)
-                        label.namingLabel.sizeToFit()
-                        let labelWidth = label.namingLabel.bounds.width
-                        let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
-                        // ラベルの初期位置を設定
-                        label.frame = CGRect(x: labelEntity.pointX, y: labelEntity.pointY, width: labelWidth, height: viewHeight)
-                        // ラベルの初期位置を保持
-                        label.beforFrame = CGPoint(x: labelEntity.pointX , y: labelEntity.pointY)
-                        
-                        label.delegate = self
-                        imageView?.addSubview(label)
+                        addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize)
                     }
                 }
             }
@@ -337,30 +324,6 @@ extension NamingViewController: TextViewControllerDelegate {
     
     func getTextView(text: String?, completion: () -> Void) {
         
-        func addLabelView(x: CGFloat, y: CGFloat) {
-            if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
-                
-                // サイズ計算用のダミーのラベル
-                label.namingLabel.text = text
-                
-                if let fontSize = self.editLabelView?.fontSize {
-                    label.fontSize = fontSize
-                    label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
-                }
-                label.namingLabel.sizeToFit()
-                let labelWidth = label.namingLabel.bounds.width
-                let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
-                // ラベルの初期位置を設定
-                label.frame = CGRect(x: x, y: y, width: labelWidth, height: viewHeight)
-                // ラベルの初期位置を保持
-                label.beforFrame = CGPoint(x: x, y: y)
-                
-                label.delegate = self
-                imageView?.addSubview(label)
-            }
-
-        }
-        
         if editLabelView != nil {
             // ラベルの編集が行われている場合
             
@@ -369,7 +332,9 @@ extension NamingViewController: TextViewControllerDelegate {
             let y = editLabelView?.beforFrame.y
             
             // 新しいラベルビューを追加
-            addLabelView(x: x!, y: y!)
+            if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
+                addLabelToImageView(label: label, x: x!, y: y!, text: text, fontSize: (self.editLabelView?.fontSize)!)
+            }
             // 編集中のラベルを削除
             editLabelView?.removeFromSuperview()
             // 何度もこのif文に入らないように破棄

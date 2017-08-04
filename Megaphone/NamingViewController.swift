@@ -170,6 +170,18 @@ class NamingViewController: UIViewController {
             pointY = point.y
         }
         
+        // 2回目にタップしたビューが同じビューではなく、前のタップしたラベルが選択状態のままの時
+        if let editingLabel = self.editLabelView {
+            if editingLabel.isSubLayer(count: 3) {
+                // 選択状態を解除
+                editingLabel.layer.sublayers?.last?.removeFromSuperlayer()
+                // 閉じるボタンを非活性
+                editingLabel.closeImageView.isHidden = true
+                // 選択を解除したらテキスト入力画面を出したくないのでreturn
+                return
+            }
+        }
+        
         // navigationBarの高さ + ステータスバーの高さ + ItemsViewの高さ(60.0)　より下をタップした時
         if pointY! > (navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.height + 60.0 {
             if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
@@ -282,7 +294,6 @@ extension NamingViewController: NamingLabelViewDelegate {
                 // 閉じるボタンを非活性
                 editingLabel.closeImageView.isHidden = true
             }
-
         }
         
         // 編集用のラベルを保持

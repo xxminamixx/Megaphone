@@ -444,7 +444,7 @@
 				TargetAttributes = {
 					9D52DD541F1DAD03003204AB = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = KRPQ8E7V25;
+						DevelopmentTeam = 82VM9CARWC;
 						ProvisioningStyle = Automatic;
 					};
 					9D52DD681F1DAD04003204AB = {
@@ -774,11 +774,11 @@
 			baseConfigurationReference = 7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KRPQ8E7V25;
+				DEVELOPMENT_TEAM = 82VM9CARWC;
 				INFOPLIST_FILE = Megaphone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.Megaphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.min.spl.Megaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -789,11 +789,11 @@
 			baseConfigurationReference = 02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KRPQ8E7V25;
+				DEVELOPMENT_TEAM = 82VM9CARWC;
 				INFOPLIST_FILE = Megaphone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spl.taitai.Megaphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.min.spl.Megaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

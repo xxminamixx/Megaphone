@@ -32,9 +32,9 @@ class ItemView: UIView {
     override func awakeFromNib() {
         
         // NavigationBarとの仕切りViewの色を設定
-        partitionView.backgroundColor = ConstColor.mossGreen
+        partitionView.backgroundColor = ConstColor.separatorYellow
         // 背景色を設定
-        self.backgroundColor = ConstColor.iconGreen
+        self.backgroundColor = ConstColor.iconYellow
         
         allDeleteButton.onTap { _ in
             // タップしたことを実装側に通知

@@ -24,4 +24,8 @@ class ConstColor {
     // MARK: グレー系
     static let gray_e8e8e8 = UIColor(red: 0.9098, green: 0.9098, blue: 0.9098, alpha: 1.0) /* #e8e8e8 */
     
+    // MARK: 黄色系
+    static let iconYellow = UIColor(red: 1, green: 0.7922, blue: 0, alpha: 1.0) /* #ffca00 */
+    static let separatorYellow = UIColor(red: 0.9569, green: 0.749, blue: 0, alpha: 1.0) /* #f4bf00 */
+    
 }

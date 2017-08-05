@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A33B0021F357A6300B14982 /* 60.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33AFFF1F357A6300B14982 /* 60.png */; };
+		6A33B0031F357A6300B14982 /* 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0001F357A6300B14982 /* 60@2x.png */; };
+		6A33B0041F357A6300B14982 /* 60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0011F357A6300B14982 /* 60@3x.png */; };
 		9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA41F306C830061D03E /* LabelEntity.swift */; };
 		9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */; };
 		9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* LabelStoreManager.swift */; };
@@ -80,6 +83,9 @@
 /* Begin PBXFileReference section */
 		02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.release.xcconfig"; sourceTree = "<group>"; };
 		64260B4968DD748DCF0580EA /* Pods-MegaphoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A33AFFF1F357A6300B14982 /* 60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 60.png; sourceTree = "<group>"; };
+		6A33B0001F357A6300B14982 /* 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60@2x.png"; sourceTree = "<group>"; };
+		6A33B0011F357A6300B14982 /* 60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60@3x.png"; sourceTree = "<group>"; };
 		717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Megaphone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +293,9 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6A33AFFF1F357A6300B14982 /* 60.png */,
+				6A33B0001F357A6300B14982 /* 60@2x.png */,
+				6A33B0011F357A6300B14982 /* 60@3x.png */,
 				9D4D0AB91F3426A60061D03E /* close.png */,
 				9D4D0AB11F3301D90061D03E /* delete.png */,
 				9D4D0AB21F3301D90061D03E /* delete@2x.png */,
@@ -435,6 +444,7 @@
 				TargetAttributes = {
 					9D52DD541F1DAD03003204AB = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = KRPQ8E7V25;
 						ProvisioningStyle = Automatic;
 					};
 					9D52DD681F1DAD04003204AB = {
@@ -481,6 +491,9 @@
 				9DAEC6F81F304CA7009B03E3 /* TwitterIcon.png in Resources */,
 				9DAEC6F31F3045A3009B03E3 /* tathiuo.jpg in Resources */,
 				9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */,
+				6A33B0041F357A6300B14982 /* 60@3x.png in Resources */,
+				6A33B0021F357A6300B14982 /* 60.png in Resources */,
+				6A33B0031F357A6300B14982 /* 60@2x.png in Resources */,
 				9D4D0ABA1F3426A60061D03E /* close.png in Resources */,
 				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9DAEC6F91F304CA7009B03E3 /* TwitterIcon@2x.png in Resources */,
@@ -761,6 +774,7 @@
 			baseConfigurationReference = 7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KRPQ8E7V25;
 				INFOPLIST_FILE = Megaphone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -775,6 +789,7 @@
 			baseConfigurationReference = 02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KRPQ8E7V25;
 				INFOPLIST_FILE = Megaphone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

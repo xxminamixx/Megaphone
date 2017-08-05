@@ -36,7 +36,7 @@ class TextViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardDidShow, object: nil)
         
         // navigationControllrの色変更
-        navigationController?.navigationBar.barTintColor = ConstColor.iconGreen
+        navigationController?.navigationBar.barTintColor = ConstColor.iconYellow
         
         /* NavigationBarにボタンアイテムを追加 */
         let rightDoneButton = UIButton()

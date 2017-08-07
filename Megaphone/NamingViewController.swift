@@ -1,4 +1,4 @@
-//
+
 //  NamingViewController.swift
 //  Megaphone
 //
@@ -295,7 +295,25 @@ extension NamingViewController: UITextViewDelegate {
 extension NamingViewController: NamingLabelViewDelegate {
     
     func namingLabelTapped(view: NamingLabelView) {
-        
+
+//        // TOOD: LabelSettingViewを表示する
+//        if let labelSettingView = UINib(nibName: LabelSettingView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelSettingView {
+//            labelSettingView.delegate = self
+//            imageScrollView.addSubview(labelSettingView)
+//            
+//            // オートレイアウトの制約更新
+//            guard let image = imageView else {
+//                return
+//            }
+//            
+//            constrain(labelSettingView, image) { view1, view2 in
+//                view1.height == 220.0
+//                view1.width == UIScreen.main.bounds.width
+//                view1.bottom == view2.bottom - 60
+//            }
+//
+//        }
+    
         // 2回目にタップしたビューが同じビューではなく、前のタップしたラベルが選択状態のままの時
         if let editingLabel = self.editLabelView {
             if editingLabel != view && editingLabel.isSubLayer(count: 3) {
@@ -318,7 +336,6 @@ extension NamingViewController: NamingLabelViewDelegate {
                 present(navigation, animated: true, completion: nil)
             }
         }
-        
     }
     
 }
@@ -374,6 +391,7 @@ extension NamingViewController: TextViewControllerDelegate {
 }
 
 extension NamingViewController: ItemViewDelegate {
+
     
     func allDeleteTapped() {
         // このControllerに対応するRealmのエンティティを削除する
@@ -390,6 +408,48 @@ extension NamingViewController: ItemViewDelegate {
         }), animated: true, completion: nil)
     }
     
+    // 色選択のViewを表示
+    private func showColorPicker(isFont: Bool) {
+        
+        // ラベルを編集集じゃなかったら以下に進まない
+        guard let _ = self.editLabelView else {
+            return
+        }
+        
+        if let labelSettingView = UINib(nibName: LabelSettingView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelSettingView {
+            labelSettingView.delegate = self
+            labelSettingView.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 180)
+            labelSettingView.isFontColorSelected = isFont
+            imageScrollView.addSubview(labelSettingView)
+            
+            // オートレイアウトの制約更新
+            guard let image = imageView else {
+                return
+            }
+            
+            constrain(labelSettingView, image) { view1, view2 in
+                view1.height == 180.0
+                view1.width == UIScreen.main.bounds.size.width
+                view1.left == view2.left
+                view1.right == view2.right
+                view1.bottom == view2.bottom - 60
+            }
+        }
+    }
+    
+    // 塗りつぶしボタンを押した時
+    func fillTapped() {
+        showColorPicker(isFont: true)
+        // TODO: 同じViewがあったら複数枚subViewに追加しないようにしたい
+        // 塗りつぶしボタンを押した後に枠線ボタンを押したら２枚重なる
+    }
+    
+    // 枠線ボタンを押した時
+    func strokeTapped() {
+        showColorPicker(isFont: false)
+    }
+
+    
     func twitterTapped() {
         if let image = imageView?.castImage() {
             // ツイッター投稿画面を表示
@@ -405,6 +465,19 @@ extension NamingViewController: ItemViewDelegate {
             return
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImageResult), nil)
+    }
+    
+}
+
+extension NamingViewController: LabelSettingViewDelegate {
+    
+    func colorViewTapped(isFont: Bool, color: UIColor) {
+        // TODO: editLabelの色を変更する処理
+        if isFont {
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withTextColor(color)
+        } else {
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color)
+        }
     }
     
 }

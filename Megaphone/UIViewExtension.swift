@@ -32,6 +32,12 @@ extension UIView {
         return image
     }
     
+    // 枠線を描くメソッド
+    func drawLine(color: UIColor, lineWidth: CGFloat) {
+        self.layer.borderWidth = lineWidth
+        self.layer.borderColor = color.cgColor
+    }
+    
     // 破線を描くメソッド
     func drawDashedLine(color: UIColor, lineWidth: CGFloat, lineSize: NSNumber, spaceSize: NSNumber, type: DashedLineType) {
         let dashedLineLayer: CAShapeLayer = CAShapeLayer()

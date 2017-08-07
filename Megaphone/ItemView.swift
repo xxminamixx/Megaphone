@@ -12,6 +12,10 @@ import GestureRecognizerClosures
 protocol ItemViewDelegate {
     // 削除ボタン
     func allDeleteTapped()
+    //  塗りつぶしボタン
+    func fillTapped()
+    // 枠線ボタン
+    func strokeTapped()
     // twitterボタン
     func twitterTapped()
     // スクショボタン
@@ -24,6 +28,8 @@ class ItemView: UIView {
     @IBOutlet weak var twitterButton: UIImageView!
     @IBOutlet weak var partitionView: UIView!
     @IBOutlet weak var allDeleteButton: UIImageView!
+    @IBOutlet weak var fillButton: UIImageView!
+    @IBOutlet weak var strokeButton: UIImageView!
     
     static let nibName = "ItemsView"
     
@@ -39,6 +45,14 @@ class ItemView: UIView {
         allDeleteButton.onTap { _ in
             // タップしたことを実装側に通知
             self.delegate.allDeleteTapped()
+        }
+        
+        fillButton.onTap { _ in
+            self.delegate.fillTapped()
+        }
+        
+        strokeButton.onTap { _ in 
+            self.delegate.strokeTapped()
         }
         
         twitterButton.onTap { _ in

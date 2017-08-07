@@ -116,23 +116,26 @@ class NamingViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        // TODO: 永続化処理をここでしたい
-        if let viewControllers = self.navigationController?.viewControllers {
-            var existsSelfInViewControllers = true
-            for viewController in viewControllers {
-                // viewWillDisappearが呼ばれる時に、
-                // 戻る処理を行っていれば、NavigationControllerのviewControllersの中にselfは存在していない
-                if viewController == self {
-                    existsSelfInViewControllers = false
-                    // selfが存在した時点で処理を終える
-                    break
-                }
-            }
-            
-            if existsSelfInViewControllers {
-                saveLabels()
-            }
-        }
+        // 永続化処理
+        saveLabels()
+        
+//        // モーダル画面が表示された際も呼ばれるのでNvigationBarの戻るを押した時だけ永続化処理
+//        if let viewControllers = self.navigationController?.viewControllers {
+//            var existsSelfInViewControllers = true
+//            for viewController in viewControllers {
+//                // viewWillDisappearが呼ばれる時に、
+//                // 戻る処理を行っていれば、NavigationControllerのviewControllersの中にselfは存在していない
+//                if viewController == self {
+//                    existsSelfInViewControllers = false
+//                    // selfが存在した時点で処理を終える
+//                    break
+//                }
+//            }
+//            
+//            if existsSelfInViewControllers {
+//                saveLabels()
+//            }
+//        }
         
     }
 

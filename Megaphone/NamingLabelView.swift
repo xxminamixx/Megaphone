@@ -28,6 +28,10 @@ class NamingLabelView: UIView {
     var befroScale: CGFloat = 1.0
     // ラベルのフォントサイズ
     var fontSize: CGFloat = 18.0
+    // テキストの色
+    var fontColor: String = ""
+    // テキストの縁の色
+    var strokeColor: String = ""
     
     override func awakeFromNib() {
         

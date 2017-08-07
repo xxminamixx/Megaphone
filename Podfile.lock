@@ -7,12 +7,14 @@ PODS:
   - Realm/Headers (2.8.2)
   - RealmSwift (2.8.2):
     - Realm (= 2.8.2)
+  - SwiftyAttributes (3.1.0)
 
 DEPENDENCIES:
   - Cartography (from `https://github.com/xxminamixx/Cartography`)
   - GestureRecognizerClosures (~> 3)
   - GoogleMobileAds
   - RealmSwift
+  - SwiftyAttributes (~> 3.1.0)
 
 EXTERNAL SOURCES:
   Cartography:
@@ -29,7 +31,8 @@ SPEC CHECKSUMS:
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
   Realm: 0e262abf087c7054013e00579274f7e070486d4a
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
+  SwiftyAttributes: f337a324cd21f1b18782ab85d3478ccae73f7593
 
-PODFILE CHECKSUM: bf96b1df54385b8489c1288babb6ca641a607ad2
+PODFILE CHECKSUM: d6487d68d7b75b501b9cc5144455b6f700eab9bb
 
 COCOAPODS: 1.1.1

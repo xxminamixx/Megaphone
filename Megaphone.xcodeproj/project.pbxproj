@@ -20,6 +20,9 @@
 		9D4D0AB61F3301D90061D03E /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB31F3301D90061D03E /* delete@3x.png */; };
 		9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */; };
 		9D4D0ABA1F3426A60061D03E /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AB91F3426A60061D03E /* close.png */; };
+		9D4D0ABC1F38093A0061D03E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0ABB1F38093A0061D03E /* UIColorExtension.swift */; };
+		9D4D0ABE1F381B670061D03E /* LabelSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */; };
+		9D4D0AC01F381B7C0061D03E /* LabelSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -99,6 +102,9 @@
 		9D4D0AB31F3301D90061D03E /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
 		9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerManager.swift; sourceTree = "<group>"; };
 		9D4D0AB91F3426A60061D03E /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		9D4D0ABB1F38093A0061D03E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingView.xib; sourceTree = "<group>"; };
+		9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingView.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				9DDB14211F2F1F05007C4C85 /* UIViewExtension.swift */,
+				9D4D0ABB1F38093A0061D03E /* UIColorExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -363,6 +370,8 @@
 				9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+				9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */,
+				9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -501,6 +510,7 @@
 				9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */,
 				9D4D0AB41F3301D90061D03E /* delete.png in Resources */,
 				9DAEC6F41F3045A3009B03E3 /* tyozame.jpg in Resources */,
+				9D4D0ABE1F381B670061D03E /* LabelSettingView.xib in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
 				9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */,
@@ -620,11 +630,13 @@
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
+				9D4D0ABC1F38093A0061D03E /* UIColorExtension.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9DAEC6FD1F304EF2009B03E3 /* NavigationController.swift in Sources */,
 				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
+				9D4D0AC01F381B7C0061D03E /* LabelSettingView.swift in Sources */,
 				9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */,
 				9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,

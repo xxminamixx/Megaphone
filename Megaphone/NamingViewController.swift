@@ -10,6 +10,7 @@ import UIKit
 import Social
 import Cartography
 import GestureRecognizerClosures
+import SwiftyAttributes
 
 class NamingViewController: UIViewController {
     
@@ -347,9 +348,13 @@ extension NamingViewController: TextViewControllerDelegate {
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                 
                 // サイズ計算用のダミーのラベル
-                label.namingLabel.text = text
+                // TODO: ここで設定した内容をNamingLabelViewのプロパティに持たせることで永続化できるようにする
+                let settingLabel = text?.withTextColor(UIColor.white).withFont(UIFont(name: "HelveticaNeue-Bold", size: 18)!).withStrokeColor(UIColor.white)
+                label.namingLabel.attributedText = settingLabel
+                
                 label.fontSize = 18
-                label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+                label.fontColor = ""
+//                label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
                 let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height

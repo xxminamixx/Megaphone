@@ -9,6 +9,7 @@ target 'Megaphone' do
   pod 'GoogleMobileAds'
   pod 'GestureRecognizerClosures', '~> 3'
   pod 'Cartography' , :git => 'https://github.com/xxminamixx/Cartography'
+  pod ‘SwiftyAttributes’, ‘~> 3.1.0’
 
   # Pods for Megaphone
 

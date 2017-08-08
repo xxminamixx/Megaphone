@@ -23,6 +23,8 @@ class NamingViewController: UIViewController {
     var pointY: CGFloat?
     // 編集しているラベル保持用のプロパティ
     var editLabelView: NamingLabelView?
+    // ラベル編集中のラベルを保持
+    var textSettingView: LabelSettingView?
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -183,6 +185,10 @@ class NamingViewController: UIViewController {
                 editingLabel.closeImageView.isHidden = true
                 // 編集中のラベルのポインタを破棄
                 self.editLabelView = nil
+                
+                // 色変更Viewを削除
+                closeLabelSettingView()
+                
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
             }
@@ -239,10 +245,10 @@ class NamingViewController: UIViewController {
             
             entity.pointX = subview.frame.origin.x
             entity.pointY = subview.frame.origin.y
-            let label = subview as! NamingLabelView
-            entity.fontSize = label.fontSize
-            entity.text = label.namingLabel.text
-            
+            if let label = subview as? NamingLabelView {
+                entity.fontSize = label.fontSize
+                entity.text = label.namingLabel.text
+            }
             labelEntity.labelList.append(entity)
         }
         // 画面タイトルをキーに設定
@@ -278,6 +284,17 @@ class NamingViewController: UIViewController {
         }
     }
     
+    // ラベルの色を設定するViewを閉じる
+    func closeLabelSettingView() {
+        // 色変更のViewがあるとき
+        if let settingViwe = textSettingView {
+            // レイヤーから削除
+            settingViwe.removeFromSuperview()
+            // ポインタを破棄
+            textSettingView = nil
+        }
+    }
+    
 }
 
 // MARK: UITextViewDelegate
@@ -294,25 +311,14 @@ extension NamingViewController: UITextViewDelegate {
 // MARK: NamingLabelViewDelegate
 extension NamingViewController: NamingLabelViewDelegate {
     
+    func closeButtonTapped(view: NamingLabelView) {
+        // ラベルを削除
+        view.removeFromSuperview()
+        // 色変更のViewが表示されていたら削除
+        closeLabelSettingView()
+    }
+    
     func namingLabelTapped(view: NamingLabelView) {
-
-//        // TOOD: LabelSettingViewを表示する
-//        if let labelSettingView = UINib(nibName: LabelSettingView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelSettingView {
-//            labelSettingView.delegate = self
-//            imageScrollView.addSubview(labelSettingView)
-//            
-//            // オートレイアウトの制約更新
-//            guard let image = imageView else {
-//                return
-//            }
-//            
-//            constrain(labelSettingView, image) { view1, view2 in
-//                view1.height == 220.0
-//                view1.width == UIScreen.main.bounds.width
-//                view1.bottom == view2.bottom - 60
-//            }
-//
-//        }
     
         // 2回目にタップしたビューが同じビューではなく、前のタップしたラベルが選択状態のままの時
         if let editingLabel = self.editLabelView {
@@ -390,6 +396,7 @@ extension NamingViewController: TextViewControllerDelegate {
     
 }
 
+// MARK: ItemViewDelegate
 extension NamingViewController: ItemViewDelegate {
 
     
@@ -409,7 +416,7 @@ extension NamingViewController: ItemViewDelegate {
     }
     
     // 色選択のViewを表示
-    private func showColorPicker(isFont: Bool) {
+    func showColorPicker(isFont: Bool) {
         
         // ラベルを編集集じゃなかったら以下に進まない
         guard let _ = self.editLabelView else {
@@ -417,10 +424,30 @@ extension NamingViewController: ItemViewDelegate {
         }
         
         if let labelSettingView = UINib(nibName: LabelSettingView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelSettingView {
-            labelSettingView.delegate = self
-            labelSettingView.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 180)
-            labelSettingView.isFontColorSelected = isFont
-            imageScrollView.addSubview(labelSettingView)
+            
+            closeLabelSettingView()
+            
+            // プロパティで保持
+            textSettingView = labelSettingView
+            textSettingView?.delegate = self
+            textSettingView?.isFontColorSelected = isFont
+            if isFont {
+                // フォント色変更時の初期設定
+                textSettingView?.fill.drawLine(color: UIColor.brown, lineWidth: 1.0)
+                
+                // 現状フォント色選択時にスライダーを活用しないので非表示にする
+                textSettingView?.slider.isHidden = true
+                textSettingView?.sliderLeftImage.isHidden = true
+                textSettingView?.sliderRightImage.isHidden = true
+            } else {
+                // 枠色変更時の初期設定
+                textSettingView?.stroke.drawLine(color: UIColor.brown, lineWidth: 1.0)
+            }
+            textSettingView?.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 200)
+            
+            if let settingView = textSettingView {
+                imageScrollView.addSubview(settingView)
+            }
             
             // オートレイアウトの制約更新
             guard let image = imageView else {
@@ -428,7 +455,7 @@ extension NamingViewController: ItemViewDelegate {
             }
             
             constrain(labelSettingView, image) { view1, view2 in
-                view1.height == 180.0
+                view1.height == 200.0
                 view1.width == UIScreen.main.bounds.size.width
                 view1.left == view2.left
                 view1.right == view2.right
@@ -471,12 +498,28 @@ extension NamingViewController: ItemViewDelegate {
 
 extension NamingViewController: LabelSettingViewDelegate {
     
+    func modeChange(isFont: Bool) {
+        showColorPicker(isFont: isFont)
+    }
+    
+    func movedSlider(sender: UISlider, isFont: Bool, color: UIColor) {
+        if isFont{
+            // フォント選択時にスライダーを動かした時の処理
+        } else {
+            // 枠線選択時にスライダーを動かした時の処理
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeWidth(-1.0 * (Double(sender.value * 10))).withStrokeColor(color)
+        }
+    }
+
     func colorViewTapped(isFont: Bool, color: UIColor) {
         // TODO: editLabelの色を変更する処理
+        // フォント色
+        // 枠線色
+        // 枠線の太さ
         if isFont {
             editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withTextColor(color)
         } else {
-            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color)
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color).withStrokeWidth(-1.0)
         }
     }
     

@@ -34,8 +34,14 @@ extension UIView {
     
     // 枠線を描くメソッド
     func drawLine(color: UIColor, lineWidth: CGFloat) {
-        self.layer.borderWidth = lineWidth
-        self.layer.borderColor = color.cgColor
+        let lineLayer = CAShapeLayer()
+        lineLayer.frame = self.bounds
+        lineLayer.strokeColor = color.cgColor
+        lineLayer.lineWidth = lineWidth
+        lineLayer.fillColor = nil
+        lineLayer.path = UIBezierPath(rect: lineLayer.frame).cgPath
+        
+        self.layer.addSublayer(lineLayer)
     }
     
     // 破線を描くメソッド

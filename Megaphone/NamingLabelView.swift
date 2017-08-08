@@ -10,6 +10,7 @@ import UIKit
 import GestureRecognizerClosures
 
 protocol NamingLabelViewDelegate {
+    func closeButtonTapped(view: NamingLabelView)
     func namingLabelTapped(view: NamingLabelView)
 }
 
@@ -42,7 +43,8 @@ class NamingLabelView: UIView {
         // 閉じるボタンが押された時の処理
         closeImageView.onTap { _ in
             if self.isSubLayer(count: 3) {
-                self.removeFromSuperview()
+                self.delegate.closeButtonTapped(view: self)
+//                self.removeFromSuperview()
             }
         }
         

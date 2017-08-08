@@ -10,15 +10,27 @@ import UIKit
 import GestureRecognizerClosures
 
 protocol LabelSettingViewDelegate {
+    // フォント色・枠色の切り替え
+    func modeChange(isFont: Bool)
     func colorViewTapped(isFont: Bool, color: UIColor)
+    func movedSlider(sender: UISlider, isFont: Bool, color: UIColor)
 }
 
 class LabelSettingView: UIView {
     
     static let nibName = "LabelSettingView"
     
+    // 塗りつぶしボタン
+    @IBOutlet weak var fill: UIImageView!
+    // 枠線ボタン
+    @IBOutlet weak var stroke: UIImageView!
     // 閉じるボタン
     @IBOutlet weak var close: UIImageView!
+    
+    @IBOutlet weak var sliderLeftImage: UIImageView!
+    
+    @IBOutlet weak var sliderRightImage: UIImageView!
+    
     
     @IBOutlet weak var redView: UIView!
     @IBOutlet weak var orangeView: UIView!
@@ -35,7 +47,12 @@ class LabelSettingView: UIView {
     
     @IBOutlet weak var slider: UISlider!
     
+    // 選択中の色Viewを囲む線の太さ
+    let colorViewOutlineWidth: CGFloat = 2.0
+    
     var delegate: LabelSettingViewDelegate!
+    // 選択しているColorView
+    var selectView: UIView?
     
     // デフォルトでフォント色の変更になっている。falseのときは枠色を選択している状態
     var isFontColorSelected = true
@@ -60,9 +77,30 @@ class LabelSettingView: UIView {
         
         /* ジェスチャ関連登録 */
         
-        /// フォント色選択時
+        // 親Viewのタップ判定を奪うために空実装
         self.onTap { _ in
             
+        }
+        
+        /// フォント色選択時
+        fill.onTap { _ in
+            self.delegate.modeChange(isFont: true)
+//            self.isFontColorSelected = true
+//            self.fill.drawLine(color: UIColor.brown, lineWidth: 1.0)
+//            // 枠線Viewの上にレイヤがあったら削除して選択表現を解除
+//            if self.stroke.isSubLayer(count: 1) {
+//                self.stroke.layer.sublayers?.last?.removeFromSuperlayer()
+//            }
+        }
+        
+        stroke.onTap { _ in
+            self.delegate.modeChange(isFont: false)
+//            self.isFontColorSelected = false
+//            self.stroke.drawLine(color: UIColor.brown, lineWidth: 1.0)
+//            // 塗りつぶしViewの上にレイヤがあったら削除して選択表現を解除
+//            if self.fill.isSubLayer(count: 1) {
+//                self.fill.layer.sublayers?.last?.removeFromSuperlayer()
+//            }
         }
         
         /// 閉じるボタン
@@ -73,56 +111,116 @@ class LabelSettingView: UIView {
         
         /// 色選択系
         redView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.redView)
+            self.redView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.redView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.red)
         }
         
         orangeView.onTap{ _ in
+            deleteDrawLineOtherColorView(view: self.orangeView)
+            self.orangeView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.orangeView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.orange)
         }
         
         greenView.onTap{ _ in
+            deleteDrawLineOtherColorView(view: self.greenView)
+            self.greenView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.greenView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconGreen)
         }
         
         blueView.onTap{ _ in
+            deleteDrawLineOtherColorView(view: self.blueView)
+            self.blueView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.blueView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.blue)
         }
         
         purpleView.onTap{ _ in
+            deleteDrawLineOtherColorView(view: self.purpleView)
+            self.purpleView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.purpleView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.purple)
         }
         
         grayView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.grayView)
+            self.grayView.drawLine(color: UIColor.darkGray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.grayView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.gray_e8e8e8)
         }
         
         pinkView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.pinkView)
+            self.pinkView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.pinkView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.pink)
         }
         
         yellowView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.yellowView)
+            self.yellowView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.yellowView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconYellow)
         }
         
         yellowGreenView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.yellowGreenView)
+            self.yellowGreenView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.yellowGreenView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.yellowGreen)
         }
         
         lightBlueView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.lightBlueView)
+            self.lightBlueView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.lightBlueView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.lightBlue)
         }
         
         blackView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.blackView)
+            self.blackView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.blackView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.black)
         }
         
         whiteView.onTap { _ in
+            deleteDrawLineOtherColorView(view: self.whiteView)
+            self.whiteView.drawLine(color: UIColor.gray, lineWidth: self.colorViewOutlineWidth)
+            self.selectView = self.whiteView
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.white)
         }
+        
+        // TODO: 他の色Viewにラインのレイヤーが載っていたら削除する共有処理がほしい
+        func deleteDrawLineOtherColorView(view: UIView) {
+            if selectView != nil {
+                // 選択中のViewがあったらそのViewの一番上のレイヤを削除
+                selectView?.layer.sublayers?.last?.removeFromSuperlayer()
+                // 自身を選択中にする
+                selectView = view
+            } else {
+                // 選択中のViewがなかったら自分を選択中にする
+                selectView = view
+            }
+        }
+            
     }
     
-    @IBAction func moveToSlider(_ sender: Any) {
-    
+    @IBAction func sliderMoved(_ sender: UISlider) {
+       
+        guard let select = selectView else {
+           return
+        }
+        
+        guard let backgroundColor = select.backgroundColor else {
+            return
+        }
+        
+         delegate.movedSlider(sender: sender, isFont: isFontColorSelected, color: backgroundColor)
     }
+    
     
 }

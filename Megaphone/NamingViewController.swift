@@ -114,32 +114,9 @@ class NamingViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         // 永続化処理
         saveLabels()
-        
-//        // モーダル画面が表示された際も呼ばれるのでNvigationBarの戻るを押した時だけ永続化処理
-//        if let viewControllers = self.navigationController?.viewControllers {
-//            var existsSelfInViewControllers = true
-//            for viewController in viewControllers {
-//                // viewWillDisappearが呼ばれる時に、
-//                // 戻る処理を行っていれば、NavigationControllerのviewControllersの中にselfは存在していない
-//                if viewController == self {
-//                    existsSelfInViewControllers = false
-//                    // selfが存在した時点で処理を終える
-//                    break
-//                }
-//            }
-//            
-//            if existsSelfInViewControllers {
-//                saveLabels()
-//            }
-//        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -377,7 +354,6 @@ extension NamingViewController: TextViewControllerDelegate {
                 
                 label.fontSize = 18
                 label.fontColor = ""
-//                label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
                 label.namingLabel.sizeToFit()
                 let labelWidth = label.namingLabel.bounds.width
                 let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
@@ -467,15 +443,12 @@ extension NamingViewController: ItemViewDelegate {
     // 塗りつぶしボタンを押した時
     func fillTapped() {
         showColorPicker(isFont: true)
-        // TODO: 同じViewがあったら複数枚subViewに追加しないようにしたい
-        // 塗りつぶしボタンを押した後に枠線ボタンを押したら２枚重なる
     }
     
     // 枠線ボタンを押した時
     func strokeTapped() {
         showColorPicker(isFont: false)
     }
-
     
     func twitterTapped() {
         if let image = imageView?.castImage() {

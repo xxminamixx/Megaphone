@@ -85,22 +85,10 @@ class LabelSettingView: UIView {
         /// フォント色選択時
         fill.onTap { _ in
             self.delegate.modeChange(isFont: true)
-//            self.isFontColorSelected = true
-//            self.fill.drawLine(color: UIColor.brown, lineWidth: 1.0)
-//            // 枠線Viewの上にレイヤがあったら削除して選択表現を解除
-//            if self.stroke.isSubLayer(count: 1) {
-//                self.stroke.layer.sublayers?.last?.removeFromSuperlayer()
-//            }
         }
         
         stroke.onTap { _ in
             self.delegate.modeChange(isFont: false)
-//            self.isFontColorSelected = false
-//            self.stroke.drawLine(color: UIColor.brown, lineWidth: 1.0)
-//            // 塗りつぶしViewの上にレイヤがあったら削除して選択表現を解除
-//            if self.fill.isSubLayer(count: 1) {
-//                self.fill.layer.sublayers?.last?.removeFromSuperlayer()
-//            }
         }
         
         /// 閉じるボタン

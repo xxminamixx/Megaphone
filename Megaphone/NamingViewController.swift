@@ -194,10 +194,15 @@ class NamingViewController: UIViewController {
     }
     
     // ImageViewにlabelを追加する
-    func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String?, fontSize: CGFloat) {
+    func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String?, fontSize: CGFloat, attribute: Data) {
         label.namingLabel.text = text
+        
+        // NSDataから復元
+        let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSAttributedString
+        
         label.fontSize = fontSize
         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+        label.namingLabel.attributedText = attributedText
         label.namingLabel.sizeToFit()
         let labelWidth = label.namingLabel.bounds.width
         let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height
@@ -210,6 +215,7 @@ class NamingViewController: UIViewController {
         imageView?.addSubview(label)
     }
     
+    // MARK: ラベル永続化処理
     private func saveLabels() {
         // imageViewのsubviewであるNamingViewを全て取得したい
         guard let subviews = imageView?.subviews else {
@@ -220,12 +226,23 @@ class NamingViewController: UIViewController {
         for subview in subviews {
             let entity = LabelEntity()
             
+            // ラベルの原点格納
             entity.pointX = subview.frame.origin.x
             entity.pointY = subview.frame.origin.y
+            
+            // ラベルのフォントサイズ と　テキストを格納
             if let label = subview as? NamingLabelView {
                 entity.fontSize = label.fontSize
                 entity.text = label.namingLabel.text
+                
+                // TODO: 文字色・枠色・枠太さ
+                let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
+                
+                entity.attribute = data
             }
+            
+ 
+            
             labelEntity.labelList.append(entity)
         }
         // 画面タイトルをキーに設定
@@ -243,7 +260,7 @@ class NamingViewController: UIViewController {
         LabelStoreManager.add(object: labelEntity)
     }
     
-    // Realmに永続化されているラベル情報を読み込み配置する
+    // MARK: Realmに永続化されているラベル情報を読み込み配置する
     private func loadLabels() {
         if let title = navigationItem.title {
             
@@ -254,7 +271,7 @@ class NamingViewController: UIViewController {
                     
                     if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                         
-                        addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize)
+                        addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize, attribute: labelEntity.attribute!)
                     }
                 }
             }
@@ -336,8 +353,10 @@ extension NamingViewController: TextViewControllerDelegate {
             let y = editLabelView?.beforFrame.y
             
             // 新しいラベルビューを追加
+            
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
-                addLabelToImageView(label: label, x: x!, y: y!, text: text, fontSize: (self.editLabelView?.fontSize)!)
+                let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
+                addLabelToImageView(label: label, x: x!, y: y!, text: text, fontSize: (self.editLabelView?.fontSize)!, attribute: data)
             }
             // 編集中のラベルを削除
             editLabelView?.removeFromSuperview()

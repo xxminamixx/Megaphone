@@ -44,7 +44,6 @@ class NamingLabelView: UIView {
         closeImageView.onTap { _ in
             if self.isSubLayer(count: 3) {
                 self.delegate.closeButtonTapped(view: self)
-//                self.removeFromSuperview()
             }
         }
         

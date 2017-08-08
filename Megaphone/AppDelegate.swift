@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 migration.enumerateObjects(ofType: LabelEntity.className()) { oldObject, newObject in
                     // スキーマバージョンが0のときだけ、'attribute'プロパティを追加します
                     if oldSchemaVersion < 1 {
-                        newObject!["attribute"] = ""
+                        newObject!["attribute"] = Data()
                     }
                     
                 }

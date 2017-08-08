@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                // enumerate(_:_:)メソッドで保存されているすべての
+                // Personオブジェクトを列挙します
+                migration.enumerateObjects(ofType: LabelEntity.className()) { oldObject, newObject in
+                    // スキーマバージョンが0のときだけ、'attribute'プロパティを追加します
+                    if oldSchemaVersion < 1 {
+                        newObject!["attribute"] = ""
+                    }
+                    
+                }
+                
+                //
+                if (oldSchemaVersion < 1) {
+                    // 海女美術大学の名前ミスを修正
+                    migration.renameProperty(onType: LabelEntity.className(), from: "海女美術館", to: "海女美術大学")
+                }
+        })
+
+        
         return true
     }
 

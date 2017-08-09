@@ -105,10 +105,7 @@ class NamingViewController: UIViewController {
             topItemsView = itemsView
             
             // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
-            if self.editLabelView == nil {
-                itemsView.fillButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
-                itemsView.strokeButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
-            }
+            drawCancelLineToFontConfig()
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
@@ -178,8 +175,7 @@ class NamingViewController: UIViewController {
                 closeLabelSettingView()
                 
                 // ItemsViewの塗りつぶしボタン・枠線ボタンに打ち消し線を描く
-                topItemsView?.fillButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
-                topItemsView?.strokeButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+                drawCancelLineToFontConfig()
                 
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
@@ -307,6 +303,21 @@ class NamingViewController: UIViewController {
         }
     }
     
+    // ItemsViewの塗りつぶし・枠線ボタンに打ち消し線を描く
+    func drawCancelLineToFontConfig() {
+        // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
+        if self.editLabelView == nil {
+            topItemsView?.fillButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+            topItemsView?.strokeButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+        }
+    }
+    
+    // ItemsViewの塗りつぶし・枠線ボタンに書いている打ち消し線を削除する
+    func deleteCancelLineToFontConfig() {
+        topItemsView?.fillButton.layer.sublayers?.last?.removeFromSuperlayer()
+        topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
+    }
+    
 }
 
 // MARK: UITextViewDelegate
@@ -355,9 +366,7 @@ extension NamingViewController: NamingLabelViewDelegate {
             }
         } else {
             // 選択状態にした時
-            // TODO: ItemViewの打ち消し線処理
-            topItemsView?.fillButton.layer.sublayers?.last?.removeFromSuperlayer()
-            topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
+            deleteCancelLineToFontConfig()
         }
     }
     

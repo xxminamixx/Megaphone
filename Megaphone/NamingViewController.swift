@@ -270,8 +270,11 @@ class NamingViewController: UIViewController {
                 for labelEntity in entity.labelList {
                     
                     if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
-                        
-                        addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize, attribute: labelEntity.attribute!)
+                        if let attribute = labelEntity.attribute {
+                             addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize, attribute: attribute)
+                        } else {
+                             addLabelToImageView(label: label, x: labelEntity.pointX, y: labelEntity.pointY, text: labelEntity.text, fontSize: labelEntity.fontSize, attribute: Data())
+                        }
                     }
                 }
             }

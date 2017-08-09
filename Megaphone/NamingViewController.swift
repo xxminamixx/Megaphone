@@ -513,7 +513,7 @@ extension NamingViewController: ItemViewDelegate {
             // ツイッター投稿画面を表示
             let twitterPostView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
             twitterPostView.add(image)
-            twitterPostView.setInitialText("")
+            twitterPostView.setInitialText("#Splatoon2 #スプラトゥーン2\n#めがほん\n")
             present(twitterPostView, animated: true, completion: nil)
         }
     }

@@ -14,10 +14,10 @@ class ConstColor {
     static let red = UIColor(red: 0.9176, green: 0, blue: 0.0118, alpha: 1.0) /* #ea0003 */
     
     // MARK: ピンク系
-    static let pink = UIColor(red: 1, green: 0.2667, blue: 0.8157, alpha: 1.0) /* #ff44d0 */
+    static let pink = UIColor(red: 1, green: 0.5098, blue: 0.8902, alpha: 1.0) /* #ff82e3 */
     
     // MARK: オレンジ系
-    static let orange = UIColor(red: 1, green: 0.6588, blue: 0.2667, alpha: 1.0) /* #ffa844 */
+    static let orange = UIColor(red: 1, green: 0.4667, blue: 0, alpha: 1.0) /* #ff7700 */
     
     // MARK: 黄色系
     static let iconYellow = UIColor(red: 1, green: 0.7922, blue: 0, alpha: 1.0) /* #ffca00 */
@@ -30,7 +30,7 @@ class ConstColor {
     
     // MARK: 青系
     static let blue = UIColor(red: 0, green: 0.2824, blue: 1, alpha: 1.0) /* #0048ff */
-    static let lightBlue = UIColor(red: 0.2549, green: 0.4784, blue: 0.8588, alpha: 1.0) /* #417adb */
+    static let lightBlue = UIColor(red: 0, green: 0.8824, blue: 1, alpha: 1.0) /* #00e1ff */
     
     // MARK: 紫系
     static let purple = UIColor(red: 0.8667, green: 0.2588, blue: 0.5843, alpha: 1.0) /* #dd4295 */

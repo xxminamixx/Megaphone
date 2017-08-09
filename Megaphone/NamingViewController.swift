@@ -161,7 +161,7 @@ class NamingViewController: UIViewController {
             pointY = point.y
         }
         
-        // 2回目にタップしたビューが同じビューではなく、前のタップしたラベルが選択状態のままの時
+        // スクロールビューをタップしたときに選択状態のLabelがある場合
         if let editingLabel = self.editLabelView {
             if editingLabel.isSubLayer(count: 3) {
                 // 選択状態を解除
@@ -172,7 +172,7 @@ class NamingViewController: UIViewController {
                 self.editLabelView = nil
                 
                 // 色変更Viewを削除
-                closeLabelSettingView()
+                closeLabelSettingView(isAnimation: true)
                 
                 // ItemsViewの塗りつぶしボタン・枠線ボタンに打ち消し線を描く
                 drawCancelLineToFontConfig()
@@ -293,14 +293,32 @@ class NamingViewController: UIViewController {
     }
     
     // ラベルの色を設定するViewを閉じる
-    func closeLabelSettingView() {
-        // 色変更のViewがあるとき
-        if let settingViwe = textSettingView {
-            // レイヤーから削除
-            settingViwe.removeFromSuperview()
-            // ポインタを破棄
-            textSettingView = nil
+    func closeLabelSettingView(isAnimation: Bool) {
+        
+        // 色変更のViewがなかったら以下に進まない
+        guard let settingView = textSettingView else {
+            return
         }
+        
+        func delete() {
+            // レイヤーから削除
+            settingView.removeFromSuperview()
+            // ポインタを破棄
+            self.textSettingView = nil
+        }
+        
+        if isAnimation {
+            // アニメーションありでSettingViewを消す
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+                settingView.frame.origin.y += settingView.frame.size.height
+            }, completion: { fin in
+                delete()
+            })
+        } else {
+            // アニメーション無しでSettingViewを消す
+            delete()
+        }
+        
     }
     
     // ItemsViewの塗りつぶし・枠線ボタンに打ち消し線を描く
@@ -338,7 +356,7 @@ extension NamingViewController: NamingLabelViewDelegate {
         // ラベルを削除
         view.removeFromSuperview()
         // 色変更のViewが表示されていたら削除
-        closeLabelSettingView()
+        closeLabelSettingView(isAnimation: true)
     }
     
     func namingLabelTapped(view: NamingLabelView) {
@@ -457,7 +475,7 @@ extension NamingViewController: ItemViewDelegate {
         
         if let labelSettingView = UINib(nibName: LabelSettingView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelSettingView {
             
-            closeLabelSettingView()
+            closeLabelSettingView(isAnimation: false)
             
             // プロパティで保持
             textSettingView = labelSettingView
@@ -536,7 +554,12 @@ extension NamingViewController: ItemViewDelegate {
     
 }
 
+// MARK: LabelSettingViewDelegate
 extension NamingViewController: LabelSettingViewDelegate {
+    
+    func closeTapped() {
+        closeLabelSettingView(isAnimation: true)
+    }
     
     func modeChange(isFont: Bool) {
         showColorPicker(isFont: isFont, isSelectItemView: false)

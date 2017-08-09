@@ -11,6 +11,7 @@ import GestureRecognizerClosures
 
 protocol LabelSettingViewDelegate {
     // フォント色・枠色の切り替え
+    func closeTapped()
     func modeChange(isFont: Bool)
     func colorViewTapped(isFont: Bool, color: UIColor)
     func movedSlider(sender: UISlider, isFont: Bool, color: UIColor)
@@ -100,7 +101,7 @@ class LabelSettingView: UIView {
         /// 閉じるボタン
         close.onTap { _ in
             // subViewから自身を取り除く
-            self.removeFromSuperview()
+            self.delegate.closeTapped()
         }
         
         /// 色選択系

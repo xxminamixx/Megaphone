@@ -17,13 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // カラムの追加、削除があった場合はschemaVersionをカウントアップするだけで自動で行ってくれる
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
-                // enumerate(_:_:)メソッドで保存されているすべての
-                // Personオブジェクトを列挙します
                 migration.enumerateObjects(ofType: LabelEntity.className()) { oldObject, newObject in
-                    // スキーマバージョンが0のときだけ、'attribute'プロパティを追加します
                 }
         })
         

@@ -60,12 +60,6 @@ class TextViewController: UIViewController {
         navigationItem.setLeftBarButtonItems([leftCloseButtonItem], animated: true)
     }
     
-//    override func viewDidLayoutSubviews() {
-//        // テキスト開始位置を上寄せ
-//        // TODO: 入力を開始すると元の位置に戻ってしまう
-//        textView.setContentOffset(CGPoint.zero, animated: false)
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

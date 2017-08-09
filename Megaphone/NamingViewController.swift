@@ -197,12 +197,12 @@ class NamingViewController: UIViewController {
     func addLabelToImageView (label: NamingLabelView, x: CGFloat, y: CGFloat, text: String?, fontSize: CGFloat, attribute: Data) {
         label.namingLabel.text = text
         
-        // NSDataから復元
-        let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSAttributedString
-        
         label.fontSize = fontSize
         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
-        label.namingLabel.attributedText = attributedText
+        // NSDataから復元
+        if let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSAttributedString {
+            label.namingLabel.attributedText = attributedText
+        }
         label.namingLabel.sizeToFit()
         let labelWidth = label.namingLabel.bounds.width
         let viewHeight = label.namingLabel.bounds.height + label.closeImageView.bounds.height

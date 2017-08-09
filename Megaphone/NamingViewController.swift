@@ -275,6 +275,12 @@ class NamingViewController: UIViewController {
     private func loadLabels() {
         if let title = navigationItem.title {
             
+            if let missNameEntity = LabelStoreManager.pic(key: "海女美術館") {
+                LabelStoreManager.save {
+                    missNameEntity.key = "海女美術大学"
+                }
+            }
+            
             if let entity = LabelStoreManager.pic(key: title) {
                 
                 // このfor文で永続化永続化している複数のラベル座標からラベルを配置する

@@ -63,4 +63,16 @@ class LabelStoreManager: NSObject {
         }
     }
     
+    // MARK: Utility
+    
+    /// クロージャに更新処理を渡す
+    ///
+    /// - Parameter closure: 更新処理
+    static func save(closure: () -> Void) {
+        let realm = try! Realm()
+        try! realm.write {
+            closure()
+        }
+    }
+    
 }

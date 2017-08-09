@@ -211,7 +211,8 @@ class NamingViewController: UIViewController {
         label.fontSize = fontSize
         label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
         // NSDataから復元
-        if let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSAttributedString {
+        if let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSMutableAttributedString {
+            attributedText.mutableString.setString(text!)
             label.namingLabel.attributedText = attributedText
         }
         label.namingLabel.sizeToFit()
@@ -246,7 +247,6 @@ class NamingViewController: UIViewController {
                 entity.fontSize = label.fontSize
                 entity.text = label.namingLabel.text
                 
-                // TODO: 文字色・枠色・枠太さ
                 let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
                 
                 entity.attribute = data
@@ -411,7 +411,7 @@ extension NamingViewController: TextViewControllerDelegate {
             // 新しいラベルビューを追加
             
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
-                let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
+                let data = NSKeyedArchiver.archivedData(withRootObject: editLabelView?.namingLabel.attributedText ?? "")
                 addLabelToImageView(label: label, x: x!, y: y!, text: text, fontSize: (self.editLabelView?.fontSize)!, attribute: data)
             }
             // 編集中のラベルを削除
@@ -450,7 +450,6 @@ extension NamingViewController: TextViewControllerDelegate {
 // MARK: ItemViewDelegate
 extension NamingViewController: ItemViewDelegate {
 
-    
     func allDeleteTapped() {
         // このControllerに対応するRealmのエンティティを削除する
         present(AlertControllerManager.customActionAlert(title: nil, message: "テキストを全て削除しますか？",

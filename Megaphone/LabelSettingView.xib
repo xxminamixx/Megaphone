@@ -14,9 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-1H-jMw">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_thin.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-1H-jMw">
                     <rect key="frame" x="10" y="160" width="30" height="30"/>
-                    <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="DMw-RJ-MCF"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="G2l-MW-P4C"/>
@@ -24,9 +23,8 @@
                         <constraint firstAttribute="height" constant="30" id="gNw-J8-608"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3G-qe-CXh">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_think.png" translatesAutoresizingMaskIntoConstraints="NO" id="k3G-qe-CXh">
                     <rect key="frame" x="335" y="160" width="30" height="30"/>
-                    <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="RVV-Kz-JCa"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="U62-Au-I36"/>
@@ -199,5 +197,7 @@
         <image name="close.png" width="100" height="100"/>
         <image name="fill.png" width="30" height="30"/>
         <image name="stroke.png" width="30" height="30"/>
+        <image name="stroke_thin.png" width="30" height="30"/>
+        <image name="stroke_think.png" width="30" height="30"/>
     </resources>
 </document>

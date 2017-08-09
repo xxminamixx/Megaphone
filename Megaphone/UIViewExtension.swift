@@ -44,6 +44,23 @@ extension UIView {
         self.layer.addSublayer(lineLayer)
     }
     
+    // 斜めの打ち消し線を描くメソッド
+    func drawCancelLine(color: UIColor, lineWidth: CGFloat) {
+        let lineLayer = CAShapeLayer()
+        let path: CGMutablePath = CGMutablePath()
+        
+        lineLayer.frame = self.bounds
+        lineLayer.strokeColor = color.cgColor
+        lineLayer.lineWidth = lineWidth
+        lineLayer.fillColor = nil
+        
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        path.addLine(to: CGPoint.init(x: self.frame.size.width, y: self.frame.size.height))
+        lineLayer.path = path
+        
+        self.layer.addSublayer(lineLayer)
+    }
+    
     // 破線を描くメソッド
     func drawDashedLine(color: UIColor, lineWidth: CGFloat, lineSize: NSNumber, spaceSize: NSNumber, type: DashedLineType) {
         let dashedLineLayer: CAShapeLayer = CAShapeLayer()
@@ -59,20 +76,20 @@ extension UIView {
             dashedLineLayer.fillColor = nil
             dashedLineLayer.path = UIBezierPath(rect: dashedLineLayer.frame).cgPath
         case .Top:
-            path.move(to: CGPoint.init(x: 0.0, y: 0.0))
-            path.addLine(to: CGPoint.init(x: self.frame.size.width, y: 0.0))
+            path.move(to: CGPoint(x: 0.0, y: 0.0))
+            path.addLine(to: CGPoint(x: self.frame.size.width, y: 0.0))
             dashedLineLayer.path = path
         case .Down:
-            path.move(to: CGPoint.init(x: 0.0, y: self.frame.size.height))
-            path.addLine(to: CGPoint.init(x: self.frame.size.width, y: self.frame.size.height))
+            path.move(to: CGPoint(x: 0.0, y: self.frame.size.height))
+            path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
             dashedLineLayer.path = path
         case .Right:
-            path.move(to: CGPoint.init(x: self.frame.size.width, y: 0.0))
-            path.addLine(to: CGPoint.init(x: self.frame.size.width, y: self.frame.size.height))
+            path.move(to: CGPoint(x: self.frame.size.width, y: 0.0))
+            path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
             dashedLineLayer.path = path
         case .Left:
-            path.move(to: CGPoint.init(x: 0.0, y: 0.0))
-            path.addLine(to: CGPoint.init(x: 0.0, y: self.frame.size.height))
+            path.move(to: CGPoint(x: 0.0, y: 0.0))
+            path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height))
             dashedLineLayer.path = path
         }
         self.layer.addSublayer(dashedLineLayer)

@@ -25,6 +25,8 @@ class NamingViewController: UIViewController {
     var editLabelView: NamingLabelView?
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
+    // ItemsViewを保持
+    var topItemsView: ItemView?
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -99,6 +101,15 @@ class NamingViewController: UIViewController {
         // imageViewにアイテムViewを追加
         if let itemsView = UINib(nibName: ItemView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? ItemView {
             
+            // プロパティでItemsViewを保持
+            topItemsView = itemsView
+            
+            // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
+            if self.editLabelView == nil {
+                itemsView.fillButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+                itemsView.strokeButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+            }
+            
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
             imageScrollView.addSubview(itemsView)
@@ -165,6 +176,10 @@ class NamingViewController: UIViewController {
                 
                 // 色変更Viewを削除
                 closeLabelSettingView()
+                
+                // ItemsViewの塗りつぶしボタン・枠線ボタンに打ち消し線を描く
+                topItemsView?.fillButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+                topItemsView?.strokeButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
                 
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
@@ -338,6 +353,11 @@ extension NamingViewController: NamingLabelViewDelegate {
                 viewController.delegate = self
                 present(navigation, animated: true, completion: nil)
             }
+        } else {
+            // 選択状態にした時
+            // TODO: ItemViewの打ち消し線処理
+            topItemsView?.fillButton.layer.sublayers?.last?.removeFromSuperlayer()
+            topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
         }
     }
     
@@ -413,8 +433,13 @@ extension NamingViewController: ItemViewDelegate {
         }), animated: true, completion: nil)
     }
     
-    // 色選択のViewを表示
-    func showColorPicker(isFont: Bool) {
+    
+    /// 色選択のViewを表示
+    ///
+    /// - Parameters:
+    ///   - isFont: 今フォント色変更かどうかのフラグ
+    ///   - isSelectItemView: ItemViewをタップして呼ばれたかのフラグ
+    func showColorPicker(isFont: Bool, isSelectItemView: Bool) {
         
         // ラベルを編集集じゃなかったら以下に進まない
         guard let _ = self.editLabelView else {
@@ -431,7 +456,7 @@ extension NamingViewController: ItemViewDelegate {
             textSettingView?.isFontColorSelected = isFont
             if isFont {
                 // フォント色変更時の初期設定
-                textSettingView?.fill.drawLine(color: UIColor.brown, lineWidth: 1.0)
+                textSettingView?.fill.drawLine(color: UIColor.white, lineWidth: 1.0)
                 
                 // 現状フォント色選択時にスライダーを活用しないので非表示にする
                 textSettingView?.slider.isHidden = true
@@ -439,37 +464,48 @@ extension NamingViewController: ItemViewDelegate {
                 textSettingView?.sliderRightImage.isHidden = true
             } else {
                 // 枠色変更時の初期設定
-                textSettingView?.stroke.drawLine(color: UIColor.brown, lineWidth: 1.0)
+                textSettingView?.stroke.drawLine(color: UIColor.white, lineWidth: 1.0)
             }
             textSettingView?.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 200)
             
-            if let settingView = textSettingView {
-                imageScrollView.addSubview(settingView)
+            guard let settingView = textSettingView else {
+                return
             }
             
-            // オートレイアウトの制約更新
             guard let image = imageView else {
                 return
             }
             
-            constrain(labelSettingView, image) { view1, view2 in
+            imageScrollView.addSubview(settingView)
+            
+            // オートレイアウトの制約更新
+            constrain(settingView, image) { view1, view2 in
                 view1.height == 200.0
                 view1.width == UIScreen.main.bounds.size.width
                 view1.left == view2.left
                 view1.right == view2.right
                 view1.bottom == view2.bottom - 60
             }
+            
+            // アニメーションで下から出てくる設定
+            if isSelectItemView {
+                // ItemViewで選択されていたらアニメーションで表示
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+                    settingView.frame.origin.y -= settingView.frame.size.height
+                }, completion: nil)
+            }
+
         }
     }
     
     // 塗りつぶしボタンを押した時
     func fillTapped() {
-        showColorPicker(isFont: true)
+        showColorPicker(isFont: true, isSelectItemView: true)
     }
     
     // 枠線ボタンを押した時
     func strokeTapped() {
-        showColorPicker(isFont: false)
+        showColorPicker(isFont: false, isSelectItemView: true)
     }
     
     func twitterTapped() {
@@ -494,7 +530,7 @@ extension NamingViewController: ItemViewDelegate {
 extension NamingViewController: LabelSettingViewDelegate {
     
     func modeChange(isFont: Bool) {
-        showColorPicker(isFont: isFont)
+        showColorPicker(isFont: isFont, isSelectItemView: false)
     }
     
     func movedSlider(sender: UISlider, isFont: Bool, color: UIColor) {
@@ -507,10 +543,6 @@ extension NamingViewController: LabelSettingViewDelegate {
     }
 
     func colorViewTapped(isFont: Bool, color: UIColor) {
-        // TODO: editLabelの色を変更する処理
-        // フォント色
-        // 枠線色
-        // 枠線の太さ
         if isFont {
             editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withTextColor(color)
         } else {

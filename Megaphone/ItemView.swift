@@ -42,6 +42,8 @@ class ItemView: UIView {
         // 背景色を設定
         self.backgroundColor = ConstColor.iconYellow
         
+        self.onTap{ _ in }
+        
         allDeleteButton.onTap { _ in
             // タップしたことを実装側に通知
             self.delegate.allDeleteTapped()

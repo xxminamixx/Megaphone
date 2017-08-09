@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Mc-zT-jd5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +28,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-Ck-K0Z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -37,13 +36,14 @@
                         <constraints>
                             <constraint firstItem="lq4-hv-NDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3ws-In-TlL"/>
                             <constraint firstAttribute="trailing" secondItem="lq4-hv-NDc" secondAttribute="trailing" id="4KE-S8-5e2"/>
-                            <constraint firstAttribute="trailing" secondItem="Ser-Ck-K0Z" secondAttribute="trailing" id="DIc-AI-cTz"/>
-                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DiE-Lo-Uj9"/>
-                            <constraint firstItem="lq4-hv-NDc" firstAttribute="top" secondItem="Ser-Ck-K0Z" secondAttribute="bottom" id="M22-Zn-Yyt"/>
-                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mTT-nc-bVg"/>
+                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EM6-ZI-S8L"/>
+                            <constraint firstAttribute="trailing" secondItem="Ser-Ck-K0Z" secondAttribute="trailing" id="Ejy-1m-6jg"/>
+                            <constraint firstItem="lq4-hv-NDc" firstAttribute="top" secondItem="Ser-Ck-K0Z" secondAttribute="bottom" id="JoI-qD-OT4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lq4-hv-NDc" secondAttribute="bottom" id="pbs-1c-Xjg"/>
+                            <constraint firstItem="Ser-Ck-K0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r4l-r3-zf1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="b2P-T6-h8K"/>
                     <connections>
                         <outlet property="bannerView" destination="lq4-hv-NDc" id="pRE-sw-JIQ"/>
                         <outlet property="stageTableView" destination="Ser-Ck-K0Z" id="70y-Ir-a6J"/>
@@ -51,7 +51,109 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="972" y="37.331334332833585"/>
+        </scene>
+        <!--Naming View Controller-->
+        <scene sceneID="3Xg-rl-JPO">
+            <objects>
+                <viewController storyboardIdentifier="NamingViewController" id="Kuf-FB-PG5" customClass="NamingViewController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tKe-lt-qtp"/>
+                        <viewControllerLayoutGuide type="bottom" id="x1e-2T-efQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9mC-PW-YpH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqP-M4-Obz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x1e-2T-efQ" firstAttribute="top" secondItem="mqP-M4-Obz" secondAttribute="bottom" id="pn0-0b-FMN"/>
+                            <constraint firstItem="mqP-M4-Obz" firstAttribute="leading" secondItem="9mC-PW-YpH" secondAttribute="leading" id="sHD-Zq-0qx"/>
+                            <constraint firstAttribute="trailing" secondItem="mqP-M4-Obz" secondAttribute="trailing" id="swr-Bw-Sob"/>
+                            <constraint firstItem="mqP-M4-Obz" firstAttribute="top" secondItem="9mC-PW-YpH" secondAttribute="top" id="vuc-s7-kq1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="mqP-M4-Obz" id="DOQ-4b-3j3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6M-ff-9py" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845.5999999999999" y="36.431784107946029"/>
+        </scene>
+        <!--Text View Controller-->
+        <scene sceneID="dnM-88-saa">
+            <objects>
+                <viewController storyboardIdentifier="TextViewController" id="bOG-of-RPj" customClass="TextViewController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vb5-qO-sHE"/>
+                        <viewControllerLayoutGuide type="bottom" id="fYF-sJ-wdx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLt-Nv-mhv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-cK-Ogh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wWs-cK-Ogh" firstAttribute="leading" secondItem="jLt-Nv-mhv" secondAttribute="leading" id="5LC-3W-J6G"/>
+                            <constraint firstItem="wWs-cK-Ogh" firstAttribute="top" secondItem="Vb5-qO-sHE" secondAttribute="bottom" id="6Cv-4A-sP9"/>
+                            <constraint firstItem="fYF-sJ-wdx" firstAttribute="top" secondItem="wWs-cK-Ogh" secondAttribute="bottom" id="sRg-5M-DcF"/>
+                            <constraint firstAttribute="trailing" secondItem="wWs-cK-Ogh" secondAttribute="trailing" id="sih-hs-mgZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wIG-bi-Gqw"/>
+                    <connections>
+                        <outlet property="buttomConstraint" destination="sRg-5M-DcF" id="C09-l0-pKE"/>
+                        <outlet property="textView" destination="wWs-cK-Ogh" id="RiX-NZ-Ft5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CER-LC-GwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2784.8000000000002" y="805.54722638680664"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mXG-st-fjd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Mc-zT-jd5" customClass="NavigationController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qiU-SF-Jk6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="C8C-mh-yvd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAS-tl-9PX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+        </scene>
+        <!--Text View Navigation Controller-->
+        <scene sceneID="bwA-sj-40o">
+            <objects>
+                <navigationController storyboardIdentifier="TextViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2Mv-iU-RYH" customClass="TextViewNavigationController" customModule="Megaphone" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mqU-oh-jgY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AsO-be-Pm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845.5999999999999" y="805.54722638680664"/>
         </scene>
     </scenes>
 </document>

@@ -486,6 +486,12 @@ extension NamingViewController: TextViewControllerDelegate {
                 label.beforFrame = CGPoint(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2))
                 
                 label.delegate = self
+                
+                // 新規作成時は選択状態にする
+                label.closeImageView.isHidden = false
+                label.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
+                self.editLabelView = label
+                
                 imageView?.addSubview(label)
             }
         }

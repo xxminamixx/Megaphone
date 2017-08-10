@@ -627,11 +627,11 @@ extension NamingViewController: LabelSettingViewDelegate {
         }
     }
 
-    func colorViewTapped(isFont: Bool, color: UIColor) {
+    func colorViewTapped(isFont: Bool, color: UIColor, strokeWidth: Float) {
         if isFont {
             editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withTextColor(color)
         } else {
-            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color).withStrokeWidth(-1.0)
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color).withStrokeWidth(-1.0 * Double(strokeWidth * 10))
         }
     }
     

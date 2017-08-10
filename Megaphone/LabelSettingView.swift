@@ -76,8 +76,6 @@ class LabelSettingView: UIView {
         lightBlueView.backgroundColor = ConstColor.lightBlue
         blackView.backgroundColor = UIColor.black
         whiteView.backgroundColor = UIColor.white
-        // 背景色と同じで見えないので
-        whiteView.drawLine(color: UIColor.gray, lineWidth: 1.0)
         
         // スライダーの初期位置
         slider.value = 0.1

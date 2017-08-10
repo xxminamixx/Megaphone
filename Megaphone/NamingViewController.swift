@@ -36,9 +36,15 @@ class NamingViewController: UIViewController {
         // 戻るボタンの文字を空にすることで矢印だけにする
         navigationController!.navigationBar.topItem!.title = " "
         
+        /* imageView関連 */
         imageView?.backgroundColor = UIColor.darkGray
-        
         imageView?.isUserInteractionEnabled = true
+        
+        /* スクロールビュー関連 */
+        imageScrollView.delegate = self
+        imageScrollView.minimumZoomScale = 1.0
+        imageScrollView.maximumZoomScale = 3.0
+        imageScrollView.contentMode = .scaleAspectFit
         
         // スクロールビューにタップジェスチャを登録
         imageScrollView.onTap { tap in
@@ -341,6 +347,15 @@ class NamingViewController: UIViewController {
     func deleteCancelLineToFontConfig() {
         topItemsView?.fillButton.layer.sublayers?.last?.removeFromSuperlayer()
         topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
+    }
+    
+}
+
+// MARK: UIScrollViewDelegate
+extension NamingViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
     
 }

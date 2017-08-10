@@ -28,7 +28,7 @@ class NamingViewController: UIViewController {
     // ItemsViewを保持
     var topItemsView: ItemView?
     // ピンチした中心座標を保持
-    var pinchCenter: CGPoint?
+    var pinchCenter = CGPoint.zero
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -71,13 +71,21 @@ class NamingViewController: UIViewController {
                     self.pinchCenter = CGPoint(x: (pinchLocate1.x + pinchLocate2.x) / 2, y: (pinchLocate1.y + pinchLocate2.y) / 2 )
                 }
                 
+                // 縮小したときにスケール外にズームする問題の暫定対応
+                if pinch.scale < 1.0 {
+                    return
+                }
+                
                 // TODO: アンラップ危険なので後で修正
-                let width = (self.imageView?.frame.size.width)! / pinch.scale
-                let height = (self.imageView?.frame.size.height)! / pinch.scale
-                let x = (self.pinchCenter?.x)! - (width / 2)
-                let y = (self.pinchCenter?.y)! - (height / 2)
+                let width = (self.imageView?.bounds.size.width)! / pinch.scale
+                let height = (self.imageView?.bounds.size.height)! / pinch.scale
+                let x = self.pinchCenter.x - (width / 2)
+                let y = self.pinchCenter.y - (height / 2)
                 
                 let rect = CGRect(x: x, y: y, width: width, height: height)
+                print(pinch.scale)
+                print(self.pinchCenter)
+                print(rect)
                 self.imageScrollView.zoom(to: rect, animated: true)
                 
                 if pinch.state == .ended {
@@ -98,7 +106,7 @@ class NamingViewController: UIViewController {
             // ピンチしたときViewの大きさを変えてフォントサイズが変更されてもテキストが見切れないようにする
             self.editLabelView?.frame = CGRect(x: (self.editLabelView?.frame.origin.x)!, y: (self.editLabelView?.frame.origin.y)!, width: (self.editLabelView?.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.frame.height)! * (changeAmountScele))
             // Viewに追随してラベルも大きくする
-            self.editLabelView?.namingLabel.frame = CGRect.init(x: (self.editLabelView?.namingLabel.frame.origin.x)!, y: (self.editLabelView?.namingLabel.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.namingLabel.frame.height)! * (changeAmountScele))
+            self.editLabelView?.namingLabel.frame = CGRect(x: (self.editLabelView?.namingLabel.frame.origin.x)!, y: (self.editLabelView?.namingLabel.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.namingLabel.frame.height)! * (changeAmountScele))
             
             // フォントサイズ変更
             self.editLabelView?.fontSize = (self.editLabelView?.fontSize)! * changeAmountScele

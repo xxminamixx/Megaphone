@@ -187,6 +187,7 @@ class NamingViewController: UIViewController {
             if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
+                viewController.navigationItem.title = "新規作成"
                 viewController.delegate = self
                 present(navigation, animated: true, completion: nil)
             }
@@ -385,7 +386,10 @@ extension NamingViewController: NamingLabelViewDelegate {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
                 
+                viewController.navigationItem.title = "編集中"
                 viewController.delegate = self
+                viewController.text = view.namingLabel.text
+                
                 present(navigation, animated: true, completion: nil)
             }
         } else {

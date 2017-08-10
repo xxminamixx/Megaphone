@@ -19,11 +19,15 @@ class TextViewController: UIViewController {
     @IBOutlet weak var buttomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
     
+    var text: String?
+    
     var delegate: TextViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // テキストをセット
+        textView.text = text
         // テキストビューの色を変更
         textView.backgroundColor = UIColor.darkGray
         // テキストの色を白に変更

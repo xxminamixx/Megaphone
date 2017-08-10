@@ -27,6 +27,8 @@ class NamingViewController: UIViewController {
     var textSettingView: LabelSettingView?
     // ItemsViewを保持
     var topItemsView: ItemView?
+    // ピンチした中心座標を保持
+    var pinchCenter: CGPoint?
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -36,25 +38,52 @@ class NamingViewController: UIViewController {
         // 戻るボタンの文字を空にすることで矢印だけにする
         navigationController!.navigationBar.topItem!.title = " "
         
+        /* View関連 */
+        self.view.backgroundColor = UIColor.darkGray
+        
         /* imageView関連 */
         imageView?.backgroundColor = UIColor.darkGray
         imageView?.isUserInteractionEnabled = true
         
         /* スクロールビュー関連 */
         imageScrollView.delegate = self
+        imageScrollView.isScrollEnabled = false
         imageScrollView.minimumZoomScale = 1.0
         imageScrollView.maximumZoomScale = 3.0
         imageScrollView.contentMode = .scaleAspectFit
         
         // スクロールビューにタップジェスチャを登録
-        imageScrollView.onTap { tap in
+        imageView?.onTap { tap in
             self.tapped(gesture: tap)
         }
         
         // スクロールビューにピンチジェスチャを登録
-        imageScrollView.onPinch { pinch in
+        imageView?.onPinch { pinch in
             // 編集中のラベルがなかったら何もしない
+            // TODO: 画像をズームする
             guard let editingLabel = self.editLabelView else {
+                
+                if pinch.state == .began {
+                    // ピンチの開始時だったら
+                    // ピンチした中心座標を算出しプロパティで保持
+                    let pinchLocate1 = pinch.location(ofTouch: 0, in: self.view)
+                    let pinchLocate2 = pinch.location(ofTouch: 1, in: self.view)
+                    self.pinchCenter = CGPoint(x: (pinchLocate1.x + pinchLocate2.x) / 2, y: (pinchLocate1.y + pinchLocate2.y) / 2 )
+                }
+                
+                // TODO: アンラップ危険なので後で修正
+                let width = (self.imageView?.frame.size.width)! / pinch.scale
+                let height = (self.imageView?.frame.size.height)! / pinch.scale
+                let x = (self.pinchCenter?.x)! - (width / 2)
+                let y = (self.pinchCenter?.y)! - (height / 2)
+                
+                let rect = CGRect(x: x, y: y, width: width, height: height)
+                self.imageScrollView.zoom(to: rect, animated: true)
+                
+                if pinch.state == .ended {
+                    self.pinchCenter = CGPoint.zero
+                }
+                
                 return
             }
             
@@ -115,7 +144,7 @@ class NamingViewController: UIViewController {
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
-            imageScrollView.addSubview(itemsView)
+            self.view.addSubview(itemsView)
             
             // オートレイアウトの制約更新
             constrain(itemsView, image) { view1, view2 in
@@ -353,7 +382,7 @@ class NamingViewController: UIViewController {
 
 // MARK: UIScrollViewDelegate
 extension NamingViewController: UIScrollViewDelegate {
-    
+        
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
@@ -527,7 +556,7 @@ extension NamingViewController: ItemViewDelegate {
                 return
             }
             
-            imageScrollView.addSubview(settingView)
+            self.view.addSubview(settingView)
             
             // オートレイアウトの制約更新
             constrain(settingView, image) { view1, view2 in

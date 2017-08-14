@@ -47,7 +47,6 @@ class NamingViewController: UIViewController {
         
         /* スクロールビュー関連 */
         imageScrollView.delegate = self
-        imageScrollView.isScrollEnabled = false
         imageScrollView.minimumZoomScale = 1.0
         imageScrollView.maximumZoomScale = 3.0
         imageScrollView.contentMode = .scaleAspectFit
@@ -59,39 +58,9 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにピンチジェスチャを登録
         imageView?.onPinch { pinch in
-            // 編集中のラベルがなかったら何もしない
-            // TODO: 画像をズームする
+            // 編集中のラベルがなかったらステージ画像をズーム
             guard let editingLabel = self.editLabelView else {
-                
-                if pinch.state == .began {
-                    // ピンチの開始時だったら
-                    // ピンチした中心座標を算出しプロパティで保持
-                    let pinchLocate1 = pinch.location(ofTouch: 0, in: self.view)
-                    let pinchLocate2 = pinch.location(ofTouch: 1, in: self.view)
-                    self.pinchCenter = CGPoint(x: (pinchLocate1.x + pinchLocate2.x) / 2, y: (pinchLocate1.y + pinchLocate2.y) / 2 )
-                }
-                
-                // 縮小したときにスケール外にズームする問題の暫定対応
-                if pinch.scale < 1.0 {
-                    return
-                }
-                
-                // TODO: アンラップ危険なので後で修正
-                let width = (self.imageView?.bounds.size.width)! / pinch.scale
-                let height = (self.imageView?.bounds.size.height)! / pinch.scale
-                let x = self.pinchCenter.x - (width / 2)
-                let y = self.pinchCenter.y - (height / 2)
-                
-                let rect = CGRect(x: x, y: y, width: width, height: height)
-                print(pinch.scale)
-                print(self.pinchCenter)
-                print(rect)
-                self.imageScrollView.zoom(to: rect, animated: true)
-                
-                if pinch.state == .ended {
-                    self.pinchCenter = CGPoint.zero
-                }
-                
+                self.imageScrollView.zoomScale = pinch.scale
                 return
             }
             
@@ -219,6 +188,9 @@ class NamingViewController: UIViewController {
                 
                 // ItemsViewの塗りつぶしボタン・枠線ボタンに打ち消し線を描く
                 drawCancelLineToFontConfig()
+                
+                // スクロールビューのスクロールをできるようにする
+                self.imageScrollView.isScrollEnabled = true
                 
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
@@ -447,6 +419,7 @@ extension NamingViewController: NamingLabelViewDelegate {
         } else {
             // 選択状態にした時
             deleteCancelLineToFontConfig()
+            self.imageScrollView.isScrollEnabled = false
         }
     }
     
@@ -459,6 +432,9 @@ extension NamingViewController: TextViewControllerDelegate {
         
         if editLabelView != nil {
             // ラベルの編集が行われている場合
+            
+            // 編集が終わった後は選択状態ではないため、スクロールビューのスクロールができるようにする
+            imageScrollView.isScrollEnabled = true
             
             // 編集中のラベルの座標
             let x = editLabelView?.beforFrame.x
@@ -499,6 +475,9 @@ extension NamingViewController: TextViewControllerDelegate {
                 label.closeImageView.isHidden = false
                 label.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
                 self.editLabelView = label
+                
+                // 選択状態のためスクロールができないようにする
+                imageScrollView.isScrollEnabled = false
                 
                 imageView?.addSubview(label)
             }

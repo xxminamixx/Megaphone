@@ -38,6 +38,13 @@
 		9D4D0AE01F3ACBD10061D03E /* stroke_think.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0ADA1F3ACBD10061D03E /* stroke_think.png */; };
 		9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0ADB1F3ACBD10061D03E /* stroke_think@2x.png */; };
 		9D4D0AE21F3ACBD10061D03E /* stroke_think@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0ADC1F3ACBD10061D03E /* stroke_think@3x.png */; };
+		9D4D0AEC1F416EF00061D03E /* stamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AE91F416EF00061D03E /* stamp.png */; };
+		9D4D0AED1F416EF00061D03E /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AEA1F416EF00061D03E /* stamp@2x.png */; };
+		9D4D0AEE1F416EF00061D03E /* stamp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AEB1F416EF00061D03E /* stamp@3x.png */; };
+		9D4D0AF01F41749A0061D03E /* StampSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AEF1F41749A0061D03E /* StampSelectView.xib */; };
+		9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */; };
+		9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */; };
+		9D4D0AF81F4177400061D03E /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -135,6 +142,13 @@
 		9D4D0ADA1F3ACBD10061D03E /* stroke_think.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stroke_think.png; sourceTree = "<group>"; };
 		9D4D0ADB1F3ACBD10061D03E /* stroke_think@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stroke_think@2x.png"; sourceTree = "<group>"; };
 		9D4D0ADC1F3ACBD10061D03E /* stroke_think@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stroke_think@3x.png"; sourceTree = "<group>"; };
+		9D4D0AE91F416EF00061D03E /* stamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp.png; sourceTree = "<group>"; };
+		9D4D0AEA1F416EF00061D03E /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
+		9D4D0AEB1F416EF00061D03E /* stamp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@3x.png"; sourceTree = "<group>"; };
+		9D4D0AEF1F41749A0061D03E /* StampSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampSelectView.xib; sourceTree = "<group>"; };
+		9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectView.swift; sourceTree = "<group>"; };
+		9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -329,6 +343,9 @@
 		9D52DD941F1DFA45003204AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9D4D0AE91F416EF00061D03E /* stamp.png */,
+				9D4D0AEA1F416EF00061D03E /* stamp@2x.png */,
+				9D4D0AEB1F416EF00061D03E /* stamp@3x.png */,
 				9D4D0AD71F3ACBD10061D03E /* stroke_thin.png */,
 				9D4D0AD81F3ACBD10061D03E /* stroke_thin@2x.png */,
 				9D4D0AD91F3ACBD10061D03E /* stroke_thin@3x.png */,
@@ -415,6 +432,10 @@
 				9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */,
 				9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */,
 				9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */,
+				9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */,
+				9D4D0AEF1F41749A0061D03E /* StampSelectView.xib */,
+				9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */,
+				9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
 			);
@@ -534,7 +555,9 @@
 			files = (
 				9DAEC6EF1F3045A3009B03E3 /* fujitsubo.jpg in Resources */,
 				9D4D0AAE1F32DA7A0061D03E /* ItemsView.xib in Resources */,
+				9D4D0AEE1F416EF00061D03E /* stamp@3x.png in Resources */,
 				9DAEC6F01F3045A3009B03E3 /* gangaze.jpg in Resources */,
+				9D4D0AF01F41749A0061D03E /* StampSelectView.xib in Resources */,
 				9DDB14281F2F2178007C4C85 /* Capture@3x.png in Resources */,
 				9DAEC6EE1F3045A3009B03E3 /* battera.jpg in Resources */,
 				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
@@ -542,6 +565,7 @@
 				9D4D0ACC1F3861430061D03E /* stroke@3x.png in Resources */,
 				9D4D0AE21F3ACBD10061D03E /* stroke_think@3x.png in Resources */,
 				9DAEC6F21F3045A3009B03E3 /* konbu.jpg in Resources */,
+				9D4D0AEC1F416EF00061D03E /* stamp.png in Resources */,
 				9DAEC6F11F3045A3009B03E3 /* hokke.jpg in Resources */,
 				9DAEC6FA1F304CA7009B03E3 /* TwitterIcon@3x.png in Resources */,
 				9DAEC6F81F304CA7009B03E3 /* TwitterIcon.png in Resources */,
@@ -561,11 +585,13 @@
 				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9D4D0AD01F3945E40061D03E /* 60.jpg in Resources */,
 				9DAEC6F91F304CA7009B03E3 /* TwitterIcon@2x.png in Resources */,
+				9D4D0AED1F416EF00061D03E /* stamp@2x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D4D0ACB1F3861430061D03E /* stroke@2x.png in Resources */,
 				9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */,
 				9D4D0AB41F3301D90061D03E /* delete.png in Resources */,
 				9DAEC6F41F3045A3009B03E3 /* tyozame.jpg in Resources */,
+				9D4D0AF81F4177400061D03E /* StampCollectionViewCell.xib in Resources */,
 				9D4D0ABE1F381B670061D03E /* LabelSettingView.xib in Resources */,
 				9D52DD851F1DB573003204AB /* StageTableViewCell.xib in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
@@ -688,6 +714,7 @@
 			files = (
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
+				9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D4D0ABC1F38093A0061D03E /* UIColorExtension.swift in Sources */,
@@ -706,6 +733,7 @@
 				9D4D0AB01F32DC160061D03E /* ItemView.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
+				9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

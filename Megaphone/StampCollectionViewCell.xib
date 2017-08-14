@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StampCollectionViewCell" customModule="Megaphone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Klv-mb-skB">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.7658351451303872" green="0.773417671319797" blue="0.773417671319797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Klv-mb-skB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8I5-Vk-kLx"/>
+                <constraint firstItem="Klv-mb-skB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8Rf-uz-QJk"/>
+                <constraint firstAttribute="trailing" secondItem="Klv-mb-skB" secondAttribute="trailing" id="Jkg-eY-NfU"/>
+                <constraint firstAttribute="bottom" secondItem="Klv-mb-skB" secondAttribute="bottom" id="tic-wu-n71"/>
+            </constraints>
+            <connections>
+                <outlet property="stamp" destination="Klv-mb-skB" id="v52-vv-ZXP"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

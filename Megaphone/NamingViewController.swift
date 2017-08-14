@@ -25,6 +25,8 @@ class NamingViewController: UIViewController {
     var editLabelView: NamingLabelView?
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
+    // スタンプ表示用のViewを保持
+    var stampView: StampSelectView?
     // ItemsViewを保持
     var topItemsView: ItemView?
     // ピンチした中心座標を保持
@@ -581,6 +583,39 @@ extension NamingViewController: ItemViewDelegate {
         showColorPicker(isFont: false, isSelectItemView: true)
     }
     
+    // スタンプボタンタップ
+    func stampTapped() {
+        // TODO: 下からスタンプ画像選択のコレクションViewをアニメーション表示
+        
+        if let stampSelectView = UINib(nibName: StampSelectView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? StampSelectView {
+            
+            guard let image = imageView else {
+                return
+            }
+            
+            stampSelectView.delegate = self
+            
+            // 表示したstamp表示用のViewを保持
+            self.stampView = stampSelectView
+            
+            self.view.addSubview(stampSelectView)
+            
+            constrain(stampSelectView, image) { view1, view2 in
+                view1.height == 200.0
+                view1.width == UIScreen.main.bounds.size.width
+                view1.left == view2.left
+                view1.right == view2.right
+                view1.bottom == view2.bottom - 60
+            }
+            
+            // アニメーションで表示
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+                stampSelectView.frame.origin.y -= stampSelectView.frame.size.height
+            }, completion: nil)
+
+        }
+    }
+    
     func twitterTapped() {
         if let image = imageView?.castImage() {
             // ツイッター投稿画面を表示
@@ -628,4 +663,28 @@ extension NamingViewController: LabelSettingViewDelegate {
         }
     }
     
+}
+
+// MARK: StampSelectViewDelegate
+extension NamingViewController: StampSelectViewDelegate {
+    
+    // スタンプViewの閉じるボタンが押された時
+    func stampCloseTapped() {
+        
+        guard let stampView = self.stampView else {
+            return
+        }
+        
+        func delete() {
+            self.stampView?.removeFromSuperview()
+            self.stampView = nil
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+            stampView.frame.origin.y += stampView.frame.size.height
+        }, completion: { fin in
+            delete()
+        })
+        
+    }
 }

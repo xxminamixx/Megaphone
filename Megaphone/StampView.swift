@@ -9,7 +9,8 @@
 import UIKit
 
 protocol StampViewDelegate {
-    func stampCloseTapped(view: UIView)
+    func stampTapped(view: StampView)
+    func stampCloseTapped(view: StampView)
 }
 
 class StampView: UIView {
@@ -27,6 +28,24 @@ class StampView: UIView {
         
         self.backgroundColor = UIColor.clear
         stamp.contentMode = .scaleAspectFit
+        
+        self.onTap { _ in
+            self.delegate.stampTapped(view: self)
+            // 閉じるボタン・ラベル・選択状態を表す破線で3つのサブレイヤだから3を渡す
+            if self.isSubLayer(count: 3) {
+                // 選択状態のとき
+                
+                // 一番最後のレイヤーを削除
+                self.layer.sublayers?.last?.removeFromSuperlayer()
+                self.close.isHidden = true
+            } else {
+                // 非選択のとき
+                
+                // 破線のレイヤを追加して選択状態とする
+                self.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
+                self.close.isHidden = false
+            }
+        }
         
         self.onPan { pan in
             let location: CGPoint = pan.translation(in: self)

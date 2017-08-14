@@ -26,6 +26,8 @@ class NamingViewController: UIViewController {
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
     // スタンプ表示用のViewを保持
+    var stampView: StampView?
+    // スタンプ選択用のViewを保持
     var stampSelectView: StampSelectView?
     // ItemsViewを保持
     var topItemsView: ItemView?
@@ -60,6 +62,8 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにピンチジェスチャを登録
         imageView?.onPinch { pinch in
+            // TODO: スタンプの拡大・縮小
+            
             // 編集中のラベルがなかったらステージ画像をズーム
             guard let editingLabel = self.editLabelView else {
                 self.imageScrollView.zoomScale = pinch.scale
@@ -724,7 +728,18 @@ extension NamingViewController: StampSelectViewDelegate {
 
 extension NamingViewController: StampViewDelegate {
     
-    func stampCloseTapped(view: UIView) {
+    func stampTapped(view: StampView) {
+        if view.isSubLayer(count: 3) {
+            // 選択中
+            
+            // プロパティで保持
+            self.stampView = view
+        } else {
+            // 未選択
+        }
+    }
+    
+    func stampCloseTapped(view: StampView) {
         view.removeFromSuperview()
     }
     

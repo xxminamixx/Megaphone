@@ -670,7 +670,6 @@ extension NamingViewController: StampSelectViewDelegate {
     
     // スタンプViewの閉じるボタンが押された時
     func stampCloseTapped() {
-        
         guard let stampView = self.stampView else {
             return
         }
@@ -685,6 +684,20 @@ extension NamingViewController: StampSelectViewDelegate {
         }, completion: { fin in
             delete()
         })
-        
     }
+    
+    func stampImageTapped(image: UIImage) {
+        // スタンプをタップしたとき呼ばれる
+        // TODO: ここはカスタムViewにしてタップ判定を受けられるようにする
+        let imageView = UIImageView(image: image)
+        
+        // とりあえず画面の中心に配置
+        let screen = UIScreen.main.bounds.size
+        imageView.frame.origin = CGPoint(x: screen.width / 2, y: screen.height / 2)
+        imageView.frame.size = CGSize.init(width: 100, height: 100)
+        imageView.contentMode = .scaleAspectFit
+
+        self.imageView?.addSubview(imageView)
+    }
+    
 }

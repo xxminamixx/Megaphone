@@ -45,6 +45,7 @@
 		9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */; };
 		9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */; };
 		9D4D0AF81F4177400061D03E /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */; };
+		9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF91F4187080061D03E /* StampEntity.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -149,6 +150,7 @@
 		9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectView.swift; sourceTree = "<group>"; };
 		9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
+		9D4D0AF91F4187080061D03E /* StampEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampEntity.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */,
 				9D4D0AA41F306C830061D03E /* LabelEntity.swift */,
 				9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */,
+				9D4D0AF91F4187080061D03E /* StampEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 				9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */,
+				9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

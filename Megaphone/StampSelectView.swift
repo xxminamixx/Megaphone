@@ -10,6 +10,7 @@ import UIKit
 
 protocol StampSelectViewDelegate {
     func stampCloseTapped()
+    func stampImageTapped(image: UIImage)
 }
 
 class StampSelectView: UIView {
@@ -43,7 +44,19 @@ class StampSelectView: UIView {
 }
 
 extension StampSelectView: UICollectionViewDelegate {
-    func collectionView(_: UICollectionView, didSelectItemAt: IndexPath) {}
+    func collectionView(_: UICollectionView, didSelectItemAt: IndexPath) {
+    
+        // TODO: タップしたスタンプをnamingViewControllerに引き渡す処理
+        // デリゲートメソッドを使って画像を渡す
+        let imageName = JsonManager.shared.stamps?[didSelectItemAt.row].name
+        
+        if let name = imageName {
+            if let image = UIImage(named: name) {
+                delegate.stampImageTapped(image: image)
+            }
+        }
+
+    }
 }
 
 extension StampSelectView: UICollectionViewDataSource {
@@ -53,13 +66,19 @@ extension StampSelectView: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return JsonManager.shared.stampCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StampCollectionViewCell.nibName , for: indexPath) as! StampCollectionViewCell
         
-        cell.setting(image: UIImage(named: "stamp.png")!)
+        let imageName = JsonManager.shared.stamps?[indexPath.row].name
+        
+        if let name = imageName {
+            if let image = UIImage(named: name) {
+                cell.setting(image: image)
+            }
+        }
         
         return cell
     }

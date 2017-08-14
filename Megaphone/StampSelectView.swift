@@ -9,8 +9,8 @@
 import UIKit
 
 protocol StampSelectViewDelegate {
-    func stampCloseTapped()
-    func stampImageTapped(image: UIImage)
+    func stampSelectCloseTapped()
+    func stampSelectImageTapped(image: UIImage)
 }
 
 class StampSelectView: UIView {
@@ -37,7 +37,7 @@ class StampSelectView: UIView {
         stampView.register(nib, forCellWithReuseIdentifier: StampCollectionViewCell.nibName)
         
         close.onTap { _ in
-            self.delegate.stampCloseTapped()
+            self.delegate.stampSelectCloseTapped()
         }
     }
     
@@ -52,7 +52,7 @@ extension StampSelectView: UICollectionViewDelegate {
         
         if let name = imageName {
             if let image = UIImage(named: name) {
-                delegate.stampImageTapped(image: image)
+                delegate.stampSelectImageTapped(image: image)
             }
         }
 

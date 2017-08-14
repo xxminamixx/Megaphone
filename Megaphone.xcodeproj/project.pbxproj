@@ -46,6 +46,8 @@
 		9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */; };
 		9D4D0AF81F4177400061D03E /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */; };
 		9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF91F4187080061D03E /* StampEntity.swift */; };
+		9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AFB1F4194F20061D03E /* StampView.xib */; };
+		9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AFD1F41950A0061D03E /* StampView.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -151,6 +153,8 @@
 		9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D4D0AF91F4187080061D03E /* StampEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampEntity.swift; sourceTree = "<group>"; };
+		9D4D0AFB1F4194F20061D03E /* StampView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampView.xib; sourceTree = "<group>"; };
+		9D4D0AFD1F41950A0061D03E /* StampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -441,6 +445,8 @@
 				9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+				9D4D0AFD1F41950A0061D03E /* StampView.swift */,
+				9D4D0AFB1F4194F20061D03E /* StampView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				9D4D0AC81F3861430061D03E /* fill@2x.png in Resources */,
 				9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */,
 				9D4D0ADE1F3ACBD10061D03E /* stroke_thin@2x.png in Resources */,
+				9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */,
 				9D4D0ADD1F3ACBD10061D03E /* stroke_thin.png in Resources */,
 				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9D4D0AD01F3945E40061D03E /* 60.jpg in Resources */,
@@ -717,6 +724,7 @@
 			files = (
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
+				9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */,
 				9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,

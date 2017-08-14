@@ -26,7 +26,7 @@ class NamingViewController: UIViewController {
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
     // スタンプ表示用のViewを保持
-    var stampView: StampSelectView?
+    var stampSelectView: StampSelectView?
     // ItemsViewを保持
     var topItemsView: ItemView?
     // ピンチした中心座標を保持
@@ -166,13 +166,20 @@ class NamingViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // スクロールビューがタップされたとき呼ばれる
+    // MARK: スクロールビューがタップされたとき呼ばれる
     func tapped(gesture: UITapGestureRecognizer) {
         
         for i in 0..<gesture.numberOfTouches {
             let point = gesture.location(ofTouch: i, in: self.view)
             pointX = point.x
             pointY = point.y
+        }
+        
+        // タップしたときstampSelectViewがあるとき
+        if let _ = stampSelectView {
+            // スタンプ選択画面を閉じる
+            closeStampSelectView()
+            return
         }
         
         // スクロールビューをタップしたときに選択状態のLabelがある場合
@@ -596,7 +603,7 @@ extension NamingViewController: ItemViewDelegate {
             stampSelectView.delegate = self
             
             // 表示したstamp表示用のViewを保持
-            self.stampView = stampSelectView
+            self.stampSelectView = stampSelectView
             
             self.view.addSubview(stampSelectView)
             
@@ -668,15 +675,15 @@ extension NamingViewController: LabelSettingViewDelegate {
 // MARK: StampSelectViewDelegate
 extension NamingViewController: StampSelectViewDelegate {
     
-    // スタンプViewの閉じるボタンが押された時
-    func stampCloseTapped() {
-        guard let stampView = self.stampView else {
+    // スタンプ選択画面を閉じる
+    func closeStampSelectView() {
+        guard let stampView = self.stampSelectView else {
             return
         }
         
         func delete() {
-            self.stampView?.removeFromSuperview()
-            self.stampView = nil
+            self.stampSelectView?.removeFromSuperview()
+            self.stampSelectView = nil
         }
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
@@ -686,18 +693,40 @@ extension NamingViewController: StampSelectViewDelegate {
         })
     }
     
-    func stampImageTapped(image: UIImage) {
+    // スタンプViewの閉じるボタンが押された時
+    func stampSelectCloseTapped() {
+        closeStampSelectView()
+    }
+    
+    func stampSelectImageTapped(image: UIImage) {
         // スタンプをタップしたとき呼ばれる
         // TODO: ここはカスタムViewにしてタップ判定を受けられるようにする
-        let imageView = UIImageView(image: image)
         
-        // とりあえず画面の中心に配置
-        let screen = UIScreen.main.bounds.size
-        imageView.frame.origin = CGPoint(x: screen.width / 2, y: screen.height / 2)
-        imageView.frame.size = CGSize.init(width: 100, height: 100)
-        imageView.contentMode = .scaleAspectFit
+        if let stampView = UINib(nibName: StampView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? StampView {
+            
+            stampView.delegate = self
+            stampView.stamp.image = image
+            
+            // とりあえず画面の中心に配置
+            let screen = UIScreen.main.bounds.size
+            let origin = CGPoint(x: screen.width / 2, y: screen.height / 2)
+            stampView.beforeFrame = origin
+            stampView.frame.origin = origin
+            stampView.frame.size = CGSize(width: 100, height: 100)
+            
+            self.imageView?.addSubview(stampView)
 
-        self.imageView?.addSubview(imageView)
+        }
+        
     }
+    
+}
+
+extension NamingViewController: StampViewDelegate {
+    
+    func stampCloseTapped(view: UIView) {
+        view.removeFromSuperview()
+    }
+    
     
 }

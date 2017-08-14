@@ -21,12 +21,12 @@ class NamingViewController: UIViewController {
     // ラベルの表示テキスト位置保存用
     var pointX: CGFloat?
     var pointY: CGFloat?
+    // 選択中のView保存用プロパティ
+    var selection: SelectableView?
     // 編集しているラベル保持用のプロパティ
     var editLabelView: NamingLabelView?
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
-    // スタンプ表示用のViewを保持
-    var stampView: StampView?
     // スタンプ選択用のViewを保持
     var stampSelectView: StampSelectView?
     // ItemsViewを保持
@@ -706,17 +706,23 @@ extension NamingViewController: StampSelectViewDelegate {
         // スタンプをタップしたとき呼ばれる
         // TODO: ここはカスタムViewにしてタップ判定を受けられるようにする
         
-        if let stampView = UINib(nibName: StampView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? StampView {
+        if let stampView = UINib(nibName: SelectableView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? SelectableView {
             
             stampView.delegate = self
-            stampView.stamp.image = image
+            
+            // contentViewにImageViewをセットする
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            stampView.contentView.addSubview(imageView)
+            
+//            stampView.stamp.image = image
             
             // とりあえず画面の中心に配置
             let screen = UIScreen.main.bounds.size
             let origin = CGPoint(x: screen.width / 2, y: screen.height / 2)
             stampView.beforeFrame = origin
             stampView.frame.origin = origin
-            stampView.frame.size = CGSize(width: 100, height: 100)
+            stampView.frame.size = CGSize(width: 100, height: 130)
             
             self.imageView?.addSubview(stampView)
 
@@ -726,22 +732,22 @@ extension NamingViewController: StampSelectViewDelegate {
     
 }
 
-extension NamingViewController: StampViewDelegate {
+extension NamingViewController: SelectableViewDelegate {
     
-    func stampTapped(view: StampView) {
+    func selectableViewTapped(view: SelectableView) {
         if view.isSubLayer(count: 3) {
             // 選択中
             
             // プロパティで保持
-            self.stampView = view
+            self.selection = view
         } else {
             // 未選択
         }
+
     }
     
-    func stampCloseTapped(view: StampView) {
+    func selectableCloseTapped(view: SelectableView) {
         view.removeFromSuperview()
     }
-    
     
 }

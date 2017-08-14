@@ -1,5 +1,5 @@
 //
-//  StampView.swift
+//  SelectableView.swift
 //  Megaphone
 //
 //  Created by 南　京兵 on 2017/08/14.
@@ -8,29 +8,32 @@
 
 import UIKit
 
-protocol StampViewDelegate {
-    func stampTapped(view: StampView)
-    func stampCloseTapped(view: StampView)
+protocol SelectableViewDelegate {
+    func selectableViewTapped(view: SelectableView)
+    func selectableCloseTapped(view: SelectableView)
 }
 
-class StampView: UIView {
+class SelectableView: UIView {
     
-    static let nibName = "StampView"
-
+    static let nibName = "SelectableView"
+    
     @IBOutlet weak var close: UIImageView!
-    @IBOutlet weak var stamp: UIImageView!
+    // 継承先のViewが表示内容を変えれる
+    @IBOutlet weak var contentView: UIView!
     
+    var delegate: SelectableViewDelegate!
+    // 利用する場合はこのプロパティに値をセットしないとクラッシュする
     var beforeFrame: CGPoint!
-    var delegate: StampViewDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // 背景を透明に設定
         self.backgroundColor = UIColor.clear
-        stamp.contentMode = .scaleAspectFit
+        contentView.backgroundColor = UIColor.clear
         
         self.onTap { _ in
-            self.delegate.stampTapped(view: self)
+            self.delegate.selectableViewTapped(view: self)
             // 閉じるボタン・ラベル・選択状態を表す破線で3つのサブレイヤだから3を渡す
             if self.isSubLayer(count: 3) {
                 // 選択状態のとき
@@ -58,8 +61,8 @@ class StampView: UIView {
             self.layoutIfNeeded()
         }
         
-        close.onTap {_ in 
-            self.delegate.stampCloseTapped(view: self)
+        close.onTap {_ in
+            self.delegate.selectableCloseTapped(view: self)
         }
     }
 

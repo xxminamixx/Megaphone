@@ -46,8 +46,8 @@
 		9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */; };
 		9D4D0AF81F4177400061D03E /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */; };
 		9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AF91F4187080061D03E /* StampEntity.swift */; };
-		9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AFB1F4194F20061D03E /* StampView.xib */; };
-		9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AFD1F41950A0061D03E /* StampView.swift */; };
+		9D4D0B001F41A3410061D03E /* SelectableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0AFF1F41A3410061D03E /* SelectableView.xib */; };
+		9D4D0B021F41A3C20061D03E /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B011F41A3C20061D03E /* SelectableView.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -153,8 +153,8 @@
 		9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D4D0AF91F4187080061D03E /* StampEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampEntity.swift; sourceTree = "<group>"; };
-		9D4D0AFB1F4194F20061D03E /* StampView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampView.xib; sourceTree = "<group>"; };
-		9D4D0AFD1F41950A0061D03E /* StampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
+		9D4D0AFF1F41A3410061D03E /* SelectableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectableView.xib; sourceTree = "<group>"; };
+		9D4D0B011F41A3C20061D03E /* SelectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -445,8 +445,8 @@
 				9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
-				9D4D0AFD1F41950A0061D03E /* StampView.swift */,
-				9D4D0AFB1F4194F20061D03E /* StampView.xib */,
+				9D4D0B011F41A3C20061D03E /* SelectableView.swift */,
+				9D4D0AFF1F41A3410061D03E /* SelectableView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -581,6 +581,7 @@
 				9DAEC6F31F3045A3009B03E3 /* tathiuo.jpg in Resources */,
 				9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */,
 				9D4D0AE01F3ACBD10061D03E /* stroke_think.png in Resources */,
+				9D4D0B001F41A3410061D03E /* SelectableView.xib in Resources */,
 				9D4D0AD21F3945E40061D03E /* 60@3x.jpg in Resources */,
 				6A33B0041F357A6300B14982 /* 60@3x.png in Resources */,
 				6A33B0021F357A6300B14982 /* 60.png in Resources */,
@@ -590,7 +591,6 @@
 				9D4D0AC81F3861430061D03E /* fill@2x.png in Resources */,
 				9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */,
 				9D4D0ADE1F3ACBD10061D03E /* stroke_thin@2x.png in Resources */,
-				9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */,
 				9D4D0ADD1F3ACBD10061D03E /* stroke_thin.png in Resources */,
 				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9D4D0AD01F3945E40061D03E /* 60.jpg in Resources */,
@@ -724,7 +724,6 @@
 			files = (
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
-				9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */,
 				9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
@@ -741,6 +740,7 @@
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
 				9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */,
+				9D4D0B021F41A3C20061D03E /* SelectableView.swift in Sources */,
 				9D4D0AB01F32DC160061D03E /* ItemView.swift in Sources */,
 				9D52DD9B1F1E0BA0003204AB /* StageEntity.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,

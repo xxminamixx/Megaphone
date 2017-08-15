@@ -554,8 +554,11 @@ extension NamingViewController: NamingLabelViewDelegate {
     
     // ラベルの選択を解除
     func labelSelectCancel() {
-        editLabelView?.layer.sublayers?.last?.removeFromSuperlayer()
-        editLabelView?.closeImageView.isHidden = true
+        guard let editLebel = editLabelView else {
+            return
+        }
+        editLebel.layer.sublayers?.last?.removeFromSuperlayer()
+        editLebel.closeImageView.isHidden = true
         editLabelView = nil
     }
     

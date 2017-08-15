@@ -285,7 +285,6 @@ class NamingViewController: UIViewController {
         imageView?.addSubview(label)
     }
     
-    // TODO: スタンプの永続化・読み込み処理
     // MARK: ラベル永続化処理
     private func saveLabels() {
         // imageViewのsubviewであるNamingViewを全て取得したい
@@ -296,7 +295,6 @@ class NamingViewController: UIViewController {
         let labelEntity = LabelOfStageEntity()
         let stampEntityList = StampStoreEntityList()
         for subview in subviews {
-            // TODO: subViewをラベルかスタンプか判別しそれぞれ永続化する
             if subview is NamingLabelView {
                 let entity = LabelEntity()
                 // ラベルの原点格納
@@ -729,7 +727,6 @@ extension NamingViewController: ItemViewDelegate {
                 return
             }
             
-            // TODO: 選択中のラベル、ラベル設定Viewがあったら両方閉じる
             closeLabelSettingView(isAnimation: false)
             labelSelectCancel()
             

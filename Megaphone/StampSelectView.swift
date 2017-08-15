@@ -46,7 +46,6 @@ class StampSelectView: UIView {
 extension StampSelectView: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt: IndexPath) {
     
-        // TODO: タップしたスタンプをnamingViewControllerに引き渡す処理
         // デリゲートメソッドを使って画像を渡す
         let imageName = JsonManager.shared.stamps?[didSelectItemAt.row].name
         

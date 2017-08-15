@@ -631,7 +631,7 @@ extension NamingViewController: ItemViewDelegate {
 
     func allDeleteTapped() {
         // このControllerに対応するRealmのエンティティを削除する
-        present(AlertControllerManager.customActionAlert(title: nil, message: "テキストを全て削除しますか？",
+        present(AlertControllerManager.customActionAlert(title: nil, message: "テキストとスタンプを全て削除しますか？",
                                                          defaultAction: { _ in
                                                             // subViewのラベルを全て削除
                                                             for subView in (self.imageView?.subviews)! {
@@ -821,7 +821,7 @@ extension NamingViewController: StampSelectViewDelegate {
         
         // とりあえず画面の中心に配置
         let screen = UIScreen.main.bounds.size
-        let origin = CGPoint(x: screen.width / 2, y: screen.height / 2)
+        let origin = CGPoint(x: (screen.width / 2) - 50, y: (screen.height / 2) - 130)
         let size = CGSize(width: 100, height: 130)
         
         stampAddImageView(imageName: imageName, origin: origin, size: size)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @objc protocol TextViewControllerDelegate {
     func getTextView(text: String?, completion: () -> Void)
@@ -32,6 +33,29 @@ class TextViewController: UIViewController {
         textView.backgroundColor = UIColor.darkGray
         // テキストの色を白に変更
         textView.textColor = UIColor.white
+        
+        // MARK: 広告の設定
+        let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        // AdMobで発行された広告ユニットIDを設定
+        banner.adUnitID = "ca-app-pub-9801569699151969/5647553673"
+        banner.delegate = self
+        banner.rootViewController = self
+        let gadRequest:GADRequest = GADRequest()
+        
+        // テスト用の広告を表示する時のみ使用（申請時に削除）
+        gadRequest.testDevices = [kGADSimulatorID]
+        banner.load(gadRequest)
+        
+        // 仮のサイズでツールバー生成
+        let bannerToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 60))
+        bannerToolBar.barStyle = UIBarStyle.default  // スタイルを設定
+        bannerToolBar.sizeToFit()
+        // バナーツールバーに広告追加
+        bannerToolBar.addSubview(banner)
+        // キーボードにバナーツールバーを追加
+        textView.inputAccessoryView = bannerToolBar
+        
+        
         // キーボードを表示する
         textView.becomeFirstResponder()
         
@@ -98,5 +122,10 @@ class TextViewController: UIViewController {
         textView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
+    
+}
+
+// MARK: GADBannerViewDelegate
+extension TextViewController: GADBannerViewDelegate {
     
 }

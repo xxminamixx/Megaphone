@@ -111,18 +111,34 @@
                         </label>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BFM-jl-wMW">
+                    <rect key="frame" x="166" y="8" width="30" height="43.5"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="c56-E5-ZRC">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スタンプ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDi-2R-C1p">
+                            <rect key="frame" x="0.0" y="35" width="29" height="8.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="DRa-ip-oIk" secondAttribute="trailing" id="6z1-cL-tOn"/>
                 <constraint firstItem="t5E-nl-QGh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9e4-YX-Yoz"/>
                 <constraint firstItem="Kcl-WL-e1m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="IDG-72-gVK"/>
+                <constraint firstItem="BFM-jl-wMW" firstAttribute="leading" secondItem="ZIq-mF-vTy" secondAttribute="trailing" constant="20" id="NV2-2I-7J9"/>
                 <constraint firstItem="ZIq-mF-vTy" firstAttribute="leading" secondItem="t5E-nl-QGh" secondAttribute="trailing" constant="20" id="Nsm-xf-Z6k"/>
                 <constraint firstItem="Kcl-WL-e1m" firstAttribute="leading" secondItem="URQ-U7-EUH" secondAttribute="trailing" constant="20" id="NwA-yI-vwm"/>
                 <constraint firstAttribute="trailing" secondItem="Kcl-WL-e1m" secondAttribute="trailing" constant="10" id="VGx-VO-P9o"/>
                 <constraint firstItem="DRa-ip-oIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wtr-2V-ip3"/>
                 <constraint firstItem="JOt-6B-P3s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="cFM-Fk-F3r"/>
                 <constraint firstItem="JOt-6B-P3s" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="eho-I8-UKg"/>
+                <constraint firstItem="BFM-jl-wMW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fOj-mU-jsr"/>
                 <constraint firstItem="t5E-nl-QGh" firstAttribute="leading" secondItem="JOt-6B-P3s" secondAttribute="trailing" constant="20" id="fgX-oK-bb4"/>
                 <constraint firstItem="URQ-U7-EUH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hY6-O6-eEi"/>
                 <constraint firstItem="DRa-ip-oIk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pmx-PC-Ywx"/>
@@ -135,6 +151,7 @@
                 <outlet property="fillButton" destination="m7Y-gH-Pgh" id="yAQ-Sq-oNo"/>
                 <outlet property="partitionView" destination="DRa-ip-oIk" id="c00-Z5-6Yx"/>
                 <outlet property="screenShotButton" destination="tdG-p5-Ifs" id="IZS-9d-3tt"/>
+                <outlet property="stampButton" destination="c56-E5-ZRC" id="i0L-9n-9xI"/>
                 <outlet property="strokeButton" destination="52h-ug-iZZ" id="zpl-PK-4GT"/>
                 <outlet property="twitterButton" destination="euy-ja-QHX" id="Cvc-X2-mCa"/>
             </connections>
@@ -146,6 +163,7 @@
         <image name="TwitterIcon.png" width="20" height="20"/>
         <image name="delete.png" width="30" height="30"/>
         <image name="fill.png" width="30" height="30"/>
+        <image name="stamp.png" width="30" height="30"/>
         <image name="stroke.png" width="30" height="30"/>
     </resources>
 </document>

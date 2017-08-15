@@ -13,10 +13,13 @@ class JsonManager: NSObject {
     static let shared = JsonManager()
     /// ステージ配列
     var stages: Array<StageEntity>?
+    /// スタンプ配列
+    var stamps: Array<StampEntity>?
     
     override init() {
         super.init()
         stages = stageList()
+        stamps = stampList()
     }
     
     /// jsonを読み込んでステージ配列を返す
@@ -41,11 +44,29 @@ class JsonManager: NSObject {
         return items
     }
     
+    func stampList() -> [StampEntity]? {
+        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: "stamp")!,
+                                                     options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+        
+        guard let stages = json.value(forKey: "stamp") as! Array<String>? else {
+            return nil
+        }
+        
+        var items: [StampEntity] = []
+        for item in stages {
+            let entity = StampEntity()
+            entity.name = item
+            items.append(entity)
+        }
+        
+        return items
+    }
+    
     /// jsonデータをData型で返す
     ///
     /// - Parameter name: ファイル名
     /// - Returns: jsonをDataにしたもの
-    func getResourceJson(name:String) -> Data? {
+    private func getResourceJson(name:String) -> Data? {
         let bundlePath : String = Bundle.main.path(forResource: "Resource", ofType: "bundle")!
         let bundle = Bundle(path: bundlePath)!
         if let jsonPath : String = bundle.path(forResource: name, ofType: "json") {
@@ -62,6 +83,13 @@ class JsonManager: NSObject {
     /// - Returns: jsonのパースに失敗していた場合0、成功していたらステージの個数を返す
     func stageCount() -> Int {
         guard let count = stages?.count else {
+            return 0
+        }
+        return count
+    }
+    
+    func stampCount() -> Int {
+        guard let count = stamps?.count else {
             return 0
         }
         return count

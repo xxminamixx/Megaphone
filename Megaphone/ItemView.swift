@@ -16,6 +16,8 @@ protocol ItemViewDelegate {
     func fillTapped()
     // 枠線ボタン
     func strokeTapped()
+    // スタンプボタンタップ
+    func stampTapped()
     // twitterボタン
     func twitterTapped()
     // スクショボタン
@@ -30,6 +32,7 @@ class ItemView: UIView {
     @IBOutlet weak var allDeleteButton: UIImageView!
     @IBOutlet weak var fillButton: UIImageView!
     @IBOutlet weak var strokeButton: UIImageView!
+    @IBOutlet weak var stampButton: UIImageView!
     
     static let nibName = "ItemsView"
     
@@ -55,6 +58,10 @@ class ItemView: UIView {
         
         strokeButton.onTap { _ in 
             self.delegate.strokeTapped()
+        }
+        
+        stampButton.onTap { _ in
+            self.delegate.stampTapped()
         }
         
         twitterButton.onTap { _ in

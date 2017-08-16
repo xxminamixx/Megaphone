@@ -31,10 +31,6 @@ struct ConstText {
     static let helveticaNeue = "HelveticaNeue-Bold"
     
     
-    // MARK: - テキストビュー
-    static let notInputText = "名前をつけてください"
-    
-    
     // MARK: - AlertController関連
     
     /* AlertControllerボタン */

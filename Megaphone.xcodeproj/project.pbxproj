@@ -52,6 +52,12 @@
 		9D4D0B0B1F42AD5E0061D03E /* StampStoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B0A1F42AD5E0061D03E /* StampStoreEntity.swift */; };
 		9D4D0B0D1F42AE840061D03E /* StampStoreEntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B0C1F42AE840061D03E /* StampStoreEntityList.swift */; };
 		9D4D0B161F43EFC00061D03E /* ConstText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B151F43EFC00061D03E /* ConstText.swift */; };
+		9D4D0B181F43F9BB0061D03E /* ItemViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B171F43F9BB0061D03E /* ItemViewDelegate.swift */; };
+		9D4D0B1B1F43FA890061D03E /* StampViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B1A1F43FA890061D03E /* StampViewDelegate.swift */; };
+		9D4D0B1D1F43FAB70061D03E /* StampSelectViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B1C1F43FAB70061D03E /* StampSelectViewDelegate.swift */; };
+		9D4D0B1F1F43FB190061D03E /* LabelSettingViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B1E1F43FB190061D03E /* LabelSettingViewDelegate.swift */; };
+		9D4D0B211F43FB470061D03E /* TextViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B201F43FB470061D03E /* TextViewControllerDelegate.swift */; };
+		9D4D0B231F43FB8D0061D03E /* NamingLabelViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B221F43FB8D0061D03E /* NamingLabelViewDelegate.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -163,6 +169,12 @@
 		9D4D0B0A1F42AD5E0061D03E /* StampStoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampStoreEntity.swift; sourceTree = "<group>"; };
 		9D4D0B0C1F42AE840061D03E /* StampStoreEntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampStoreEntityList.swift; sourceTree = "<group>"; };
 		9D4D0B151F43EFC00061D03E /* ConstText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstText.swift; sourceTree = "<group>"; };
+		9D4D0B171F43F9BB0061D03E /* ItemViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewDelegate.swift; sourceTree = "<group>"; };
+		9D4D0B1A1F43FA890061D03E /* StampViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampViewDelegate.swift; sourceTree = "<group>"; };
+		9D4D0B1C1F43FAB70061D03E /* StampSelectViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSelectViewDelegate.swift; sourceTree = "<group>"; };
+		9D4D0B1E1F43FB190061D03E /* LabelSettingViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingViewDelegate.swift; sourceTree = "<group>"; };
+		9D4D0B201F43FB470061D03E /* TextViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewControllerDelegate.swift; sourceTree = "<group>"; };
+		9D4D0B221F43FB8D0061D03E /* NamingLabelViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamingLabelViewDelegate.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -410,6 +422,19 @@
 			name = StageTableView;
 			sourceTree = "<group>";
 		};
+		9D4D0B191F43FA590061D03E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0B171F43F9BB0061D03E /* ItemViewDelegate.swift */,
+				9D4D0B1A1F43FA890061D03E /* StampViewDelegate.swift */,
+				9D4D0B1C1F43FAB70061D03E /* StampSelectViewDelegate.swift */,
+				9D4D0B1E1F43FB190061D03E /* LabelSettingViewDelegate.swift */,
+				9D4D0B201F43FB470061D03E /* TextViewControllerDelegate.swift */,
+				9D4D0B221F43FB8D0061D03E /* NamingLabelViewDelegate.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		9D52DD4C1F1DAD03003204AB = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				9D52DD901F1DD502003204AB /* NamingViewController.swift */,
+				9D4D0B191F43FA590061D03E /* Extension */,
 			);
 			name = Naming;
 			sourceTree = "<group>";
@@ -834,12 +860,16 @@
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
 				9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */,
+				9D4D0B1D1F43FAB70061D03E /* StampSelectViewDelegate.swift in Sources */,
+				9D4D0B1F1F43FB190061D03E /* LabelSettingViewDelegate.swift in Sources */,
 				9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D4D0ABC1F38093A0061D03E /* UIColorExtension.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9DAEC6FD1F304EF2009B03E3 /* NavigationController.swift in Sources */,
+				9D4D0B1B1F43FA890061D03E /* StampViewDelegate.swift in Sources */,
+				9D4D0B231F43FB8D0061D03E /* NamingLabelViewDelegate.swift in Sources */,
 				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
@@ -848,6 +878,7 @@
 				9D4D0AAC1F306F3F0061D03E /* RealmStoreManager.swift in Sources */,
 				9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,
+				9D4D0B211F43FB470061D03E /* TextViewControllerDelegate.swift in Sources */,
 				9D4D0B0B1F42AD5E0061D03E /* StampStoreEntity.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
@@ -857,6 +888,7 @@
 				9D4D0B0D1F42AE840061D03E /* StampStoreEntityList.swift in Sources */,
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 				9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */,
+				9D4D0B181F43F9BB0061D03E /* ItemViewDelegate.swift in Sources */,
 				9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

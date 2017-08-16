@@ -10,6 +10,7 @@ target 'Megaphone' do
   pod 'GestureRecognizerClosures', '~> 3'
   pod 'Cartography' , :git => 'https://github.com/xxminamixx/Cartography'
   pod ‘SwiftyAttributes’, ‘~> 3.1.0’
+  pod 'FDTake’, ‘~> 1.0.0’
 
   # Pods for Megaphone
 

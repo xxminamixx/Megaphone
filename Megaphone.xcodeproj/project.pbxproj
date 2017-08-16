@@ -51,6 +51,7 @@
 		9D4D0B091F42A8C40061D03E /* splatoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D0B081F42A8C40061D03E /* splatoon.png */; };
 		9D4D0B0B1F42AD5E0061D03E /* StampStoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B0A1F42AD5E0061D03E /* StampStoreEntity.swift */; };
 		9D4D0B0D1F42AE840061D03E /* StampStoreEntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B0C1F42AE840061D03E /* StampStoreEntityList.swift */; };
+		9D4D0B161F43EFC00061D03E /* ConstText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0B151F43EFC00061D03E /* ConstText.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -161,6 +162,7 @@
 		9D4D0B081F42A8C40061D03E /* splatoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splatoon.png; sourceTree = "<group>"; };
 		9D4D0B0A1F42AD5E0061D03E /* StampStoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampStoreEntity.swift; sourceTree = "<group>"; };
 		9D4D0B0C1F42AE840061D03E /* StampStoreEntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampStoreEntityList.swift; sourceTree = "<group>"; };
+		9D4D0B151F43EFC00061D03E /* ConstText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstText.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				9DAEC6FE1F304F35009B03E3 /* ConstColor.swift */,
+				9D4D0B151F43EFC00061D03E /* ConstText.swift */,
 			);
 			name = Const;
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */,
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D4D0AC01F381B7C0061D03E /* LabelSettingView.swift in Sources */,
+				9D4D0B161F43EFC00061D03E /* ConstText.swift in Sources */,
 				9D4D0AAC1F306F3F0061D03E /* RealmStoreManager.swift in Sources */,
 				9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,

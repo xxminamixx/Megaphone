@@ -37,7 +37,7 @@ class TextViewController: UIViewController {
         // MARK: 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         // AdMobで発行された広告ユニットIDを設定
-        banner.adUnitID = "ca-app-pub-9801569699151969/5647553673"
+        banner.adUnitID = ConstText.keyBoardBanner
         banner.delegate = self
         banner.rootViewController = self
         let gadRequest:GADRequest = GADRequest()
@@ -68,15 +68,15 @@ class TextViewController: UIViewController {
         
         /* NavigationBarにボタンアイテムを追加 */
         let rightDoneButton = UIButton()
-        rightDoneButton.setTitle("完了", for: .normal)
-        rightDoneButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        rightDoneButton.setTitle(ConstText.doneNavigation, for: .normal)
+        rightDoneButton.titleLabel?.font = UIFont(name: ConstText.helveticaNeue, size: 18)
         rightDoneButton.setTitleColor(UIColor.white, for: .normal)
         rightDoneButton.sizeToFit()
         rightDoneButton.addTarget(self, action: #selector(done), for: UIControlEvents.touchUpInside)
         
         let leftCloseButton = UIButton()
-        leftCloseButton.setTitle("×", for: .normal)
-        leftCloseButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        leftCloseButton.setTitle(ConstText.closeNavigation, for: .normal)
+        leftCloseButton.titleLabel?.font = UIFont(name: ConstText.helveticaNeue, size: 30)
         leftCloseButton.setTitleColor(UIColor.white, for: .normal)
         leftCloseButton.sizeToFit()
         leftCloseButton.addTarget(self, action: #selector(close), for: UIControlEvents.touchUpInside)

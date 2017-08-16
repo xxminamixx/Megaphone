@@ -26,18 +26,18 @@ class JsonManager: NSObject {
     ///
     /// - Returns: ステージ配列
     func stageList() -> [StageEntity]? {
-        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: "stage")!,
+        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stageFileName)!,
                                                      options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
         
-        guard let stages = json.value(forKey: "stage") as! Array<Dictionary<String, String>>? else {
+        guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
             return nil
         }
         
         var items: [StageEntity] = []
         for item in stages {
             let entity = StageEntity()
-            entity.stageName = item["stage"]
-            entity.imageName = item["image"]
+            entity.stageName = item[ConstText.stageKey]
+            entity.imageName = item[ConstText.imageKey]
             items.append(entity)
         }
         
@@ -45,10 +45,10 @@ class JsonManager: NSObject {
     }
     
     func stampList() -> [StampEntity]? {
-        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: "stamp")!,
+        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stampFileName)!,
                                                      options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
         
-        guard let stages = json.value(forKey: "stamp") as! Array<String>? else {
+        guard let stages = json.value(forKey: ConstText.stampKey) as! Array<String>? else {
             return nil
         }
         
@@ -67,9 +67,9 @@ class JsonManager: NSObject {
     /// - Parameter name: ファイル名
     /// - Returns: jsonをDataにしたもの
     private func getResourceJson(name:String) -> Data? {
-        let bundlePath : String = Bundle.main.path(forResource: "Resource", ofType: "bundle")!
+        let bundlePath : String = Bundle.main.path(forResource: ConstText.resouce, ofType: ConstText.bundle)!
         let bundle = Bundle(path: bundlePath)!
-        if let jsonPath : String = bundle.path(forResource: name, ofType: "json") {
+        if let jsonPath : String = bundle.path(forResource: name, ofType: ConstText.json) {
             let fileHandle : FileHandle = FileHandle(forReadingAtPath: jsonPath)!
             let jsonData : Data = fileHandle.readDataToEndOfFile()
             return jsonData

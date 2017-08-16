@@ -40,7 +40,7 @@ class NamingViewController: UIViewController {
         super.viewDidLoad()
         
         // 戻るボタンの文字を空にすることで矢印だけにする
-        navigationController!.navigationBar.topItem!.title = " "
+        navigationController!.navigationBar.topItem!.title = ConstText.backNavigation
         
         /* View関連 */
         self.view.backgroundColor = UIColor.darkGray
@@ -96,7 +96,7 @@ class NamingViewController: UIViewController {
             // ピンチしたときViewの大きさを変えてフォントサイズが変更されてもテキストが見切れないようにする            
             // フォントサイズ変更
             editingLabel.fontSize = editingLabel.fontSize * changeAmountScele
-            editingLabel.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: editingLabel.fontSize)
+            editingLabel.namingLabel.font = UIFont(name: ConstText.helveticaNeue, size: editingLabel.fontSize)
             // スケール保持
             editingLabel.befroScale = pinch.scale
             
@@ -166,18 +166,18 @@ class NamingViewController: UIViewController {
     // 保存を試みた結果をダイアログで表示
     func saveImageResult(_ image: UIImage, didFinishSavingWithError error: Error!, contextInfo: UnsafeMutableRawPointer) {
         
-        var title = "保存完了"
-        var message = "カメラロールに保存しました"
+        var title = ConstText.imageSaveSuccess
+        var message = ConstText.imageSaveSuccessMessage
         
         if error != nil {
-            title = "エラー"
-            message = "保存に失敗しました"
+            title = ConstText.imageSaveFailure
+            message = ConstText.imageSaveFailureMessage
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // OKボタンを追加
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: ConstText.ok, style: .default, handler: nil))
         
         // UIAlertController を表示
         present(alert, animated: true, completion: nil)
@@ -244,7 +244,7 @@ class NamingViewController: UIViewController {
             if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
-                viewController.navigationItem.title = "新規作成"
+                viewController.navigationItem.title = ConstText.newLabel
                 viewController.delegate = self
                 present(navigation, animated: true, completion: nil)
             }
@@ -255,7 +255,7 @@ class NamingViewController: UIViewController {
     func onClickCloseButton() {
         if !(actionTextView?.hasText)! {
             // テキストが入力されていない
-            actionTextView?.text = "名前をつけてください"
+            actionTextView?.text = ConstText.notInputText
             actionTextView?.textColor = UIColor.lightGray
             actionTextView?.sizeToFit()
         }
@@ -267,7 +267,7 @@ class NamingViewController: UIViewController {
         label.namingLabel.text = text
         
         label.fontSize = fontSize
-        label.namingLabel.font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+        label.namingLabel.font = UIFont(name: ConstText.helveticaNeue, size: fontSize)
         // NSDataから復元
         if let attributedText = NSKeyedUnarchiver.unarchiveObject(with: attribute) as? NSMutableAttributedString {
             attributedText.mutableString.setString(text!)
@@ -354,7 +354,7 @@ class NamingViewController: UIViewController {
             
             if let missNameEntity = RealmStoreManager.picLabelEntity(key: "海女美術館") {
                 RealmStoreManager.save {
-                    missNameEntity.key = "海女美術大学"
+                    missNameEntity.key = ConstText.ama
                 }
             }
             
@@ -532,7 +532,7 @@ extension NamingViewController: NamingLabelViewDelegate {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
                 
-                viewController.navigationItem.title = "編集中"
+                viewController.navigationItem.title = ConstText.editLabel
                 viewController.delegate = self
                 viewController.text = view.namingLabel.text
                 
@@ -592,7 +592,7 @@ extension NamingViewController: TextViewControllerDelegate {
             if let label = UINib(nibName: NamingLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? NamingLabelView {
                 
                 // サイズ計算用のダミーのラベル
-                let settingLabel = text?.withTextColor(UIColor.white).withFont(UIFont(name: "HelveticaNeue-Bold", size: 18)!).withStrokeColor(UIColor.white)
+                let settingLabel = text?.withTextColor(UIColor.white).withFont(UIFont(name: ConstText.helveticaNeue, size: 18)!).withStrokeColor(UIColor.white)
                 label.namingLabel.attributedText = settingLabel
                 
                 label.fontSize = 18
@@ -629,7 +629,7 @@ extension NamingViewController: ItemViewDelegate {
 
     func allDeleteTapped() {
         // このControllerに対応するRealmのエンティティを削除する
-        present(AlertControllerManager.customActionAlert(title: nil, message: "テキストとスタンプを全て削除しますか？",
+        present(AlertControllerManager.customActionAlert(title: nil, message: ConstText.allDelete,
                                                          defaultAction: { _ in
                                                             // subViewのラベルを全て削除
                                                             for subView in (self.imageView?.subviews)! {

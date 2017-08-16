@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         // 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         // AdMobで発行された広告ユニットIDを設定
-        banner.adUnitID = "ca-app-pub-9801569699151969/2940484932"
+        banner.adUnitID = ConstText.homeBanner
         banner.delegate = self
         banner.rootViewController = self
         let gadRequest:GADRequest = GADRequest()
@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // タイトルを設定
-        navigationItem.title = "めがほん"
+        navigationItem.title = ConstText.appName
     }
 
     override func didReceiveMemoryWarning() {

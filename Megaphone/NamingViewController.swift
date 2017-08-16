@@ -366,6 +366,17 @@ class NamingViewController: UIViewController {
     
     // MARK: ラベル永続化処理
     private func saveLabels() {
+        
+        // タイトルがnilなら以下に進まない
+        guard let title = navigationItem.title else {
+            return
+        }
+        
+        // タイトルが空文字なら以下に進まない
+        guard !title.isEmpty else {
+            return
+        }
+        
         // imageViewのsubviewであるNamingViewを全て取得したい
         guard let subviews = imageView?.subviews else {
             return
@@ -392,12 +403,13 @@ class NamingViewController: UIViewController {
         // 画面タイトルをキーに設定
         labelEntity.key = navigationItem.title
         
-        // タイトルがオプショナルなので安全な取り出し
-        if let title = navigationItem.title {
-            // もし同じ名前のEntityが存在したら削除
-            if LabelStoreManager.pic(key: title) != nil {
-                LabelStoreManager.delete(key: title)
-            }
+        // もし同じ名前のLabelEntityが存在したら削除
+        if RealmStoreManager.picLabelEntity(key: title) != nil {
+            RealmStoreManager.deleteLabelEntity(key: title)
+        }
+        
+        if RealmStoreManager.picStampEntity(key: title) != nil {
+            RealmStoreManager.deleteStampEntity(key: title)
         }
         
         // Entityを追加
@@ -408,9 +420,14 @@ class NamingViewController: UIViewController {
     private func loadLabels() {
         if let title = navigationItem.title {
             
-            if let missNameEntity = LabelStoreManager.pic(key: "海女美術館") {
-                LabelStoreManager.save {
-                    missNameEntity.key = "海女美術大学"
+            // タイトルが空文字だったら以下に進まない(カメラロールから選択した場合の対応)
+            guard !title.isEmpty else {
+                return
+            }
+            
+            if let missNameEntity = RealmStoreManager.picLabelEntity(key: "海女美術館") {
+                RealmStoreManager.save {
+                    missNameEntity.key = ConstText.ama
                 }
             }
             

@@ -28,9 +28,26 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-Ck-K0Z">
-                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubi-2z-SrZ">
+                                <rect key="frame" x="0.0" y="567" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アルバムから選択する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf3-dc-8If">
+                                        <rect key="frame" x="100.5" y="14.5" width="174" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.97662199150362117" green="1" blue="0.99846282338029602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Yf3-dc-8If" firstAttribute="centerX" secondItem="ubi-2z-SrZ" secondAttribute="centerX" id="Ppg-J1-K5P"/>
+                                    <constraint firstAttribute="height" constant="50" id="aid-NN-Gtn"/>
+                                    <constraint firstItem="Yf3-dc-8If" firstAttribute="centerY" secondItem="ubi-2z-SrZ" secondAttribute="centerY" id="koD-0c-Ld0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -38,14 +55,18 @@
                             <constraint firstAttribute="trailing" secondItem="lq4-hv-NDc" secondAttribute="trailing" id="4KE-S8-5e2"/>
                             <constraint firstItem="Ser-Ck-K0Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EM6-ZI-S8L"/>
                             <constraint firstAttribute="trailing" secondItem="Ser-Ck-K0Z" secondAttribute="trailing" id="Ejy-1m-6jg"/>
-                            <constraint firstItem="lq4-hv-NDc" firstAttribute="top" secondItem="Ser-Ck-K0Z" secondAttribute="bottom" id="JoI-qD-OT4"/>
+                            <constraint firstItem="ubi-2z-SrZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q61-kq-CfY"/>
+                            <constraint firstAttribute="trailing" secondItem="ubi-2z-SrZ" secondAttribute="trailing" id="Tjo-VN-ecH"/>
+                            <constraint firstItem="ubi-2z-SrZ" firstAttribute="top" secondItem="Ser-Ck-K0Z" secondAttribute="bottom" id="g2Y-7q-iRQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lq4-hv-NDc" secondAttribute="bottom" id="pbs-1c-Xjg"/>
                             <constraint firstItem="Ser-Ck-K0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r4l-r3-zf1"/>
+                            <constraint firstItem="lq4-hv-NDc" firstAttribute="top" secondItem="ubi-2z-SrZ" secondAttribute="bottom" id="ysM-iE-Ith"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="b2P-T6-h8K"/>
                     <connections>
                         <outlet property="bannerView" destination="lq4-hv-NDc" id="pRE-sw-JIQ"/>
+                        <outlet property="cameraRollIgnitionView" destination="8bC-Xf-vdC" id="hb8-5V-JHk"/>
                         <outlet property="stageTableView" destination="Ser-Ck-K0Z" id="70y-Ir-a6J"/>
                     </connections>
                 </viewController>

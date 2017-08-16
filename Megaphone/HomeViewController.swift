@@ -8,11 +8,15 @@
 
 import UIKit
 import GoogleMobileAds
+import FDTake
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var stageTableView: UITableView!
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet var cameraRollIgnitionView: UIView!
+    
+    var fdTakeController = FDTakeController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

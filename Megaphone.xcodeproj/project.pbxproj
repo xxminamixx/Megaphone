@@ -261,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				9D4D0AAB1F306F3F0061D03E /* RealmStoreManager.swift */,
+				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
+				9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -339,6 +341,73 @@
 			name = LabelSetting;
 			sourceTree = "<group>";
 		};
+		9D4D0B0E1F43DEE20061D03E /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */,
+				9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */,
+				9D4D0B131F43DF490061D03E /* LabelSettingView */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		9D4D0B0F1F43DEE90061D03E /* Stamp */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0AFD1F41950A0061D03E /* StampView.swift */,
+				9D4D0AFB1F4194F20061D03E /* StampView.xib */,
+				9D4D0B121F43DF300061D03E /* StampSelectView */,
+			);
+			name = Stamp;
+			sourceTree = "<group>";
+		};
+		9D4D0B101F43DEEF0061D03E /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
+				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
+		9D4D0B111F43DEF80061D03E /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0AAF1F32DC160061D03E /* ItemView.swift */,
+				9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */,
+			);
+			name = ItemView;
+			sourceTree = "<group>";
+		};
+		9D4D0B121F43DF300061D03E /* StampSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */,
+				9D4D0AEF1F41749A0061D03E /* StampSelectView.xib */,
+				9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */,
+				9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */,
+			);
+			name = StampSelectView;
+			sourceTree = "<group>";
+		};
+		9D4D0B131F43DF490061D03E /* LabelSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */,
+				9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */,
+			);
+			name = LabelSettingView;
+			sourceTree = "<group>";
+		};
+		9D4D0B141F43E0070061D03E /* StageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				9D52DD821F1DB573003204AB /* StageTableViewCell.swift */,
+				9D52DD831F1DB573003204AB /* StageTableViewCell.xib */,
+			);
+			name = StageTableView;
+			sourceTree = "<group>";
+		};
 		9D52DD4C1F1DAD03003204AB = {
 			isa = PBXGroup;
 			children = (
@@ -363,14 +432,12 @@
 			isa = PBXGroup;
 			children = (
 				9D52DD581F1DAD03003204AB /* AppDelegate.swift */,
+				9D52DD791F1DAE3C003204AB /* Model */,
 				9DF2EA3A1F2AD3F000EC460D /* View */,
+				9D52DD781F1DAE30003204AB /* Controller */,
 				9D52DD9E1F1EF93F003204AB /* Utility */,
 				9D52DD941F1DFA45003204AB /* Resources */,
-				9D52DD791F1DAE3C003204AB /* Model */,
-				9D52DD781F1DAE30003204AB /* Controller */,
-				9D52DD5C1F1DAD03003204AB /* Main.storyboard */,
 				9D52DD5F1F1DAD03003204AB /* Assets.xcassets */,
-				9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */,
 				9D52DD641F1DAD03003204AB /* Info.plist */,
 				9D52DD8C1F1DD1C6003204AB /* Resource.bundle */,
 			);
@@ -402,8 +469,6 @@
 			children = (
 				9D4D0AA81F306F140061D03E /* Manager */,
 				9D52DD971F1E00D8003204AB /* Entity */,
-				9D52DD861F1DB97C003204AB /* JsonManager.swift */,
-				9D4D0AB71F3309340061D03E /* AlertControllerManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -412,8 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				9D52DD8A1F1DC3F4003204AB /* HomeViewController.swift */,
-				9D52DD821F1DB573003204AB /* StageTableViewCell.swift */,
-				9D52DD831F1DB573003204AB /* StageTableViewCell.xib */,
+				9D4D0B141F43E0070061D03E /* StageTableView */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -482,20 +546,12 @@
 		9DF2EA3A1F2AD3F000EC460D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9DF2EA3B1F2AD4E000EC460D /* NamingLabelView.swift */,
-				9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */,
-				9D4D0AFD1F41950A0061D03E /* StampView.swift */,
-				9D4D0AFB1F4194F20061D03E /* StampView.xib */,
-				9D4D0AAF1F32DC160061D03E /* ItemView.swift */,
-				9D4D0AAD1F32DA7A0061D03E /* ItemsView.xib */,
-				9D4D0ABF1F381B7C0061D03E /* LabelSettingView.swift */,
-				9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */,
-				9D4D0AF11F4175DE0061D03E /* StampSelectView.swift */,
-				9D4D0AEF1F41749A0061D03E /* StampSelectView.xib */,
-				9D4D0AF51F4177400061D03E /* StampCollectionViewCell.swift */,
-				9D4D0AF61F4177400061D03E /* StampCollectionViewCell.xib */,
-				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
-				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+				9D52DD5C1F1DAD03003204AB /* Main.storyboard */,
+				9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */,
+				9D4D0B111F43DEF80061D03E /* ItemView */,
+				9D4D0B101F43DEEF0061D03E /* TextView */,
+				9D4D0B0F1F43DEE90061D03E /* Stamp */,
+				9D4D0B0E1F43DEE20061D03E /* Label */,
 			);
 			name = View;
 			sourceTree = "<group>";

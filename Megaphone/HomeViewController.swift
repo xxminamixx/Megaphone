@@ -106,6 +106,7 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 
+// MARK: GADBannerViewDelegate
 extension HomeViewController: GADBannerViewDelegate {
     
 }

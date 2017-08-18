@@ -27,6 +27,8 @@ class NamingViewController: UIViewController {
     var textSettingView: LabelSettingView?
     // ItemsViewを保持
     var topItemsView: ItemView?
+    // ピンチした中心座標を保持
+    var pinchCenter = CGPoint.zero
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -36,19 +38,29 @@ class NamingViewController: UIViewController {
         // 戻るボタンの文字を空にすることで矢印だけにする
         navigationController!.navigationBar.topItem!.title = " "
         
-        imageView?.backgroundColor = UIColor.darkGray
+        /* View関連 */
+        self.view.backgroundColor = UIColor.darkGray
         
+        /* imageView関連 */
+        imageView?.backgroundColor = UIColor.darkGray
         imageView?.isUserInteractionEnabled = true
         
+        /* スクロールビュー関連 */
+        imageScrollView.delegate = self
+        imageScrollView.minimumZoomScale = 1.0
+        imageScrollView.maximumZoomScale = 3.0
+        imageScrollView.contentMode = .scaleAspectFit
+        
         // スクロールビューにタップジェスチャを登録
-        imageScrollView.onTap { tap in
+        imageView?.onTap { tap in
             self.tapped(gesture: tap)
         }
         
         // スクロールビューにピンチジェスチャを登録
-        imageScrollView.onPinch { pinch in
-            // 編集中のラベルがなかったら何もしない
+        imageView?.onPinch { pinch in
+            // 編集中のラベルがなかったらステージ画像をズーム
             guard let editingLabel = self.editLabelView else {
+                self.imageScrollView.zoomScale = pinch.scale
                 return
             }
             
@@ -63,7 +75,7 @@ class NamingViewController: UIViewController {
             // ピンチしたときViewの大きさを変えてフォントサイズが変更されてもテキストが見切れないようにする
             self.editLabelView?.frame = CGRect(x: (self.editLabelView?.frame.origin.x)!, y: (self.editLabelView?.frame.origin.y)!, width: (self.editLabelView?.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.frame.height)! * (changeAmountScele))
             // Viewに追随してラベルも大きくする
-            self.editLabelView?.namingLabel.frame = CGRect.init(x: (self.editLabelView?.namingLabel.frame.origin.x)!, y: (self.editLabelView?.namingLabel.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.namingLabel.frame.height)! * (changeAmountScele))
+            self.editLabelView?.namingLabel.frame = CGRect(x: (self.editLabelView?.namingLabel.frame.origin.x)!, y: (self.editLabelView?.namingLabel.frame.origin.y)!, width: (self.editLabelView?.namingLabel.frame.width)! * (changeAmountScele) + 30, height: (self.editLabelView?.namingLabel.frame.height)! * (changeAmountScele))
             
             // フォントサイズ変更
             self.editLabelView?.fontSize = (self.editLabelView?.fontSize)! * changeAmountScele
@@ -109,7 +121,7 @@ class NamingViewController: UIViewController {
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
-            imageScrollView.addSubview(itemsView)
+            self.view.addSubview(itemsView)
             
             // オートレイアウトの制約更新
             constrain(itemsView, image) { view1, view2 in
@@ -177,6 +189,9 @@ class NamingViewController: UIViewController {
                 // ItemsViewの塗りつぶしボタン・枠線ボタンに打ち消し線を描く
                 drawCancelLineToFontConfig()
                 
+                // スクロールビューのスクロールをできるようにする
+                self.imageScrollView.isScrollEnabled = true
+                
                 // 選択を解除したらテキスト入力画面を出したくないのでreturn
                 return
             }
@@ -187,6 +202,7 @@ class NamingViewController: UIViewController {
             if let viewController = storyboard?.instantiateViewController(withIdentifier: TextViewController.nibName) as? TextViewController  {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
+                viewController.navigationItem.title = "新規作成"
                 viewController.delegate = self
                 present(navigation, animated: true, completion: nil)
             }
@@ -344,6 +360,15 @@ class NamingViewController: UIViewController {
     
 }
 
+// MARK: UIScrollViewDelegate
+extension NamingViewController: UIScrollViewDelegate {
+        
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+}
+
 // MARK: UITextViewDelegate
 extension NamingViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -385,12 +410,16 @@ extension NamingViewController: NamingLabelViewDelegate {
                 let navigation = TextViewNavigationController()
                 navigation.addChildViewController(viewController)
                 
+                viewController.navigationItem.title = "編集中"
                 viewController.delegate = self
+                viewController.text = view.namingLabel.text
+                
                 present(navigation, animated: true, completion: nil)
             }
         } else {
             // 選択状態にした時
             deleteCancelLineToFontConfig()
+            self.imageScrollView.isScrollEnabled = false
         }
     }
     
@@ -403,6 +432,9 @@ extension NamingViewController: TextViewControllerDelegate {
         
         if editLabelView != nil {
             // ラベルの編集が行われている場合
+            
+            // 編集が終わった後は選択状態ではないため、スクロールビューのスクロールができるようにする
+            imageScrollView.isScrollEnabled = true
             
             // 編集中のラベルの座標
             let x = editLabelView?.beforFrame.x
@@ -438,6 +470,15 @@ extension NamingViewController: TextViewControllerDelegate {
                 label.beforFrame = CGPoint(x: pointX! - (labelWidth / 2), y: pointY! - (viewHeight * 2))
                 
                 label.delegate = self
+                
+                // 新規作成時は選択状態にする
+                label.closeImageView.isHidden = false
+                label.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
+                self.editLabelView = label
+                
+                // 選択状態のためスクロールができないようにする
+                imageScrollView.isScrollEnabled = false
+                
                 imageView?.addSubview(label)
             }
         }
@@ -508,7 +549,7 @@ extension NamingViewController: ItemViewDelegate {
                 return
             }
             
-            imageScrollView.addSubview(settingView)
+            self.view.addSubview(settingView)
             
             // オートレイアウトの制約更新
             constrain(settingView, image) { view1, view2 in
@@ -579,11 +620,11 @@ extension NamingViewController: LabelSettingViewDelegate {
         }
     }
 
-    func colorViewTapped(isFont: Bool, color: UIColor) {
+    func colorViewTapped(isFont: Bool, color: UIColor, strokeWidth: Float) {
         if isFont {
             editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withTextColor(color)
         } else {
-            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color).withStrokeWidth(-1.0)
+            editLabelView?.namingLabel.attributedText = editLabelView?.namingLabel.attributedText?.withStrokeColor(color).withStrokeWidth(-1.0 * Double(strokeWidth * 10))
         }
     }
     

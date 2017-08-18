@@ -13,7 +13,7 @@ protocol LabelSettingViewDelegate {
     // フォント色・枠色の切り替え
     func closeTapped()
     func modeChange(isFont: Bool)
-    func colorViewTapped(isFont: Bool, color: UIColor)
+    func colorViewTapped(isFont: Bool, color: UIColor, strokeWidth: Float)
     func movedSlider(sender: UISlider, isFont: Bool, color: UIColor)
 }
 
@@ -76,8 +76,6 @@ class LabelSettingView: UIView {
         lightBlueView.backgroundColor = ConstColor.lightBlue
         blackView.backgroundColor = UIColor.black
         whiteView.backgroundColor = UIColor.white
-        // 背景色と同じで見えないので
-        whiteView.drawLine(color: UIColor.gray, lineWidth: 1.0)
         
         // スライダーの初期位置
         slider.value = 0.1
@@ -109,84 +107,85 @@ class LabelSettingView: UIView {
             deleteDrawLineOtherColorView(view: self.redView)
             self.redView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.redView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.red)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.red, strokeWidth: self.slider.value)
         }
         
         orangeView.onTap{ _ in
             deleteDrawLineOtherColorView(view: self.orangeView)
             self.orangeView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.orangeView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.orange)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.orange, strokeWidth: self.slider.value)
         }
         
         greenView.onTap{ _ in
             deleteDrawLineOtherColorView(view: self.greenView)
             self.greenView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.greenView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconGreen)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconGreen, strokeWidth: self.slider.value)
         }
         
         blueView.onTap{ _ in
             deleteDrawLineOtherColorView(view: self.blueView)
             self.blueView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.blueView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.blue)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.blue, strokeWidth: self.slider.value)
         }
         
         purpleView.onTap{ _ in
             deleteDrawLineOtherColorView(view: self.purpleView)
             self.purpleView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.purpleView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.purple)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.purple, strokeWidth: self.slider.value)
         }
         
         grayView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.grayView)
             self.grayView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.grayView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.gray_e8e8e8)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.gray_e8e8e8, strokeWidth: self.slider.value)
         }
         
         pinkView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.pinkView)
             self.pinkView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.pinkView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.pink)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.pink, strokeWidth: self.slider.value)
         }
         
         yellowView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.yellowView)
             self.yellowView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.yellowView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconYellow)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.iconYellow, strokeWidth: self.slider.value)
         }
         
         yellowGreenView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.yellowGreenView)
             self.yellowGreenView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.yellowGreenView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.yellowGreen)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.yellowGreen, strokeWidth: self.slider.value)
         }
         
         lightBlueView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.lightBlueView)
             self.lightBlueView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.lightBlueView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.lightBlue)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: ConstColor.lightBlue, strokeWidth: self.slider.value)
         }
         
         blackView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.blackView)
             self.blackView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.blackView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.black)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.black, strokeWidth: self.slider.value
+            )
         }
         
         whiteView.onTap { _ in
             deleteDrawLineOtherColorView(view: self.whiteView)
             self.whiteView.drawLine(color: self.colorViewOutlineColor, lineWidth: self.colorViewOutlineWidth)
             self.selectView = self.whiteView
-            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.white)
+            self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.white, strokeWidth: self.slider.value)
         }
         
         // TODO: 他の色Viewにラインのレイヤーが載っていたら削除する共有処理がほしい
@@ -206,13 +205,19 @@ class LabelSettingView: UIView {
     
     @IBAction func sliderMoved(_ sender: UISlider) {
        
-        guard let select = selectView else {
-           return
-        }
-        
-        guard let backgroundColor = select.backgroundColor else {
+        guard let select = selectView, let backgroundColor = select.backgroundColor  else {
+            delegate.movedSlider(sender: sender, isFont: isFontColorSelected, color: UIColor.white)
             return
         }
+        
+//        guard let backgroundColor = select.backgroundColor else {
+//            return
+//        }
+//        
+//        if selectView == nil || selectView?.backgroundColor == nil {
+//            // 色の選択をしていない場合
+//            delegate.movedSlider(sender: sender, isFont: isFontColorSelected, color: UIColor.white)
+//        }
         
         delegate.movedSlider(sender: sender, isFont: isFontColorSelected, color: backgroundColor)
     }

@@ -188,7 +188,6 @@ class LabelSettingView: UIView {
             self.delegate.colorViewTapped(isFont: self.isFontColorSelected, color: UIColor.white, strokeWidth: self.slider.value)
         }
         
-        // TODO: 他の色Viewにラインのレイヤーが載っていたら削除する共有処理がほしい
         func deleteDrawLineOtherColorView(view: UIView) {
             if selectView != nil {
                 // 選択中のViewがあったらそのViewの一番上のレイヤを削除

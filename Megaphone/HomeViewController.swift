@@ -8,20 +8,27 @@
 
 import UIKit
 import GoogleMobileAds
+import GestureRecognizerClosures
+import FDTake
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var stageTableView: UITableView!
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var cameraRollIgnitionView: UIView!
+    
+    var fdTakeController = FDTakeController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bannerView.backgroundColor = UIColor.darkGray   
+        // 広告表示用の親Viewの背景色を設定
+        bannerView.backgroundColor = UIColor.darkGray
+        
         // 広告の設定
         let banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         // AdMobで発行された広告ユニットIDを設定
-        banner.adUnitID = "ca-app-pub-9801569699151969/2940484932"
+        banner.adUnitID = ConstText.homeBanner
         banner.delegate = self
         banner.rootViewController = self
         let gadRequest:GADRequest = GADRequest()
@@ -38,11 +45,37 @@ class HomeViewController: UIViewController {
         stageTableView.dataSource = self
         let nib = UINib(nibName: StageTableViewCell.nibName, bundle: nil)
         stageTableView.register(nib, forCellReuseIdentifier: StageTableViewCell.nibName)
+        
+        /* カメラロール起動Viewの設定 */
+        cameraRollIgnitionView.backgroundColor = ConstColor.cameraRollYellow
+        cameraRollIgnitionView.onTap { _ in
+            self.fdTakeController.allowsTake = false
+            self.fdTakeController.allowsVideo = false
+            self.fdTakeController.allowsEditing = false
+            
+            self.fdTakeController.chooseFromLibraryText = "アルバムを開く"
+            self.fdTakeController.didGetPhoto = {
+                (_ photo: UIImage, _ info: [AnyHashable : Any]) in
+                
+                let viewController = self.storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
+                let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                // イメージビュー生成
+                let imageView = UIImageView(frame: fullScreen)
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = photo
+                imageView.isUserInteractionEnabled = true
+                viewController.imageView = imageView
+
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            self.fdTakeController.present()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // タイトルを設定
-        navigationItem.title = "めがほん"
+        navigationItem.title = ConstText.appName
     }
 
     override func didReceiveMemoryWarning() {

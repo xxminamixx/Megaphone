@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0A84571F87ED6700D06E80 /* engawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A0A84561F87ED6700D06E80 /* engawa.jpg */; };
 		6A1B38FE1F6D5F4D0035CC90 /* mozuku.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B38FD1F6D5F4D0035CC90 /* mozuku.jpg */; };
 		6A33B0021F357A6300B14982 /* 60.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33AFFF1F357A6300B14982 /* 60.png */; };
 		6A33B0031F357A6300B14982 /* 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0001F357A6300B14982 /* 60@2x.png */; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		02853CB0167B359CE7A1A78C /* Pods-Megaphone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.release.xcconfig"; sourceTree = "<group>"; };
 		64260B4968DD748DCF0580EA /* Pods-MegaphoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A0A84561F87ED6700D06E80 /* engawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = engawa.jpg; sourceTree = "<group>"; };
 		6A1B38FD1F6D5F4D0035CC90 /* mozuku.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mozuku.jpg; sourceTree = "<group>"; };
 		6A33AFFF1F357A6300B14982 /* 60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 60.png; sourceTree = "<group>"; };
 		6A33B0001F357A6300B14982 /* 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60@2x.png"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		9D4D0B051F42A8240061D03E /* Stage */ = {
 			isa = PBXGroup;
 			children = (
+				6A0A84561F87ED6700D06E80 /* engawa.jpg */,
 				6A1B38FD1F6D5F4D0035CC90 /* mozuku.jpg */,
 				6A33B0051F52690000B14982 /* manta.jpg */,
 				9DAEC6E51F3045A3009B03E3 /* ama.jpg */,
@@ -730,6 +733,7 @@
 				9D4D0AC91F3861430061D03E /* fill@3x.png in Resources */,
 				9D4D0ABA1F3426A60061D03E /* close.png in Resources */,
 				9D4D0AC81F3861430061D03E /* fill@2x.png in Resources */,
+				6A0A84571F87ED6700D06E80 /* engawa.jpg in Resources */,
 				9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */,
 				9D4D0ADE1F3ACBD10061D03E /* stroke_thin@2x.png in Resources */,
 				9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */,

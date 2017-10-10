@@ -19,12 +19,23 @@ class MemoLabelView: UIView {
     var delegate: MemoLabelViewDelegate?
     // マーカーがタップされたときにメモ文字列をTextViewに復元するために保持
     var memoText: String?
+    var beforeFrame: CGPoint!
     
     @IBOutlet weak var memoButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // TODO: マーカーボタンの初期色の設定などなど
+
+        // ドラックした時の処理
+        self.onPan { pan in
+            let location: CGPoint = pan.translation(in: self)
+            let x = location.x + self.beforeFrame.x
+            let y = location.y + self.beforeFrame.y
+            self.beforeFrame = CGPoint(x: x, y: y)
+            pan.setTranslation(CGPoint.zero, in: self)
+            self.frame.origin = self.beforeFrame
+        }
+
     }
     
     @IBAction func memoButtonTapped(_ sender: Any) {

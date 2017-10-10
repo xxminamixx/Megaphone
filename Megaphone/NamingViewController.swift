@@ -207,6 +207,7 @@ class NamingViewController: UIViewController {
         
         if let memoMarker = UINib(nibName: MemoLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MemoLabelView {
             self.memoMarker = memoMarker
+            self.memoMarker?.beforeFrame = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
             self.memoMarker?.delegate = self
             // TODO: これだとタップした位置の真ん中にはならないので気になるなら修正する
             self.memoMarker?.frame.origin = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
@@ -401,6 +402,8 @@ class NamingViewController: UIViewController {
                         marker.delegate = self
                         // マーカーの位置を設定
                         marker.frame = CGRect(x: markerEntity.pointX, y: markerEntity.pointY, width: 30, height: 30)
+                        // 初期のフレームを設定
+                        marker.beforeFrame = CGPoint.init(x: markerEntity.pointX, y: markerEntity.pointY)
                         // マーカーに対応する文字を設定
                         marker.memoText = markerEntity.text
                         // マーカーをimageViewに追加

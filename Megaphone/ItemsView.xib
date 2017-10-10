@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -111,9 +111,28 @@
                         </label>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gIe-CG-EUH">
+                    <rect key="frame" x="166" y="9" width="30" height="43.5"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="pLV-c5-VQj">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="RDV-F3-d8V"/>
+                                <constraint firstAttribute="width" constant="30" id="tut-0b-joH"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    メモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSc-go-0NX">
+                            <rect key="frame" x="0.0" y="35" width="30" height="8.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                            <color key="textColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="gIe-CG-EUH" firstAttribute="leading" secondItem="ZIq-mF-vTy" secondAttribute="trailing" constant="20" id="3tv-38-fD5"/>
                 <constraint firstAttribute="trailing" secondItem="DRa-ip-oIk" secondAttribute="trailing" id="6z1-cL-tOn"/>
                 <constraint firstItem="t5E-nl-QGh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9e4-YX-Yoz"/>
                 <constraint firstItem="Kcl-WL-e1m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="IDG-72-gVK"/>
@@ -126,6 +145,7 @@
                 <constraint firstItem="t5E-nl-QGh" firstAttribute="leading" secondItem="JOt-6B-P3s" secondAttribute="trailing" constant="20" id="fgX-oK-bb4"/>
                 <constraint firstItem="URQ-U7-EUH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hY6-O6-eEi"/>
                 <constraint firstItem="DRa-ip-oIk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pmx-PC-Ywx"/>
+                <constraint firstItem="gIe-CG-EUH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uBV-3l-1xk"/>
                 <constraint firstItem="ZIq-mF-vTy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yxR-ym-7w2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -133,6 +153,7 @@
             <connections>
                 <outlet property="allDeleteButton" destination="84E-2N-qsx" id="thy-aD-Nkr"/>
                 <outlet property="fillButton" destination="m7Y-gH-Pgh" id="yAQ-Sq-oNo"/>
+                <outlet property="memoButton" destination="pLV-c5-VQj" id="Pht-5u-Ad7"/>
                 <outlet property="partitionView" destination="DRa-ip-oIk" id="c00-Z5-6Yx"/>
                 <outlet property="screenShotButton" destination="tdG-p5-Ifs" id="IZS-9d-3tt"/>
                 <outlet property="strokeButton" destination="52h-ug-iZZ" id="zpl-PK-4GT"/>

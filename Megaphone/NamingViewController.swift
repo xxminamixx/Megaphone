@@ -29,6 +29,8 @@ class NamingViewController: UIViewController {
     var topItemsView: ItemView?
     // ピンチした中心座標を保持
     var pinchCenter = CGPoint.zero
+    // メモモードのフラグ: デフォルトはfalse
+    var isMemo = false
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -53,7 +55,7 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにタップジェスチャを登録
         imageView?.onTap { tap in
-            self.tapped(gesture: tap)
+            self.tappedNamingMode(gesture: tap)
         }
         
         // スクロールビューにピンチジェスチャを登録
@@ -118,6 +120,8 @@ class NamingViewController: UIViewController {
             
             // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
             drawCancelLineToFontConfig()
+            // デフォルトはメモモードOFFにしておくので打ち消し線を描く
+            memoCancelLineManaged()
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
@@ -165,7 +169,7 @@ class NamingViewController: UIViewController {
     }
     
     // スクロールビューがタップされたとき呼ばれる
-    func tapped(gesture: UITapGestureRecognizer) {
+    func tappedNamingMode(gesture: UITapGestureRecognizer) {
         
         for i in 0..<gesture.numberOfTouches {
             let point = gesture.location(ofTouch: i, in: self.view)
@@ -356,6 +360,17 @@ class NamingViewController: UIViewController {
     func deleteCancelLineToFontConfig() {
         topItemsView?.fillButton.layer.sublayers?.last?.removeFromSuperlayer()
         topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
+    }
+    
+    // メモモードのフラグプロパティを参照してcancelLineを書いたり、消したりする
+    func memoCancelLineManaged() {
+        if isMemo {
+            // メモモードだったら打ち消し線を消す
+            topItemsView?.memoButton.layer.sublayers?.last?.removeFromSuperlayer()
+        } else {
+            // ネーミングモードだったら打ち消し線を描く
+            topItemsView?.memoButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
+        }
     }
     
 }
@@ -579,6 +594,18 @@ extension NamingViewController: ItemViewDelegate {
     // 枠線ボタンを押した時
     func strokeTapped() {
         showColorPicker(isFont: false, isSelectItemView: true)
+    }
+    
+    // メモボタンを押した時
+    func memoTapped() {
+        // TODO: メモボタンを押した時の処理を実装
+        if isMemo {
+            isMemo = false
+        } else {
+            isMemo = true
+        }
+        // 打ち消し線の処理をする
+        memoCancelLineManaged()
     }
     
     func twitterTapped() {

@@ -63,6 +63,12 @@
 		9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB21F1F144D003204AB /* MessageUI.framework */; };
 		9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB41F1F1457003204AB /* StoreKit.framework */; };
 		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
+		9DA070441F8C846A00E3F026 /* MemoLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA070431F8C846A00E3F026 /* MemoLabelView.swift */; };
+		9DA070461F8C847900E3F026 /* MemoLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA070451F8C847900E3F026 /* MemoLabelView.xib */; };
+		9DA070481F8C93B900E3F026 /* memoViewButtomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA070471F8C93B900E3F026 /* memoViewButtomTextField.swift */; };
+		9DA0704A1F8C93C400E3F026 /* memoViewButtomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA070491F8C93C400E3F026 /* memoViewButtomTextField.xib */; };
+		9DA0704C1F8CAE8D00E3F026 /* MemoMarkerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0704B1F8CAE8D00E3F026 /* MemoMarkerEntity.swift */; };
+		9DA0704E1F8CB46600E3F026 /* MemoMarkerOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0704D1F8CB46600E3F026 /* MemoMarkerOfStageEntity.swift */; };
 		9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E51F3045A3009B03E3 /* ama.jpg */; };
 		9DAEC6EE1F3045A3009B03E3 /* battera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E61F3045A3009B03E3 /* battera.jpg */; };
 		9DAEC6EF1F3045A3009B03E3 /* fujitsubo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E71F3045A3009B03E3 /* fujitsubo.jpg */; };
@@ -165,6 +171,12 @@
 		9D52DDB41F1F1457003204AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		9DA070431F8C846A00E3F026 /* MemoLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoLabelView.swift; sourceTree = "<group>"; };
+		9DA070451F8C847900E3F026 /* MemoLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoLabelView.xib; sourceTree = "<group>"; };
+		9DA070471F8C93B900E3F026 /* memoViewButtomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoViewButtomTextField.swift; sourceTree = "<group>"; };
+		9DA070491F8C93C400E3F026 /* memoViewButtomTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memoViewButtomTextField.xib; sourceTree = "<group>"; };
+		9DA0704B1F8CAE8D00E3F026 /* MemoMarkerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoMarkerEntity.swift; sourceTree = "<group>"; };
+		9DA0704D1F8CB46600E3F026 /* MemoMarkerOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoMarkerOfStageEntity.swift; sourceTree = "<group>"; };
 		9DAEC6E51F3045A3009B03E3 /* ama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ama.jpg; sourceTree = "<group>"; };
 		9DAEC6E61F3045A3009B03E3 /* battera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = battera.jpg; sourceTree = "<group>"; };
 		9DAEC6E71F3045A3009B03E3 /* fujitsubo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fujitsubo.jpg; sourceTree = "<group>"; };
@@ -376,6 +388,8 @@
 				9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */,
 				9D4D0AA41F306C830061D03E /* LabelEntity.swift */,
 				9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */,
+				9DA0704D1F8CB46600E3F026 /* MemoMarkerOfStageEntity.swift */,
+				9DA0704B1F8CAE8D00E3F026 /* MemoMarkerEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -417,6 +431,10 @@
 				9D4D0ABD1F381B670061D03E /* LabelSettingView.xib */,
 				9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */,
 				9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */,
+				9DA070431F8C846A00E3F026 /* MemoLabelView.swift */,
+				9DA070451F8C847900E3F026 /* MemoLabelView.xib */,
+				9DA070471F8C93B900E3F026 /* memoViewButtomTextField.swift */,
+				9DA070491F8C93C400E3F026 /* memoViewButtomTextField.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -541,6 +559,7 @@
 				9DDB14261F2F2178007C4C85 /* Capture.png in Resources */,
 				9D4D0ACC1F3861430061D03E /* stroke@3x.png in Resources */,
 				9D4D0AE21F3ACBD10061D03E /* stroke_think@3x.png in Resources */,
+				9DA070461F8C847900E3F026 /* MemoLabelView.xib in Resources */,
 				9DAEC6F21F3045A3009B03E3 /* konbu.jpg in Resources */,
 				9DAEC6F11F3045A3009B03E3 /* hokke.jpg in Resources */,
 				9DAEC6FA1F304CA7009B03E3 /* TwitterIcon@3x.png in Resources */,
@@ -554,6 +573,7 @@
 				6A33B0031F357A6300B14982 /* 60@2x.png in Resources */,
 				9D4D0AC91F3861430061D03E /* fill@3x.png in Resources */,
 				9D4D0ABA1F3426A60061D03E /* close.png in Resources */,
+				9DA0704A1F8C93C400E3F026 /* memoViewButtomTextField.xib in Resources */,
 				9D4D0AC81F3861430061D03E /* fill@2x.png in Resources */,
 				9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */,
 				9D4D0ADE1F3ACBD10061D03E /* stroke_thin@2x.png in Resources */,
@@ -687,10 +707,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
+				9DA070441F8C846A00E3F026 /* MemoLabelView.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
 				9DF2EA3C1F2AD4E000EC460D /* NamingLabelView.swift in Sources */,
 				9D52DD871F1DB97C003204AB /* JsonManager.swift in Sources */,
 				9D4D0ABC1F38093A0061D03E /* UIColorExtension.swift in Sources */,
+				9DA0704E1F8CB46600E3F026 /* MemoMarkerOfStageEntity.swift in Sources */,
 				9D52DD841F1DB573003204AB /* StageTableViewCell.swift in Sources */,
 				9DAEC6FD1F304EF2009B03E3 /* NavigationController.swift in Sources */,
 				9DAEC6FF1F304F35009B03E3 /* ConstColor.swift in Sources */,
@@ -698,8 +720,10 @@
 				9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */,
 				9D4D0AC01F381B7C0061D03E /* LabelSettingView.swift in Sources */,
 				9D4D0AAC1F306F3F0061D03E /* LabelStoreManager.swift in Sources */,
+				9DA070481F8C93B900E3F026 /* memoViewButtomTextField.swift in Sources */,
 				9D4D0AB81F3309340061D03E /* AlertControllerManager.swift in Sources */,
 				9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */,
+				9DA0704C1F8CAE8D00E3F026 /* MemoMarkerEntity.swift in Sources */,
 				9D52DD911F1DD502003204AB /* NamingViewController.swift in Sources */,
 				9DDB14221F2F1F05007C4C85 /* UIViewExtension.swift in Sources */,
 				9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */,

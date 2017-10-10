@@ -15,18 +15,26 @@ import SwiftyAttributes
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
+    let memoViewTag = 1
     var imageView: UIImageView?
     var actionTextView: UITextView?
     var scrollView: UIScrollView?
     // ラベルの表示テキスト位置保存用
     var pointX: CGFloat?
     var pointY: CGFloat?
+    // マーカー位置保存用
+    var markerPointX: CGFloat?
+    var markerPointY: CGFloat?
     // 編集しているラベル保持用のプロパティ
     var editLabelView: NamingLabelView?
     // ラベル編集中のラベルを保持
     var textSettingView: LabelSettingView?
     // ItemsViewを保持
     var topItemsView: ItemView?
+    //メモマーカー
+    var memoMarker: MemoLabelView?
+    // メモビューのポインタを保持
+    var memoView: memoViewButtomTextField?
     // ピンチした中心座標を保持
     var pinchCenter = CGPoint.zero
     // メモモードのフラグ: デフォルトはfalse
@@ -55,7 +63,13 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにタップジェスチャを登録
         imageView?.onTap { tap in
-            self.tappedNamingMode(gesture: tap)
+            if self.isMemo {
+                // メモモードだったら
+                self.tappedMemoMode(gesture: tap)
+            } else {
+                // ネーミングモードだったら
+                self.tappedNamingMode(gesture: tap)
+            }
         }
         
         // スクロールビューにピンチジェスチャを登録
@@ -141,6 +155,7 @@ class NamingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         // 永続化処理
         saveLabels()
+        saveMarker()
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,7 +183,38 @@ class NamingViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // スクロールビューがタップされたとき呼ばれる
+    // メモモードでスクロールビューがタップされたとき
+    func tappedMemoMode(gesture: UITapGestureRecognizer) {
+        for i in 0..<gesture.numberOfTouches {
+            let point = gesture.location(ofTouch: i, in: self.view)
+            markerPointX = point.x
+            markerPointY = point.y
+        }
+        
+        // スクロールビューをタップしたときにmemoViewがでていたら非表示にする
+        if let memoView = self.memoView {
+            // テキストビューに文字が入力されていたら削除するまえにマーカーのプロパティに保持
+            if let text = memoView.textView.text {
+                self.memoMarker?.memoText = text
+            }
+
+            memoView.removeFromSuperview()
+            // 一度ここにはいったら都度はいらないように
+            self.memoView = nil
+            // あたらにメモマーカーを作りたくないのでreturn
+            return
+        }
+        
+        if let memoMarker = UINib(nibName: MemoLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MemoLabelView {
+            self.memoMarker = memoMarker
+            self.memoMarker?.delegate = self
+            // TODO: これだとタップした位置の真ん中にはならないので気になるなら修正する
+            self.memoMarker?.frame.origin = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
+            imageView?.addSubview(memoMarker)
+        }
+    }
+    
+    // ネーミングモードでスクロールビューがタップされたとき呼ばれる
     func tappedNamingMode(gesture: UITapGestureRecognizer) {
         
         for i in 0..<gesture.numberOfTouches {
@@ -247,6 +293,42 @@ class NamingViewController: UIViewController {
         imageView?.addSubview(label)
     }
     
+    
+    private func saveMarker() {
+        guard let subviews = imageView?.subviews else {
+            return
+        }
+        
+        let markerEntity = MemoMarkerOfStageEntity()
+        for subview in subviews {
+            
+            // ラベルのフォントサイズ と　テキストを格納
+           if let marker = subview as? MemoLabelView {
+                let entity = MemoMarkerEntity()
+                entity.pointX = marker.frame.origin.x
+                entity.pointY = marker.frame.origin.y
+                entity.text = marker.memoText
+                markerEntity.markerList.append(entity)
+            }
+            
+        }
+        
+        // 画面タイトルをキーに設定
+        markerEntity.key = navigationItem.title
+        
+        // タイトルがオプショナルなので安全な取り出し
+        if let title = navigationItem.title {
+            // もし同じ名前のEntityが存在したら削除
+            if LabelStoreManager.pic(key: title) != nil {
+                LabelStoreManager.deleteMarker(key: title)
+            }
+        }
+        
+        // Entityを追加
+        LabelStoreManager.addMarker(object: markerEntity)
+    }
+    
+    
     // MARK: ラベル永続化処理
     private func saveLabels() {
         // imageViewのsubviewであるNamingViewを全て取得したい
@@ -256,25 +338,21 @@ class NamingViewController: UIViewController {
         
         let labelEntity = LabelOfStageEntity()
         for subview in subviews {
-            let entity = LabelEntity()
-            
-            // ラベルの原点格納
-            entity.pointX = subview.frame.origin.x
-            entity.pointY = subview.frame.origin.y
-            
             // ラベルのフォントサイズ と　テキストを格納
             if let label = subview as? NamingLabelView {
+                let entity = LabelEntity()
+                // ラベルの原点格納
+                entity.pointX = label.frame.origin.x
+                entity.pointY = label.frame.origin.y
+                
                 entity.fontSize = label.fontSize
                 entity.text = label.namingLabel.text
                 
                 let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
                 
                 entity.attribute = data
+                labelEntity.labelList.append(entity)
             }
-            
- 
-            
-            labelEntity.labelList.append(entity)
         }
         // 画面タイトルをキーに設定
         labelEntity.key = navigationItem.title
@@ -315,6 +393,22 @@ class NamingViewController: UIViewController {
                     }
                 }
             }
+            
+            if let entity = LabelStoreManager.picMarker(key: title) {
+                for markerEntity in entity.markerList {
+                    if let marker = UINib(nibName: MemoLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MemoLabelView {
+                        // デリゲートの設定
+                        marker.delegate = self
+                        // マーカーの位置を設定
+                        marker.frame = CGRect(x: markerEntity.pointX, y: markerEntity.pointY, width: 30, height: 30)
+                        // マーカーに対応する文字を設定
+                        marker.memoText = markerEntity.text
+                        // マーカーをimageViewに追加
+                        imageView?.addSubview(marker)
+                    }
+                }
+            }
+            
         }
     }
     
@@ -601,6 +695,10 @@ extension NamingViewController: ItemViewDelegate {
         // TODO: メモボタンを押した時の処理を実装
         if isMemo {
             isMemo = false
+            // メモビューが表示されていたら削除する
+            if let memoView = self.memoView {
+                memoView.removeFromSuperview()
+            }
         } else {
             isMemo = true
         }
@@ -655,4 +753,62 @@ extension NamingViewController: LabelSettingViewDelegate {
         }
     }
     
+}
+
+extension NamingViewController: MemoLabelViewDelegate {
+    func memoMarkerTapped(memoLabelView: MemoLabelView) {
+        
+        // メモモードじゃなかったら何もしない
+        guard isMemo else {
+            return
+        }
+        
+        // タップされたマーカーのポインタが変わる前に前のポインタに文字を保存
+        if let memoView = self.memoView {
+            // テキストビューに文字が入力されていたら削除するまえにマーカーのプロパティに保持
+            if let text = memoView.textView.text {
+                self.memoMarker?.memoText = text
+            }
+            memoView.removeFromSuperview()
+            // 一度ここにはいったら都度はいらないように
+            self.memoView = nil
+        }
+
+        // タップされたマーカーを保持
+        self.memoMarker = memoLabelView
+        
+         if let memoView = UINib(nibName: memoViewButtomTextField.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? memoViewButtomTextField {
+            // メモビューを削除するためにタグ付けを行う
+            memoView.tag = memoViewTag
+            // デリゲートの設定
+            memoView.delegate = self
+            // 自身のプロパティに保持
+            
+            self.memoView = memoView
+            // テキストフィールドに前回の文字を反映
+            self.memoView?.textView.text = memoLabelView.memoText
+            
+            
+            // 画面したにぴったりくっつくように表示
+            self.memoView?.frame = CGRect.init(x: 0, y: self.view.frame.height - 200, width: self.view.frame.width, height: self.view.frame.height)
+            imageView?.addSubview(self.memoView!)
+        }
+    }
+    
+}
+
+extension NamingViewController: memoViewButtomTextFieldDelegate {
+    func memoViewTapped(keyBoardRect: CGRect) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+            self.memoView?.frame.origin.y = self.view.frame.size.height - keyBoardRect.size.height - 200
+        }, completion: { _ in })
+    }
+    
+    func disableKeyBoard(text: String?) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+            self.memoView?.frame.origin.y = self.view.frame.size.height - 200
+            // メモビューのテキストをメモマーカーのプロパティに格納
+            self.memoMarker?.memoText = text
+        }, completion: { _ in })
+    }
 }

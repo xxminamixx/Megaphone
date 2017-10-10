@@ -21,11 +21,26 @@ class LabelStoreManager: NSObject {
         }
     }
     
+    static func addMarker(object: MemoMarkerOfStageEntity) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(object)
+        }
+    }
+    
     // 指定したキーを持つEntityを削除
     static func delete(key: String) {
         let realm = try! Realm()
         try! realm.write {
             realm.delete(list().filter("key == %@", key))
+        }
+    }
+    
+    // 指定したキーを持つEntityを削除
+    static func deleteMarker(key: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(markerList().filter("key == %@", key))
         }
     }
     
@@ -39,11 +54,25 @@ class LabelStoreManager: NSObject {
     }
     
     
+    /// 永続化しているメモマーカーEntityを配列で返す
+    ///
+    /// - Returns:　MemoMarkerEntity配列
+    static private func markerList() -> Results<MemoMarkerOfStageEntity> {
+        let realm = try! Realm()
+        return realm.objects(MemoMarkerOfStageEntity.self)
+    }
+    
+    
     /// 配列の個数を返す
     ///
     /// - Returns: 配列個数
     static func count() -> Int {
         return LabelStoreManager.list().count
+    }
+    
+    
+    static func markerCount() -> Int {
+        return LabelStoreManager.markerList().count
     }
     
     
@@ -54,6 +83,23 @@ class LabelStoreManager: NSObject {
     static func pic(key: String) -> LabelOfStageEntity? {
         if LabelStoreManager.list().filter("key == %@", key).count > 0 {
             guard let result = LabelStoreManager.list().filter("key == %@", key).first else {
+                return nil
+            }
+            
+            return result
+        } else {
+            return nil
+        }
+    }
+    
+    
+    /// 指定したステージのマーカーEntityを取り出す
+    ///
+    /// - Parameter key: ステージ名
+    /// - Returns: 指定したステージのマーカーEntity
+    static func picMarker(key: String) -> MemoMarkerOfStageEntity? {
+        if LabelStoreManager.markerList().filter("key == %@", key).count > 0 {
+            guard let result = LabelStoreManager.markerList().filter("key == %@", key).first else {
                 return nil
             }
             

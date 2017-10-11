@@ -209,7 +209,6 @@ class NamingViewController: UIViewController {
             self.memoMarker = memoMarker
             self.memoMarker?.beforeFrame = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
             self.memoMarker?.delegate = self
-            // TODO: これだとタップした位置の真ん中にはならないので気になるなら修正する
             self.memoMarker?.frame.origin = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
             imageView?.addSubview(memoMarker)
         }

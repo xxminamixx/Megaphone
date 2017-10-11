@@ -226,10 +226,16 @@ class NamingViewController: UIViewController {
             if let text = memoView.textView.text {
                 self.memoMarker?.memoText = text
             }
+            
+            // メモViewを下に引っ込むようにする
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+                self.memoView?.frame.origin.y = self.view.frame.size.height
+            }, completion: { _ in
+                memoView.removeFromSuperview()
+                // 一度ここにはいったら都度はいらないように
+                self.memoView = nil
+            })
 
-            memoView.removeFromSuperview()
-            // 一度ここにはいったら都度はいらないように
-            self.memoView = nil
             // あたらにメモマーカーを作りたくないのでreturn
             return
         }
@@ -773,6 +779,7 @@ extension NamingViewController: MemoLabelViewDelegate {
             if let text = memoView.textView.text {
                 self.memoMarker?.memoText = text
             }
+            
             memoView.removeFromSuperview()
             // 一度ここにはいったら都度はいらないように
             self.memoView = nil
@@ -794,8 +801,15 @@ extension NamingViewController: MemoLabelViewDelegate {
             
             
             // 画面したにぴったりくっつくように表示
-            self.memoView?.frame = CGRect.init(x: 0, y: self.view.frame.height - 200, width: self.view.frame.width, height: self.view.frame.height)
+            self.memoView?.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+            
             imageView?.addSubview(self.memoView!)
+
+            // 下からアニメーションで出てくるようにする
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+                self.memoView?.frame.origin.y = self.view.frame.size.height - 200
+            }, completion: { _ in })
+
         }
     }
     

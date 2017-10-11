@@ -16,8 +16,6 @@ protocol ItemViewDelegate {
     func fillTapped()
     // 枠線ボタン
     func strokeTapped()
-    // メモボタン
-    func memoTapped()
     // twitterボタン
     func twitterTapped()
     // スクショボタン
@@ -32,7 +30,6 @@ class ItemView: UIView {
     @IBOutlet weak var allDeleteButton: UIImageView!
     @IBOutlet weak var fillButton: UIImageView!
     @IBOutlet weak var strokeButton: UIImageView!
-    @IBOutlet weak var memoButton: UIImageView!
     
     static let nibName = "ItemsView"
     
@@ -66,10 +63,6 @@ class ItemView: UIView {
         
         screenShotButton.onTap { _ in
             self.delegate.screenShotTapped()
-        }
-        
-        memoButton.onTap { _ in
-            self.delegate.memoTapped()
         }
         
         super.awakeFromNib()

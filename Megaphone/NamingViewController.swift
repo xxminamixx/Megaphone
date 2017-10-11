@@ -48,6 +48,18 @@ class NamingViewController: UIViewController {
         // 戻るボタンの文字を空にすることで矢印だけにする
         navigationController!.navigationBar.topItem!.title = " "
         
+        /* NavigationItemにModeSwitchを追加 */
+        // NavigationBarにネーミングモード・メモモードを切り替えるUISwitchを配置
+        let modeSwitch = UISwitch(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
+        modeSwitch.addTarget(self, action: #selector(switchChanged), for: UIControlEvents.valueChanged)
+        let barSwitch = UIBarButtonItem(customView: modeSwitch)
+        // TODO: ここの画像を差し替える必要あり
+        let memoImage = UIImage(named: "fill.png")
+        let memoImageView = UIImageView(image: memoImage)
+        let barMemoImage = UIBarButtonItem(customView: memoImageView)
+        
+        self.navigationItem.setRightBarButtonItems([barSwitch, barMemoImage], animated: true)
+        
         /* View関連 */
         self.view.backgroundColor = UIColor.darkGray
         
@@ -134,8 +146,6 @@ class NamingViewController: UIViewController {
             
             // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
             drawCancelLineToFontConfig()
-            // デフォルトはメモモードOFFにしておくので打ち消し線を描く
-            memoCancelLineManaged()
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
@@ -181,6 +191,21 @@ class NamingViewController: UIViewController {
         
         // UIAlertController を表示
         present(alert, animated: true, completion: nil)
+    }
+    
+    // UISwitchのイベント
+    func switchChanged(mySwitch: UISwitch) {
+        // TODO: メモボタンを押した時の処理を実装
+        if mySwitch.isOn {
+            isMemo = true
+        } else {
+            isMemo = false
+            // メモビューが表示されていたら削除する
+            if let memoView = self.memoView {
+                memoView.removeFromSuperview()
+            }
+        }
+
     }
     
     // メモモードでスクロールビューがタップされたとき
@@ -458,17 +483,6 @@ class NamingViewController: UIViewController {
         topItemsView?.strokeButton.layer.sublayers?.last?.removeFromSuperlayer()
     }
     
-    // メモモードのフラグプロパティを参照してcancelLineを書いたり、消したりする
-    func memoCancelLineManaged() {
-        if isMemo {
-            // メモモードだったら打ち消し線を消す
-            topItemsView?.memoButton.layer.sublayers?.last?.removeFromSuperlayer()
-        } else {
-            // ネーミングモードだったら打ち消し線を描く
-            topItemsView?.memoButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
-        }
-    }
-    
 }
 
 // MARK: UIScrollViewDelegate
@@ -690,22 +704,6 @@ extension NamingViewController: ItemViewDelegate {
     // 枠線ボタンを押した時
     func strokeTapped() {
         showColorPicker(isFont: false, isSelectItemView: true)
-    }
-    
-    // メモボタンを押した時
-    func memoTapped() {
-        // TODO: メモボタンを押した時の処理を実装
-        if isMemo {
-            isMemo = false
-            // メモビューが表示されていたら削除する
-            if let memoView = self.memoView {
-                memoView.removeFromSuperview()
-            }
-        } else {
-            isMemo = true
-        }
-        // 打ち消し線の処理をする
-        memoCancelLineManaged()
     }
     
     func twitterTapped() {

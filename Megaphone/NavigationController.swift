@@ -17,21 +17,10 @@ class NavigationController: UINavigationController {
         navigationBar.barTintColor = ConstColor.iconYellow
         navigationBar.tintColor = UIColor.white
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-        // NavigationBarにネーミングモード・メモモードを切り替えるUISwitchを配置
-        let modeSwitch = UISwitch(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
-        modeSwitch.addTarget(self, action: #selector(switchChanged), for: UIControlEvents.valueChanged)
-        self.navigationItem.rightBarButtonItem = modeSwitch
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    // UISwitchの値が変更されたときにコールされる
-    func switchChanged() {
-        
-    }
-    
 }
 

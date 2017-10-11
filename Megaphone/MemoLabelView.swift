@@ -42,15 +42,3 @@ class MemoLabelView: UIView {
         delegate?.memoMarkerTapped(memoLabelView: self)
     }
 }
-
-//extension MemoLabelView: memoViewButtomTextFieldDelegate {
-//    // メモビューがタップされてキーボードが出現したときにコールする
-//    func memoViewTapped(keyBoardRect: CGRect) {
-//        
-//    }
-//    
-//    // キーボードが消えた時にコールする
-//    func disableKeyBoard(text: String?) {
-//        memoText = text
-//    }
-//}

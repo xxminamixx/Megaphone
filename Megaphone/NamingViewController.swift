@@ -50,8 +50,13 @@ class NamingViewController: UIViewController {
         
         /* NavigationItemにModeSwitchを追加 */
         // NavigationBarにネーミングモード・メモモードを切り替えるUISwitchを配置
+        // TODO: このスイッチをプロパティで保持すればモードフラグのisModeプロパティいらないかも
         let modeSwitch = UISwitch(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
         modeSwitch.addTarget(self, action: #selector(switchChanged), for: UIControlEvents.valueChanged)
+        modeSwitch.tintColor = ConstColor.iconYellow
+        modeSwitch.backgroundColor = UIColor.gray
+        modeSwitch.onTintColor = ConstColor.iconGreen
+        modeSwitch.layer.cornerRadius = modeSwitch.frame.size.height/2;
         let barSwitch = UIBarButtonItem(customView: modeSwitch)
         // TODO: ここの画像を差し替える必要あり
         let memoImage = UIImage(named: "fill.png")
@@ -195,7 +200,6 @@ class NamingViewController: UIViewController {
     
     // UISwitchのイベント
     func switchChanged(mySwitch: UISwitch) {
-        // TODO: メモボタンを押した時の処理を実装
         if mySwitch.isOn {
             isMemo = true
         } else {

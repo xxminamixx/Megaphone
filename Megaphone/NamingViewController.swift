@@ -404,13 +404,13 @@ class NamingViewController: UIViewController {
         labelEntity.key = navigationItem.title
         
         // もし同じ名前のLabelEntityが存在したら削除
-        if RealmStoreManager.picLabelEntity(key: title) != nil {
-            RealmStoreManager.deleteLabelEntity(key: title)
+        if LabelStoreManager.pic(key: title) != nil {
+            LabelStoreManager.delete(key: title)
         }
         
-        if RealmStoreManager.picStampEntity(key: title) != nil {
-            RealmStoreManager.deleteStampEntity(key: title)
-        }
+//        if LabelStoreManager.picStampEntity(key: title) != nil {
+//            LabelStoreManager.deleteStampEntity(key: title)
+//        }
         
         // Entityを追加
         LabelStoreManager.add(object: labelEntity)
@@ -425,9 +425,9 @@ class NamingViewController: UIViewController {
                 return
             }
             
-            if let missNameEntity = RealmStoreManager.picLabelEntity(key: "海女美術館") {
-                RealmStoreManager.save {
-                    missNameEntity.key = ConstText.ama
+            if let missNameEntity = LabelStoreManager.pic(key: "海女美術館") {
+                LabelStoreManager.save {
+                    missNameEntity.key = "海女美術大学"
                 }
             }
             

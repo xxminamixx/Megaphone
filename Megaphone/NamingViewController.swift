@@ -408,10 +408,6 @@ class NamingViewController: UIViewController {
             LabelStoreManager.delete(key: title)
         }
         
-//        if LabelStoreManager.picStampEntity(key: title) != nil {
-//            LabelStoreManager.deleteStampEntity(key: title)
-//        }
-        
         // Entityを追加
         LabelStoreManager.add(object: labelEntity)
     }

@@ -43,6 +43,14 @@
               {
               "stage": "エンガワ河川敷",
               "image": "engawa.jpg"
+              },
+              {
+              "stage": "ザトウマーケット",
+              "image": "zato.jpg"
+              },
+              {
+              "stage": "ハコフグ倉庫",
+              "image": "mozuku.jpg"
               }
               ]
 }

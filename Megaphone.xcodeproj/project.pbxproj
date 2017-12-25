@@ -13,8 +13,8 @@
 		6A33B0031F357A6300B14982 /* 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0001F357A6300B14982 /* 60@2x.png */; };
 		6A33B0041F357A6300B14982 /* 60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0011F357A6300B14982 /* 60@3x.png */; };
 		6A33B0061F52690000B14982 /* manta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A33B0051F52690000B14982 /* manta.jpg */; };
-		9D2B5D581FF0B3F300BA2359 /* hakofukgu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2B5D571FF0B3F300BA2359 /* hakofukgu.jpeg */; };
 		9D2B5D5A1FF0B3FF00BA2359 /* zato.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2B5D591FF0B3FF00BA2359 /* zato.jpg */; };
+		9D2B5D5C1FF0B49600BA2359 /* hakofugu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2B5D5B1FF0B49500BA2359 /* hakofugu.jpeg */; };
 		9D4D0AA51F306C830061D03E /* LabelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA41F306C830061D03E /* LabelEntity.swift */; };
 		9D4D0AA71F306ED40061D03E /* LabelOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */; };
 		9D4D0AAC1F306F3F0061D03E /* RealmStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D0AAB1F306F3F0061D03E /* RealmStoreManager.swift */; };
@@ -135,8 +135,8 @@
 		717B1F0A49946DD48AB6E662 /* Pods-MegaphoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTests/Pods-MegaphoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Megaphone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C545F10BC1BEF2F69571461 /* Pods-Megaphone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone.debug.xcconfig"; sourceTree = "<group>"; };
-		9D2B5D571FF0B3F300BA2359 /* hakofukgu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hakofukgu.jpeg; sourceTree = "<group>"; };
 		9D2B5D591FF0B3FF00BA2359 /* zato.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zato.jpg; sourceTree = "<group>"; };
+		9D2B5D5B1FF0B49500BA2359 /* hakofugu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hakofugu.jpeg; sourceTree = "<group>"; };
 		9D4D0AA41F306C830061D03E /* LabelEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEntity.swift; sourceTree = "<group>"; };
 		9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOfStageEntity.swift; sourceTree = "<group>"; };
 		9D4D0AAB1F306F3F0061D03E /* RealmStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStoreManager.swift; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		9D4D0B051F42A8240061D03E /* Stage */ = {
 			isa = PBXGroup;
 			children = (
-				9D2B5D571FF0B3F300BA2359 /* hakofukgu.jpeg */,
+				9D2B5D5B1FF0B49500BA2359 /* hakofugu.jpeg */,
 				9D2B5D591FF0B3FF00BA2359 /* zato.jpg */,
 				6A0A84561F87ED6700D06E80 /* engawa.jpg */,
 				6A1B38FD1F6D5F4D0035CC90 /* mozuku.jpg */,
@@ -744,6 +744,7 @@
 				9D4D0AE11F3ACBD10061D03E /* stroke_think@2x.png in Resources */,
 				9D4D0ADE1F3ACBD10061D03E /* stroke_thin@2x.png in Resources */,
 				9D4D0AFC1F4194F20061D03E /* StampView.xib in Resources */,
+				9D2B5D5C1FF0B49600BA2359 /* hakofugu.jpeg in Resources */,
 				9D4D0ADD1F3ACBD10061D03E /* stroke_thin.png in Resources */,
 				9D4D0AB51F3301D90061D03E /* delete@2x.png in Resources */,
 				9D4D0AD01F3945E40061D03E /* 60.jpg in Resources */,
@@ -760,7 +761,6 @@
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
 				9D4D0AC71F3861430061D03E /* fill.png in Resources */,
 				9D4D0AD11F3945E40061D03E /* 60@2x.jpg in Resources */,
-				9D2B5D581FF0B3F300BA2359 /* hakofukgu.jpeg in Resources */,
 				9DDB14271F2F2178007C4C85 /* Capture@2x.png in Resources */,
 				9D4D0AB61F3301D90061D03E /* delete@3x.png in Resources */,
 				9D4D0B091F42A8C40061D03E /* splatoon.png in Resources */,

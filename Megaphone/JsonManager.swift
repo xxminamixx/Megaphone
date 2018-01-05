@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class JsonManager: NSObject {
     
@@ -18,31 +19,69 @@ class JsonManager: NSObject {
     
     override init() {
         super.init()
-        stages = stageList()
+        
+        Alamofire.request("", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
+            
+            guard let data = response.data else {
+                return
+            }
+            
+            self.stages = self.stageList(data: data)
+            
+        })
+        
         stamps = stampList()
     }
+    
+    // TODO: Alamofireで利用できるパースメソッドにするためにインタフェースを変更
     
     /// jsonを読み込んでステージ配列を返す
     ///
     /// - Returns: ステージ配列
-    func stageList() -> [StageEntity]? {
-        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stageFileName)!,
-                                                     options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-        
-        guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
-            return nil
-        }
-        
-        var items: [StageEntity] = []
-        for item in stages {
+    
+    func stageList(data: Data) -> [StageEntity]? {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
+            
+            guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
+                return nil
+            }
+            
+            var items: [StageEntity] = []
+            for item in stages {
+                let entity = StageEntity()
+                entity.stageName = item[ConstText.stageKey]
+                entity.imageName = item[ConstText.imageKey]
+                items.append(entity)
+            }
+            
+            return items
+        } catch {
             let entity = StageEntity()
-            entity.stageName = item[ConstText.stageKey]
-            entity.imageName = item[ConstText.imageKey]
-            items.append(entity)
+            entity.stageName = "ステージを読み込めませんでした。"
+            return [entity]
         }
-        
-        return items
+       
     }
+    
+//    func stageList() -> [StageEntity]? {
+//        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stageFileName)!,
+//                                                     options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+//
+//        guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
+//            return nil
+//        }
+//
+//        var items: [StageEntity] = []
+//        for item in stages {
+//            let entity = StageEntity()
+//            entity.stageName = item[ConstText.stageKey]
+//            entity.imageName = item[ConstText.imageKey]
+//            items.append(entity)
+//        }
+//
+//        return items
+//    }
     
     func stampList() -> [StampEntity]? {
         let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stampFileName)!,

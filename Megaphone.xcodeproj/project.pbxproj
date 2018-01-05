@@ -88,6 +88,7 @@
 		9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB21F1F144D003204AB /* MessageUI.framework */; };
 		9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB41F1F1457003204AB /* StoreKit.framework */; };
 		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
+		9D7F36961FFF1FCE002BF71E /* StageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F36951FFF1FCE002BF71E /* StageFetcher.swift */; };
 		9DAEC6ED1F3045A3009B03E3 /* ama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E51F3045A3009B03E3 /* ama.jpg */; };
 		9DAEC6EE1F3045A3009B03E3 /* battera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E61F3045A3009B03E3 /* battera.jpg */; };
 		9DAEC6EF1F3045A3009B03E3 /* fujitsubo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEC6E71F3045A3009B03E3 /* fujitsubo.jpg */; };
@@ -215,6 +216,7 @@
 		9D52DDB41F1F1457003204AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		9D7F36951FFF1FCE002BF71E /* StageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFetcher.swift; sourceTree = "<group>"; };
 		9DAEC6E51F3045A3009B03E3 /* ama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ama.jpg; sourceTree = "<group>"; };
 		9DAEC6E61F3045A3009B03E3 /* battera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = battera.jpg; sourceTree = "<group>"; };
 		9DAEC6E71F3045A3009B03E3 /* fujitsubo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fujitsubo.jpg; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 		9D52DD791F1DAE3C003204AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F36941FFF1FA3002BF71E /* Fetcher */,
 				9D4D0AA81F306F140061D03E /* Manager */,
 				9D52DD971F1E00D8003204AB /* Entity */,
 			);
@@ -576,6 +579,14 @@
 				9D4D0ABB1F38093A0061D03E /* UIColorExtension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		9D7F36941FFF1FA3002BF71E /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				9D7F36951FFF1FCE002BF71E /* StageFetcher.swift */,
+			);
+			name = Fetcher;
 			sourceTree = "<group>";
 		};
 		9DAEC6FB1F304D80009B03E3 /* Const */ = {
@@ -909,6 +920,7 @@
 				9D52DD991F1E00E9003204AB /* TextViewEntity.swift in Sources */,
 				9D4D0AF21F4175DE0061D03E /* StampSelectView.swift in Sources */,
 				9D4D0B181F43F9BB0061D03E /* ItemViewDelegate.swift in Sources */,
+				9D7F36961FFF1FCE002BF71E /* StageFetcher.swift in Sources */,
 				9D4D0AFA1F4187080061D03E /* StampEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

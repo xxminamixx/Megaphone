@@ -11,6 +11,7 @@ target 'Megaphone' do
   pod 'Cartography' , :git => 'https://github.com/xxminamixx/Cartography'
   pod ‘SwiftyAttributes’, ‘~> 3.1.0’
   pod 'FDTake’, ‘~> 1.0.0’
+  pod ‘Alamofire’
 
   # Pods for Megaphone
 

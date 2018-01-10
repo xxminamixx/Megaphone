@@ -20,11 +20,13 @@ class JsonManager: NSObject {
     override init() {
         super.init()
         
-        Alamofire.request("", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
+        Alamofire.request("https://dl.dropboxusercontent.com/s/r6ej1zl8q0bdvzs/stage.json?dl=0", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
             
             guard let data = response.data else {
                 return
             }
+            
+            let dic = response.result.value as? Dictionary<String, Any>
             
             self.stages = self.stageList(data: data)
             

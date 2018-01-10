@@ -11,16 +11,28 @@ import Alamofire
 
 class StageFetcher: NSObject {
 
-    static func stageJson(completion: @escaping (Data) -> [StageEntity]) {
+    static func stageJson(completion: @escaping () -> Void) {
         
-        Alamofire.request("", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
+        Alamofire.request("https://dl.dropboxusercontent.com/s/r6ej1zl8q0bdvzs/stage.json?dl=0", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
             
             guard let data = response.data else {
                 return
             }
             
-            completion(data)
+            JsonManager.shared.stageList(data: data, completion: completion)
+        })
+    }
+    
+    static func stageImage(url: String, completion: (Data) -> Void) {
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData(completionHandler: { response in
             
+            guard let data = response.data else {
+                return
+            }
+            
+            // TODO: Data型からUIImageを生成するクロージャ
+            print(data)
         })
         
     }

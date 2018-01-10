@@ -13,77 +13,26 @@ class JsonManager: NSObject {
     
     static let shared = JsonManager()
     /// ステージ配列
-    var stages: Array<StageEntity>?
+    var stages: StageList?
     /// スタンプ配列
     var stamps: Array<StampEntity>?
     
     override init() {
         super.init()
-        
-        Alamofire.request("https://dl.dropboxusercontent.com/s/r6ej1zl8q0bdvzs/stage.json?dl=0", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
-            
-            guard let data = response.data else {
-                return
-            }
-            
-            let dic = response.result.value as? Dictionary<String, Any>
-            
-            self.stages = self.stageList(data: data)
-            
-        })
-        
+        stages = nil
         stamps = stampList()
     }
-    
-    // TODO: Alamofireで利用できるパースメソッドにするためにインタフェースを変更
     
     /// jsonを読み込んでステージ配列を返す
     ///
     /// - Returns: ステージ配列
     
-    func stageList(data: Data) -> [StageEntity]? {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-            
-            guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
-                return nil
-            }
-            
-            var items: [StageEntity] = []
-            for item in stages {
-                let entity = StageEntity()
-                entity.stageName = item[ConstText.stageKey]
-                entity.imageName = item[ConstText.imageKey]
-                items.append(entity)
-            }
-            
-            return items
-        } catch {
-            let entity = StageEntity()
-            entity.stageName = "ステージを読み込めませんでした。"
-            return [entity]
-        }
-       
+    func stageList(data: Data, completion: () -> Void) {
+            let decorder = JSONDecoder()
+            let stage =  try? decorder.decode(StageList.self, from: data)
+            stages = stage
+            completion()
     }
-    
-//    func stageList() -> [StageEntity]? {
-//        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stageFileName)!,
-//                                                     options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-//
-//        guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
-//            return nil
-//        }
-//
-//        var items: [StageEntity] = []
-//        for item in stages {
-//            let entity = StageEntity()
-//            entity.stageName = item[ConstText.stageKey]
-//            entity.imageName = item[ConstText.imageKey]
-//            items.append(entity)
-//        }
-//
-//        return items
-//    }
     
     func stampList() -> [StampEntity]? {
         let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stampFileName)!,
@@ -123,7 +72,7 @@ class JsonManager: NSObject {
     ///
     /// - Returns: jsonのパースに失敗していた場合0、成功していたらステージの個数を返す
     func stageCount() -> Int {
-        guard let count = stages?.count else {
+        guard let count = stages?.stage?.count else {
             return 0
         }
         return count

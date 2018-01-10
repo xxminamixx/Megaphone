@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import GestureRecognizerClosures
 import FDTake
+import Alamofire
 
 class HomeViewController: UIViewController {
 
@@ -76,6 +77,13 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // タイトルを設定
         navigationItem.title = ConstText.appName
+        
+        // ステージ一覧をフェッチしTableViewを更新
+        StageFetcher.stageJson {
+            DispatchQueue.main.async {
+                self.stageTableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,12 +101,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         
-        let stageEntity = JsonManager.shared.stages?[indexPath.row]
-        viewController.navigationItem.title = stageEntity?.stageName
+        let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
+        viewController.navigationItem.title = stageEntity.stage
 
-        if let imageName = stageEntity?.imageName {
-            // 画像を生成
-            if let image = UIImage(named: imageName) {
+        if let imageName = stageEntity.url {
+            StageFetcher.stageImage(url: imageName, completion: { data in
+                let image = UIImage(data: data)
                 // 画面いっぱい
                 let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 
@@ -108,10 +116,29 @@ extension HomeViewController: UITableViewDelegate {
                 imageView.image = image
                 imageView.isUserInteractionEnabled = true
                 viewController.imageView = imageView
-            }
+                
+                DispatchQueue.main.async {
+                     self.navigationController?.pushViewController(viewController, animated: true)
+                }
+            })
         }
         
-        navigationController?.pushViewController(viewController, animated: true)
+//        if let imageName = stageEntity.url {
+//            // 画像を生成
+//            if let image = UIImage(named: imageName) {
+//                // 画面いっぱい
+//                let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//
+//                // イメージビュー生成
+//                let imageView = UIImageView(frame: fullScreen)
+//                imageView.contentMode = .scaleAspectFit
+//                imageView.image = image
+//                imageView.isUserInteractionEnabled = true
+//                viewController.imageView = imageView
+//            }
+//        }
+//
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -124,12 +151,12 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = stageTableView.dequeueReusableCell(withIdentifier: StageTableViewCell.nibName, for: indexPath) as! StageTableViewCell
         
-        guard let stageList = JsonManager.shared.stages else {
+        guard let stageList = JsonManager.shared.stages?.stage else {
             // jsonのパースに失敗していた場合ステージ名をセットせずリターン
             return cell
         }
         
-        cell.stageName.text = stageList[indexPath.row].stageName
+        cell.stageName.text = stageList[indexPath.row].stage
         
         // 選択時のスタイルを無しにする
         cell.selectionStyle = .none

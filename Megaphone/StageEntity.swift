@@ -9,7 +9,11 @@
 import UIKit
 
 // jsonパース用のエンティティ
-class StageEntity {
-    var stageName: String?
-    var imageName: String?
+struct StageList: Codable {
+    var stage: [StageEntity]?
+}
+
+struct StageEntity: Codable {
+    var stage: String?
+    var url: String?
 }

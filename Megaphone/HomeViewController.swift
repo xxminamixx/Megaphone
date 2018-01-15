@@ -122,24 +122,8 @@ extension HomeViewController: UITableViewDelegate {
                 }
             })
         }
-        
-//        if let imageName = stageEntity.url {
-//            // 画像を生成
-//            if let image = UIImage(named: imageName) {
-//                // 画面いっぱい
-//                let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//
-//                // イメージビュー生成
-//                let imageView = UIImageView(frame: fullScreen)
-//                imageView.contentMode = .scaleAspectFit
-//                imageView.image = image
-//                imageView.isUserInteractionEnabled = true
-//                viewController.imageView = imageView
-//            }
-//        }
-//
-//        navigationController?.pushViewController(viewController, animated: true)
     }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {

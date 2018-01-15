@@ -23,16 +23,14 @@ class StageFetcher: NSObject {
         })
     }
     
-    static func stageImage(url: String, completion: (Data) -> Void) {
+    static func stageImage(url: String, completion: @escaping (Data) -> Void) {
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData(completionHandler: { response in
             
             guard let data = response.data else {
                 return
             }
-            
-            // TODO: Data型からUIImageを生成するクロージャ
-            print(data)
+            completion(data)
         })
         
     }

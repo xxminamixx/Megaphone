@@ -116,15 +116,10 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
-        
-        // TODO: 一度フェッチしたことのある画像は永続化したデータからつかう
-        // TODO: フェッチしたことのない画像データのみ通信で取得
-        // TODO: 画像データをRealmから検索するインタフェースがほしい
-        
         let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
         
         // 永続化した中にフェッチしたステージ名があった場合
-        if RealmStoreManager.isStoreStageEntity(stage: stageEntity.stage!) {
+        if RealmStoreManager.isStoreStageName(stage: stageEntity.stage!) {
             // ローカルのステージ画像データを使う
         }
         
@@ -132,13 +127,10 @@ extension HomeViewController: UITableViewDelegate {
 
         if let imageName = stageEntity.url {
             
-            // TODO: RealmからurlでFetchStoreEntityを検索し、画像がnilならフェッチ開始　else あるならばその画像を使う
-            
-            StageFetcher.stageImage(url: imageName, completion: { data in
-                
-                // 取得した画像データを永続化して次回はフェッチしないようにしたい。
-                
-                let image = UIImage(data: data)
+            /// 画像データがすでに永続化されているならばそれを使う
+            if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
+                // TOOD: 下記に同じ処理があるので外だしして共通化したい
+                let image = UIImage(data: image)
                 // 画面いっぱい
                 let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 
@@ -150,9 +142,27 @@ extension HomeViewController: UITableViewDelegate {
                 viewController.imageView = imageView
                 
                 DispatchQueue.main.async {
-                     self.navigationController?.pushViewController(viewController, animated: true)
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 }
-            })
+            } else {
+                StageFetcher.stageImage(url: imageName, completion: { data in
+                    let image = UIImage(data: data)
+                    // 画面いっぱい
+                    let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    
+                    // イメージビュー生成
+                    let imageView = UIImageView(frame: fullScreen)
+                    imageView.contentMode = .scaleAspectFit
+                    imageView.image = image
+                    imageView.isUserInteractionEnabled = true
+                    viewController.imageView = imageView
+                    
+                    DispatchQueue.main.async {
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                    }
+                })
+            }
+            
         }
     }
     

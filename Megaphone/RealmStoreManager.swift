@@ -127,9 +127,9 @@ class RealmStoreManager: NSObject {
     /// 永続化しているEntityを配列で返す
     ///
     /// - Returns: LabelOfStageEntity配列
-    static private func listStageEntity() -> Results<StageEntity> {
+    static private func listStageEntity() -> Results<FetchStoreEntity> {
         let realm = try! Realm()
-        return realm.objects(StageEntity.self)
+        return realm.objects(FetchStoreEntity.self)
     }
     
     
@@ -137,8 +137,18 @@ class RealmStoreManager: NSObject {
     ///
     /// - Parameter name: ステージ名
     /// - Returns: 入力されたステージが永続化されているかのBOOL値
-    static func isStoreStageEntity(stage: String) -> Bool {
+    static func isStoreStageName(stage: String) -> Bool {
         return RealmStoreManager.listStageEntity().filter("stage == %@", stage).count > 0
+    }
+
+    
+    static func isStoreStageImage(stage: String) -> Bool {
+        return RealmStoreManager.listStageEntity().filter("stage == %@", stage).count > 0
+    }
+    
+    
+    static func stageEntity(filter: String) -> Results<FetchStoreEntity> {
+        return listStageEntity().filter("stage == %@", filter)
     }
 
     

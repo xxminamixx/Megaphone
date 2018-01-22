@@ -93,17 +93,18 @@ class HomeViewController: UIViewController {
 
     /// フェッチしたstage情報を永続化
     private func fetchStore() {
+        // TODO: フェッチするたびにデータが蓄積するので、同じデータは保存しないようにする
         guard let stages = JsonManager.shared.stages?.stage else {
             return
         }
         
-        let entity = FetchStoreEntity()
+        // StageEntityを画像データからのまま一旦保存
         for stage in stages {
-            entity.stageEntity.append(stage)
+            let entity = FetchStoreEntity()
+            entity.stageEntity = stage
+            RealmStoreManager.addFetchEntity(object: entity)
         }
         
-        // フェッチしたエンティティを永続化
-        RealmStoreManager.addFetchEntity(object: entity)
     }
 }
 
@@ -118,13 +119,25 @@ extension HomeViewController: UITableViewDelegate {
         
         // TODO: 一度フェッチしたことのある画像は永続化したデータからつかう
         // TODO: フェッチしたことのない画像データのみ通信で取得
+        // TODO: 画像データをRealmから検索するインタフェースがほしい
         
         let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
+        
+        // 永続化した中にフェッチしたステージ名があった場合
+        if RealmStoreManager.isStoreStageEntity(stage: stageEntity.stage!) {
+            // ローカルのステージ画像データを使う
+        }
+        
         viewController.navigationItem.title = stageEntity.stage
 
         if let imageName = stageEntity.url {
             
+            // TODO: RealmからurlでFetchStoreEntityを検索し、画像がnilならフェッチ開始　else あるならばその画像を使う
+            
             StageFetcher.stageImage(url: imageName, completion: { data in
+                
+                // 取得した画像データを永続化して次回はフェッチしないようにしたい。
+                
                 let image = UIImage(data: data)
                 // 画面いっぱい
                 let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

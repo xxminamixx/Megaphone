@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class FetchStoreEntity: Object {
-    /// 一度フェッチしたStageEntityを永続化する用のエンティティ
-    let stageEntity = List<StageEntity>()
+    dynamic var stageEntity: StageEntity?
+    /// ステージ画像データ
+    dynamic var image: Data?
 }

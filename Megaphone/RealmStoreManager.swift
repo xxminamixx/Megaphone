@@ -123,6 +123,23 @@ class RealmStoreManager: NSObject {
             realm.add(object)
         }
     }
+    
+    /// 永続化しているEntityを配列で返す
+    ///
+    /// - Returns: LabelOfStageEntity配列
+    static private func listStageEntity() -> Results<StageEntity> {
+        let realm = try! Realm()
+        return realm.objects(StageEntity.self)
+    }
+    
+    
+    /// StageEntityが永続化されているかを返す。
+    ///
+    /// - Parameter name: ステージ名
+    /// - Returns: 入力されたステージが永続化されているかのBOOL値
+    static func isStoreStageEntity(stage: String) -> Bool {
+        return RealmStoreManager.listStageEntity().filter("stage == %@", stage).count > 0
+    }
 
     
     // MARK: Utility

@@ -114,6 +114,15 @@ class RealmStoreManager: NSObject {
             return nil
         }
     }
+    
+    // MARK: FetchEntity
+    
+    static func addFetchEntity(object: FetchStoreEntity) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(object)
+        }
+    }
 
     
     // MARK: Utility

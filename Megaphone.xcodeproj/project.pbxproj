@@ -110,6 +110,7 @@
 		9DF2EA3E1F2AD4F200EC460D /* NamingLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */; };
 		9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */; };
 		9DF2EA441F2B03B700EC460D /* TextViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */; };
+		9DF7C23820158B9100E3948C /* FetchStoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7C23720158B9100E3948C /* FetchStoreEntity.swift */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 		EF56746BD15853E668258806 /* Pods_MegaphoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */; };
 /* End PBXBuildFile section */
@@ -238,6 +239,7 @@
 		9DF2EA3D1F2AD4F200EC460D /* NamingLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NamingLabelView.xib; sourceTree = "<group>"; };
 		9DF2EA3F1F2ADCF000EC460D /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		9DF2EA431F2B03B700EC460D /* TextViewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewNavigationController.swift; sourceTree = "<group>"; };
+		9DF7C23720158B9100E3948C /* FetchStoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStoreEntity.swift; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -553,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				9D52DD981F1E00E9003204AB /* TextViewEntity.swift */,
+				9DF7C23720158B9100E3948C /* FetchStoreEntity.swift */,
 				9D52DD9A1F1E0BA0003204AB /* StageEntity.swift */,
 				9D4D0AA41F306C830061D03E /* LabelEntity.swift */,
 				9D4D0AA61F306ED40061D03E /* LabelOfStageEntity.swift */,
@@ -891,6 +894,7 @@
 				9DF2EA411F2ADCF000EC460D /* TextViewController.swift in Sources */,
 				9D52DD8B1F1DC3F4003204AB /* HomeViewController.swift in Sources */,
 				9D4D0AFE1F41950A0061D03E /* StampView.swift in Sources */,
+				9DF7C23820158B9100E3948C /* FetchStoreEntity.swift in Sources */,
 				9D4D0B1D1F43FAB70061D03E /* StampSelectViewDelegate.swift in Sources */,
 				9D4D0B1F1F43FB190061D03E /* LabelSettingViewDelegate.swift in Sources */,
 				9D4D0AF71F4177400061D03E /* StampCollectionViewCell.swift in Sources */,

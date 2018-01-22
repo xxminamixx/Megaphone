@@ -82,6 +82,16 @@ class HomeViewController: UIViewController {
         StageFetcher.stageJson {
             DispatchQueue.main.async {
                 self.stageTableView.reloadData()
+                
+                // TODO: 強制アンラップを修正
+                // TODO: クロージャの見通しが悪くなるので外だししたい
+                /// フェッチしたstage情報を永続化
+                let entity = FetchStoreEntity()
+                for stage in (JsonManager.shared.stages?.stage)! {
+                    entity.stageEntity.append(stage)
+                }
+                // フェッチしたエンティティを永続化
+                RealmStoreManager.addFetchEntity(object: entity)
             }
         }
     }
@@ -101,10 +111,14 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         
+        // TODO: 一度フェッチしたことのある画像は永続化したデータからつかう
+        // TODO: フェッチしたことのない画像データのみ通信で取得
+        
         let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
         viewController.navigationItem.title = stageEntity.stage
 
         if let imageName = stageEntity.url {
+            
             StageFetcher.stageImage(url: imageName, completion: { data in
                 let image = UIImage(data: data)
                 // 画面いっぱい

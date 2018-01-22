@@ -82,16 +82,7 @@ class HomeViewController: UIViewController {
         StageFetcher.stageJson {
             DispatchQueue.main.async {
                 self.stageTableView.reloadData()
-                
-                // TODO: 強制アンラップを修正
-                // TODO: クロージャの見通しが悪くなるので外だししたい
-                /// フェッチしたstage情報を永続化
-                let entity = FetchStoreEntity()
-                for stage in (JsonManager.shared.stages?.stage)! {
-                    entity.stageEntity.append(stage)
-                }
-                // フェッチしたエンティティを永続化
-                RealmStoreManager.addFetchEntity(object: entity)
+                self.fetchStore()
             }
         }
     }
@@ -100,6 +91,20 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    /// フェッチしたstage情報を永続化
+    private func fetchStore() {
+        guard let stages = JsonManager.shared.stages?.stage else {
+            return
+        }
+        
+        let entity = FetchStoreEntity()
+        for stage in stages {
+            entity.stageEntity.append(stage)
+        }
+        
+        // フェッチしたエンティティを永続化
+        RealmStoreManager.addFetchEntity(object: entity)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {

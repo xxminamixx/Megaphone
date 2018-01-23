@@ -29,10 +29,6 @@ class NamingLabelView: UIView {
     var befroScale: CGFloat = 1.0
     // ラベルのフォントサイズ
     var fontSize: CGFloat = 18.0
-    // テキストの色
-    var fontColor: String = ""
-    // テキストの縁の色
-    var strokeColor: String = ""
     
     override func awakeFromNib() {
         
@@ -56,14 +52,12 @@ class NamingLabelView: UIView {
                 
                 // 一番最後のレイヤーを削除
                 self.layer.sublayers?.last?.removeFromSuperlayer()
-                // TODO: 閉じるボタンの非活性
                 self.closeImageView.isHidden = true
             } else {
                 // 非選択のとき
                 
                 // 破線のレイヤを追加して選択状態とする
                 self.drawDashedLine(color: UIColor.gray, lineWidth: 2, lineSize: 3, spaceSize: 3, type: .All)
-                // TODO: 閉じるボタンの活性化
                 self.closeImageView.isHidden = false
             }
         }

@@ -22,6 +22,7 @@ class ConstColor {
     // MARK: 黄色系
     static let iconYellow = UIColor(red: 1, green: 0.7922, blue: 0, alpha: 1.0) /* #ffca00 */
     static let separatorYellow = UIColor(red: 0.9569, green: 0.749, blue: 0, alpha: 1.0) /* #f4bf00 */
+    static let cameraRollYellow = UIColor(red: 0.9294, green: 0.7098, blue: 0, alpha: 1.0) /* #edb500 */
 
     // MARK: 緑系
     static let iconGreen = UIColor(red: 0.4314, green: 0.7569, blue: 0.3922, alpha: 1.0) /* #6ec164 */

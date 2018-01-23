@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StampSelectView" customModule="Megaphone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close.png" translatesAutoresizingMaskIntoConstraints="NO" id="egB-W1-IOe">
+                    <rect key="frame" x="345" y="0.0" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="5Yt-wk-WuH"/>
+                        <constraint firstAttribute="height" constant="30" id="hH4-SA-Bws"/>
+                    </constraints>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SoV-ly-fwn">
+                    <rect key="frame" x="0.0" y="30" width="375" height="170"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ssf-tq-iFw">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="SoV-ly-fwn" secondAttribute="bottom" id="Cd9-ZU-7as"/>
+                <constraint firstItem="SoV-ly-fwn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rva-We-y2d"/>
+                <constraint firstAttribute="trailing" secondItem="SoV-ly-fwn" secondAttribute="trailing" id="UJ9-TC-7zN"/>
+                <constraint firstItem="SoV-ly-fwn" firstAttribute="top" secondItem="egB-W1-IOe" secondAttribute="bottom" id="lk3-uF-nIo"/>
+                <constraint firstAttribute="trailing" secondItem="egB-W1-IOe" secondAttribute="trailing" id="sh4-Nn-rtW"/>
+                <constraint firstItem="egB-W1-IOe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wp5-iC-VBP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="close" destination="egB-W1-IOe" id="fjj-wp-1Kl"/>
+                <outlet property="stampView" destination="SoV-ly-fwn" id="eSW-Se-RhM"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="122"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close.png" width="100" height="100"/>
+    </resources>
+</document>

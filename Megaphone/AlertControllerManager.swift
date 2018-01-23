@@ -25,8 +25,8 @@ class AlertControllerManager {
             alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         }
         
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: defaultAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let defaultAction = UIAlertAction(title: ConstText.ok, style: .default, handler: defaultAction)
+        let cancelAction = UIAlertAction(title: ConstText.cancel, style: .cancel, handler: nil)
         
         alertController.addAction(cancelAction)
         alertController.addAction(defaultAction)

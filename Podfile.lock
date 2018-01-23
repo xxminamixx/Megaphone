@@ -1,5 +1,6 @@
 PODS:
   - Cartography (1.1.0)
+  - FDTake (1.0.0)
   - GestureRecognizerClosures (3.1.0)
   - GoogleMobileAds (7.8.0)
   - Realm (2.8.2):
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Cartography (from `https://github.com/xxminamixx/Cartography`)
+  - FDTake (~> 1.0.0)
   - GestureRecognizerClosures (~> 3)
   - GoogleMobileAds
   - RealmSwift
@@ -27,12 +29,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Cartography: 8ec6e9dc98f6ee6ea6100f345d09426dd349000b
+  FDTake: f32bc7e3c214769c6ba6cd21da2a2592504189f4
   GestureRecognizerClosures: 513f6926a586a6276252c1113db5d4f4d8c7c8d8
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
   Realm: 0e262abf087c7054013e00579274f7e070486d4a
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
   SwiftyAttributes: f337a324cd21f1b18782ab85d3478ccae73f7593
 
-PODFILE CHECKSUM: d6487d68d7b75b501b9cc5144455b6f700eab9bb
+PODFILE CHECKSUM: 371f9896c79d570f4cf7097a0bdeeae312988092
 
 COCOAPODS: 1.1.1

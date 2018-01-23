@@ -15,7 +15,7 @@ target 'Megaphone' do
 
   # Pods for Megaphone
 
-  target 'MegaphoneTests' do
+  target 'MegaphoneTest' do
     inherit! :search_paths
     # Pods for testing
   end

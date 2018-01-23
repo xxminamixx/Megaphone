@@ -52,7 +52,7 @@ class RealmStoreManager: NSObject {
     ///   - property: フィルタリングをしたいプロパティ名を指定する
     ///   - filter: フィルタリング条件を入力する(型がわからないのでAny型としている)
     /// - Returns: フィルタリングされたEntityが返却される
-    static func filterEntityLis<T: Object>(type: T.Type, property: String, filter: Any) -> Results<T> {
+    static func filterEntityList<T: Object>(type: T.Type, property: String, filter: Any) -> Results<T> {
         return entityList(type: type).filter("%@ == %@", property, filter)
     }
     

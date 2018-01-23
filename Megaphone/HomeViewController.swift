@@ -116,53 +116,48 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
+        // TODO: SharedInstansがデータを持ち続けているのはスコープが長くて危険なので短命にしたい
+        // ステージエンティティをJsonManagerのSharedInstansから取得
         let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
-        
-        // 永続化した中にフェッチしたステージ名があった場合
-        if RealmStoreManager.isStoreStageName(stage: stageEntity.stage!) {
-            // ローカルのステージ画像データを使う
-        }
-        
+        // Navigation Titleを設定
         viewController.navigationItem.title = stageEntity.stage
-
-        if let imageName = stageEntity.url {
-            
+        
+        if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
             /// 画像データがすでに永続化されているならばそれを使う
-            if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
-                // TOOD: 下記に同じ処理があるので外だしして共通化したい
-                let image = UIImage(data: image)
-                // 画面いっぱい
-                let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                
-                // イメージビュー生成
-                let imageView = UIImageView(frame: fullScreen)
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = image
-                imageView.isUserInteractionEnabled = true
-                viewController.imageView = imageView
-                
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(viewController, animated: true)
-                }
-            } else {
-                StageFetcher.stageImage(url: imageName, completion: { data in
-                    let image = UIImage(data: data)
-                    // 画面いっぱい
-                    let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    
-                    // イメージビュー生成
-                    let imageView = UIImageView(frame: fullScreen)
-                    imageView.contentMode = .scaleAspectFit
-                    imageView.image = image
-                    imageView.isUserInteractionEnabled = true
-                    viewController.imageView = imageView
-                    
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                })
+            guard let image = UIImage(data: image) else {
+                return
+            }
+            self.imageSetNextViewController(viewController: viewController, image: image)
+        } else {
+            /// 永続化されている画像データがない場合はフェッチして使う
+            guard let imageName = stageEntity.url else {
+                return
             }
             
+            StageFetcher.stageImage(url: imageName, completion: { data in
+                guard let image = UIImage(data: data) else {
+                    return
+                }
+                self.imageSetNextViewController(viewController: viewController, image: image)
+            })
+        }
+    }
+    
+    /// NaigationBarのタイトルをセット + 次のViewControllerに画像をセット + 画面遷移
+    func imageSetNextViewController(viewController: NamingViewController, image: UIImage) {
+        // 画面いっぱい
+        let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        // イメージビュー生成
+        let imageView = UIImageView(frame: fullScreen)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        imageView.isUserInteractionEnabled = true
+        viewController.imageView = imageView
+        
+        // メインスレッドで画面遷移
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

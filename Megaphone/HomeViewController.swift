@@ -12,6 +12,7 @@ import GestureRecognizerClosures
 import FDTake
 import Alamofire
 import AlamofireImage
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
 
@@ -20,9 +21,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cameraRollIgnitionView: UIView!
     
     var fdTakeController = FDTakeController()
+    /// ローディング中を表すインジケータ
+    var indicator: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let size = CGSize(width: 60, height: 60) // インジケータのサイズ
+        self.indicator = NVActivityIndicatorView(frame: CGRect(origin: self.view.centerPoint(size: size), size: size), type: .lineScalePulseOut, color: ConstColor.iconYellow, padding: 10)
+        self.view.addSubview(indicator!)
+        // viewControllerを表示する前からフェッチは始まっているのでインジケータアニメーションを表示
+        indicator?.startAnimating()
         
         // 広告表示用の親Viewの背景色を設定
         bannerView.backgroundColor = UIColor.darkGray
@@ -81,6 +90,8 @@ class HomeViewController: UIViewController {
         
         // ステージ一覧をフェッチしTableViewを更新
         StageFetcher.stageJson {
+            // フェッチが完了したのでアニメーションストップ
+            self.indicator?.stopAnimating()
             DispatchQueue.main.async {
                 self.stageTableView.reloadData()
                 self.fetchStore()
@@ -119,6 +130,9 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
+        // インジケータのアニメーションスタート
+        indicator?.startAnimating()
+        
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         // TODO: SharedInstansがデータを持ち続けているのはスコープが長くて危険なので短命にしたい
         // ステージエンティティをJsonManagerのSharedInstansから取得
@@ -141,6 +155,7 @@ extension HomeViewController: UITableViewDelegate {
             // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
             
             StageFetcher.stageImage(url: imageName, completion: { image in
+                self.indicator?.stopAnimating()
                 self.imageSetNextViewController(viewController: viewController, image: image)
             })
         }

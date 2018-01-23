@@ -11,6 +11,7 @@ import GoogleMobileAds
 import GestureRecognizerClosures
 import FDTake
 import Alamofire
+import AlamofireImage
 
 class HomeViewController: UIViewController {
 
@@ -137,10 +138,9 @@ extension HomeViewController: UITableViewDelegate {
                 return
             }
             
-            StageFetcher.stageImage(url: imageName, completion: { data in
-                guard let image = UIImage(data: data) else {
-                    return
-                }
+            // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
+            
+            StageFetcher.stageImage(url: imageName, completion: { image in
                 self.imageSetNextViewController(viewController: viewController, image: image)
             })
         }

@@ -67,4 +67,8 @@ struct ConstText {
     static let stampKey = "stamp"
     static let imageKey = "image"
     
+    /* Dropbox */
+    static let dropboxHost = "www.dropbox.com"
+    static let downloadHost = "dl.dropboxusercontent.com"
+    
 }

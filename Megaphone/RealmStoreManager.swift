@@ -42,8 +42,7 @@ class RealmStoreManager: NSObject {
        return entityList(type: type).count
     }
     
-    // TODO: filterを使っている関数をどう汎用化するか。このクラスが持つべきなのか使う側が管理するべきなのか考えたい
-    
+    // TODO: 理想としては以下のようなジェネリックなfilter関数を作りたいがコンパイルエラーとなるので実現方法考えたい
     
     /// 指定した型のEntityから任意のプロパティを指定してフィルタリングした配列を返却する
     ///
@@ -52,9 +51,9 @@ class RealmStoreManager: NSObject {
     ///   - property: フィルタリングをしたいプロパティ名を指定する
     ///   - filter: フィルタリング条件を入力する(型がわからないのでAny型としている)
     /// - Returns: フィルタリングされたEntityが返却される
-    static func filterEntityList<T: Object>(type: T.Type, property: String, filter: Any) -> Results<T> {
-        return entityList(type: type).filter("%@ == %@", property, filter)
-    }
+//    static func filterEntityList<T: Object>(type: T.Type, property: String, filter: Any) -> Results<T> {
+//        return entityList(type: type).filter("%@ == %@", property, filter)
+//    }
     
     // MARK: LabelEntity
     

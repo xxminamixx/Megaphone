@@ -8,68 +8,76 @@
 
 import RealmSwift
 
+// TOOD: 各種Entityごとに同じようなメソッドを作成しているのでジェネリクスにしたい
 class RealmStoreManager: NSObject {
     
-    // MARK: LabelEntity
+    // MARK: ジェネリック関数
     
-    /// エンティティを永続化
+    /// RealmのObjectEntityを保存
     ///
-    /// - Parameter object: ステージごとのLabel情報がまとまったEntity
-    static func addLabelEntity(object: LabelOfStageEntity) {
+    /// - Parameter object: Objectを継承したEntity
+    static func addEntity<T: Object>(object: T) {
         let realm = try! Realm()
         try! realm.write {
             realm.add(object)
         }
     }
+
+    
+    /// 指定したtypeのEntityListを返却する
+    ///
+    /// - Parameter type: Entityの型を指定する
+    /// - Returns: 指定されたEntityListを返却する
+    static func entityList<T: Object>(type: T.Type) -> Results<T> {
+        let realm = try! Realm()
+        return realm.objects(type.self)
+    }
+    
+    
+    /// 指定したtypeのEntityListの長さを返す
+    ///
+    /// - Parameter type: Entityの型を指定する
+    /// - Returns: 指定されたEntityListの長さを返す
+    static func countEntity<T: Object>(type: T.Type) -> Int {
+       return entityList(type: type).count
+    }
+    
+    // TODO: 理想としては以下のようなジェネリックなfilter関数を作りたいがコンパイルエラーとなるので実現方法考えたい
+    
+    /// 指定した型のEntityから任意のプロパティを指定してフィルタリングした配列を返却する
+    ///
+    /// - Parameters:
+    ///   - type: Entityの型を指定する
+    ///   - property: フィルタリングをしたいプロパティ名を指定する
+    ///   - filter: フィルタリング条件を入力する(型がわからないのでAny型としている)
+    /// - Returns: フィルタリングされたEntityが返却される
+//    static func filterEntityList<T: Object>(type: T.Type, property: String, filter: Any) -> Results<T> {
+//        return entityList(type: type).filter("%@ == %@", property, filter)
+//    }
+    
+    // MARK: LabelEntity
     
     // 指定したキーを持つEntityを削除
     static func deleteLabelEntity(key: String) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(listLabelEntity().filter("key == %@", key))
+            realm.delete(entityList(type: LabelEntity.self).filter("key == %@", key))
         }
     }
-    
-    
-    /// 永続化しているEntityを配列で返す
-    ///
-    /// - Returns: LabelOfStageEntity配列
-    static private func listLabelEntity() -> Results<LabelOfStageEntity> {
-        let realm = try! Realm()
-        return realm.objects(LabelOfStageEntity.self)
-    }
-    
-    
-    /// 配列の個数を返す
-    ///
-    /// - Returns: 配列個数
-    static func countLalbeEntity() -> Int {
-        return RealmStoreManager.listLabelEntity().count
-    }
-    
     
     /// 指定したステージのEntityを取り出す
     ///
     /// - Parameter key: ステージ名
     /// - Returns: 指定したステージのEntity
     static func picLabelEntity(key: String) -> LabelOfStageEntity? {
-        if RealmStoreManager.listLabelEntity().filter("key == %@", key).count > 0 {
-            guard let result = RealmStoreManager.listLabelEntity().filter("key == %@", key).first else {
+        if entityList(type: LabelOfStageEntity.self).filter("key == %@", key).count > 0 {
+            guard let result = entityList(type: LabelOfStageEntity.self).filter("key == %@", key).first else {
                 return nil
             }
             
             return result
         } else {
             return nil
-        }
-    }
-    
-    // MARK: StampEntity
-    
-    static func addStampEntity(object: StampStoreEntityList) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(object)
         }
     }
     
@@ -77,35 +85,17 @@ class RealmStoreManager: NSObject {
     static func deleteStampEntity(key: String) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(listStampEntity().filter("key == %@", key))
+            realm.delete(entityList(type: StageEntity.self).filter("key == %@", key))
         }
     }
-    
-    
-    /// 永続化しているEntityを配列で返す
-    ///
-    /// - Returns: LabelOfStageEntity配列
-    static private func listStampEntity() -> Results<StampStoreEntityList> {
-        let realm = try! Realm()
-        return realm.objects(StampStoreEntityList.self)
-    }
-    
-    
-    /// 配列の個数を返す
-    ///
-    /// - Returns: 配列個数
-    static func countStampEntity() -> Int {
-        return RealmStoreManager.listStampEntity().count
-    }
-    
     
     /// 指定したステージのEntityを取り出す
     ///
     /// - Parameter key: ステージ名
     /// - Returns: 指定したステージのEntity
     static func picStampEntity(key: String) -> StampStoreEntityList? {
-        if RealmStoreManager.listStampEntity().filter("key == %@", key).count > 0 {
-            guard let result = RealmStoreManager.listStampEntity().filter("key == %@", key).first else {
+        if entityList(type: StampStoreEntityList.self).filter("key == %@", key).count > 0 {
+            guard let result = entityList(type: StampStoreEntityList.self).filter("key == %@", key).first else {
                 return nil
             }
             
@@ -114,8 +104,27 @@ class RealmStoreManager: NSObject {
             return nil
         }
     }
-
     
+    // MARK: FetchEntity
+    
+    /// StageEntityが永続化されているかを返す。
+    ///
+    /// - Parameter name: ステージ名
+    /// - Returns: 入力されたステージが永続化されているかのBOOL値
+    static func isStoreStageName(stage: String) -> Bool {
+        // TOOD: もうちょっといい実装がありそう
+        for entity in entityList(type: FetchStoreEntity.self) {
+            if entity.stageEntity?.stage == stage {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func stageEntity(filter: String) -> Results<FetchStoreEntity> {
+        return entityList(type: FetchStoreEntity.self).filter("stage == %@", filter)
+    }
+
     // MARK: Utility
     
     /// クロージャに更新処理を渡す

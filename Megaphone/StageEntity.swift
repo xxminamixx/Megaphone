@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 // jsonパース用のエンティティ
-class StageEntity {
-    var stageName: String?
-    var imageName: String?
+struct StageList: Codable {
+    var stage: [StageEntity]?
+}
+
+class StageEntity: Object, Codable {
+    dynamic var stage: String?
+    dynamic var url: String?
 }

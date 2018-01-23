@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import GestureRecognizerClosures
 import FDTake
+import Alamofire
 
 class HomeViewController: UIViewController {
 
@@ -76,12 +77,38 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // タイトルを設定
         navigationItem.title = ConstText.appName
+        
+        // ステージ一覧をフェッチしTableViewを更新
+        StageFetcher.stageJson {
+            DispatchQueue.main.async {
+                self.stageTableView.reloadData()
+                self.fetchStore()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    /// フェッチしたstage情報を永続化
+    private func fetchStore() {
+        guard let stages = JsonManager.shared.stages?.stage else {
+            return
+        }
+        
+        /// StageEntity配列をひとつづつ永続化
+        for stage in stages {
+            guard !RealmStoreManager.isStoreStageName(stage: stage.stage!) else {
+                /// 永続化されている場合早期return
+                return
+            }
+            
+            let entity = FetchStoreEntity()
+            entity.stageEntity = stage
+            RealmStoreManager.addEntity(object: entity)
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -92,27 +119,51 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
+        // TODO: SharedInstansがデータを持ち続けているのはスコープが長くて危険なので短命にしたい
+        // ステージエンティティをJsonManagerのSharedInstansから取得
+        let stageEntity = JsonManager.shared.stages?.stage![indexPath.row] ?? StageEntity()
+        // Navigation Titleを設定
+        viewController.navigationItem.title = stageEntity.stage
         
-        let stageEntity = JsonManager.shared.stages?[indexPath.row]
-        viewController.navigationItem.title = stageEntity?.stageName
-
-        if let imageName = stageEntity?.imageName {
-            // 画像を生成
-            if let image = UIImage(named: imageName) {
-                // 画面いっぱい
-                let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                
-                // イメージビュー生成
-                let imageView = UIImageView(frame: fullScreen)
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = image
-                imageView.isUserInteractionEnabled = true
-                viewController.imageView = imageView
+        if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
+            /// 画像データがすでに永続化されているならばそれを使う
+            guard let image = UIImage(data: image) else {
+                return
             }
+            self.imageSetNextViewController(viewController: viewController, image: image)
+        } else {
+            /// 永続化されている画像データがない場合はフェッチして使う
+            guard let imageName = stageEntity.url else {
+                return
+            }
+            
+            StageFetcher.stageImage(url: imageName, completion: { data in
+                guard let image = UIImage(data: data) else {
+                    return
+                }
+                self.imageSetNextViewController(viewController: viewController, image: image)
+            })
         }
-        
-        navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    /// NaigationBarのタイトルをセット + 次のViewControllerに画像をセット + 画面遷移
+    func imageSetNextViewController(viewController: NamingViewController, image: UIImage) {
+        // 画面いっぱい
+        let fullScreen = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        // イメージビュー生成
+        let imageView = UIImageView(frame: fullScreen)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        imageView.isUserInteractionEnabled = true
+        viewController.imageView = imageView
+        
+        // メインスレッドで画面遷移
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -124,12 +175,12 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = stageTableView.dequeueReusableCell(withIdentifier: StageTableViewCell.nibName, for: indexPath) as! StageTableViewCell
         
-        guard let stageList = JsonManager.shared.stages else {
+        guard let stageList = JsonManager.shared.stages?.stage else {
             // jsonのパースに失敗していた場合ステージ名をセットせずリターン
             return cell
         }
         
-        cell.stageName.text = stageList[indexPath.row].stageName
+        cell.stageName.text = stageList[indexPath.row].stage
         
         // 選択時のスタイルを無しにする
         cell.selectionStyle = .none

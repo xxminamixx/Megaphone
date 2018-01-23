@@ -7,41 +7,31 @@
 //
 
 import UIKit
+import Alamofire
 
 class JsonManager: NSObject {
     
     static let shared = JsonManager()
     /// ステージ配列
-    var stages: Array<StageEntity>?
+    var stages: StageList?
     /// スタンプ配列
     var stamps: Array<StampEntity>?
     
     override init() {
         super.init()
-        stages = stageList()
+        stages = nil
         stamps = stampList()
     }
     
     /// jsonを読み込んでステージ配列を返す
     ///
     /// - Returns: ステージ配列
-    func stageList() -> [StageEntity]? {
-        let json = try! JSONSerialization.jsonObject(with: getResourceJson(name: ConstText.stageFileName)!,
-                                                     options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-        
-        guard let stages = json.value(forKey: ConstText.stageKey) as! Array<Dictionary<String, String>>? else {
-            return nil
-        }
-        
-        var items: [StageEntity] = []
-        for item in stages {
-            let entity = StageEntity()
-            entity.stageName = item[ConstText.stageKey]
-            entity.imageName = item[ConstText.imageKey]
-            items.append(entity)
-        }
-        
-        return items
+    
+    func stageList(data: Data, completion: () -> Void) {
+            let decorder = JSONDecoder()
+            let stage =  try? decorder.decode(StageList.self, from: data)
+            stages = stage
+            completion()
     }
     
     func stampList() -> [StampEntity]? {
@@ -82,7 +72,7 @@ class JsonManager: NSObject {
     ///
     /// - Returns: jsonのパースに失敗していた場合0、成功していたらステージの個数を返す
     func stageCount() -> Int {
-        guard let count = stages?.count else {
+        guard let count = stages?.stage?.count else {
             return 0
         }
         return count

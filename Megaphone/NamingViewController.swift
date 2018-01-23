@@ -324,8 +324,8 @@ class NamingViewController: UIViewController {
         }
         
         // Entityを追加
-        RealmStoreManager.addLabelEntity(object: labelEntity)
-        RealmStoreManager.addStampEntity(object: stampEntityList)
+        RealmStoreManager.addEntity(object: labelEntity)
+        RealmStoreManager.addEntity(object: stampEntityList)
     }
     
     // MARK: ラベル読み込み処理

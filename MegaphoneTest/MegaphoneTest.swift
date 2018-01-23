@@ -1,15 +1,15 @@
 //
-//  MegaphoneTests.swift
-//  MegaphoneTests
+//  MegaphoneTest.swift
+//  MegaphoneTest
 //
-//  Created by 南　京兵 on 2017/07/18.
-//  Copyright © 2017年 南　京兵. All rights reserved.
+//  Created by 南　京兵 on 2018/01/23.
+//  Copyright © 2018年 南　京兵. All rights reserved.
 //
 
 import XCTest
 @testable import Megaphone
 
-class MegaphoneTests: XCTestCase {
+class MegaphoneTest: XCTestCase {
     
     override func setUp() {
         super.setUp()

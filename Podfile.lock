@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.6.0)
   - Cartography (1.1.0)
   - FDTake (1.0.0)
   - GestureRecognizerClosures (3.1.0)
@@ -11,6 +12,7 @@ PODS:
   - SwiftyAttributes (3.1.0)
 
 DEPENDENCIES:
+  - Alamofire
   - Cartography (from `https://github.com/xxminamixx/Cartography`)
   - FDTake (~> 1.0.0)
   - GestureRecognizerClosures (~> 3)
@@ -28,6 +30,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/xxminamixx/Cartography
 
 SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Cartography: 8ec6e9dc98f6ee6ea6100f345d09426dd349000b
   FDTake: f32bc7e3c214769c6ba6cd21da2a2592504189f4
   GestureRecognizerClosures: 513f6926a586a6276252c1113db5d4f4d8c7c8d8
@@ -36,6 +39,6 @@ SPEC CHECKSUMS:
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
   SwiftyAttributes: f337a324cd21f1b18782ab85d3478ccae73f7593
 
-PODFILE CHECKSUM: 371f9896c79d570f4cf7097a0bdeeae312988092
+PODFILE CHECKSUM: bc87d39384d8d0f8b82abc58b4a2a8dffe6e5451
 
 COCOAPODS: 1.1.1

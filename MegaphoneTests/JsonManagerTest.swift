@@ -21,8 +21,4 @@ class JsonManagerTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_ステージ配列取得_先頭がフジツボの場合_成功() {
-        let names = JsonManager.stageList()
-        XCTAssertEqual(names?.first, "フジツボスポーツクラブ")
-    }
 }

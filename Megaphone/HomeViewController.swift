@@ -93,18 +93,21 @@ class HomeViewController: UIViewController {
 
     /// フェッチしたstage情報を永続化
     private func fetchStore() {
-        // TODO: フェッチするたびにデータが蓄積するので、同じデータは保存しないようにする
         guard let stages = JsonManager.shared.stages?.stage else {
             return
         }
         
-        // StageEntityを画像データからのまま一旦保存
+        /// StageEntity配列をひとつづつ永続化
         for stage in stages {
+            guard !RealmStoreManager.isStoreStageName(stage: stage.stage!) else {
+                /// 永続化されている場合早期return
+                return
+            }
+            
             let entity = FetchStoreEntity()
             entity.stageEntity = stage
-            RealmStoreManager.addFetchEntity(object: entity)
+            RealmStoreManager.addEntity(object: entity)
         }
-        
     }
 }
 

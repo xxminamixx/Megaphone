@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class StageFetcher: NSObject {
 
@@ -23,15 +24,21 @@ class StageFetcher: NSObject {
         })
     }
     
-    static func stageImage(url: String, completion: @escaping (Data) -> Void) {
+    static func stageImage(url: String, completion: @escaping (UIImage) -> Void) {
+        // サーバ側のURLがミスっているので現状はソースコードで修正
+        let downloadURL = url.replacingOccurrences(of: ConstText.dropboxHost, with: ConstText.downloadHost)
         
-        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseData(completionHandler: { response in
-            
-            guard let data = response.data else {
-                return
+        Alamofire.request(downloadURL).validate().responseImage{ response in
+            switch response.result {
+            case .success:
+                guard let data = response.result.value else {
+                    return
+                }
+                completion(data)
+            case .failure:
+                break
             }
-            completion(data)
-        })
+        }
         
     }
     

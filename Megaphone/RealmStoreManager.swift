@@ -61,7 +61,7 @@ class RealmStoreManager: NSObject {
     static func deleteLabelEntity(key: String) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(entityList(type: LabelEntity.self).filter("key == %@", key))
+            realm.delete(entityList(type: LabelOfStageEntity.self).filter("key == %@", key))
         }
     }
     
@@ -85,7 +85,7 @@ class RealmStoreManager: NSObject {
     static func deleteStampEntity(key: String) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(entityList(type: StageEntity.self).filter("key == %@", key))
+            realm.delete(entityList(type: StampStoreEntityList.self).filter("key == %@", key))
         }
     }
     
@@ -121,8 +121,16 @@ class RealmStoreManager: NSObject {
         return false
     }
     
-    static func stageEntity(filter: String) -> Results<FetchStoreEntity> {
-        return entityList(type: FetchStoreEntity.self).filter("stage == %@", filter)
+    static func stageEntity(filter: String) -> [FetchStoreEntity] {
+        // TOOD: もうちょっといい実装がありそう
+        var stageEntityList: [FetchStoreEntity] = []
+        for entity in entityList(type: FetchStoreEntity.self) {
+            if entity.stageEntity?.stage == filter {
+                // エンティティ配列に格納する
+                stageEntityList.append(entity)
+            }
+        }
+        return stageEntityList
     }
 
     // MARK: Utility

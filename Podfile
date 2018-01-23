@@ -12,6 +12,7 @@ target 'Megaphone' do
   pod ‘SwiftyAttributes’, ‘~> 3.1.0’
   pod 'FDTake’, ‘~> 1.0.0’
   pod ‘Alamofire’
+  pod ‘AlamofireImage’
 
   # Pods for Megaphone
 

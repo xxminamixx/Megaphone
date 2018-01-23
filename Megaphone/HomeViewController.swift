@@ -140,7 +140,8 @@ extension HomeViewController: UITableViewDelegate {
         // Navigation Titleを設定
         viewController.navigationItem.title = stageEntity.stage
         
-        if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
+        let fetchStoreEntity = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first
+        if let image = fetchStoreEntity?.image {
             /// 画像データがすでに永続化されているならばそれを使う
             guard let image = UIImage(data: image) else {
                 return
@@ -155,6 +156,11 @@ extension HomeViewController: UITableViewDelegate {
             // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
             
             StageFetcher.stageImage(url: imageName, completion: { image in
+                // TODO: 一度フェッチした画像は永続化したい
+                RealmStoreManager.save() {
+                    fetchStoreEntity?.image = image
+                }
+                
                 self.indicator?.stopAnimating()
                 self.imageSetNextViewController(viewController: viewController, image: image)
             })

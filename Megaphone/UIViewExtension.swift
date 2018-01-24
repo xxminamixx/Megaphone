@@ -107,4 +107,14 @@ extension UIView {
         return sublayers.count >= count
     }
     
+    /**
+     addSubviewする際に貼り付け元のViewの中央を指定すると、
+     貼り付けるViewの左上が中央になるので、
+     貼り付けるViewのサイズに合わせた中央値を返すメソッドを実装
+     **/
+    func centerPoint(size: CGSize) -> CGPoint {
+        return CGPoint(x: (self.frame.size.width / 2) - (size.width / 2),
+                       y: (self.frame.size.height / 2) - (size.height / 2))
+    }
+    
 }

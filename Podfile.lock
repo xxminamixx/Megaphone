@@ -6,6 +6,9 @@ PODS:
   - FDTake (1.0.0)
   - GestureRecognizerClosures (3.1.0)
   - GoogleMobileAds (7.8.0)
+  - NVActivityIndicatorView (4.1.1):
+    - NVActivityIndicatorView/Presenter (= 4.1.1)
+  - NVActivityIndicatorView/Presenter (4.1.1)
   - Realm (2.8.2):
     - Realm/Headers (= 2.8.2)
   - Realm/Headers (2.8.2)
@@ -20,6 +23,7 @@ DEPENDENCIES:
   - FDTake (~> 1.0.0)
   - GestureRecognizerClosures (~> 3)
   - GoogleMobileAds
+  - NVActivityIndicatorView
   - RealmSwift
   - SwiftyAttributes (~> 3.1.0)
 
@@ -39,10 +43,11 @@ SPEC CHECKSUMS:
   FDTake: f32bc7e3c214769c6ba6cd21da2a2592504189f4
   GestureRecognizerClosures: 513f6926a586a6276252c1113db5d4f4d8c7c8d8
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
+  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   Realm: 0e262abf087c7054013e00579274f7e070486d4a
   RealmSwift: 73565e91bc403c1149e4acf31ff9de506b2f9459
   SwiftyAttributes: f337a324cd21f1b18782ab85d3478ccae73f7593
 
-PODFILE CHECKSUM: bcfdf1949bd907a29b2190c9126807b4e7c3eafa
+PODFILE CHECKSUM: 357262bc965383e4265653cc716e1ac8fc2b2ce1
 
 COCOAPODS: 1.1.1

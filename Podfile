@@ -13,6 +13,7 @@ target 'Megaphone' do
   pod 'FDTake’, ‘~> 1.0.0’
   pod ‘Alamofire’
   pod ‘AlamofireImage’
+  pod 'NVActivityIndicatorView'
 
   # Pods for Megaphone
 

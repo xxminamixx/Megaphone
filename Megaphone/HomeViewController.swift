@@ -12,6 +12,7 @@ import GestureRecognizerClosures
 import FDTake
 import Alamofire
 import AlamofireImage
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
 
@@ -20,9 +21,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cameraRollIgnitionView: UIView!
     
     var fdTakeController = FDTakeController()
+    /// ローディング中を表すインジケータ
+    var indicator: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let size = CGSize(width: 60, height: 60) // インジケータのサイズ
+        self.indicator = NVActivityIndicatorView(frame: CGRect(origin: self.view.centerPoint(size: size), size: size), type: .lineScalePulseOut, color: ConstColor.iconYellow, padding: 10)
+        self.view.addSubview(indicator!)
+        // viewControllerを表示する前からフェッチは始まっているのでインジケータアニメーションを表示
+        indicator?.startAnimating()
         
         // 広告表示用の親Viewの背景色を設定
         bannerView.backgroundColor = UIColor.darkGray
@@ -81,6 +90,8 @@ class HomeViewController: UIViewController {
         
         // ステージ一覧をフェッチしTableViewを更新
         StageFetcher.stageJson {
+            // フェッチが完了したのでアニメーションストップ
+            self.indicator?.stopAnimating()
             DispatchQueue.main.async {
                 self.stageTableView.reloadData()
                 self.fetchStore()
@@ -100,14 +111,11 @@ class HomeViewController: UIViewController {
         
         /// StageEntity配列をひとつづつ永続化
         for stage in stages {
-            guard !RealmStoreManager.isStoreStageName(stage: stage.stage!) else {
-                /// 永続化されている場合早期return
-                return
+            if !RealmStoreManager.isStoreStageName(stage: stage.stage!) {
+                let entity = FetchStoreEntity()
+                entity.stageEntity = stage
+                RealmStoreManager.addEntity(object: entity)
             }
-            
-            let entity = FetchStoreEntity()
-            entity.stageEntity = stage
-            RealmStoreManager.addEntity(object: entity)
         }
     }
 }
@@ -119,6 +127,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
+        
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         // TODO: SharedInstansがデータを持ち続けているのはスコープが長くて危険なので短命にしたい
         // ステージエンティティをJsonManagerのSharedInstansから取得
@@ -126,7 +135,8 @@ extension HomeViewController: UITableViewDelegate {
         // Navigation Titleを設定
         viewController.navigationItem.title = stageEntity.stage
         
-        if let image = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first?.image {
+        let fetchStoreEntity = RealmStoreManager.stageEntity(filter: stageEntity.stage!).first
+        if let image = fetchStoreEntity?.image {
             /// 画像データがすでに永続化されているならばそれを使う
             guard let image = UIImage(data: image) else {
                 return
@@ -138,9 +148,16 @@ extension HomeViewController: UITableViewDelegate {
                 return
             }
             
-            // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
+            // インジケータのアニメーションスタート
+            indicator?.startAnimating()
             
             StageFetcher.stageImage(url: imageName, completion: { image in
+                RealmStoreManager.save {
+                    // UIImageをPNGデータ形式に変換して保存
+                    fetchStoreEntity?.image = UIImagePNGRepresentation(image)
+                }
+                // インジケータのアニメーションストップ
+                self.indicator?.stopAnimating()
                 self.imageSetNextViewController(viewController: viewController, image: image)
             })
         }

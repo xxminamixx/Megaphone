@@ -63,19 +63,6 @@
 		9D34D49A201823970042FB56 /* 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D494201823970042FB56 /* 60@2x.png */; };
 		9D34D49B201823970042FB56 /* 60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D495201823970042FB56 /* 60@3x.png */; };
 		9D34D49C201823970042FB56 /* 60.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D496201823970042FB56 /* 60.png */; };
-		9D34D4AA201823AA0042FB56 /* hokke.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D49D201823A80042FB56 /* hokke.jpg */; };
-		9D34D4AB201823AA0042FB56 /* ama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D49E201823A80042FB56 /* ama.jpg */; };
-		9D34D4AC201823AA0042FB56 /* fujitsubo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D49F201823A80042FB56 /* fujitsubo.jpg */; };
-		9D34D4AD201823AA0042FB56 /* engawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A0201823A80042FB56 /* engawa.jpg */; };
-		9D34D4AE201823AA0042FB56 /* konbu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A1201823A80042FB56 /* konbu.jpg */; };
-		9D34D4AF201823AA0042FB56 /* zato.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A2201823A90042FB56 /* zato.jpg */; };
-		9D34D4B0201823AA0042FB56 /* mozuku.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A3201823A90042FB56 /* mozuku.jpg */; };
-		9D34D4B1201823AA0042FB56 /* hakofugu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A4201823A90042FB56 /* hakofugu.jpeg */; };
-		9D34D4B2201823AA0042FB56 /* gangaze.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A5201823A90042FB56 /* gangaze.jpg */; };
-		9D34D4B3201823AA0042FB56 /* manta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A6201823A90042FB56 /* manta.jpg */; };
-		9D34D4B4201823AA0042FB56 /* battera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A7201823A90042FB56 /* battera.jpg */; };
-		9D34D4B5201823AA0042FB56 /* tathiuo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A8201823AA0042FB56 /* tathiuo.jpg */; };
-		9D34D4B6201823AA0042FB56 /* tyozame.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4A9201823AA0042FB56 /* tyozame.jpg */; };
 		9D34D4C9201823C80042FB56 /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4B7201823C60042FB56 /* delete@3x.png */; };
 		9D34D4CA201823C80042FB56 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4B8201823C60042FB56 /* delete@2x.png */; };
 		9D34D4CB201823C80042FB56 /* stroke_thin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4B9201823C60042FB56 /* stroke_thin@2x.png */; };
@@ -192,19 +179,6 @@
 		9D34D494201823970042FB56 /* 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "60@2x.png"; path = "Resources/App/60@2x.png"; sourceTree = "<group>"; };
 		9D34D495201823970042FB56 /* 60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "60@3x.png"; path = "Resources/App/60@3x.png"; sourceTree = "<group>"; };
 		9D34D496201823970042FB56 /* 60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 60.png; path = Resources/App/60.png; sourceTree = "<group>"; };
-		9D34D49D201823A80042FB56 /* hokke.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hokke.jpg; path = Resources/Stage/hokke.jpg; sourceTree = "<group>"; };
-		9D34D49E201823A80042FB56 /* ama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ama.jpg; path = Resources/Stage/ama.jpg; sourceTree = "<group>"; };
-		9D34D49F201823A80042FB56 /* fujitsubo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fujitsubo.jpg; path = Resources/Stage/fujitsubo.jpg; sourceTree = "<group>"; };
-		9D34D4A0201823A80042FB56 /* engawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = engawa.jpg; path = Resources/Stage/engawa.jpg; sourceTree = "<group>"; };
-		9D34D4A1201823A80042FB56 /* konbu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = konbu.jpg; path = Resources/Stage/konbu.jpg; sourceTree = "<group>"; };
-		9D34D4A2201823A90042FB56 /* zato.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zato.jpg; path = Resources/Stage/zato.jpg; sourceTree = "<group>"; };
-		9D34D4A3201823A90042FB56 /* mozuku.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = mozuku.jpg; path = Resources/Stage/mozuku.jpg; sourceTree = "<group>"; };
-		9D34D4A4201823A90042FB56 /* hakofugu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hakofugu.jpeg; path = Resources/Stage/hakofugu.jpeg; sourceTree = "<group>"; };
-		9D34D4A5201823A90042FB56 /* gangaze.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gangaze.jpg; path = Resources/Stage/gangaze.jpg; sourceTree = "<group>"; };
-		9D34D4A6201823A90042FB56 /* manta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manta.jpg; path = Resources/Stage/manta.jpg; sourceTree = "<group>"; };
-		9D34D4A7201823A90042FB56 /* battera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = battera.jpg; path = Resources/Stage/battera.jpg; sourceTree = "<group>"; };
-		9D34D4A8201823AA0042FB56 /* tathiuo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tathiuo.jpg; path = Resources/Stage/tathiuo.jpg; sourceTree = "<group>"; };
-		9D34D4A9201823AA0042FB56 /* tyozame.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tyozame.jpg; path = Resources/Stage/tyozame.jpg; sourceTree = "<group>"; };
 		9D34D4B7201823C60042FB56 /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete@3x.png"; path = "Resources/ItemViewIcon/delete@3x.png"; sourceTree = "<group>"; };
 		9D34D4B8201823C60042FB56 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete@2x.png"; path = "Resources/ItemViewIcon/delete@2x.png"; sourceTree = "<group>"; };
 		9D34D4B9201823C60042FB56 /* stroke_thin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stroke_thin@2x.png"; path = "Resources/ItemViewIcon/stroke_thin@2x.png"; sourceTree = "<group>"; };
@@ -346,26 +320,6 @@
 				9D34D4C5201823C80042FB56 /* TwitterIcon@3x.png */,
 			);
 			name = ItemViewIcon;
-			sourceTree = "<group>";
-		};
-		9D4D0B051F42A8240061D03E /* Stage */ = {
-			isa = PBXGroup;
-			children = (
-				9D34D49E201823A80042FB56 /* ama.jpg */,
-				9D34D4A7201823A90042FB56 /* battera.jpg */,
-				9D34D4A0201823A80042FB56 /* engawa.jpg */,
-				9D34D49F201823A80042FB56 /* fujitsubo.jpg */,
-				9D34D4A5201823A90042FB56 /* gangaze.jpg */,
-				9D34D4A4201823A90042FB56 /* hakofugu.jpeg */,
-				9D34D49D201823A80042FB56 /* hokke.jpg */,
-				9D34D4A1201823A80042FB56 /* konbu.jpg */,
-				9D34D4A6201823A90042FB56 /* manta.jpg */,
-				9D34D4A3201823A90042FB56 /* mozuku.jpg */,
-				9D34D4A8201823AA0042FB56 /* tathiuo.jpg */,
-				9D34D4A9201823AA0042FB56 /* tyozame.jpg */,
-				9D34D4A2201823A90042FB56 /* zato.jpg */,
-			);
-			name = Stage;
 			sourceTree = "<group>";
 		};
 		9D4D0B061F42A86A0061D03E /* App */ = {
@@ -554,7 +508,6 @@
 			children = (
 				9D4D0B071F42A8720061D03E /* LabelSetting */,
 				9D4D0B061F42A86A0061D03E /* App */,
-				9D4D0B051F42A8240061D03E /* Stage */,
 				9D4D0B041F42A7ED0061D03E /* ItemViewIcon */,
 				9D4D0B031F42A7E10061D03E /* Stamp */,
 			);
@@ -747,53 +700,40 @@
 				9D34D4D0201823C80042FB56 /* Capture@3x.png in Resources */,
 				9D34D4CE201823C80042FB56 /* delete.png in Resources */,
 				9D34D497201823970042FB56 /* 60.jpg in Resources */,
-				9D34D4AF201823AA0042FB56 /* zato.jpg in Resources */,
 				9D34D498201823970042FB56 /* 60@3x.jpg in Resources */,
 				9D34D45A201820530042FB56 /* StampCollectionViewCell.xib in Resources */,
 				9D34D4D5201823C80042FB56 /* Capture.png in Resources */,
 				9D34D48D201823880042FB56 /* stroke@2x.png in Resources */,
-				9D34D4AC201823AA0042FB56 /* fujitsubo.jpg in Resources */,
 				9D34D48C201823880042FB56 /* stroke@3x.png in Resources */,
 				9D52DD631F1DAD03003204AB /* LaunchScreen.storyboard in Resources */,
 				9D34D454201820490042FB56 /* NamingLabelView.xib in Resources */,
-				9D34D4AD201823AA0042FB56 /* engawa.jpg in Resources */,
-				9D34D4AA201823AA0042FB56 /* hokke.jpg in Resources */,
 				9D34D4D7201823C80042FB56 /* TwitterIcon@3x.png in Resources */,
 				9D34D48E201823880042FB56 /* close.png in Resources */,
 				9D34D4D8201823C80042FB56 /* stroke_thin.png in Resources */,
 				9D34D48A201823880042FB56 /* stroke_thin@3x.png in Resources */,
 				9D34D4CF201823C80042FB56 /* fill.png in Resources */,
-				9D34D4B4201823AA0042FB56 /* battera.jpg in Resources */,
-				9D34D4B2201823AA0042FB56 /* gangaze.jpg in Resources */,
 				9D34D4692018216D0042FB56 /* StageTableViewCell.xib in Resources */,
 				9D34D4D4201823C80042FB56 /* stamp@2x.png in Resources */,
 				9D34D4CA201823C80042FB56 /* delete@2x.png in Resources */,
 				9D34D490201823880042FB56 /* stroke_think@3x.png in Resources */,
 				9D34D4CB201823C80042FB56 /* stroke_thin@2x.png in Resources */,
 				9D34D49C201823970042FB56 /* 60.png in Resources */,
-				9D34D4B6201823AA0042FB56 /* tyozame.jpg in Resources */,
 				9D34D4C9201823C80042FB56 /* delete@3x.png in Resources */,
-				9D34D4B0201823AA0042FB56 /* mozuku.jpg in Resources */,
-				9D34D4B3201823AA0042FB56 /* manta.jpg in Resources */,
 				9D34D49B201823970042FB56 /* 60@3x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D34D4D3201823C80042FB56 /* stamp.png in Resources */,
 				9D34D48B201823880042FB56 /* stroke_think@2x.png in Resources */,
 				9D34D48F201823880042FB56 /* stroke_think.png in Resources */,
 				9D34D460201820590042FB56 /* StampView.xib in Resources */,
-				9D34D4AB201823AA0042FB56 /* ama.jpg in Resources */,
 				9D34D44B201820170042FB56 /* ItemsView.xib in Resources */,
-				9D34D4AE201823AA0042FB56 /* konbu.jpg in Resources */,
 				9D34D4D1201823C80042FB56 /* fill@3x.png in Resources */,
 				9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */,
 				9D34D4DA201823C80042FB56 /* TwitterIcon.png in Resources */,
 				9D34D4D9201823C80042FB56 /* stamp@3x.png in Resources */,
 				9D34D44F201820420042FB56 /* LabelSettingView.xib in Resources */,
-				9D34D4B5201823AA0042FB56 /* tathiuo.jpg in Resources */,
 				9D34D4DC201823DC0042FB56 /* splatoon.png in Resources */,
 				9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */,
 				9D34D4D6201823C80042FB56 /* fill@2x.png in Resources */,
-				9D34D4B1201823AA0042FB56 /* hakofugu.jpeg in Resources */,
 				9D34D4CD201823C80042FB56 /* TwitterIcon@2x.png in Resources */,
 				9D34D4CC201823C80042FB56 /* Capture@2x.png in Resources */,
 				9D34D49A201823970042FB56 /* 60@2x.png in Resources */,

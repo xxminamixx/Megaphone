@@ -82,6 +82,17 @@
 		9D34D4D9201823C80042FB56 /* stamp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4C7201823C80042FB56 /* stamp@3x.png */; };
 		9D34D4DA201823C80042FB56 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4C8201823C80042FB56 /* TwitterIcon.png */; };
 		9D34D4DC201823DC0042FB56 /* splatoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4DB201823DC0042FB56 /* splatoon.png */; };
+		9D34D4EA201851060042FB56 /* memoViewButtomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4E6201851060042FB56 /* memoViewButtomTextField.swift */; };
+		9D34D4EB201851060042FB56 /* MemoLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4E7201851060042FB56 /* MemoLabelView.xib */; };
+		9D34D4EC201851060042FB56 /* memoViewButtomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4E8201851060042FB56 /* memoViewButtomTextField.xib */; };
+		9D34D4ED201851060042FB56 /* MemoLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4E9201851060042FB56 /* MemoLabelView.swift */; };
+		9D34D4F0201851530042FB56 /* MemoMarkerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4EE201851530042FB56 /* MemoMarkerEntity.swift */; };
+		9D34D4F1201851530042FB56 /* MemoMarkerOfStageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4EF201851530042FB56 /* MemoMarkerOfStageEntity.swift */; };
+		9D34D4F52018560F0042FB56 /* memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4F22018560E0042FB56 /* memo@2x.png */; };
+		9D34D4F62018560F0042FB56 /* memo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4F32018560E0042FB56 /* memo.png */; };
+		9D34D4F72018560F0042FB56 /* memo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D34D4F42018560F0042FB56 /* memo@3x.png */; };
+		9D34D4F920185CDB0042FB56 /* MemoLabelViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4F820185CDB0042FB56 /* MemoLabelViewDelegate.swift */; };
+		9D34D4FB20185D410042FB56 /* MemoViewButtomTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34D4FA20185D410042FB56 /* MemoViewButtomTextFieldDelegate.swift */; };
 		9D52DD591F1DAD03003204AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52DD581F1DAD03003204AB /* AppDelegate.swift */; };
 		9D52DD5E1F1DAD03003204AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5C1F1DAD03003204AB /* Main.storyboard */; };
 		9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D52DD5F1F1DAD03003204AB /* Assets.xcassets */; };
@@ -198,6 +209,17 @@
 		9D34D4C7201823C80042FB56 /* stamp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stamp@3x.png"; path = "Resources/ItemViewIcon/stamp@3x.png"; sourceTree = "<group>"; };
 		9D34D4C8201823C80042FB56 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterIcon.png; path = Resources/ItemViewIcon/TwitterIcon.png; sourceTree = "<group>"; };
 		9D34D4DB201823DC0042FB56 /* splatoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splatoon.png; path = Resources/Stamp/splatoon.png; sourceTree = "<group>"; };
+		9D34D4E6201851060042FB56 /* memoViewButtomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = memoViewButtomTextField.swift; path = View/MemoView/memoViewButtomTextField.swift; sourceTree = "<group>"; };
+		9D34D4E7201851060042FB56 /* MemoLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemoLabelView.xib; path = View/MemoView/MemoLabelView.xib; sourceTree = "<group>"; };
+		9D34D4E8201851060042FB56 /* memoViewButtomTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = memoViewButtomTextField.xib; path = View/MemoView/memoViewButtomTextField.xib; sourceTree = "<group>"; };
+		9D34D4E9201851060042FB56 /* MemoLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoLabelView.swift; path = View/MemoView/MemoLabelView.swift; sourceTree = "<group>"; };
+		9D34D4EE201851530042FB56 /* MemoMarkerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoMarkerEntity.swift; path = Model/Entity/MemoMarkerEntity.swift; sourceTree = "<group>"; };
+		9D34D4EF201851530042FB56 /* MemoMarkerOfStageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoMarkerOfStageEntity.swift; path = Model/Entity/MemoMarkerOfStageEntity.swift; sourceTree = "<group>"; };
+		9D34D4F22018560E0042FB56 /* memo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "memo@2x.png"; path = "Resources/ItemViewIcon/memo@2x.png"; sourceTree = "<group>"; };
+		9D34D4F32018560E0042FB56 /* memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = memo.png; path = Resources/ItemViewIcon/memo.png; sourceTree = "<group>"; };
+		9D34D4F42018560F0042FB56 /* memo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "memo@3x.png"; path = "Resources/ItemViewIcon/memo@3x.png"; sourceTree = "<group>"; };
+		9D34D4F820185CDB0042FB56 /* MemoLabelViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoLabelViewDelegate.swift; path = Controller/Naming/Extension/MemoLabelViewDelegate.swift; sourceTree = "<group>"; };
+		9D34D4FA20185D410042FB56 /* MemoViewButtomTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoViewButtomTextFieldDelegate.swift; path = Controller/Naming/Extension/MemoViewButtomTextFieldDelegate.swift; sourceTree = "<group>"; };
 		9D52DD551F1DAD03003204AB /* Megaphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megaphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D52DD581F1DAD03003204AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D52DD5D1F1DAD03003204AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -279,6 +301,17 @@
 			path = MegaphoneTest;
 			sourceTree = "<group>";
 		};
+		9D34D4DD201850C60042FB56 /* MemoView */ = {
+			isa = PBXGroup;
+			children = (
+				9D34D4E9201851060042FB56 /* MemoLabelView.swift */,
+				9D34D4E7201851060042FB56 /* MemoLabelView.xib */,
+				9D34D4E6201851060042FB56 /* memoViewButtomTextField.swift */,
+				9D34D4E8201851060042FB56 /* memoViewButtomTextField.xib */,
+			);
+			name = MemoView;
+			sourceTree = "<group>";
+		};
 		9D4D0AA81F306F140061D03E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +333,9 @@
 		9D4D0B041F42A7ED0061D03E /* ItemViewIcon */ = {
 			isa = PBXGroup;
 			children = (
+				9D34D4F32018560E0042FB56 /* memo.png */,
+				9D34D4F22018560E0042FB56 /* memo@2x.png */,
+				9D34D4F42018560F0042FB56 /* memo@3x.png */,
 				9D34D4C4201823C80042FB56 /* fill@2x.png */,
 				9D34D4C3201823C70042FB56 /* Capture.png */,
 				9D34D4BA201823C60042FB56 /* Capture@2x.png */,
@@ -425,6 +461,8 @@
 				9D34D472201821870042FB56 /* StampSelectViewDelegate.swift */,
 				9D34D471201821870042FB56 /* StampViewDelegate.swift */,
 				9D34D474201821870042FB56 /* TextViewControllerDelegate.swift */,
+				9D34D4F820185CDB0042FB56 /* MemoLabelViewDelegate.swift */,
+				9D34D4FA20185D410042FB56 /* MemoViewButtomTextFieldDelegate.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -517,6 +555,8 @@
 		9D52DD971F1E00D8003204AB /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				9D34D4EE201851530042FB56 /* MemoMarkerEntity.swift */,
+				9D34D4EF201851530042FB56 /* MemoMarkerOfStageEntity.swift */,
 				9D34D43D20181E460042FB56 /* FetchStoreEntity.swift */,
 				9D34D43920181E460042FB56 /* LabelEntity.swift */,
 				9D34D43B20181E460042FB56 /* LabelOfStageEntity.swift */,
@@ -569,6 +609,7 @@
 			children = (
 				9D52DD5C1F1DAD03003204AB /* Main.storyboard */,
 				9D52DD611F1DAD03003204AB /* LaunchScreen.storyboard */,
+				9D34D4DD201850C60042FB56 /* MemoView */,
 				9D4D0B111F43DEF80061D03E /* ItemView */,
 				9D4D0B101F43DEEF0061D03E /* TextView */,
 				9D4D0B0F1F43DEE90061D03E /* Stamp */,
@@ -713,17 +754,21 @@
 				9D34D48A201823880042FB56 /* stroke_thin@3x.png in Resources */,
 				9D34D4CF201823C80042FB56 /* fill.png in Resources */,
 				9D34D4692018216D0042FB56 /* StageTableViewCell.xib in Resources */,
+				9D34D4F52018560F0042FB56 /* memo@2x.png in Resources */,
+				9D34D4EB201851060042FB56 /* MemoLabelView.xib in Resources */,
 				9D34D4D4201823C80042FB56 /* stamp@2x.png in Resources */,
 				9D34D4CA201823C80042FB56 /* delete@2x.png in Resources */,
 				9D34D490201823880042FB56 /* stroke_think@3x.png in Resources */,
 				9D34D4CB201823C80042FB56 /* stroke_thin@2x.png in Resources */,
 				9D34D49C201823970042FB56 /* 60.png in Resources */,
+				9D34D4F72018560F0042FB56 /* memo@3x.png in Resources */,
 				9D34D4C9201823C80042FB56 /* delete@3x.png in Resources */,
 				9D34D49B201823970042FB56 /* 60@3x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
 				9D34D4D3201823C80042FB56 /* stamp.png in Resources */,
 				9D34D48B201823880042FB56 /* stroke_think@2x.png in Resources */,
 				9D34D48F201823880042FB56 /* stroke_think.png in Resources */,
+				9D34D4F62018560F0042FB56 /* memo.png in Resources */,
 				9D34D460201820590042FB56 /* StampView.xib in Resources */,
 				9D34D44B201820170042FB56 /* ItemsView.xib in Resources */,
 				9D34D4D1201823C80042FB56 /* fill@3x.png in Resources */,
@@ -734,6 +779,7 @@
 				9D34D4DC201823DC0042FB56 /* splatoon.png in Resources */,
 				9D52DD8D1F1DD1C6003204AB /* Resource.bundle in Resources */,
 				9D34D4D6201823C80042FB56 /* fill@2x.png in Resources */,
+				9D34D4EC201851060042FB56 /* memoViewButtomTextField.xib in Resources */,
 				9D34D4CD201823C80042FB56 /* TwitterIcon@2x.png in Resources */,
 				9D34D4CC201823C80042FB56 /* Capture@2x.png in Resources */,
 				9D34D49A201823970042FB56 /* 60@2x.png in Resources */,
@@ -858,16 +904,19 @@
 				9D34D463201820680042FB56 /* TextViewController.swift in Sources */,
 				9D34D44720181E470042FB56 /* StampEntity.swift in Sources */,
 				9D34D44220181E470042FB56 /* StampStoreEntityList.swift in Sources */,
+				9D34D4F0201851530042FB56 /* MemoMarkerEntity.swift in Sources */,
 				9D34D47E201821F20042FB56 /* ConstColor.swift in Sources */,
 				9D34D43820181E3B0042FB56 /* JsonManager.swift in Sources */,
 				9D34D43220181E310042FB56 /* StageFetcher.swift in Sources */,
 				9D34D44520181E470042FB56 /* FetchStoreEntity.swift in Sources */,
+				9D34D4EA201851060042FB56 /* memoViewButtomTextField.swift in Sources */,
 				9D34D47A201821870042FB56 /* TextViewControllerDelegate.swift in Sources */,
 				9D34D477201821870042FB56 /* StampViewDelegate.swift in Sources */,
 				9D34D44820181E470042FB56 /* TextViewEntity.swift in Sources */,
 				9D34D46C201821780042FB56 /* NavigationController.swift in Sources */,
 				9D34D475201821870042FB56 /* LabelSettingViewDelegate.swift in Sources */,
 				9D34D43620181E3B0042FB56 /* RealmStoreManager.swift in Sources */,
+				9D34D4F920185CDB0042FB56 /* MemoLabelViewDelegate.swift in Sources */,
 				9D34D44420181E470042FB56 /* StageEntity.swift in Sources */,
 				9D34D453201820490042FB56 /* NamingLabelView.swift in Sources */,
 				9D34D43720181E3B0042FB56 /* AlertControllerManager.swift in Sources */,
@@ -880,12 +929,15 @@
 				9D34D476201821870042FB56 /* NamingLabelViewDelegate.swift in Sources */,
 				9D34D46A2018216D0042FB56 /* StageTableViewCell.swift in Sources */,
 				9D34D464201820680042FB56 /* TextViewNavigationController.swift in Sources */,
+				9D34D4F1201851530042FB56 /* MemoMarkerOfStageEntity.swift in Sources */,
 				9D34D482201821F80042FB56 /* UIColorExtension.swift in Sources */,
 				9D34D481201821F80042FB56 /* UIViewExtension.swift in Sources */,
 				9D34D45C201820530042FB56 /* StampSelectView.swift in Sources */,
+				9D34D4FB20185D410042FB56 /* MemoViewButtomTextFieldDelegate.swift in Sources */,
 				9D34D44C201820170042FB56 /* ItemView.swift in Sources */,
 				9D34D459201820530042FB56 /* StampCollectionViewCell.swift in Sources */,
 				9D34D44120181E470042FB56 /* LabelEntity.swift in Sources */,
+				9D34D4ED201851060042FB56 /* MemoLabelView.swift in Sources */,
 				9D34D450201820420042FB56 /* LabelSettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -147,4 +147,30 @@ class RealmStoreManager: NSObject {
         }
     }
     
+    // MARK: Marker
+    
+    // 指定したキーを持つEntityを削除
+    static func deleteMarker(key: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(entityList(type: MemoMarkerOfStageEntity.self).filter("key == %@", key))
+        }
+    }
+
+    /// 指定したステージのマーカーEntityを取り出す
+    ///
+    /// - Parameter key: ステージ名
+    /// - Returns: 指定したステージのマーカーEntity
+    static func picMarker(key: String) -> MemoMarkerOfStageEntity? {
+        if entityList(type: MemoMarkerOfStageEntity.self).filter("key == %@", key).count > 0 {
+            guard let result = entityList(type: MemoMarkerOfStageEntity.self).filter("key == %@", key).first else {
+                return nil
+            }
+            
+            return result
+        } else {
+            return nil
+        }
+    }
+    
 }

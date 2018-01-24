@@ -26,6 +26,8 @@
 	<string>広告コンテンツがBluetoothにアクセスする場合があります。</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>広告コンテンツがカレンダーにアクセスする場合があります。</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>画像を保存します</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>画像を保存します</string>
 	<key>UILaunchStoryboardName</key>

@@ -14,11 +14,15 @@ import SwiftyAttributes
 class NamingViewController: UIViewController {
     
     static let identifier = "NamingViewController"
+    let memoViewTag = 1
     var imageView: UIImageView?
     var scrollView: UIScrollView?
     // ラベルの表示テキスト位置保存用
     var pointX: CGFloat?
     var pointY: CGFloat?
+    // マーカー位置保存用
+    var markerPointX: CGFloat?
+    var markerPointY: CGFloat?
     // 編集しているラベル保持用のプロパティ
     var editLabelView: NamingLabelView?
     // ラベル編集中のラベルを保持
@@ -29,8 +33,14 @@ class NamingViewController: UIViewController {
     var stampSelectView: StampSelectView?
     // ItemsViewを保持
     var topItemsView: ItemView?
+    //メモマーカー
+    var memoMarker: MemoLabelView?
+    // メモビューのポインタを保持
+    var memoView: memoViewButtomTextField?
     // ピンチした中心座標を保持
     var pinchCenter = CGPoint.zero
+    // メモモードのフラグ: デフォルトはfalse
+    var isMemo = false
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     
@@ -55,7 +65,15 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにタップジェスチャを登録
         imageView?.onTap { tap in
-            self.tapped(gesture: tap)
+//            self.tapped(gesture: tap)
+            if self.isMemo {
+                // メモモードだったら
+                self.tappedMemoMode(gesture: tap)
+            } else {
+                // ネーミングモードだったら
+                self.tappedNamingMode(gesture: tap)
+            }
+
         }
         
         // スクロールビューにピンチジェスチャを登録
@@ -82,6 +100,8 @@ class NamingViewController: UIViewController {
             
             // ラベルを編集中じゃなかったら塗りつぶし・枠線ボタンに打ち消し線を描く
             drawCancelLineToFontConfig()
+            // デフォルトはメモモードOFFにしておくので打ち消し線を描く
+            memoCancelLineManaged()
             
             itemsView.delegate = self
             // ItemViewをimageViewのsubViewとして追加
@@ -101,6 +121,7 @@ class NamingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         // 永続化処理
         saveLabels()
+        saveMarker()
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +130,42 @@ class NamingViewController: UIViewController {
 
     
     // MARK: 背景タップ時
-    func tapped(gesture: UITapGestureRecognizer) {
+    
+    // メモモードでスクロールビューがタップされたとき
+    func tappedMemoMode(gesture: UITapGestureRecognizer) {
+        for i in 0..<gesture.numberOfTouches {
+            let point = gesture.location(ofTouch: i, in: self.view)
+            markerPointX = point.x
+            markerPointY = point.y
+        }
+        
+        // スクロールビューをタップしたときにmemoViewがでていたら非表示にする
+        if let memoView = self.memoView {
+            // テキストビューに文字が入力されていたら削除するまえにマーカーのプロパティに保持
+            if let text = memoView.textView.text {
+                self.memoMarker?.memoText = text
+            }
+            
+            memoView.removeFromSuperview()
+            // 一度ここにはいったら都度はいらないように
+            self.memoView = nil
+            // あたらにメモマーカーを作りたくないのでreturn
+            return
+        }
+        
+        if let memoMarker = UINib(nibName: MemoLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MemoLabelView {
+            self.memoMarker = memoMarker
+            self.memoMarker?.beforeFrame = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
+            self.memoMarker?.delegate = self
+            // TODO: これだとタップした位置の真ん中にはならないので気になるなら修正する
+            self.memoMarker?.frame.origin = CGPoint(x: markerPointX! - 15, y: markerPointY! - 15)
+            imageView?.addSubview(memoMarker)
+        }
+    }
+
+    
+    // ネーミングモードでスクロールビューがタップされたとき呼ばれる
+    func tappedNamingMode(gesture: UITapGestureRecognizer) {
         
         for i in 0..<gesture.numberOfTouches {
             let point = gesture.location(ofTouch: i, in: self.view)
@@ -257,6 +313,42 @@ class NamingViewController: UIViewController {
         imageView?.addSubview(label)
     }
     
+    
+    private func saveMarker() {
+        guard let subviews = imageView?.subviews else {
+            return
+        }
+        
+        let markerEntity = MemoMarkerOfStageEntity()
+        for subview in subviews {
+            
+            // ラベルのフォントサイズ と　テキストを格納
+            if let marker = subview as? MemoLabelView {
+                let entity = MemoMarkerEntity()
+                entity.pointX = marker.frame.origin.x
+                entity.pointY = marker.frame.origin.y
+                entity.text = marker.memoText
+                markerEntity.markerList.append(entity)
+            }
+            
+        }
+        
+        // 画面タイトルをキーに設定
+        markerEntity.key = navigationItem.title
+        
+        // タイトルがオプショナルなので安全な取り出し
+        if let title = navigationItem.title {
+            // もし同じ名前のEntityが存在したら削除
+            if RealmStoreManager.picLabelEntity(key: title) != nil {
+                RealmStoreManager.deleteMarker(key: title)
+            }
+        }
+        
+        // Entityを追加
+        RealmStoreManager.addEntity(object: markerEntity)
+    }
+
+    
     // MARK: ラベル永続化処理
     private func saveLabels() {
         
@@ -279,21 +371,28 @@ class NamingViewController: UIViewController {
         let stampEntityList = StampStoreEntityList()
         for subview in subviews {
             if subview is NamingLabelView {
-                let entity = LabelEntity()
-                // ラベルの原点格納
-                entity.pointX = subview.frame.origin.x
-                entity.pointY = subview.frame.origin.y
+//                let entity = LabelEntity()
+//                // ラベルの原点格納
+//                entity.pointX = subview.frame.origin.x
+//                entity.pointY = subview.frame.origin.y
                 
                 // ラベルのフォントサイズ と　テキストを格納
                 if let label = subview as? NamingLabelView {
+                    let entity = LabelEntity()
+                    // ラベルの原点格納
+                    entity.pointX = label.frame.origin.x
+                    entity.pointY = label.frame.origin.y
+                    
                     entity.fontSize = label.fontSize
                     entity.text = label.namingLabel.text
                     
                     let data = NSKeyedArchiver.archivedData(withRootObject: label.namingLabel.attributedText ?? "")
                     
                     entity.attribute = data
+                    labelEntity.labelList.append(entity)
+
                 }
-                labelEntity.labelList.append(entity)
+//                labelEntity.labelList.append(entity)
 
             } else if subview is StampView {
                 let entity = StampStoreEntity()
@@ -376,6 +475,24 @@ class NamingViewController: UIViewController {
                 
             }
             
+            // メモマーカーの配置
+            if let entity = RealmStoreManager.picMarker(key: title) {
+                for markerEntity in entity.markerList {
+                    if let marker = UINib(nibName: MemoLabelView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? MemoLabelView {
+                        // デリゲートの設定
+                        marker.delegate = self
+                        // マーカーの位置を設定
+                        marker.frame = CGRect(x: markerEntity.pointX, y: markerEntity.pointY, width: 30, height: 30)
+                        // 初期のフレームを設定
+                        marker.beforeFrame = CGPoint.init(x: markerEntity.pointX, y: markerEntity.pointY)
+                        // マーカーに対応する文字を設定
+                        marker.memoText = markerEntity.text
+                        // マーカーをimageViewに追加
+                        imageView?.addSubview(marker)
+                    }
+                }
+            }
+            
         }
     }
     
@@ -393,6 +510,17 @@ class NamingViewController: UIViewController {
             stampView = view as? StampView
             // ラベルの選択を解除
             labelSelectCancel()
+        }
+    }
+    
+    // メモモードのフラグプロパティを参照してcancelLineを書いたり、消したりする
+    func memoCancelLineManaged() {
+        if isMemo {
+            // メモモードだったら打ち消し線を消す
+            topItemsView?.memoButton.layer.sublayers?.last?.removeFromSuperlayer()
+        } else {
+            // ネーミングモードだったら打ち消し線を描く
+            topItemsView?.memoButton.drawCancelLine(color: UIColor.lightGray, lineWidth: 2.0)
         }
     }
     

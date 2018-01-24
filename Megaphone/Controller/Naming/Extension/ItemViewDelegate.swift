@@ -205,4 +205,20 @@ extension NamingViewController: ItemViewDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    // メモボタンを押した時
+    func memoTapped() {
+        // TODO: メモボタンを押した時の処理を実装
+        if isMemo {
+            isMemo = false
+            // メモビューが表示されていたら削除する
+            if let memoView = self.memoView {
+                memoView.removeFromSuperview()
+            }
+        } else {
+            isMemo = true
+        }
+        // 打ち消し線の処理をする
+        memoCancelLineManaged()
+    }
+    
 }

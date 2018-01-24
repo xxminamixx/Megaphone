@@ -18,6 +18,8 @@ protocol ItemViewDelegate {
     func strokeTapped()
     // スタンプボタンタップ
     func stampTapped()
+    // メモボタン
+    func memoTapped()
     // twitterボタン
     func twitterTapped()
     // スクショボタン
@@ -35,12 +37,19 @@ class ItemView: UIView {
     @IBOutlet weak var stampButton: UIImageView!
     
     @IBOutlet weak var stampStackView: UIStackView!
+    @IBOutlet weak var memoButton: UIImageView!
+    @IBOutlet weak var twitterStackView: UIStackView!
     
     static let nibName = "ItemsView"
     
     var delegate: ItemViewDelegate!
     
     override func awakeFromNib() {
+        
+        if #available(iOS 11.0, *) {
+            // iOS11以降の場合、Twitterアカウント情報をOSが持たなくなったので非表示
+            twitterStackView.isHidden = true
+        }
         
         stampStackView.isHidden = true
         
@@ -74,6 +83,10 @@ class ItemView: UIView {
         
         screenShotButton.onTap { _ in
             self.delegate.screenShotTapped()
+        }
+        
+        memoButton.onTap { _ in
+            self.delegate.memoTapped()
         }
         
         super.awakeFromNib()

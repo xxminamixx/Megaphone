@@ -148,18 +148,15 @@ extension HomeViewController: UITableViewDelegate {
                 return
             }
             
-            // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
             // インジケータのアニメーションスタート
             indicator?.startAnimating()
             
             StageFetcher.stageImage(url: imageName, completion: { image in
-                // TODO: 一度フェッチした画像は永続化したい
-                
                 RealmStoreManager.save {
                     // UIImageをPNGデータ形式に変換して保存
                     fetchStoreEntity?.image = UIImagePNGRepresentation(image)
                 }
-                
+                // インジケータのアニメーションストップ
                 self.indicator?.stopAnimating()
                 self.imageSetNextViewController(viewController: viewController, image: image)
             })

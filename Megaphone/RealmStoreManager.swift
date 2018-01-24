@@ -128,6 +128,8 @@ class RealmStoreManager: NSObject {
             if entity.stageEntity?.stage == filter {
                 // エンティティ配列に格納する
                 stageEntityList.append(entity)
+                // 同じステージ名のデータは重複していないはずなので1つ格納したらreturn
+                return  stageEntityList
             }
         }
         return stageEntityList

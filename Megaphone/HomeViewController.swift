@@ -111,14 +111,11 @@ class HomeViewController: UIViewController {
         
         /// StageEntity配列をひとつづつ永続化
         for stage in stages {
-            guard !RealmStoreManager.isStoreStageName(stage: stage.stage!) else {
-                /// 永続化されている場合早期return
-                return
+            if !RealmStoreManager.isStoreStageName(stage: stage.stage!) {
+                let entity = FetchStoreEntity()
+                entity.stageEntity = stage
+                RealmStoreManager.addEntity(object: entity)
             }
-            
-            let entity = FetchStoreEntity()
-            entity.stageEntity = stage
-            RealmStoreManager.addEntity(object: entity)
         }
     }
 }
@@ -130,8 +127,6 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
-        // インジケータのアニメーションスタート
-        indicator?.startAnimating()
         
         let viewController = storyboard?.instantiateViewController(withIdentifier: NamingViewController.identifier) as! NamingViewController
         // TODO: SharedInstansがデータを持ち続けているのはスコープが長くて危険なので短命にしたい
@@ -154,11 +149,15 @@ extension HomeViewController: UITableViewDelegate {
             }
             
             // TODO: 画面遷移が滞ってしまう場合はAlamofireImageなどの導入を検討する
+            // インジケータのアニメーションスタート
+            indicator?.startAnimating()
             
             StageFetcher.stageImage(url: imageName, completion: { image in
                 // TODO: 一度フェッチした画像は永続化したい
-                RealmStoreManager.save() {
-                    fetchStoreEntity?.image = image
+                
+                RealmStoreManager.save {
+                    // UIImageをPNGデータ形式に変換して保存
+                    fetchStoreEntity?.image = UIImagePNGRepresentation(image)
                 }
                 
                 self.indicator?.stopAnimating()

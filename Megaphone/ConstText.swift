@@ -68,6 +68,7 @@ struct ConstText {
     static let imageKey = "image"
     
     /* Dropbox */
+    static let stageJsonURL = "https://dl.dropboxusercontent.com/s/2n2i1u251dd1awb/stage.json?dl=0"
     static let dropboxHost = "www.dropbox.com"
     static let downloadHost = "dl.dropboxusercontent.com"
     

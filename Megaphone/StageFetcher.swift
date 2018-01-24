@@ -14,7 +14,7 @@ class StageFetcher: NSObject {
 
     static func stageJson(completion: @escaping () -> Void) {
         
-        Alamofire.request("https://dl.dropboxusercontent.com/s/r6ej1zl8q0bdvzs/stage.json?dl=0", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
+        Alamofire.request(ConstText.stageJsonURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { response in
             
             guard let data = response.data else {
                 return

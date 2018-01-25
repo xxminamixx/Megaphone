@@ -13,6 +13,8 @@ protocol MemoViewButtomTextFieldDelegate {
     func memoViewTapped(keyBoardRect: CGRect)
     // キーボードが消えた時にコールする
     func disableKeyBoard(text: String?)
+    // メモビューのテキストフィールドにある削除ボタンが押された時にコールする
+    func deleteMemoMerker()
 }
 
 class memoViewButtomTextField: UIView {
@@ -64,4 +66,8 @@ class memoViewButtomTextField: UIView {
         delegate?.disableKeyBoard(text: textView.text)
     }
 
+    // 削除ボタンタップ時に呼ばれる
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        delegate?.deleteMemoMerker()
+    }
 }

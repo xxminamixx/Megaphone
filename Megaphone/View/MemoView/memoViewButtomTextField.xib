@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,15 +38,32 @@
                     <color key="textColor" red="0.3927342685969839" green="0.68397869983036319" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0g-W6-2Iy">
+                    <rect key="frame" x="290" y="7.5" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.8844260573387146" green="0.12313007563352585" blue="0.046162448823451996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="eid-ni-Lgi"/>
+                        <constraint firstAttribute="width" constant="80" id="vAH-dX-NqN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <state key="normal" title="マーカー削除">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DVD-Id-QLf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.63001665609137059" green="0.63001665609137059" blue="0.63001665609137059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="d2R-iv-29g" firstAttribute="centerY" secondItem="WQh-v5-Q8T" secondAttribute="centerY" id="2W4-ZA-Trf"/>
                 <constraint firstItem="g9H-0P-pPL" firstAttribute="top" secondItem="WQh-v5-Q8T" secondAttribute="bottom" constant="10" id="A3n-rF-7l1"/>
                 <constraint firstItem="WQh-v5-Q8T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="AzO-cJ-br3"/>
+                <constraint firstItem="R0g-W6-2Iy" firstAttribute="trailing" secondItem="g9H-0P-pPL" secondAttribute="trailing" id="EFh-4S-6bA"/>
                 <constraint firstItem="d2R-iv-29g" firstAttribute="leading" secondItem="WQh-v5-Q8T" secondAttribute="trailing" constant="5" id="HMQ-Px-Rpc"/>
                 <constraint firstAttribute="trailing" secondItem="g9H-0P-pPL" secondAttribute="trailing" constant="5" id="J7U-vt-DO3"/>
                 <constraint firstItem="WQh-v5-Q8T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="QFZ-Fb-a8P"/>
+                <constraint firstItem="R0g-W6-2Iy" firstAttribute="baseline" secondItem="WQh-v5-Q8T" secondAttribute="baseline" id="ayy-PU-9Ai"/>
                 <constraint firstAttribute="bottom" secondItem="g9H-0P-pPL" secondAttribute="bottom" constant="5" id="bzp-KU-Dgr"/>
                 <constraint firstItem="g9H-0P-pPL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="y90-9f-fkd"/>
             </constraints>

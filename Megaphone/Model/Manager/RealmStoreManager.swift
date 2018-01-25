@@ -9,7 +9,7 @@
 import RealmSwift
 
 // TOOD: 各種Entityごとに同じようなメソッドを作成しているのでジェネリクスにしたい
-class RealmStoreManager: NSObject {
+class RealmStoreManager {
     
     // MARK: ジェネリック関数
     

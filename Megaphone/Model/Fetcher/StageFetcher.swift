@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class StageFetcher: NSObject {
+class StageFetcher {
 
     static func stageJson(completion: @escaping () -> Void) {
         

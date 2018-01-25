@@ -22,4 +22,15 @@ extension NamingViewController: MemoViewButtomTextFieldDelegate {
             self.memoMarker?.memoText = text
         }, completion: { _ in })
     }
+    
+    func deleteMemoMerker() {
+        // アニメーションでメモビューを画面外に移動
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+            self.memoView?.frame.origin.y = self.view.frame.size.height
+        }, completion: { _ in })
+        // メモビューを選択しているかはオプショナルバインディングで判定しているのでnilを代入
+        memoView = nil
+        // メモマーカーを削除
+        memoMarker?.removeFromSuperview()
+    }
 }

@@ -65,7 +65,6 @@ class NamingViewController: UIViewController {
         
         // スクロールビューにタップジェスチャを登録
         imageView?.onTap { tap in
-//            self.tapped(gesture: tap)
             if self.isMemo {
                 // メモモードだったら
                 self.tappedMemoMode(gesture: tap)
@@ -371,11 +370,6 @@ class NamingViewController: UIViewController {
         let stampEntityList = StampStoreEntityList()
         for subview in subviews {
             if subview is NamingLabelView {
-//                let entity = LabelEntity()
-//                // ラベルの原点格納
-//                entity.pointX = subview.frame.origin.x
-//                entity.pointY = subview.frame.origin.y
-                
                 // ラベルのフォントサイズ と　テキストを格納
                 if let label = subview as? NamingLabelView {
                     let entity = LabelEntity()
@@ -392,8 +386,6 @@ class NamingViewController: UIViewController {
                     labelEntity.labelList.append(entity)
 
                 }
-//                labelEntity.labelList.append(entity)
-
             } else if subview is StampView {
                 let entity = StampStoreEntity()
                 // スタンプの原点格納

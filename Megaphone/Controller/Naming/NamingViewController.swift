@@ -338,7 +338,7 @@ class NamingViewController: UIViewController {
         // タイトルがオプショナルなので安全な取り出し
         if let title = navigationItem.title {
             // もし同じ名前のEntityが存在したら削除
-            if RealmStoreManager.picLabelEntity(key: title) != nil {
+            if RealmStoreManager.filterEntityList(type: LabelOfStageEntity.self, property: "key", filter: title).first != nil {
                 RealmStoreManager.deleteMarker(key: title)
             }
         }
@@ -406,7 +406,7 @@ class NamingViewController: UIViewController {
         stampEntityList.key = navigationItem.title
         
         // もし同じ名前のLabelEntityが存在したら削除
-        if RealmStoreManager.picLabelEntity(key: title) != nil {
+        if RealmStoreManager.filterEntityList(type: LabelOfStageEntity.self, property: "key", filter: title).first != nil {
             RealmStoreManager.deleteLabelEntity(key: title)
         }
         
@@ -428,15 +428,15 @@ class NamingViewController: UIViewController {
                 return
             }
             
-            if let missNameEntity = RealmStoreManager.picLabelEntity(key: "海女美術館") {
+            if let missNameEntity = RealmStoreManager.filterEntityList(type: LabelOfStageEntity.self, property: "key", filter: "海女美術館").first {
                 RealmStoreManager.save {
                     missNameEntity.key = ConstText.ama
                 }
             }
             
             // ラベルの配置
-            if let entity = RealmStoreManager.picLabelEntity(key: title) {
-                
+            if let entity = RealmStoreManager.filterEntityList(type: LabelOfStageEntity.self, property: "key", filter: title).first {
+            
                 // このfor文で永続化永続化している複数のラベル座標からラベルを配置する
                 for labelEntity in entity.labelList {
                     

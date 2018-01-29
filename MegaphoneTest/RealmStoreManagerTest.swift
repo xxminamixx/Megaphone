@@ -33,4 +33,10 @@ class RealmStoreManagerTest: XCTestCase {
      
      **/
     
+    /// ハコフグを永続化した状態としておくこと
+    func test_ジェネリクスなfilter関数_正しくフィルタリングできるので成功() {
+        let result = RealmStoreManager.filterEntityList(type: LabelOfStageEntity.self, property: "key", filter: "ハコフグ倉庫").first?.key == "ハコフグ倉庫"
+        XCTAssert(result)
+    }
+    
 }

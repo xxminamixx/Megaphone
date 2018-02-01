@@ -44,7 +44,7 @@ struct ConstText {
     static let imageSaveFailureMessage = "保存に失敗しました"
     
     /* 全消し */
-    static let allDelete = "テキストとスタンプを全て削除しますか？"
+    static let allDelete = "テキストとマーカーを全て削除しますか？"
     
     
     // MARK: - ステージ名

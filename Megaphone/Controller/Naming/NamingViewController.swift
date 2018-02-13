@@ -114,6 +114,7 @@ class NamingViewController: UIViewController {
                 view1.right == view2.right
             }
 
+            let attribute  = NSAttributedString.init(string: "ああああ", attributes:[NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!])
         }
     }
     

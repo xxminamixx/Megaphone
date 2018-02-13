@@ -23,3 +23,8 @@ target 'Megaphone' do
   end
 
 end
+
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-Megaphone/Pods-Megaphone-acknowledgements.plist', 'Megaphone/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+end

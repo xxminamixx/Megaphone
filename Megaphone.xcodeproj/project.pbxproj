@@ -109,6 +109,7 @@
 		9D52DDB31F1F144D003204AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB21F1F144D003204AB /* MessageUI.framework */; };
 		9D52DDB51F1F1457003204AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB41F1F1457003204AB /* StoreKit.framework */; };
 		9D52DDB71F1F1464003204AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */; };
+		9DE53DDA2032B87600045B89 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DE53DD92032B87600045B89 /* Settings.bundle */; };
 		A60A6B966E6683DB18EBE460 /* Pods_MegaphoneTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178232ADF7B430DAF0B939FD /* Pods_MegaphoneTest.framework */; };
 		C54FEB9813872A27689E1D65 /* Pods_Megaphone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FD0A3C907689D1914F69CF /* Pods_Megaphone.framework */; };
 /* End PBXBuildFile section */
@@ -239,6 +240,7 @@
 		9D52DDB41F1F1457003204AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D52DDB61F1F1464003204AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D52DDB81F1F149D003204AB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../Downloads/GoogleMobileAdsSdkiOS-7.21.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		9DE53DD92032B87600045B89 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A501E1D94C0ADE27CAA12DB5 /* Pods-Megaphone-MegaphoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Megaphone-MegaphoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Megaphone-MegaphoneTests/Pods-Megaphone-MegaphoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A82A1E1E59D379565A26D39D /* Pods-MegaphoneTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaphoneTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MegaphoneTest/Pods-MegaphoneTest.debug.xcconfig"; sourceTree = "<group>"; };
 		E71748ABD1862AD071F76F59 /* Pods_MegaphoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaphoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -499,6 +501,7 @@
 				9D52DD5F1F1DAD03003204AB /* Assets.xcassets */,
 				9D52DD641F1DAD03003204AB /* Info.plist */,
 				9D52DD8C1F1DD1C6003204AB /* Resource.bundle */,
+				9DE53DD92032B87600045B89 /* Settings.bundle */,
 			);
 			path = Megaphone;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				9D52DD531F1DAD03003204AB /* Resources */,
 				14E306AFA83570C0D916BC39 /* [CP] Embed Pods Frameworks */,
 				31F4024050E0CF6273E6ED93 /* [CP] Copy Pods Resources */,
+				9DE53DDB2032BA1400045B89 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -765,6 +769,7 @@
 				9D34D4C9201823C80042FB56 /* delete@3x.png in Resources */,
 				9D34D49B201823970042FB56 /* 60@3x.png in Resources */,
 				9D52DD601F1DAD03003204AB /* Assets.xcassets in Resources */,
+				9DE53DDA2032B87600045B89 /* Settings.bundle in Resources */,
 				9D34D4D3201823C80042FB56 /* stamp.png in Resources */,
 				9D34D48B201823880042FB56 /* stroke_think@2x.png in Resources */,
 				9D34D48F201823880042FB56 /* stroke_think.png in Resources */,
@@ -866,6 +871,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		9DE53DDB2032BA1400045B89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"";
 		};
 		D1D5FD0111670B96CDA5B817 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

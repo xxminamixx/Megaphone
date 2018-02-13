@@ -48,7 +48,6 @@ class ItemView: UIView {
         
         if #available(iOS 11.0, *) {
             // iOS11以降の場合、Twitterアカウント情報をOSが持たなくなったので非表示
-//            twitterStackView.isHidden = true
             twitterStackView.alpha = 0.5
             twitterButton.isUserInteractionEnabled = false
         }
